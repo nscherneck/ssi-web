@@ -1,0 +1,43 @@
+
+.tab-panels ul {
+    margin: 0;
+    padding: 0;
+}
+.tab-panels ul li {
+    list-style-type: none;
+    display: inline-block;
+    background: #e1e0e0;
+    margin: 0;
+    padding: 3px 10px;
+    border-radius: 5px 5px 0 0;
+    color: #666;
+    font-weight: 200;
+    cursor: pointer;
+    border-bottom: 1px solid #d3d3d3;
+}
+.tab-panels ul li:hover {
+    color: #fff;
+    background: #666;
+}
+
+.tab-panels ul li.active {
+    color: #606060;
+    background: #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+
+}
+
+.tab-panels {
+  margin:10px;
+}
+
+.tab-panels .panel {
+    display:none;
+    background: #f0f0f0;
+    padding: 30px;
+    border-radius: 0 0 3px 3px;
+}
+
+.tab-panels .panel.active {
+    display:block;
+}

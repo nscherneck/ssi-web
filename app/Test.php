@@ -1,0 +1,52 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use DB;
+
+class Test extends Model
+{
+    protected $dates = ['test_date', 'created_at'];
+    protected $fillable = ['test_date', 'added_by', 'technician_id', 'system_id', 'test_result_id', 'test_type_id', 'updated_at'];
+
+    public function system()
+    {
+      return $this->belongsTo('App\System');
+    }
+
+    public function test_result()
+    {
+      return $this->belongsTo('App\Test_result');
+    }
+
+    public function test_type()
+    {
+      return $this->belongsTo('App\Test_type');
+    }
+
+    public function technician() // technician who completed test
+    {
+      return $this->belongsTo('App\User', 'technician_id');
+    }
+
+    public function addedBy() // technician who completed test
+    {
+      return $this->belongsTo('App\User', 'added_by');
+    }
+
+    public function reports() {
+      return $this->morphMany('App\Document', 'documentable');
+    }
+
+    public function deficiencies()
+    {
+      return $this->hasMany('App\Deficiency');
+    }
+
+    public function testnotes()
+    {
+      return $this->hasMany('App\Testnote');
+    }
+
+}
