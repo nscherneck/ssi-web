@@ -25,7 +25,9 @@
 
   <div class="col-md-4">
 
-    <h3>{{ $test->test_type->name }}</h3>
+    <div class="testHeaderBar text-center">
+      <h3>{{ $test->test_type->name }}</h3>
+    </div>
 
     <hr>
 
@@ -44,20 +46,11 @@
 
     <hr>
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal"><i class="fa fa-cog fa-md"></i> Edit Test</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal"><i class="fa fa-trash-o fa-md"></i> Delete Test</button>
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
+      <i class="fa fa-cog fa-md"></i> Edit Test</button>
+    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal">
+      <i class="fa fa-trash-o fa-md"></i> Delete Test</button>
 
-    @if($test->test_result->name == "Pass with Deficiencies")<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">Add Deficiency</button>
-    @elseif($test->test_result->name == "Fail with Deficiencies")<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">Add Deficiency</button>
-    @endif
-
-    @if($test->test_result->name == "Pass with Deficiencies")<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">Add Note</button>
-    @elseif($test->test_result->name == "Pass with Notes")<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">Add Note</button>
-    @endif
-
-    <hr>
-
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addReportModal">Add Report</button>
 
 
   </div>
@@ -66,13 +59,44 @@
 
   <div class="col-md-8">
 
+    <div class="testButtonBar text-right">
+
+      @if($test->test_result->name == "Pass with Deficiencies")
+
+      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
+        <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
+
+      @elseif($test->test_result->name == "Fail with Deficiencies")
+      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
+        <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
+
+      @endif
+
+      @if($test->test_result->name == "Pass with Deficiencies")
+
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">
+        <i class="fa fa-paperclip"></i> Add Note</button>
+
+      @elseif($test->test_result->name == "Pass with Notes")
+
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">
+        <i class="fa fa-paperclip"></i> Add Note</button>
+
+      @endif
+
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addReportModal">
+        <i class="fa fa-folder-open-o"></i> Add Report</button>
+
+    </div>
+
     @if(count($test->reports) > 0)
-    <br>
+
     <div class="titleBar">
         <p>Reports</p>
     </div>
 
     <table class="table table-hover table-condensed">
+
       <thead>
         <tr>
           <th><small></small></th>
@@ -83,6 +107,7 @@
           <th><small></small></th>
         </tr>
       </thead>
+
       <tbody>
         @foreach($test->reports as $report)
           <tr>
@@ -105,7 +130,6 @@
         {{-- @include('partials.modals.edit_test_report')
         @include('partials.modals.delete_test_report') --}}
 
-
         @endforeach
       </tbody>
     </table>
@@ -113,7 +137,7 @@
 
 
     @if(count($test->deficiencies) > 0)
-    <br>
+
     <div class="titleBar">
         <p>Deficiencies</p>
     </div>
@@ -128,6 +152,7 @@
           <th><small></small></th>
         </tr>
       </thead>
+
       <tbody>
         @foreach($test->deficiencies as $deficiency)
           <tr>
@@ -135,20 +160,15 @@
           <td width="70%"><small>{{ $deficiency->description }}</small></td>
           <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
           <td>
-
             <button class="btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">Edit</button>
-
           </td>
           <td>
-
             <button class="btn-danger btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">Delete</button>
-
           </td>
         </tr>
 
         @include('partials.modals.edit_deficiency')
         @include('partials.modals.delete_deficiency')
-
 
         @endforeach
       </tbody>
@@ -156,7 +176,7 @@
     @endif
 
     @if(count($test->testnotes) > 0)
-    <br>
+
     <div class="titleBar">
         <p>Notes</p>
     </div>
