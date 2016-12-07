@@ -1,17 +1,13 @@
-@extends('layouts.app')
+@extends('layout')
+
+@section('title', 'SSI-Web | Service')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
+@include('partials.nav')
+
+<div class="container-fluid">
+  <h3>Welcome to SSI-Web.</h3>
 </div>
-@endsection
+
+@stop

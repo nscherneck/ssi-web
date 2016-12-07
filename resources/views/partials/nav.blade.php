@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">SSI-Web</a>
+      <a class="navbar-brand" href="{{ url('home') }}">SSI-Web</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
@@ -15,14 +15,15 @@
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/register') }}">Register</a></li>
         @else
-            <li><a href="<?php echo url('sales'); ?>">Sales</a></li>
-            <li><a href="<?php echo url('engineering'); ?>">Engineering</a></li>
-            <li><a href="<?php echo url('installation'); ?>">Installation</a></li>
-            <li><a href="<?php echo url('service'); ?>">Service</a></li>
-            <li><a href="<?php echo url('docs'); ?>">Documents & Resources</a></li>
-            <li><a href="<?php echo url('fleet'); ?>">Fleet</a></li>
-            <li><a href="<?php echo url('team'); ?>">Team</a></li>
-            <li><a href="<?php echo url('admin'); ?>">Admin</a></li>
+            <li><a href="{{ url('home') }}">Home</a></li>
+            <li><a href="{{ url('sales') }}">Sales</a></li>
+            <li><a href="{{ url('engineering') }}">Engineering</a></li>
+            <li><a href="{{ url('installation') }}">Installation</a></li>
+            <li><a href="{{ url('service') }}">Service</a></li>
+            <li><a href="{{ url('docs') }}">Documents & Resources</a></li>
+            <li><a href="{{ url('fleet') }}">Fleet</a></li>
+            <li><a href="{{ url('team') }}">Team</a></li>
+            <li><a href="{{ url('admin') }}">Admin</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
