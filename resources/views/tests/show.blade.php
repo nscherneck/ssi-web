@@ -29,31 +29,31 @@
       <h3>{{ $test->test_type->name }}</h3>
     </div>
 
-    <hr>
+    <div class="testContentBar">
 
-      <p><small>
-      <strong>Test Date: </strong>{{ $test->test_date->format('F d, Y') }}<br>
-      <strong>Technician:</strong> {{ $test->technician->first_name }} {{ $test->technician->last_name }}<br>
-      <strong>Result:</strong> {{ $test->test_result->name }}
-      </small></p>
+        <p><small>
+        <strong>Test Date: </strong>{{ $test->test_date->format('F d, Y') }}<br>
+        <strong>Technician:</strong> {{ $test->technician->first_name }} {{ $test->technician->last_name }}<br>
+        <strong>Result:</strong> {{ $test->test_result->name }}
+        </small></p>
 
-    <hr>
+    </div>
 
-      <p><small>
-        <small>Added: {{ $test->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-        <small>Added By: {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br><br></small>
-        <small>Updated: {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-        <small>Updated By: @if($test->updated_by){{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }} @else @endif<br></small>
-      </small></p>
+    <div class="testContentBar">
 
-    <hr>
+        <p><small>
+          <strong>Added:</strong> {{ $test->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+          <strong>Added By:</strong> {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br><br>
+          <strong>Updated:</strong> {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+          <strong>Updated By:</strong> @if($test->updated_by){{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }} @else @endif<br>
+        </small></p>
+
+    </div>
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
       <i class="fa fa-cog fa-md"></i> Edit Test</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal">
       <i class="fa fa-trash-o fa-md"></i> Delete Test</button>
-
-
 
   </div>
 

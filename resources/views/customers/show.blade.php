@@ -36,9 +36,12 @@
     <hr>
 
     <small>Added: {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Added By: {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br><br></small>
+    <small>Added By: {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br></small>
+    @if($customer->updated_by)
+    <br>
     <small>Updated: {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Updated By: @if($customer->updated_by){{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }} @else @endif<br></small>
+    <small>Updated By: {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br></small>
+    @endif
 
     <hr>
 

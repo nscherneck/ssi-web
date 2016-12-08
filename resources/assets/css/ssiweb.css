@@ -21,7 +21,7 @@
 }
 
 .testHeaderBar {
-  margin: 0;
+  margin: 0 0 8px 0;
   padding: 12px 8px;
   background: #F5F5F5;
   border-radius: 5px;
@@ -31,6 +31,19 @@
   margin: 0;
   padding: 0px;
 }
+
+.testContentBar {
+  margin: 0 0 8px 0;
+  padding: 10px;
+  background: #F5F5F5;
+  border-radius: 5px;
+}
+
+.testContentBar p {
+  margin: 0;
+  padding: 0;
+}
+
 
 .titleBar {
   margin: 10px 0 10px 0;
