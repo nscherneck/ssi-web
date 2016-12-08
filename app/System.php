@@ -8,8 +8,8 @@ use DB;
 class System extends Model
 {
 
-  protected $dates = ['install_date', 'next_test_date', 'created_at'];
-  protected $fillable = ['system_type_id', 'name', 'install_date', 'ssi_install', 'ssi_test_acct', 'next_test_date', 'updated_at'];
+  protected $dates = ['install_date', 'next_test_date', 'created_at', 'updated_at'];
+  protected $fillable = ['system_type_id', 'name', 'install_date', 'ssi_install', 'ssi_test_acct', 'next_test_date', 'added_by', 'updated_by', 'updated_at'];
   protected $casts = [
     'is_active' => 'boolean',
   ];
@@ -33,6 +33,17 @@ class System extends Model
   public function photos() {
     return $this->morphMany('App\Photo', 'photoable');
   }
+
+  public function addedBy() // technician who completed test
+  {
+    return $this->belongsTo('App\User', 'added_by');
+  }
+
+  public function updatedBy() // technician who completed test
+  {
+    return $this->belongsTo('App\User', 'updated_by');
+  }
+
 
   public function get_latest_test() {
     $test_count = $this->tests()->count();

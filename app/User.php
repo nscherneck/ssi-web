@@ -27,11 +27,26 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function customers() // technician who completed test
+    {
+      return $this->hasMany('App\Test');
+    }
+
+    public function sites() // technician who completed test
+    {
+      return $this->hasMany('App\Test');
+    }
+
+    public function systems() // technician who completed test
+    {
+      return $this->hasMany('App\Test');
+    }
 
     public function tests() // technician who completed test
     {
       return $this->hasMany('App\Test');
     }
+
 
     public function deficiencies() // technician who completed test
     {

@@ -104,11 +104,15 @@ class TestsController extends Controller
 
     public function update(Request $request, Test $test)
     {
-        $test = Test::find($test->id);
-        $test->update($request->all());
+      $test->test_date = $request->test_date;
+      $test->technician_id = $request->technician_id;
+      $test->test_type_id = $request->test_type_id;
+      $test->test_result_id = $request->test_result_id;
+      $test->updated_by = Auth::id();
+      $test->update();
 
-        flash('Test updated', 'Success');
-        return redirect()->route('test_show', ['id' => $test->id]);
+      flash('Test updated', 'Success');
+      return redirect()->route('test_show', ['id' => $test->id]);
     }
 
     /**

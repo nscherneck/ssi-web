@@ -32,8 +32,7 @@ class TestnotesController extends Controller
         $testnote = new Testnote;
         $testnote->test_id = $test->id;
         $testnote->note = $request->note;
-        $user = Auth::user();
-        $testnote->added_by = $user->id;
+        $testnote->added_by = Auth::id();
         $testnote->save();
 
         flash('Note added', 'Success');

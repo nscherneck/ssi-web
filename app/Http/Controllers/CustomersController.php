@@ -64,6 +64,7 @@ class CustomersController extends Controller
       $customer->web = $request->web;
       $customer->email = $request->email;
       $customer->notes = $request->notes;
+      $customer->added_by = Auth::id();
 
       $customer->save();
 
@@ -88,7 +89,21 @@ class CustomersController extends Controller
         'email' => 'email'
       ]);
 
-      $customer->update($request->all());
+      $customer->name = $request->name;
+      $customer->address1 = $request->address1;
+      $customer->address2 = $request->address2;
+      $customer->address3 = $request->address3;
+      $customer->city = $request->city;
+      $customer->state_id = $request->state_id;
+      $customer->zip = $request->zip;
+      $customer->phone = $request->phone;
+      $customer->fax = $request->fax;
+      $customer->web = $request->web;
+      $customer->email = $request->email;
+      $customer->notes = $request->notes;
+      $customer->updated_by = Auth::id();
+
+      $customer->update();
 
       flash('Customer updated', 'Success');
       return redirect()->route('customer_show', ['id' => $customer->id]);

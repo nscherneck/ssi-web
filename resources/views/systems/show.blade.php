@@ -40,6 +40,14 @@
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">Edit System</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">Delete System</button>
 
+    <hr>
+
+    <small>Added: {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+    <small>Added By: {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br><br></small>
+    <small>Updated: {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+    <small>Updated By: @if($system->updated_by){{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }} @else @endif<br></small>
+
+
 
   </div>
 

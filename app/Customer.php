@@ -8,7 +8,8 @@ use DB;
 class Customer extends Model
 {
 
-    protected $fillable = ['name', 'address1', 'address2', 'address3', 'city', 'state_id', 'zip', 'phone', 'fax', 'web', 'email', 'notes', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
+    protected $fillable = ['name', 'address1', 'address2', 'address3', 'city', 'state_id', 'zip', 'phone', 'fax', 'web', 'email', 'notes', 'added_by', 'updated_by', 'updated_at'];
 
     public function sites() {
     return $this->hasMany('App\Site')->orderBy('name', 'asc');
@@ -26,6 +27,17 @@ class Customer extends Model
   public function systems() {
       return $this->hasManyThrough('App\System', 'App\Site');
   }
+
+  public function addedBy() // technician who completed test
+  {
+    return $this->belongsTo('App\User', 'added_by');
+  }
+
+  public function updatedBy() // technician who completed test
+  {
+    return $this->belongsTo('App\User', 'updated_by');
+  }
+
 
 
 }

@@ -42,6 +42,7 @@ class SystemsController extends Controller
       $system->install_date = $request->install_date;
       $system->ssi_install = $request->ssi_install;
       $system->ssi_test_acct = $request->ssi_test_acct;
+      $system->added_by = Auth::id();
 
       $system->save();
 
@@ -51,8 +52,14 @@ class SystemsController extends Controller
 
     public function update(Request $request, System $system)
     {
-        $system = System::find($system->id);
-        $system->update($request->all());
+        $system->name = $request->name;
+        $system->system_type_id = $request->type;
+        $system->install_date = $request->install_date;
+        $system->ssi_install = $request->ssi_install;
+        $system->ssi_test_acct = $request->ssi_test_acct;
+        $system->updated_by = Auth::id();
+
+        $system->update();
 
         flash('System updated', 'Success');
         return redirect()->route('system_show', ['id' => $system->id]);

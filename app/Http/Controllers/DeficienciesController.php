@@ -43,8 +43,7 @@ class DeficienciesController extends Controller
         $deficiency = new Deficiency;
         $deficiency->test_id = $test->id;
         $deficiency->description = $request->description;
-        $user = Auth::user();
-        $deficiency->added_by = $user->id;
+        $deficiency->added_by = Auth::id();
         $deficiency->save();
 
         flash('Deficiency added', 'Success');

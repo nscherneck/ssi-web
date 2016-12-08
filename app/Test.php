@@ -7,8 +7,8 @@ use DB;
 
 class Test extends Model
 {
-    protected $dates = ['test_date', 'created_at'];
-    protected $fillable = ['test_date', 'added_by', 'technician_id', 'system_id', 'test_result_id', 'test_type_id', 'updated_at'];
+    protected $dates = ['test_date', 'updated_at', 'created_at'];
+    protected $fillable = ['test_date', 'added_by', 'technician_id', 'system_id', 'test_result_id', 'test_type_id', 'added_by', 'updated_by', 'updated_at'];
 
     public function system()
     {
@@ -33,6 +33,11 @@ class Test extends Model
     public function addedBy() // technician who completed test
     {
       return $this->belongsTo('App\User', 'added_by');
+    }
+
+    public function updatedBy() // technician who completed test
+    {
+      return $this->belongsTo('App\User', 'updated_by');
     }
 
     public function reports() {

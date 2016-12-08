@@ -10,7 +10,7 @@ class Site extends Model
 {
 
     protected $dates = ['created_at', 'updated_at'];
-    protected $fillable =  ['name', 'address1', 'address2', 'city', 'state_id', 'zip', 'lat', 'lon', 'phone', 'fax', 'notes', 'updated_at'];
+    protected $fillable =  ['name', 'address1', 'address2', 'city', 'state_id', 'zip', 'lat', 'lon', 'phone', 'fax', 'notes', 'added_by', 'updated_by', 'updated_at'];
 
     public function customer() {
       return $this->belongsTo('App\Customer');
@@ -32,6 +32,17 @@ class Site extends Model
     public function photos() {
       return $this->morphMany('App\Photo', 'photoable');
     }
+
+    public function addedBy() // technician who completed test
+    {
+      return $this->belongsTo('App\User', 'added_by');
+    }
+
+    public function updatedBy() // technician who completed test
+    {
+      return $this->belongsTo('App\User', 'updated_by');
+    }
+
 
     public function count_systems($id) {
       $systems_quantity = DB::table('systems')->where('site_id', $id)->count();

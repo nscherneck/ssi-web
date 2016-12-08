@@ -30,8 +30,11 @@
     <p>
       {{ $site->address1 }}  {{ $site->address2 }}<br>
       {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}<br><br>
-      <small>Created: {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-      <small>Modified: {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}</small>
+      <small>Added: {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+      <small>Added By: {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}<br><br></small>
+      <small>Updated: {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+      <small>Updated By: @if($site->updated_by){{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }} @else @endif<br></small>
+
     </p>
 
     <hr>

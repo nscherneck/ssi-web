@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Customer;
@@ -53,6 +54,7 @@ class SitesController extends Controller
       $site->phone = $request->phone;
       $site->fax = $request->fax;
       $site->notes = $request->notes;
+      $site->added_by = Auth::id();
 
       $site->save();
 
@@ -77,7 +79,20 @@ class SitesController extends Controller
         'zip' => 'required|string|max:20',
       ]);
 
-      $site->update($request->all());
+      $site->name = $request->name;
+      $site->address1 = $request->address1;
+      $site->address2 = $request->address2;
+      $site->city = $request->city;
+      $site->state_id = $request->state_id;
+      $site->zip = $request->zip;
+      $site->lat = $request->lat;
+      $site->lon = $request->lon;
+      $site->phone = $request->phone;
+      $site->fax = $request->fax;
+      $site->notes = $request->notes;
+      $site->updated_by = Auth::id();
+
+      $site->update();
 
       flash('Site updated', 'Success');
       return redirect()->route('site_show', ['id' => $site->id]);

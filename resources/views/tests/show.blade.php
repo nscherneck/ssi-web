@@ -40,8 +40,10 @@
     <hr>
 
       <p><small>
-        <strong>Added By:</strong> {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br>
-        <strong>Added:</strong> {{ $test->created_at->format('F d, Y') }}
+        <small>Added: {{ $test->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+        <small>Added By: {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br><br></small>
+        <small>Updated: {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+        <small>Updated By: @if($test->updated_by){{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }} @else @endif<br></small>
       </small></p>
 
     <hr>
