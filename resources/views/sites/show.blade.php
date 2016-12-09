@@ -31,7 +31,7 @@
     <div class="contentBar">
 
       <p>
-        {{ $site->address1 }}  {{ $site->address2 }}<br>
+        {{ $site->address1 }}<br>
         @if ($site->address2)
         {{ $site->address2 }}<br>
         @endif
