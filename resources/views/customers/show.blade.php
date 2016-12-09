@@ -21,14 +21,14 @@
 
 <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-3 no-gutter-right">
 
     <div class="headerBar text-center">
       <h3>{{ $customer->name }}</h3>
     </div>
 
     <div class="contentBar">
-      <p><small>
+      <p>
         {{ $customer->address1 }}<br>
         @if ($customer->address2)
         {{ $customer->address2 }}<br>
@@ -38,18 +38,18 @@
         @endif
         {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
         <a href="http://{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
-      </small></p>
+      </p>
     </div>
 
     <div class="contentBar">
 
       <p><small>
-        Added: {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        Added By: {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
+        <strong>Added:</strong> {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Added By:</strong> {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
         @if($customer->updated_by)
-        <br>
-        Updated: {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        Updated By: {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
+        <hr>
+        <strong>Edited:</strong> {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Edited By:</strong> {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
         @endif
       </small></p>
 
@@ -69,8 +69,10 @@
     </div>
     @endif
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">Edit Customer</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">Delete Customer</button>
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">
+      <i class="fa fa-cog fa-md"></i> Edit Customer</button>
+    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
+      <i class="fa fa-trash-o fa-md"></i> Delete Customer</button>
     <br>
 
   </div>

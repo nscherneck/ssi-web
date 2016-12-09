@@ -23,7 +23,7 @@
 
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-4 no-gutter-right">
 
     <div class="headerBar text-center">
       <h3>{{ $test->test_type->name }}</h3>
@@ -44,9 +44,11 @@
         <p><small>
           <strong>Added:</strong> {{ $test->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
           <strong>Added By:</strong> {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br>
+          @if ($test->updated_by)
           <hr>
-          <strong>Updated:</strong> {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-          <strong>Updated By:</strong> @if($test->updated_by){{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }} @else @endif<br>
+          <strong>Edited:</strong> {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+          <strong>Edited By:</strong> {{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }}<br>
+          @endif
         </small></p>
 
     </div>

@@ -50,7 +50,7 @@
 
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6 no-gutter-right">
 
       <div class="titleBar">
         <p>Recently Added Photos</p>

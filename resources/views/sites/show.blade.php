@@ -22,7 +22,7 @@
 
 <div class="row">
 
-  <div class="col-md-4">
+  <div class="col-md-4 no-gutter-right">
 
     <div class="headerBar text-center">
       <h3>{{ $site->name }}</h3>
@@ -32,6 +32,13 @@
 
       <p>
         {{ $site->address1 }}  {{ $site->address2 }}<br>
+        @if ($site->address2)
+        {{ $site->address2 }}<br>
+        @endif
+        @if ($site->address3)
+        {{ $site->address3 }}<br>
+        @endif
+
         {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}
       </p>
 
@@ -39,15 +46,15 @@
 
     <div class="contentBar">
 
-      <p>
-        <small><strong>Added:</strong> {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-        <small><strong>Added By:</strong> {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}</small>
+      <p><small>
+        <strong>Added:</strong> {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Added By:</strong> {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}<br>
         @if($site->updated_by)
         <hr>
-        <small><strong>Updated:</strong> {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-        <small><strong>Updated By:</strong> {{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }}<br></small>
+        <strong>Edited:</strong> {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Edited By:</strong> {{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }}<br>
         @endif
-      </p>
+      </small></p>
 
     </div>
 
@@ -62,8 +69,10 @@
     </div>
     @endif
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSiteModal">Edit Site</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiteModal">Delete Site</button>
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSiteModal">
+      <i class="fa fa-cog fa-md"></i> Edit Site</button>
+    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiteModal">
+      <i class="fa fa-trash-o fa-md"></i> Delete Site</button>
 
   </div>
 

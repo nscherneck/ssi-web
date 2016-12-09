@@ -22,7 +22,7 @@
 
 <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-3 no-gutter-right">
 
     <div class="headerBar text-center">
       <h3>{{ $system->name }}</h3>
@@ -50,18 +50,22 @@
 
     <div class="contentBar">
 
-      <small>Added: {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-      <small>Added By: {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br></small>
-      @if ($system->updated_by)
-      <hr>
-      <small>Updated: {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-      <small>Updated By: {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br></small>
-      @endif
+      <p><small>
+        <strong>Added:</strong> {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Added By:</strong> {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br>
+        @if ($system->updated_by)
+        <hr>
+        <strong>Edited:</strong> {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        <strong>Edited By:</strong> {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br>
+        @endif
+      </small></p>
     </div>
 
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">Edit System</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">Delete System</button>
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">
+      <i class="fa fa-cog fa-md"></i> Edit System</button>
+    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
+      <i class="fa fa-trash-o fa-md"></i> Delete System</button>
 
   </div>
 
