@@ -24,30 +24,44 @@
 
   <div class="col-md-3">
 
-    <h3>{{ $system->name }}</h3><br>
-    <p><strong>System Type:</strong> {{ $system->system_type->type }}<br>
-        <strong>Installation Date:</strong> {{ $system->install_date->format('F d, Y') }}<br><br>
+    <div class="headerBar text-center">
+      <h3>{{ $system->name }}</h3>
+    </div>
+
+    <div class="contentBar">
+
+      <p><small>
+        <strong>System Type:</strong> {{ $system->system_type->type }}<br>
+        <strong>Installation Date:</strong> {{ $system->install_date->format('F d, Y') }}<br>
+        <hr>
         <strong>Installed by SSI:</strong>@if ($system->ssi_install == 1) Yes @else No @endif<br>
         <strong>Testing by SSI:</strong>@if ($system->ssi_test_acct == 1) Yes @else No @endif<br>
-    </p>
+      </small></p>
 
-    <hr>
+    </div>
 
-      <p><strong>Next Test Due:</strong>@if ($system->next_test_date) {{ $system->next_test_date->format('F Y') }} @else @endif</p>
+    @if ($system->next_test_date)
+    <div class="contentBar text-center">
 
-    <hr>
+      <p><strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}</p>
+
+    </div>
+    @endif
+
+    <div class="contentBar">
+
+      <small>Added: {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+      <small>Added By: {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br></small>
+      @if ($system->updated_by)
+      <hr>
+      <small>Updated: {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+      <small>Updated By: {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br></small>
+      @endif
+    </div>
+
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">Edit System</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">Delete System</button>
-
-    <hr>
-
-    <small>Added: {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Added By: {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br><br></small>
-    <small>Updated: {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Updated By: @if($system->updated_by){{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }} @else @endif<br></small>
-
-
 
   </div>
 
@@ -86,9 +100,6 @@
       display: block;
   }
 </style>
-
-
-  <br>
 
   <button class="accordion">Components ({{ $system->count_components() }})</button>
   <div class="panel">

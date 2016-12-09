@@ -25,11 +25,11 @@
 
   <div class="col-md-4">
 
-    <div class="testHeaderBar text-center">
+    <div class="headerBar text-center">
       <h3>{{ $test->test_type->name }}</h3>
     </div>
 
-    <div class="testContentBar">
+    <div class="contentBar">
 
         <p><small>
         <strong>Test Date: </strong>{{ $test->test_date->format('F d, Y') }}<br>
@@ -39,11 +39,12 @@
 
     </div>
 
-    <div class="testContentBar">
+    <div class="contentBar">
 
         <p><small>
           <strong>Added:</strong> {{ $test->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-          <strong>Added By:</strong> {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br><br>
+          <strong>Added By:</strong> {{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}<br>
+          <hr>
           <strong>Updated:</strong> {{ $test->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
           <strong>Updated By:</strong> @if($test->updated_by){{ $test->updatedBy->first_name }} {{ $test->updatedBy->last_name }} @else @endif<br>
         </small></p>
@@ -61,7 +62,7 @@
 
   <div class="col-md-8">
 
-    <div class="testButtonBar text-right">
+    <div class="buttonBar text-right">
 
       @if($test->test_result->name == "Pass with Deficiencies")
 

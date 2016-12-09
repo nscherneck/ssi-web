@@ -23,40 +23,61 @@
 
   <div class="col-md-3">
 
-    <h3>{{ $customer->name }}</h3>
-    <br>
+    <div class="headerBar text-center">
+      <h3>{{ $customer->name }}</h3>
+    </div>
+
+    <div class="contentBar">
+      <p><small>
         {{ $customer->address1 }}<br>
+        @if ($customer->address2)
+        {{ $customer->address2 }}<br>
+        @endif
+        @if ($customer->address3)
+        {{ $customer->address3 }}<br>
+        @endif
         {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
         <a href="http://{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
-    <hr>
+      </small></p>
+    </div>
+
+    <div class="contentBar">
+
+      <p><small>
+        Added: {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        Added By: {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
+        @if($customer->updated_by)
+        <br>
+        Updated: {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+        Updated By: {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
+        @endif
+      </small></p>
+
+    </div>
+
+    @if ($customer->notes)
+    <div class="contentBar">
+
+      <p><small>
+        <strong>Notes: </strong>
+      </small></p>
+
+      <p><small>
+        {{ $customer->notes }}
+      </small></p>
+
+    </div>
+    @endif
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">Edit Customer</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">Delete Customer</button>
-
-    <hr>
-
-    <small>Added: {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Added By: {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br></small>
-    @if($customer->updated_by)
     <br>
-    <small>Updated: {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-    <small>Updated By: {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br></small>
-    @endif
-
-    <hr>
-
-    <h5><strong>Notes: </strong></h5>
-    <p>
-      {{ $customer->notes }}
-    </p>
-
 
   </div>
 
 <!--          RIGHT SIDE CONTENT         -->
 
   <div class="col-md-9">
-    <br>
 
     <style>
   button.accordion {

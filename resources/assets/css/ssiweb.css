@@ -13,37 +13,42 @@
 
 /* misc */
 
-.testButtonBar {
+.buttonBar {
   margin: 0;
   padding: 8px;
   background: #F5F5F5;
   border-radius: 5px;
 }
 
-.testHeaderBar {
+.headerBar {
   margin: 0 0 8px 0;
   padding: 12px 8px;
   background: #F5F5F5;
   border-radius: 5px;
 }
 
-.testHeaderBar h3 {
+.headerBar h3 {
   margin: 0;
   padding: 0px;
 }
 
-.testContentBar {
+.contentBar {
   margin: 0 0 8px 0;
   padding: 10px;
   background: #F5F5F5;
   border-radius: 5px;
 }
 
-.testContentBar p {
+.contentBar p {
   margin: 0;
   padding: 0;
 }
 
+.contentBar hr {
+  margin: 8px 0;
+  padding: 0;
+  border-top: 1px solid #DDD;
+}
 
 .titleBar {
   margin: 10px 0 10px 0;

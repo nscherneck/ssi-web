@@ -26,7 +26,7 @@
     <tbody>
       @foreach($sites as $site)
         <tr>
-        <td><small>{{ $site->created_at->format('D, F j') }}</small></td>
+        <td><small>{{ $site->created_at->setTimezone('America/Los_Angeles')->format('D, F j') }}</small></td>
         <td><small><a href="/customer/{{ $site->customer_id }}">{{ $site->customer->name }}</a></small></td>
         <td><small><a href="/site/{{ $site->id }}">{{ $site->name }}</a></small></td>
         <td><small>{{ $site->address1 }}</small></td>

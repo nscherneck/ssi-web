@@ -24,37 +24,52 @@
 
   <div class="col-md-4">
 
-    <h3>{{ $site->name }}</h3>
-    <br>
+    <div class="headerBar text-center">
+      <h3>{{ $site->name }}</h3>
+    </div>
 
-    <p>
-      {{ $site->address1 }}  {{ $site->address2 }}<br>
-      {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}<br><br>
-      <small>Added: {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-      <small>Added By: {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}<br><br></small>
-      <small>Updated: {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
-      <small>Updated By: @if($site->updated_by){{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }} @else @endif<br></small>
+    <div class="contentBar">
 
-    </p>
+      <p>
+        {{ $site->address1 }}  {{ $site->address2 }}<br>
+        {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}
+      </p>
 
-    <hr>
+    </div>
+
+    <div class="contentBar">
+
+      <p>
+        <small><strong>Added:</strong> {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+        <small><strong>Added By:</strong> {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}</small>
+        @if($site->updated_by)
+        <hr>
+        <small><strong>Updated:</strong> {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br></small>
+        <small><strong>Updated By:</strong> {{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }}<br></small>
+        @endif
+      </p>
+
+    </div>
+
+    @if($site->notes)
+    <div class="contentBar">
+
+      <p><strong>Notes:</strong></p>
+      <p>
+        {{ $site->notes }}
+      </p>
+
+    </div>
+    @endif
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSiteModal">Edit Site</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiteModal">Delete Site</button>
-
-    <hr>
-
-    <h5><strong>Notes:</strong></h5>
-    <p>
-      {{ $site->notes }}
-    </p>
 
   </div>
 
 <!--          RIGHT SIDE CONTENT         -->
 
   <div class="col-md-8">
-    <br>
 
     <style>
       button.accordion {
