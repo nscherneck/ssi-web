@@ -68,11 +68,11 @@
 
       @if($test->test_result->name == "Pass with Deficiencies")
 
-      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
         <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
 
       @elseif($test->test_result->name == "Fail with Deficiencies")
-      <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
         <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
 
       @endif

@@ -73,6 +73,7 @@
       <i class="fa fa-cog fa-md"></i> Edit Site</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiteModal">
       <i class="fa fa-trash-o fa-md"></i> Delete Site</button>
+    <br><br>
 
   </div>
 

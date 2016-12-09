@@ -66,6 +66,7 @@
       <i class="fa fa-cog fa-md"></i> Edit System</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
       <i class="fa fa-trash-o fa-md"></i> Delete System</button>
+    <br><br>
 
   </div>
 
@@ -122,141 +123,151 @@
         </tr>
       </thead>
       <tbody>
+
         @foreach($system->compPanel() as $panel)
-        <tr>
-        <td><small>{{ $panel->pivot->quantity }}</small></td>
-        <td><small>{{ $panel->pivot->name }}</small></td>
-        <td><small>{{ $panel->manufacturer->name }}</small></td>
-        <td><small>{{ $panel->model }}</small></td>
-        <td><small>
-          <?php
-            if(strlen($panel->description) > 100) {
-              echo substr($panel->description, 0, 100) . " . . .";
-            }
-          ?>
-          </small></td>
-        <td><small>{{ $panel->component_category->name }}</small></td>
-        <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $panel->pivot->quantity }}</small></td>
+            <td><small>{{ $panel->pivot->name }}</small></td>
+            <td><small>{{ $panel->manufacturer->name }}</small></td>
+            <td><small>{{ $panel->model }}</small></td>
+            <td><small>
+              <?php
+                if(strlen($panel->description) > 100) {
+                  echo substr($panel->description, 0, 100) . " . . .";
+                }
+              ?>
+              </small></td>
+            <td><small>{{ $panel->component_category->name }}</small></td>
+            <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compModularPanel() as $modularpanel)
-        <tr>
-        <td><small>{{ $modularpanel->pivot->quantity }}</small></td>
-        <td><small>{{ $modularpanel->pivot->name }}</small></td>
-        <td><small>{{ $modularpanel->manufacturer->name }}</small></td>
-        <td><small>{{ $modularpanel->model }}</small></td>
-        <td><small>
-          <?php
-            if(strlen($modularpanel->description) > 100) {
-              echo substr($modularpanel->description, 0, 100) . " . . .";
-            }
-          ?>
-        <td><small>{{ $modularpanel->component_category->name }}</small></td>
-        <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $modularpanel->pivot->quantity }}</small></td>
+            <td><small>{{ $modularpanel->pivot->name }}</small></td>
+            <td><small>{{ $modularpanel->manufacturer->name }}</small></td>
+            <td><small>{{ $modularpanel->model }}</small></td>
+            <td><small>
+              <?php
+                if(strlen($modularpanel->description) > 100) {
+                  echo substr($modularpanel->description, 0, 100) . " . . .";
+                }
+              ?>
+            <td><small>{{ $modularpanel->component_category->name }}</small></td>
+            <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compControlEquipment() as $controlequipment)
-        <tr>
-        <td><small>{{ $controlequipment->pivot->quantity }}</small></td>
-        <td><small>{{ $controlequipment->pivot->name }}</small></td>
-        <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
-        <td><small>{{ $controlequipment->model }}</small></td>
-        <td><small>
-          <?php
-            if(strlen($controlequipment->description) > 100) {
-              echo substr($controlequipment->description, 0, 100) . " . . .";
-            }
-          ?>
-        <td><small>{{ $controlequipment->component_category->name }}</small></td>
-        <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $controlequipment->pivot->quantity }}</small></td>
+            <td><small>{{ $controlequipment->pivot->name }}</small></td>
+            <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
+            <td><small>{{ $controlequipment->model }}</small></td>
+            <td><small>
+              <?php
+                if(strlen($controlequipment->description) > 100) {
+                  echo substr($controlequipment->description, 0, 100) . " . . .";
+                }
+              ?>
+            <td><small>{{ $controlequipment->component_category->name }}</small></td>
+            <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compAspiratingDetection() as $aspiratingdetection)
-        <tr>
-        <td><small>{{ $aspiratingdetection->pivot->quantity }}</small></td>
-        <td><small>{{ $aspiratingdetection->pivot->name }}</small></td>
-        <td><small>{{ $aspiratingdetection->manufacturer->name }}</small></td>
-        <td><small>{{ $aspiratingdetection->model }}</small></td>
-        <td width="30%"><small>{{ $aspiratingdetection->description }}</small></td>
-        <td><small>{{ $aspiratingdetection->component_category->name }}</small></td>
-        <td><small>@if ($aspiratingdetection->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $aspiratingdetection->pivot->quantity }}</small></td>
+            <td><small>{{ $aspiratingdetection->pivot->name }}</small></td>
+            <td><small>{{ $aspiratingdetection->manufacturer->name }}</small></td>
+            <td><small>{{ $aspiratingdetection->model }}</small></td>
+            <td width="30%"><small>{{ $aspiratingdetection->description }}</small></td>
+            <td><small>{{ $aspiratingdetection->component_category->name }}</small></td>
+            <td><small>@if ($aspiratingdetection->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compDetection() as $detection)
-        <tr>
-        <td><small>{{ $detection->pivot->quantity }}</small></td>
-        <td><small>{{ $detection->pivot->name }}</small></td>
-        <td><small>{{ $detection->manufacturer->name }}</small></td>
-        <td><small>{{ $detection->model }}</small></td>
-        <td width="30%"><small>{{ $detection->description }}</small></td>
-        <td><small>{{ $detection->component_category->name }}</small></td>
-        <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $detection->pivot->quantity }}</small></td>
+            <td><small>{{ $detection->pivot->name }}</small></td>
+            <td><small>{{ $detection->manufacturer->name }}</small></td>
+            <td><small>{{ $detection->model }}</small></td>
+            <td width="30%"><small>{{ $detection->description }}</small></td>
+            <td><small>{{ $detection->component_category->name }}</small></td>
+            <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compNotification() as $notification)
-        <tr>
-        <td><small>{{ $notification->pivot->quantity }}</small></td>
-        <td><small>{{ $notification->pivot->name }}</small></td>
-        <td><small>{{ $notification->manufacturer->name }}</small></td>
-        <td><small>{{ $notification->model }}</small></td>
-        <td width="30%"><small>{{ $notification->description }}</small></td>
-        <td><small>{{ $notification->component_category->name }}</small></td>
-        <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $notification->pivot->quantity }}</small></td>
+            <td><small>{{ $notification->pivot->name }}</small></td>
+            <td><small>{{ $notification->manufacturer->name }}</small></td>
+            <td><small>{{ $notification->model }}</small></td>
+            <td width="30%"><small>{{ $notification->description }}</small></td>
+            <td><small>{{ $notification->component_category->name }}</small></td>
+            <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compMiscElectrical() as $miscelectrical)
-        <tr>
-        <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
-        <td><small>{{ $miscelectrical->pivot->name }}</small></td>
-        <td><small>{{ $miscelectrical->manufacturer->name }}</small></td>
-        <td><small>{{ $miscelectrical->model }}</small></td>
-        <td width="30%"><small>{{ $miscelectrical->description }}</small></td>
-        <td><small>{{ $miscelectrical->component_category->name }}</small></td>
-        <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
+            <td><small>{{ $miscelectrical->pivot->name }}</small></td>
+            <td><small>{{ $miscelectrical->manufacturer->name }}</small></td>
+            <td><small>{{ $miscelectrical->model }}</small></td>
+            <td width="30%"><small>{{ $miscelectrical->description }}</small></td>
+            <td><small>{{ $miscelectrical->component_category->name }}</small></td>
+            <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compMisc() as $misc)
-        <tr>
-        <td><small>{{ $misc->pivot->quantity }}</small></td>
-        <td><small>{{ $misc->pivot->name }}</small></td>
-        <td><small>{{ $misc->manufacturer->name }}</small></td>
-        <td><small>{{ $misc->model }}</small></td>
-        <td width="30%"><small>{{ $misc->description }}</small></td>
-        <td><small>{{ $misc->component_category->name }}</small></td>
-        <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $misc->pivot->quantity }}</small></td>
+            <td><small>{{ $misc->pivot->name }}</small></td>
+            <td><small>{{ $misc->manufacturer->name }}</small></td>
+            <td><small>{{ $misc->model }}</small></td>
+            <td width="30%"><small>{{ $misc->description }}</small></td>
+            <td><small>{{ $misc->component_category->name }}</small></td>
+            <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compAccessory() as $accessory)
-        <tr>
-        <td><small>{{ $accessory->pivot->quantity }}</small></td>
-        <td><small>{{ $accessory->pivot->name }}</small></td>
-        <td><small>{{ $accessory->manufacturer->name }}</small></td>
-        <td><small>{{ $accessory->model }}</small></td>
-        <td width="30%"><small>{{ $accessory->description }}</small></td>
-        <td><small>{{ $accessory->component_category->name }}</small></td>
-        <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $accessory->pivot->quantity }}</small></td>
+            <td><small>{{ $accessory->pivot->name }}</small></td>
+            <td><small>{{ $accessory->manufacturer->name }}</small></td>
+            <td><small>{{ $accessory->model }}</small></td>
+            <td width="30%"><small>{{ $accessory->description }}</small></td>
+            <td><small>{{ $accessory->component_category->name }}</small></td>
+            <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
+
         @foreach($system->compUncategorized() as $uncategorized)
-        <tr>
-        <td><small>{{ $uncategorized->pivot->quantity }}</small></td>
-        <td><small>{{ $uncategorized->pivot->name }}</small></td>
-        <td><small>{{ $uncategorized->manufacturer->name }}</small></td>
-        <td><small>{{ $uncategorized->model }}</small></td>
-        <td width="30%"><small>{{ $uncategorized->description }}</small></td>
-        <td><small>{{ $uncategorized->component_category->name }}</small></td>
-        <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
-        <td><small>Detach Component</small></td>
-        </tr>
+          <tr>
+            <td><small>{{ $uncategorized->pivot->quantity }}</small></td>
+            <td><small>{{ $uncategorized->pivot->name }}</small></td>
+            <td><small>{{ $uncategorized->manufacturer->name }}</small></td>
+            <td><small>{{ $uncategorized->model }}</small></td>
+            <td width="30%"><small>{{ $uncategorized->description }}</small></td>
+            <td><small>{{ $uncategorized->component_category->name }}</small></td>
+            <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>Detach Component</small></td>
+          </tr>
         @endforeach
 
       </tbody>
@@ -279,20 +290,19 @@
         </tr>
       </thead>
     <tbody>
+
       @foreach($system->compConsumable() as $consumable)
-      <tr>
-      <td><small>{{ $consumable->pivot->quantity }}</small></td>
-      <td><small>{{ $consumable->pivot->name }}</small></td>
-      <td><small>{{ $consumable->manufacturer->name }}</small></td>
-      <td><small>{{ $consumable->model }}</small></td>
-      <td width="30%"><small>{{ $consumable->description }}</small></td>
-      <td><small>{{ $consumable->component_category->name }}</small></td>
-      <td><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
-      <td><small>Detach Component</small></td>
-      </tr>
+        <tr>
+          <td><small>{{ $consumable->pivot->quantity }}</small></td>
+          <td><small>{{ $consumable->pivot->name }}</small></td>
+          <td><small>{{ $consumable->manufacturer->name }}</small></td>
+          <td><small>{{ $consumable->model }}</small></td>
+          <td width="30%"><small>{{ $consumable->description }}</small></td>
+          <td><small>{{ $consumable->component_category->name }}</small></td>
+          <td><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
+          <td><small>Detach Component</small></td>
+        </tr>
       @endforeach
-
-
 
     </tbody>
   </table>

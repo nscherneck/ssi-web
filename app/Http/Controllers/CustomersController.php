@@ -46,7 +46,7 @@ class CustomersController extends Controller
         'name' => 'required|unique:customers|string|max:255',
         'address1' => 'required|string|max:255',
         'city' => 'required|string|max:255',
-        'state_id' => 'required|integer|max:2',
+        'state_id' => 'required|string|max:10',
         'zip' => 'required|string|max:20',
         'email' => 'email'
       ]);

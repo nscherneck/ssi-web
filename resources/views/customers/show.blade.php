@@ -73,7 +73,7 @@
       <i class="fa fa-cog fa-md"></i> Edit Customer</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
       <i class="fa fa-trash-o fa-md"></i> Delete Customer</button>
-    <br>
+    <br><br>
 
   </div>
 
