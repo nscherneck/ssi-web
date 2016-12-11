@@ -132,7 +132,7 @@
     <button class="accordion">Systems</button>
     <div class="panel">
 
-      <table class="table table-striped table-condensed">
+      <table class="table table-condensed">
         <thead>
           <tr>
             <th><small>System Name</small></th>

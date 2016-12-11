@@ -114,7 +114,7 @@
 <button class="accordion">Sites ({{ $customer->count_sites($customer->id) }})</button>
 <div class="panel show">
 
-  <table class="table table-striped table-condensed">
+  <table class="table table-condensed">
     <thead>
       <tr>
         <th><small>Site Name</small></th>
