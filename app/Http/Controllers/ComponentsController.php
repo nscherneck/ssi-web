@@ -75,5 +75,13 @@ class ComponentsController extends Controller
 
   }
 
+  public function detach(System $system, Component $component)
+  {
+    $system->components()->detach($component->id);
+
+    flash('Component detached', 'Success');
+    return redirect()->route('system_show', ['id' => $system->id]);
+  }
+
 
 }
