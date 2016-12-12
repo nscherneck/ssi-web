@@ -61,6 +61,7 @@ Route::post('createcomponent', 'ComponentsController@create');
 Route::get('system/{system}/addcomponent', 'ComponentsController@add');
 Route::post('update_component_form', 'ComponentsController@update_component_form');
 Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');
+Route::post('system/{system}/detachcomponent', 'ComponentsController@detach');
 
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');;

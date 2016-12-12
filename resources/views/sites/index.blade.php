@@ -6,9 +6,13 @@
 
 @include('partials.nav')
 
-<div class="container-fluid">
+  <div class="container">
 
-  <h4>All Sites</h4 >
+    <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
+
+    <div class="titleBar">
+        <p>Sites Index</p>
+    </div>
 
   <table class="table table-hover table-condensed">
     <thead>

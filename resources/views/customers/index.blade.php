@@ -1,18 +1,20 @@
 @extends('layout')
 
-@section('title', 'Customers Page')
+@section('title', 'SSI-Web | Customers Index')
 
 @section('content')
 
 @include('partials.nav')
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-6">
+<div class="container">
 
-  <h4>Customers</h4>
+  <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
 
-  <table class="table table-striped table-condensed">
+  <div class="titleBar">
+      <p>Customers Index</p>
+  </div>
+
+  <table class="table table-condensed">
     <thead>
       <tr>
         <th><small>Customer</small></th>
@@ -31,8 +33,6 @@
     </tbody>
   </table>
 
-    </div>
-  </div>
 </div>
 
 @stop

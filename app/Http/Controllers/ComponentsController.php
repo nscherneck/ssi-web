@@ -48,7 +48,7 @@ class ComponentsController extends Controller
 
     $component->save();
 
-    return Redirect::to('/admin');
+    return redirect()->route('admin');
 
   }
 
@@ -75,9 +75,9 @@ class ComponentsController extends Controller
 
   }
 
-  public function detach(System $system, Component $component)
+  public function detach(Request $request, System $system)
   {
-    $system->components()->detach($component->id);
+    $system->components()->detach($request->component_id);
 
     flash('Component detached', 'Success');
     return redirect()->route('system_show', ['id' => $system->id]);
