@@ -124,12 +124,12 @@
   echo "<small><p>Distance from<strong> Portland Office: </strong>" . $travel_data[0] . " <strong>(" . $travel_data[1] . ")</strong></p></small>";
   ?>
 
-    <button class="accordion">Jobs</button>
+    <button class="accordion">Jobs (0)</button>
     <div class="panel">
       <p>No jobs.</p>
     </div>
 
-    <button class="accordion">Systems</button>
+    <button class="accordion">Systems ({{ $site->systems->count() }})</button>
     <div class="panel">
 
       <table class="table table-condensed">
@@ -162,12 +162,12 @@
 
     </div>
 
-    <button class="accordion">Documents</button>
+    <button class="accordion">Documents (0)</button>
     <div class="panel">
       <p>No documents.</p>
     </div>
 
-    <button class="accordion">Photos</button>
+    <button class="accordion">Photos ({{ $system->photos->count() }})</button>
     <div class="panel">
       <p>No photos.</p>
 
@@ -177,10 +177,11 @@
 
     </div>
 
-    <button class="accordion">Comments</button>
+    <button class="accordion">Comments (0)</button>
     <div class="panel">
       <p>No comments.</p>
     </div>
+    <br><br>
 
     <script>
     var acc = document.getElementsByClassName("accordion");

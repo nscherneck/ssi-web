@@ -109,6 +109,8 @@
   <button class="accordion">Components ({{ $system->count_components() }})</button>
   <div class="panel">
 
+    <h5>Detection & Controls</h5>
+
     <table class="table table-hover table-condensed">
       <thead>
         <tr class="info">
@@ -130,13 +132,7 @@
             <td><small>{{ $panel->pivot->name }}</small></td>
             <td><small>{{ $panel->manufacturer->name }}</small></td>
             <td><small>{{ $panel->model }}</small></td>
-            <td><small>
-              <?php
-                if(strlen($panel->description) > 100) {
-                  echo substr($panel->description, 0, 100) . " . . .";
-                }
-              ?>
-              </small></td>
+            <td><small>{{ $panel->description }}</small></td>
             <td><small>{{ $panel->component_category->name }}</small></td>
             <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
             <td><small>Detach Component</small></td>
@@ -149,12 +145,7 @@
             <td><small>{{ $modularpanel->pivot->name }}</small></td>
             <td><small>{{ $modularpanel->manufacturer->name }}</small></td>
             <td><small>{{ $modularpanel->model }}</small></td>
-            <td><small>
-              <?php
-                if(strlen($modularpanel->description) > 100) {
-                  echo substr($modularpanel->description, 0, 100) . " . . .";
-                }
-              ?>
+            <td><small>{{ $modularpanel->description }}</small></td>
             <td><small>{{ $modularpanel->component_category->name }}</small></td>
             <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
             <td><small>Detach Component</small></td>
@@ -167,12 +158,7 @@
             <td><small>{{ $controlequipment->pivot->name }}</small></td>
             <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
             <td><small>{{ $controlequipment->model }}</small></td>
-            <td><small>
-              <?php
-                if(strlen($controlequipment->description) > 100) {
-                  echo substr($controlequipment->description, 0, 100) . " . . .";
-                }
-              ?>
+            <td><small>{{ $controlequipment->description }}</small></td>
             <td><small>{{ $controlequipment->component_category->name }}</small></td>
             <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
             <td><small>Detach Component</small></td>
@@ -273,6 +259,8 @@
       </tbody>
     </table>
 
+    @if ($system->compConsumable()->count() > 0)
+
     <br>
     <h5>Consumables</h5>
 
@@ -306,6 +294,8 @@
 
     </tbody>
   </table>
+
+  @endif
 
 
 

@@ -21,8 +21,6 @@ require('laravel-elixir-vue');
 elixir(function(mix) {
     mix.styles([
         'bootstrap.min.css',
-        'dashboard.css',
-        'panels.css',
         'ssiweb.css'
     ]);
 });
