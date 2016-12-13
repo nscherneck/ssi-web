@@ -52,6 +52,30 @@ class PhotosController extends Controller
       flash('Photo Added', 'Success');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
+    //
+    // public function storeSystemPhoto(Request $request, System $system)
+    // {
+    //   $path = 'customer-data/';
+    //   $path .= strtolower(str_replace(' ', '_', $system->site->customer->name)) . '/'; // customer dir
+    //   $path .= 'sites/';
+    //   $path .= strtolower(str_replace(' ', '_', $system->site->name)) . '/'; //site dir
+    //   $path .= 'systems/';
+    //   $path .= strtolower(str_replace(' ', '_', $system->name)) . '/'; //system dir
+    //   $path .= 'photos'; //photos dir
+    //
+    //   $photo = new Photo;
+    //   $photo->path = $request->file('image')->store($path);
+    //   Storage::setVisibility($photo->path, 'public');
+    //   $photo->caption = $request->caption;
+    //   $photo->photoable_id = $system->id;
+    //   $photo->photoable_type = 'App\System';
+    //   $photo->added_by = Auth::id();
+    //
+    //   $photo->save();
+    //
+    //   flash('Photo Added', 'Success');
+    //   return redirect()->route('system_show', ['id' => $system->id]);
+    // }
 
     public function store(Request $request)
     {

@@ -167,7 +167,7 @@
       <p>No documents.</p>
     </div>
 
-    <button class="accordion">Photos ({{ $system->photos->count() }})</button>
+    <button class="accordion">Photos ({{ $site->photos->count() }})</button>
     <div class="panel">
       <p>No photos.</p>
 
