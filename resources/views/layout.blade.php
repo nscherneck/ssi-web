@@ -22,7 +22,7 @@
 
   </head>
 
-  <body>
+  <body style="padding-top: 50px">
 
 @yield('content')
 

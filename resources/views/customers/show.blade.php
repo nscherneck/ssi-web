@@ -111,7 +111,7 @@
   }
   </style>
 
-<button class="accordion">Sites <span class="badge">{{ $customer->count_sites($customer->id) }}</span></button>
+<button class="accordion">Sites ({{ $customer->count_sites($customer->id) }})</button>
 <div class="panel show">
 
   <table class="table table-condensed">
