@@ -77,9 +77,10 @@ class ComponentsController extends Controller
 
   public function detach(System $system, $id)
   {
-    $system->components()->detach($component->id);
+    // $system->components()->detach($component->id);
+    DB::table('components_systems')->where('id', $id)->delete();
 
-    flash('Component detached', 'Success');
+    flash('Component removed', 'Success');
     return redirect()->route('system_show', ['id' => $system->id]);
   }
 

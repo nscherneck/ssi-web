@@ -155,7 +155,14 @@
             <td><small>{{ $modularpanel->description }}</small></td>
             <td><small>{{ $modularpanel->component_category->name }}</small></td>
             <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $modularpanel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -168,7 +175,14 @@
             <td><small>{{ $controlequipment->description }}</small></td>
             <td><small>{{ $controlequipment->component_category->name }}</small></td>
             <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $controlequipment->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -181,7 +195,14 @@
             <td width="30%"><small>{{ $aspiratingdetection->description }}</small></td>
             <td><small>{{ $aspiratingdetection->component_category->name }}</small></td>
             <td><small>@if ($aspiratingdetection->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $aspiratingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -194,7 +215,14 @@
             <td width="30%"><small>{{ $detection->description }}</small></td>
             <td><small>{{ $detection->component_category->name }}</small></td>
             <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -207,7 +235,14 @@
             <td width="30%"><small>{{ $notification->description }}</small></td>
             <td><small>{{ $notification->component_category->name }}</small></td>
             <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -220,7 +255,14 @@
             <td width="30%"><small>{{ $miscelectrical->description }}</small></td>
             <td><small>{{ $miscelectrical->component_category->name }}</small></td>
             <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $miscelectrical->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -233,7 +275,14 @@
             <td width="30%"><small>{{ $misc->description }}</small></td>
             <td><small>{{ $misc->component_category->name }}</small></td>
             <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $misc->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -246,7 +295,14 @@
             <td width="30%"><small>{{ $accessory->description }}</small></td>
             <td><small>{{ $accessory->component_category->name }}</small></td>
             <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -259,7 +315,14 @@
             <td width="30%"><small>{{ $uncategorized->description }}</small></td>
             <td><small>{{ $uncategorized->component_category->name }}</small></td>
             <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -295,7 +358,14 @@
           <td width="30%"><small>{{ $consumable->description }}</small></td>
           <td><small>{{ $consumable->component_category->name }}</small></td>
           <td><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
-          <td><small>Detach Component</small></td>
+          <td>
+
+            <form action="/system/{{ $system->id }}/component/{{ $consumable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+            </form>
+
+          </td>
         </tr>
       @endforeach
 
