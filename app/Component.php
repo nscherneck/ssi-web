@@ -10,7 +10,7 @@ class Component extends Model
   protected $hidden = ['created_at', 'updated_at'];
 
   public function systems() {
-    return $this->belongsToMany('App\System', 'components_systems', 'component_id', 'system_id')->withPivot('quantity', 'name');
+    return $this->belongsToMany('App\System', 'components_systems', 'component_id', 'system_id')->withPivot('quantity', 'name', 'id');
   }
 
   public function component_category() {

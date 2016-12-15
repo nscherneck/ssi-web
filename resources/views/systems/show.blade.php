@@ -135,7 +135,14 @@
             <td><small>{{ $panel->description }}</small></td>
             <td><small>{{ $panel->component_category->name }}</small></td>
             <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
-            <td><small>Detach Component</small></td>
+            <td>
+
+              <form action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
           </tr>
         @endforeach
 
@@ -377,6 +384,7 @@
     <a href="#"><small>Add a Comment</small></a>
 
   </div>
+  <br><br>
 
   <script>
   var acc = document.getElementsByClassName("accordion");

@@ -19,7 +19,7 @@ class System extends Model
   }
 
   public function components() {
-    return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')->withPivot('quantity', 'name')->orderBy('model', 'asc');
+    return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')->withPivot('quantity', 'name', 'id')->orderBy('model', 'asc');
   }
 
   public function tests() {
