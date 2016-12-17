@@ -128,14 +128,14 @@
 
         @foreach($system->compPanel() as $panel)
           <tr>
-            <td><small>{{ $panel->pivot->quantity }}</small></td>
-            <td><small>{{ $panel->pivot->name }}</small></td>
-            <td><small>{{ $panel->manufacturer->name }}</small></td>
-            <td><small>{{ $panel->model }}</small></td>
+            <td width="5%"><small>{{ $panel->pivot->quantity }}</small></td>
+            <td width="15%"><small>{{ $panel->pivot->name }}</small></td>
+            <td width="10%"><small>{{ $panel->manufacturer->name }}</small></td>
+            <td width="10%"><small>{{ $panel->model }}</small></td>
             <td width="30%"><small>{{ $panel->description }}</small></td>
-            <td><small>{{ $panel->component_category->name }}</small></td>
-            <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
-            <td>
+            <td width="15%"><small>{{ $panel->component_category->name }}</small></td>
+            <td width="10%"><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
+            <td width="5%">
 
               <form action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
@@ -148,14 +148,14 @@
 
         @foreach($system->compModularPanel() as $modularpanel)
           <tr>
-            <td><small>{{ $modularpanel->pivot->quantity }}</small></td>
-            <td><small>{{ $modularpanel->pivot->name }}</small></td>
-            <td><small>{{ $modularpanel->manufacturer->name }}</small></td>
-            <td><small>{{ $modularpanel->model }}</small></td>
+            <td width="5%"><small>{{ $modularpanel->pivot->quantity }}</small></td>
+            <td width="15%"><small>{{ $modularpanel->pivot->name }}</small></td>
+            <td width="10%"><small>{{ $modularpanel->manufacturer->name }}</small></td>
+            <td width="10%"><small>{{ $modularpanel->model }}</small></td>
             <td width="30%"><small>{{ $modularpanel->description }}</small></td>
-            <td><small>{{ $modularpanel->component_category->name }}</small></td>
-            <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
-            <td>
+            <td width="15%"><small>{{ $modularpanel->component_category->name }}</small></td>
+            <td width="10%"><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
+            <td width="5%">
 
               <form action="/system/{{ $system->id }}/component/{{ $modularpanel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
@@ -172,7 +172,7 @@
             <td><small>{{ $controlequipment->pivot->name }}</small></td>
             <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
             <td><small>{{ $controlequipment->model }}</small></td>
-            <td width="30%"><small>{{ $controlequipment->description }}</small></td>
+            <td><small>{{ $controlequipment->description }}</small></td>
             <td><small>{{ $controlequipment->component_category->name }}</small></td>
             <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -192,7 +192,7 @@
             <td><small>{{ $airsamplingdetection->pivot->name }}</small></td>
             <td><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
             <td><small>{{ $airsamplingdetection->model }}</small></td>
-            <td width="30%"><small>{{ $airsamplingdetection->description }}</small></td>
+            <td><small>{{ $airsamplingdetection->description }}</small></td>
             <td><small>{{ $airsamplingdetection->component_category->name }}</small></td>
             <td><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -212,7 +212,7 @@
             <td><small>{{ $detection->pivot->name }}</small></td>
             <td><small>{{ $detection->manufacturer->name }}</small></td>
             <td><small>{{ $detection->model }}</small></td>
-            <td width="30%"><small>{{ $detection->description }}</small></td>
+            <td><small>{{ $detection->description }}</small></td>
             <td><small>{{ $detection->component_category->name }}</small></td>
             <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -232,7 +232,7 @@
             <td><small>{{ $notification->pivot->name }}</small></td>
             <td><small>{{ $notification->manufacturer->name }}</small></td>
             <td><small>{{ $notification->model }}</small></td>
-            <td width="30%"><small>{{ $notification->description }}</small></td>
+            <td><small>{{ $notification->description }}</small></td>
             <td><small>{{ $notification->component_category->name }}</small></td>
             <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -252,7 +252,7 @@
             <td><small>{{ $miscelectrical->pivot->name }}</small></td>
             <td><small>{{ $miscelectrical->manufacturer->name }}</small></td>
             <td><small>{{ $miscelectrical->model }}</small></td>
-            <td width="30%"><small>{{ $miscelectrical->description }}</small></td>
+            <td><small>{{ $miscelectrical->description }}</small></td>
             <td><small>{{ $miscelectrical->component_category->name }}</small></td>
             <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -272,7 +272,7 @@
             <td><small>{{ $misc->pivot->name }}</small></td>
             <td><small>{{ $misc->manufacturer->name }}</small></td>
             <td><small>{{ $misc->model }}</small></td>
-            <td width="30%"><small>{{ $misc->description }}</small></td>
+            <td><small>{{ $misc->description }}</small></td>
             <td><small>{{ $misc->component_category->name }}</small></td>
             <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -292,7 +292,7 @@
             <td><small>{{ $accessory->pivot->name }}</small></td>
             <td><small>{{ $accessory->manufacturer->name }}</small></td>
             <td><small>{{ $accessory->model }}</small></td>
-            <td width="30%"><small>{{ $accessory->description }}</small></td>
+            <td><small>{{ $accessory->description }}</small></td>
             <td><small>{{ $accessory->component_category->name }}</small></td>
             <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -312,7 +312,7 @@
             <td><small>{{ $uncategorized->pivot->name }}</small></td>
             <td><small>{{ $uncategorized->manufacturer->name }}</small></td>
             <td><small>{{ $uncategorized->model }}</small></td>
-            <td width="30%"><small>{{ $uncategorized->description }}</small></td>
+            <td><small>{{ $uncategorized->description }}</small></td>
             <td><small>{{ $uncategorized->component_category->name }}</small></td>
             <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -351,14 +351,14 @@
 
       @foreach($system->compConsumable() as $consumable)
         <tr>
-          <td><small>{{ $consumable->pivot->quantity }}</small></td>
-          <td><small>{{ $consumable->pivot->name }}</small></td>
-          <td><small>{{ $consumable->manufacturer->name }}</small></td>
-          <td><small>{{ $consumable->model }}</small></td>
+          <td width="5%"><small>{{ $consumable->pivot->quantity }}</small></td>
+          <td width="15%"><small>{{ $consumable->pivot->name }}</small></td>
+          <td width="10%"><small>{{ $consumable->manufacturer->name }}</small></td>
+          <td width="10%"><small>{{ $consumable->model }}</small></td>
           <td width="30%"><small>{{ $consumable->description }}</small></td>
-          <td><small>{{ $consumable->component_category->name }}</small></td>
-          <td><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
-          <td>
+          <td width="15%"><small>{{ $consumable->component_category->name }}</small></td>
+          <td width="10%"><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
+          <td width="5%">
 
             <form action="/system/{{ $system->id }}/component/{{ $consumable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
               {{ csrf_field() }}
