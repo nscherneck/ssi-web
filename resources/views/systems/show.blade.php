@@ -132,7 +132,7 @@
             <td><small>{{ $panel->pivot->name }}</small></td>
             <td><small>{{ $panel->manufacturer->name }}</small></td>
             <td><small>{{ $panel->model }}</small></td>
-            <td><small>{{ $panel->description }}</small></td>
+            <td width="30%"><small>{{ $panel->description }}</small></td>
             <td><small>{{ $panel->component_category->name }}</small></td>
             <td><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -152,7 +152,7 @@
             <td><small>{{ $modularpanel->pivot->name }}</small></td>
             <td><small>{{ $modularpanel->manufacturer->name }}</small></td>
             <td><small>{{ $modularpanel->model }}</small></td>
-            <td><small>{{ $modularpanel->description }}</small></td>
+            <td width="30%"><small>{{ $modularpanel->description }}</small></td>
             <td><small>{{ $modularpanel->component_category->name }}</small></td>
             <td><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -172,7 +172,7 @@
             <td><small>{{ $controlequipment->pivot->name }}</small></td>
             <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
             <td><small>{{ $controlequipment->model }}</small></td>
-            <td><small>{{ $controlequipment->description }}</small></td>
+            <td width="30%"><small>{{ $controlequipment->description }}</small></td>
             <td><small>{{ $controlequipment->component_category->name }}</small></td>
             <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
             <td>
@@ -186,18 +186,18 @@
           </tr>
         @endforeach
 
-        @foreach($system->compAspiratingDetection() as $aspiratingdetection)
+        @foreach($system->compAirSamplingDetection() as $airsamplingdetection)
           <tr>
-            <td><small>{{ $aspiratingdetection->pivot->quantity }}</small></td>
-            <td><small>{{ $aspiratingdetection->pivot->name }}</small></td>
-            <td><small>{{ $aspiratingdetection->manufacturer->name }}</small></td>
-            <td><small>{{ $aspiratingdetection->model }}</small></td>
-            <td width="30%"><small>{{ $aspiratingdetection->description }}</small></td>
-            <td><small>{{ $aspiratingdetection->component_category->name }}</small></td>
-            <td><small>@if ($aspiratingdetection->discontinued === 1) Yes @else No @endif</small></td>
+            <td><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
+            <td><small>{{ $airsamplingdetection->pivot->name }}</small></td>
+            <td><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
+            <td><small>{{ $airsamplingdetection->model }}</small></td>
+            <td width="30%"><small>{{ $airsamplingdetection->description }}</small></td>
+            <td><small>{{ $airsamplingdetection->component_category->name }}</small></td>
+            <td><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
             <td>
 
-              <form action="/system/{{ $system->id }}/component/{{ $aspiratingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              <form action="/system/{{ $system->id }}/component/{{ $airsamplingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
               </form>
@@ -374,11 +374,8 @@
 
   @endif
 
-
-
-
-    <hr>
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#attachComponentModal">Attach Component</button>
+  <hr>
+  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#attachComponentModal">Attach Component</button>
 
   </div>
 

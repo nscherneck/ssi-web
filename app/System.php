@@ -146,7 +146,7 @@ class System extends Model
     return $result;
   }
 
-  public function compAspiratingDetection() {
+  public function compAirSamplingDetection() {
     $result = $this->components()->where('component_category_id', '=', 13)->get();
     return $result;
   }
