@@ -122,12 +122,14 @@
           <td><small>{{ $report->addedBy->first_name }}</small></td>
           <td>
 
-            <button class="btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">Edit</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
+              <i class="fa fa-cog fa-md"></i></button>
 
           </td>
           <td>
 
-            <button class="btn-danger btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">Delete</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
+              <i class="fa fa-trash-o fa-md"></i></button>
 
           </td>
         </tr>
@@ -165,10 +167,12 @@
           <td width="70%"><small>{{ $deficiency->description }}</small></td>
           <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
           <td>
-            <button class="btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">Edit</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
+            <i class="fa fa-cog fa-md"></i></button>
           </td>
           <td>
-            <button class="btn-danger btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">Delete</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
+              <i class="fa fa-trash-o fa-md"></i></button>
           </td>
         </tr>
 
@@ -204,12 +208,14 @@
           <td><small>{{ $testnote->addedBy->first_name }}</small></td>
           <td>
 
-            <button class="btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">Edit</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
+            <i class="fa fa-cog fa-md"></i></button>
 
           </td>
           <td>
 
-            <button class="btn-danger btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">Delete</button>
+            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
+            <i class="fa fa-trash-o fa-md"></i></button>
 
           </td>
         </tr>

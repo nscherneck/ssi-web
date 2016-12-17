@@ -48,10 +48,10 @@ class PagesController extends Controller
     public function service()
     {
       // get 20 most recent tests
-      $tests = Test::orderBy('test_date', 'desc')->take(10)->get();
+      $tests = Test::orderBy('test_date', 'desc')->take(15)->get();
       $systemduefortest = System::orderBy('next_test_date', 'asc')->where('next_test_date', '!=', NULL)->take(30)->get();
       $recentphotos = Photo::orderBy('created_at', 'desc')->take(5)->get();
-      $recentsystems = System::orderBy('created_at', 'desc')->take(10)->get();
+      $recentsystems = System::orderBy('created_at', 'desc')->take(15)->get();
       return view('service', compact('tests', 'systemduefortest', 'recentphotos', 'recentsystems'));
     }
 
