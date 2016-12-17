@@ -7,7 +7,7 @@
 @include('partials.nav')
 
 <div class="container-fluid">
-  <h3>Welcome to SSI-Web.</h3>
+  <h3>Welcome to the SSI-Extranet.</h3>
 </div>
 
 @stop
