@@ -69,17 +69,10 @@ trait ManagesImages
 
         //save image with thumbnail
 
-        $image->save(public_path() . $this->destinationFolder
-            . $this->imageName
-            . '.'
-            . $this->extension)
+        $image->save(public_path() . $this->destinationFolder . $this->imageName . '.' . $this->extension)
             ->resize($this->thumbWidth, $this->thumbHeight)
             // ->greyscale()
-            ->save(public_path() . $this->destinationThumbnail
-                . $this->thumbPrefix
-                . $this->imageName
-                . '.'
-                . $this->extension);
+            ->save(public_path() . $this->destinationThumbnail . $this->thumbPrefix . $this->imageName . '.' . $this->extension);
 
 
     }
@@ -143,5 +136,5 @@ trait ManagesImages
         $this->file = $file;
 
     }
-    
+
 }
