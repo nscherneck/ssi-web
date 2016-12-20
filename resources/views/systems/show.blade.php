@@ -425,16 +425,20 @@
   <button class="accordion">Photos ({{ count($system->photos) }})</button>
   <div class="panel">
 
-      @foreach($photos as $photo)
+      @if($photos->count() > 0)
 
-      <div id="systemPhoto">
-        <a href="/system/photo/{{ $photo->id }}/">
-        <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $photo->path }}" width="178px" height="auto"></a><br><br>
-        <p><small><strong>{{ $photo->caption }}</strong><br>
-        {{ $photo->getSize() }}</small></p>
-      </div>
+        @foreach($photos as $photo)
 
-      @endforeach
+          <div id="systemPhoto">
+            <a href="/system/photo/{{ $photo->id }}/">
+            <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/thumbnails/thumb-{{ $photo->file_name }}.{{ $photo->ext }}" width="178px" height="auto"></a><br><br>
+            <p><small><strong>{{ $photo->caption }}</strong><br>
+            {{ $photo->getSize() }}</small></p>
+          </div>
+
+        @endforeach
+
+      @endif
 
     <hr>
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemPhotoModal">Add Photo</button>

@@ -58,12 +58,14 @@
         <p>Recently Added Photos</p>
       </div>
 
+      @if($recentphotos->count() > 0)
+
       @foreach($recentphotos as $photo)
         <div class="recentSystemPhoto">
 
           <div class="recentSystemPhotoThumb">
             <a href="/system/photo/{{ $photo->id }}">
-              <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $photo->path }}" alt="{{ $photo->caption }}" width="150" height="auto"/>
+              <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/thumbnails/thumb-{{ $photo->file_name }}.{{ $photo->ext }}" alt="{{ $photo->caption }}" width="150" height="auto"/>
             </a>
           </div>
 
@@ -85,7 +87,7 @@
                 <a href="/system/{{ $photo->getSystem($photo->photoable_id)->id }}">
                   {{ $photo->getSystem($photo->photoable_id)->name }}
                 </a></strong>
-                
+
                 <br>
               <strong>Added By: </strong>{{ $photo->addedBy->first_name }}<br>
               <strong>Added: </strong>{{ $photo->created_at->setTimezone('America/Los_Angeles')->format('l - F j, g:i A') }}<br>
@@ -95,6 +97,8 @@
 
         </div>
       @endforeach
+
+      @endif
     </div>
 
     <div class="col-md-6">

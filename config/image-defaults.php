@@ -13,15 +13,15 @@ return [
     |
     */
 
-        'image' => [
+        'systemImage' => [
 
-            'destinationFolder'     => '/customer-data/photos',
-            'destinationThumbnail'  => '/customer-data/photos/thumbnails/',
+            'destinationFolder'     => '/customer-data/system_photos',
+            'destinationThumbnail'  => '/customer-data/system_photos/thumbnails/',
             'thumbPrefix'           => 'thumb-',
-            'imagePath'             => '/customer-data/photos/',
-            'thumbnailPath'         => '/customer-data/photos/thumbnails/thumb-',
-            'thumbHeight'           => 100,
-            'thumbWidth'            => 100,
+            'imagePath'             => '/customer-data/system_photos/',
+            'thumbnailPath'         => '/customer-data/system_photos/thumbnails/thumb-',
+            'thumbHeight'           => 300,
+            'thumbWidth'            => 300,
 
         ],
 

@@ -22,11 +22,11 @@
   <div class="container">
     <br>
     <div class="text-center" id="systemPhotoLarge">
-      <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $photo->path }}" width="678px" height="auto"><br><br>
+      <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/{{ $photo->file_name }}.{{ $photo->ext }}" width="678px" height="auto"><br><br>
       <p><small>{{ $photo->caption }}</small><br>
       <small><strong>Added By: </strong>{{ $photo->addedBy->first_name }} {{ $photo->addedBy->last_name }}<br>
       <strong>Added: </strong>{{ $photo->created_at->format('l, F j - g:i A') }}<br>
-      <strong>Size: </strong>{{ $photo->getSize() }}<br></p>
+      <strong>Size: </strong>{{ $photo_size }}Mb<br></p>
     </div>
 
   </div>
