@@ -23,10 +23,22 @@
     <br>
     <div class="text-center" id="systemPhotoLarge">
       <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/{{ $photo->file_name }}.{{ $photo->ext }}" width="678px" height="auto"><br><br>
-      <p><small>{{ $photo->caption }}</small><br>
-      <small><strong>Added By: </strong>{{ $photo->addedBy->first_name }} {{ $photo->addedBy->last_name }}<br>
-      <strong>Added: </strong>{{ $photo->created_at->format('l, F j - g:i A') }}<br>
-      <strong>Size: </strong>{{ $photo_size }}Mb<br></p>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
+        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-cog fa-md"></i></button>
+        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-right fa-md"></i></button>
+
+        <hr>
+
+        <p><small>{{ $photo->caption }}</small><br>
+        <small><strong>Added By: </strong>{{ $photo->addedBy->first_name }} {{ $photo->addedBy->last_name }}<br>
+        <strong>Added: </strong>{{ $photo->created_at->format('l, F j - g:i A') }}<br>
+        <strong>Size: </strong>{{ $photo_size }}Mb<br></p>
+
+      </div>
+
     </div>
 
   </div>
