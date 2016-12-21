@@ -107,7 +107,20 @@ class PhotosController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+
+    }
+
+    public function rotateLeft(Photo $photo)
+    {
+      $this->rotateImage($photo, 90);
+      return back();
+    }
+
+    public function rotateRight(Photo $photo)
+    {
+      $this->rotateImage($photo, -90);
+      // $photo->update();
+      return back();
     }
 
     public function destroy($id)

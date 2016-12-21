@@ -25,10 +25,21 @@
       <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/{{ $photo->file_name }}.{{ $photo->ext }}" width="678px" height="auto"><br><br>
 
       <div class="text-center">
-        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
+
+        <form class="" action="/system/photo/{{ $photo->id }}/rotateleft" method="post" style="display: inline">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="_method" value="put">
+          <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
+        </form>
+
         <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-cog fa-md"></i></button>
         <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
-        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-right fa-md"></i></button>
+
+        <form class="" action="/system/photo/{{ $photo->id }}/rotateright" method="post" style="display: inline">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="_method" value="put">
+          <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-right fa-md"></i></button>
+        </form>
 
         <hr>
 

@@ -48,8 +48,6 @@ Route::post('site/{site}/create', 'SystemsController@store');
 Route::put('system/{system}/update', 'SystemsController@update');
 Route::get('system/{system}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
-Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto');
-
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
 
@@ -85,6 +83,9 @@ Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
 // PHOTO ROUTES
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');
 Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
+Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto');
+Route::put('system/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
+Route::put('system/photo/{photo}/rotateright', 'PhotosController@rotateRight');
 
 
 Route::get('/sendweekly', function () {
