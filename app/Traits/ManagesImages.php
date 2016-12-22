@@ -138,9 +138,9 @@ trait ManagesImages
       // $this->imageName = $model->file_name;
       // $this->extension = $model->extension;
       date_default_timezone_set('America/Los_Angeles');
-      $this->imageName = strtolower(str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\-]/', '', $system->site->customer->name))) . '_';
-      $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\-]/', '', $system->site->name))) . '_';
-      $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^A-Za-z0-9\-]/', '', $system->name))) . '_';
+      $this->imageName = strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->site->customer->name))) . '_';
+      $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->site->name))) . '_';
+      $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->name))) . '_';
       $this->imageName .= date('Ymd_Gis');
 
     }
