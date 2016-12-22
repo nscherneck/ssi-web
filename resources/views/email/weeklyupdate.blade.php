@@ -8,7 +8,7 @@
 
     <div class="container-fluid text-center">
 
-      <h3>Weekly update from SSI-Web</h3>
+      <h3>Weekly update from SSI-Extranet</h3>
 
       <h4>Systems Due for Testing</h4>
 

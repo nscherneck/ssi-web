@@ -332,7 +332,7 @@
     @if ($system->compConsumable()->count() > 0)
 
     <br>
-    <h5>Consumables</h5>
+    <h5>Renewable Components</h5>
 
     <table class="table table-hover table-condensed">
       <thead>
