@@ -26,7 +26,7 @@
 
       <div class="text-center">
 
-        <form class="" action="/system/photo/{{ $photo->id }}/rotateleft" method="post" style="display: inline">
+        <form class="" action="/system/{{ $system->id }}/photo/{{ $photo->id }}/rotateleft" method="post" style="display: inline">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="hidden" name="_method" value="put">
           <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
@@ -35,7 +35,7 @@
         <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-cog fa-md"></i></button>
         <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
 
-        <form class="" action="/system/photo/{{ $photo->id }}/rotateright" method="post" style="display: inline">
+        <form class="" action="/system/{{ $system->id }}/photo/{{ $photo->id }}/rotateright" method="post" style="display: inline">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="hidden" name="_method" value="put">
           <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-right fa-md"></i></button>

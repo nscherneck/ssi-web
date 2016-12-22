@@ -84,8 +84,8 @@ Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');
 Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
 Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto');
-Route::put('system/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
-Route::put('system/photo/{photo}/rotateright', 'PhotosController@rotateRight');
+Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
+Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
 
 
 Route::get('/sendweekly', function () {

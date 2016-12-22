@@ -110,16 +110,19 @@ class PhotosController extends Controller
 
     }
 
-    public function rotateLeft(Photo $photo)
+    public function rotateLeft(System $system, Photo $photo)
     {
-      $this->rotateImage($photo, 90);
+      $this->rotateImage($system, $photo, 90);
+      $photo->file_name = $this->imageName;
+      $photo->save();
       return back();
     }
 
-    public function rotateRight(Photo $photo)
+    public function rotateRight(System $system, Photo $photo)
     {
-      $this->rotateImage($photo, -90);
-      // $photo->update();
+      $this->rotateImage($system, $photo, -90);
+      $photo->file_name = $this->imageName;
+      $photo->save();
       return back();
     }
 

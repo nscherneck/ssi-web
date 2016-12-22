@@ -171,19 +171,22 @@ trait ManagesImages
 
     // IMAGE UPDATES
 
-    private function rotateImage($photo, $degrees)
+    private function rotateImage($system, $photo, $degrees)
     {
+
+      $this->setFileName($system);
+
       $rawPhoto = Image::make(Storage::get($photo->path . '/' . $photo->file_name . '.' . $photo->ext));
       $photoToSave = $rawPhoto->rotate($degrees)->stream();
       Storage::delete($photo->path . '/' . $photo->file_name . '.' . $photo->ext);
-      Storage::put($photo->path . '/' . $photo->file_name . '.' . $photo->ext, $photoToSave->__toString());
-      Storage::setVisibility($photo->path . '/' . $photo->file_name . '.' . $photo->ext, 'public');
+      Storage::put($photo->path . '/' . $this->imageName . '.' . $photo->ext, $photoToSave->__toString());
+      Storage::setVisibility($photo->path . '/' . $this->imageName . '.' . $photo->ext, 'public');
 
       $rawThumb = Image::make(Storage::get($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext));
       $thumbToSave = $rawThumb->rotate($degrees)->resize($this->thumbWidth, $this->thumbHeight)->stream();
       Storage::delete($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext);
-      Storage::put($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext, $thumbToSave->__toString());
-      Storage::setVisibility($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext, 'public');
+      Storage::put($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $this->imageName . '.' . $photo->ext, $thumbToSave->__toString());
+      Storage::setVisibility($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $this->imageName . '.' . $photo->ext, 'public');
 
     }
 
