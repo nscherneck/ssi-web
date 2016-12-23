@@ -129,6 +129,10 @@
   background: #f8f8f8;
 }
 
-.no-gutter-right {
-    padding-right:0;
+@media (min-width: 800px) {
+  
+  .no-gutter-right {
+      padding-right:0;
+  }
+
 }
