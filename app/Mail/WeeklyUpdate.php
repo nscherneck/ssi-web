@@ -42,7 +42,7 @@ class WeeklyUpdate extends Mailable
     {
       $address = 'nathan@suppression.com';
       $name = 'Nathan Scherneck';
-      $subject = 'Weekly Summary from SSI-Web';
+      $subject = 'Weekly Update from SSI-Extranet';
 
       $end_date_raw = Carbon::now('America/Los_Angeles');
       $end_date = $end_date_raw->format('Y-m-d');

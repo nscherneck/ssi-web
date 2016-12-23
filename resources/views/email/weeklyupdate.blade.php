@@ -8,8 +8,6 @@
 
     <div class="container-fluid text-center">
 
-      <h3>Weekly update from SSI-Extranet</h3>
-
       <h4>Systems Due for Testing</h4>
 
       <ul>
@@ -54,18 +52,22 @@
       <table cellpadding="10">
         <tr>
           <th>Test Date</th>
+          <th>Technician</th>
           <th>Customer</th>
           <th>Site</th>
           <th>System</th>
           <th>Test Type</th>
+          <th>Result</th>
         </tr>
         @foreach($newtests as $test)
         <tr>
           <td>{{ $test->test_date->format('F d, Y') }}</td>
+          <td>{{ $test->technician->first_name }}</td>
           <td>{{ $test->system->site->customer->name }}</td>
           <td>{{ $test->system->site->name }}</td>
           <td>{{ $test->system->name }}</td>
           <td>{{ $test->test_type->name }}</td>
+          <td>{{ $test->test_result->name }}</td>
         </tr>
         @endforeach
       </table>
