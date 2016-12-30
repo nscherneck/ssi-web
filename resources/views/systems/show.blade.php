@@ -380,8 +380,6 @@
 
   </div>
 
-  </div>
-
   @endif
 
   <hr>
