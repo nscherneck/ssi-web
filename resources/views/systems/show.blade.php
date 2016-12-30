@@ -392,28 +392,32 @@
   <button class="accordion">Tests & Inspections ({{ count($system->tests) }})</button>
   <div class="panel">
 
-    <table class="table table-striped table-condensed">
-      <thead>
-        <tr>
-          <th><small>Test Date</small></th>
-          <th><small>Technician</small></th>
-          <th><small>Type</small></th>
-          <th><small>Result</small></th>
-          <th><small>Added By</small></th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($system->tests as $test)
+    <div class="table-responsive">
+
+      <table class="table table-striped table-condensed">
+        <thead>
           <tr>
-          <td><small><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
-          <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
-          <td><small>{{ $test->test_type->name }}</small></td>
-          <td><small>{{ $test->test_result->name }}</small></td>
-          <td><small>{{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}</small></td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+            <th><small>Test Date</small></th>
+            <th><small>Technician</small></th>
+            <th><small>Type</small></th>
+            <th><small>Result</small></th>
+            <th><small>Added By</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($system->tests as $test)
+            <tr>
+            <td><small><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
+            <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
+            <td><small>{{ $test->test_type->name }}</small></td>
+            <td><small>{{ $test->test_result->name }}</small></td>
+            <td><small>{{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}</small></td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+
+    </div>
 
     <hr>
 
