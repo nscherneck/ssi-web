@@ -18,7 +18,7 @@
 
           <input type="file" name="image" accept="image/*"><br>
           Caption:<br>
-          <textarea rows="4" cols="80" name="caption"></textarea><br><br>
+          <textarea rows="4" name="caption" style="width: 80%"></textarea><br><br>
 
           <button type="submit" class="btn btn-primary">Add</button>
 
