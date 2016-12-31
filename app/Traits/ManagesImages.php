@@ -48,7 +48,7 @@ trait ManagesImages
 
     }
 
-    Private function deleteThumbnail($photo, $destination)
+    Private function deleteThumbnail($photo)
     {
 
       Storage::delete($photo->path . '/' . $this->thumbPrefix . $photo->file_name . '.' . $photo->ext);
