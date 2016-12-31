@@ -35,23 +35,23 @@ trait ManagesImages
 
      // delete old images before saving new
 
-      $this->deleteImage($photo, $this->destinationFolder);
+      $this->deleteImage($photo);
 
-      $this->deleteThumbnail($photo, $this->destinationThumbnail);
+      $this->deleteThumbnail($photo);
 
     }
 
-    Private function deleteImage($photo, $destination)
+    Private function deleteImage($photo)
     {
 
-      Storage::delete($destination . $photo->imageName . '.' . $photo->extension);
+      Storage::delete($photo->path . '/' . $photo->file_name . '.' . $photo->ext);
 
     }
 
     Private function deleteThumbnail($photo, $destination)
     {
 
-      Storage::delete($destination . $this->thumbPrefix . $photo->imageName . '.' . $photo->extension);
+      Storage::delete($photo->path . '/' . $this->thumbPrefix . $photo->file_name . '.' . $photo->ext);
 
     }
 
