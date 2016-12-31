@@ -84,6 +84,8 @@ Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');
 Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
 Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto');
+Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
+
 Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
 Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
 

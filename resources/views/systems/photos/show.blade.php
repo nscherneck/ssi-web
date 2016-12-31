@@ -33,7 +33,8 @@
         </form>
 
         <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-cog fa-md"></i></button>
-        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemPhotoModal">
+          <i class="fa fa-trash-o fa-md"></i></button>
 
         <form class="" action="/system/{{ $system->id }}/photo/{{ $photo->id }}/rotateright" method="post" style="display: inline">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -54,5 +55,7 @@
 
   </div>
 </div>
+
+@include('partials.modals.delete_system_photo')
 
 @stop

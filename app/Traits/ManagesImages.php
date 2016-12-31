@@ -24,37 +24,34 @@ trait ManagesImages
     public $thumbnailPath;
     public $thumbWidth;
 
-
-
-
     // DELETE EXISTING IMAGES
 
     /**
      * @param $modelImage
      * hand in the model
      */
-    private function deleteExistingImages($modelImage)
+    private function deleteExistingImages($photo)
     {
 
      // delete old images before saving new
 
-      $this->deleteImage($modelImage, $this->destinationFolder);
+      $this->deleteImage($photo, $this->destinationFolder);
 
-      $this->deleteThumbnail($modelImage, $this->destinationThumbnail);
-
-    }
-
-    Private function deleteImage($modelImage, $destination)
-    {
-
-      File::delete(public_path($destination) . $modelImage->image_name . '.' . $modelImage->image_ext);
+      $this->deleteThumbnail($photo, $this->destinationThumbnail);
 
     }
 
-    Private function deleteThumbnail($modelImage, $destination)
+    Private function deleteImage($photo, $destination)
     {
 
-      File::delete(public_path($destination) . $this->thumbPrefix . $modelImage->image_name . '.' . $modelImage->image_ext);
+      Storage::delete($destination . $photo->imageName . '.' . $photo->extension);
+
+    }
+
+    Private function deleteThumbnail($photo, $destination)
+    {
+
+      Storage::delete($destination . $this->thumbPrefix . $photo->imageName . '.' . $photo->extension);
 
     }
 

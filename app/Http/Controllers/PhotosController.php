@@ -40,7 +40,7 @@ class PhotosController extends Controller
         'image' => 'required|mimes:jpg,jpeg,png,bmp'
       ]);
 
-      // set the name of the file i.e.
+      // set the name of the file
       $this->setFileName($system);
 
       $photo = new Photo([
@@ -52,40 +52,19 @@ class PhotosController extends Controller
                   'photoable_id'    => $system->id,
                   'added_by'        => Auth::id()
               ]);
+
       // save model
       $photo->save();
+
       // get instance of file
       $file = $this->getUploadedFile();
+
       // pass in the file and the model
       $this->saveImageFiles($file, $photo);
 
       flash('Photo Added', 'Success');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
-    //
-    // public function storeSystemPhoto(Request $request, System $system)
-    // {
-    //   $path = 'customer-data/';
-    //   $path .= strtolower(str_replace(' ', '_', $system->site->customer->name)) . '/'; // customer dir
-    //   $path .= 'sites/';
-    //   $path .= strtolower(str_replace(' ', '_', $system->site->name)) . '/'; //site dir
-    //   $path .= 'systems/';
-    //   $path .= strtolower(str_replace(' ', '_', $system->name)) . '/'; //system dir
-    //   $path .= 'photos'; //photos dir
-    //
-    //   $photo = new Photo;
-    //   $photo->path = $request->file('image')->store($path);
-    //   Storage::setVisibility($photo->path, 'public');
-    //   $photo->caption = $request->caption;
-    //   $photo->photoable_id = $system->id;
-    //   $photo->photoable_type = 'App\System';
-    //   $photo->added_by = Auth::id();
-    //
-    //   $photo->save();
-    //
-    //   flash('Photo Added', 'Success');
-    //   return redirect()->route('system_show', ['id' => $system->id]);
-    // }
 
     public function store(Request $request)
     {
@@ -126,8 +105,12 @@ class PhotosController extends Controller
       return back();
     }
 
-    public function destroy($id)
+    public function destroy(System $system, Photo $photo)
     {
-        //
+      $this->deleteExistingImages($photo);
+      $photo->delete();
+
+      flash('Photo Deleted', 'Error');
+      return redirect()->route('system_show', ['id' => $system->id]);
     }
 }
