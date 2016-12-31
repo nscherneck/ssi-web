@@ -56,8 +56,8 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => 'AKIAJMR55HXKSJKVJDEA',
-            'secret' => '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',
+            'key' => env('AWS_KEY'),
+            'secret' => env('AWS_SECRET'),
             'region' => 'us-west-2',
             'bucket' => 'ssiwebstorage',
         ],
