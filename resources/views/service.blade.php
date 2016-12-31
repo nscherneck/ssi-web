@@ -7,6 +7,7 @@
 @include('partials.nav')
 
 <div class="container-fluid">
+
   <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
 
   <div class="titleBar">

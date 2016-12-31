@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Customer;
@@ -49,7 +50,18 @@ class PagesController extends Controller
     {
       // get 20 most recent tests
       $tests = Test::orderBy('test_date', 'desc')->take(15)->get();
-      $systemduefortest = System::orderBy('next_test_date', 'asc')->where('next_test_date', '!=', NULL)->take(30)->get();
+
+      // systems due for test
+      $start_date_raw = Carbon::now('America/Los_Angeles')->startOfMonth();
+      $start_date = $start_date_raw->toDateString();
+      $end_date = $start_date_raw->addMonths(4)->toDateString();
+
+      $systemduefortest = System::orderBy('next_test_date', 'asc')
+        ->where('next_test_date', '!=', NULL)
+        ->whereBetween('next_test_date', [$start_date, $end_date])
+        ->take(50)
+        ->get();
+
       $recentphotos = Photo::orderBy('created_at', 'desc')->take(5)->get();
       $recentsystems = System::orderBy('created_at', 'desc')->take(15)->get();
       return view('service', compact('tests', 'systemduefortest', 'recentphotos', 'recentsystems'));
