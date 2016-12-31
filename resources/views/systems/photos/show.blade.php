@@ -32,7 +32,8 @@
           <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
         </form>
 
-        <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-cog fa-md"></i></button>
+        <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemPhotoModal">
+          <i class="fa fa-cog fa-md"></i></button>
         <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemPhotoModal">
           <i class="fa fa-trash-o fa-md"></i></button>
 
@@ -56,6 +57,7 @@
   </div>
 </div>
 
+@include('partials.modals.edit_system_photo')
 @include('partials.modals.delete_system_photo')
 
 @stop

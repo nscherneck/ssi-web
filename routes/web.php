@@ -83,7 +83,8 @@ Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
 // PHOTO ROUTES
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');
 Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
-Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto');
+Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto')->name('system_photo_show');;
+Route::put('system/photo/{photo}', 'PhotosController@update');
 Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
 
 Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');

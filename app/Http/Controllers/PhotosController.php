@@ -84,9 +84,13 @@ class PhotosController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Photo $photo)
     {
+      $photo->caption = $request->caption;
+      $photo->save();
 
+      flash('Photo Updated', 'Success');
+      return redirect()->route('system_photo_show', ['id' => $photo->id]);
     }
 
     public function rotateLeft(System $system, Photo $photo)
