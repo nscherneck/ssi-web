@@ -52,6 +52,7 @@ trait ManagesImages
     {
 
       Storage::delete($photo->path . '/' . $this->thumbPrefix . $photo->file_name . '.' . $photo->ext);
+      dd('Thumb prefix is: ' . $this->thumbPrefix);
 
     }
 
