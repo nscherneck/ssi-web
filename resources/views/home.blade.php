@@ -6,8 +6,11 @@
 
 @include('partials.nav')
 
-<div class="container-fluid text-center">
+<div class="container-fluid">
+
+  <div class="text-center">
   <h3>Welcome to the SSI-Extranet.</h3>
+  </div>
 
   <div class="row">
     <div class="col-md-4 no-gutter-right">
