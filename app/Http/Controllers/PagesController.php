@@ -23,7 +23,8 @@ class PagesController extends Controller
 
     public function home()
     {
-      return view('home');
+      $recentphotos = Photo::orderBy('created_at', 'desc')->take(10)->get();
+      return view('home', compact('recentphotos'));
     }
 
     public function customer()
