@@ -23,7 +23,10 @@ class PagesController extends Controller
 
     public function home()
     {
-      $recentphotos = Photo::orderBy('created_at', 'desc')->take(10)->get();
+      $recentphotos = Photo::orderBy('created_at', 'desc')
+      ->take(10)
+      ->get();
+
       return view('home', compact('recentphotos'));
     }
 
@@ -50,7 +53,7 @@ class PagesController extends Controller
     public function service()
     {
       // get 20 most recent tests
-      $tests = Test::orderBy('test_date', 'desc')->take(15)->get();
+      $tests = Test::orderBy('test_date', 'desc')->take(25)->get();
 
       // systems due for test
       $start_date_raw = Carbon::now('America/Los_Angeles')->startOfMonth();
@@ -60,7 +63,6 @@ class PagesController extends Controller
       $systemduefortest = System::orderBy('next_test_date', 'asc')
         ->where('next_test_date', '!=', NULL)
         ->whereBetween('next_test_date', [$start_date, $end_date])
-        ->take(50)
         ->get();
 
       $recentphotos = Photo::orderBy('created_at', 'desc')->take(5)->get();
