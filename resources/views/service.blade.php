@@ -11,7 +11,7 @@
   <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
 
   <div class="titleBar">
-      <p>Recently Completed Tests</p>
+      <p>Recent Tests</p>
   </div>
 
   <div class="table-responsive">
