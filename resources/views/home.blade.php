@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'SSI-Extranet | Service')
+@section('title', 'SSI-Extranet | Home')
 
 @section('content')
 
