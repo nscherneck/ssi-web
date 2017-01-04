@@ -13,7 +13,7 @@
 
       </div>
 
-      <div class="modal-body">
+      <div class="modal-body text-center">
 
         <div class="form-group">
 
@@ -23,7 +23,7 @@
 
             <input type="file" name="report" accept="file/*"><br>
             Description:<br>
-            <textarea rows="4" cols="80" name="description"></textarea><br><br>
+            <textarea rows="4" name="description" style="width: 80%"></textarea><br><br>
 
             <button type="submit" class="btn btn-primary">Add</button>
 
