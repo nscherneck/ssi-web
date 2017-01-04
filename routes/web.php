@@ -50,6 +50,8 @@ Route::get('system/{system}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
+Route::put('system/{system}/next_test_date', 'SystemsController@updateNextTestDate');
+
 
 // COMPONENT ROUTES
 Route::get('createmanufacturer', 'ManufacturersController@create');

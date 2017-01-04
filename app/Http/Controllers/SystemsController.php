@@ -65,6 +65,14 @@ class SystemsController extends Controller
         return redirect()->route('system_show', ['id' => $system->id]);
     }
 
+    public function updateNextTestDate(Request $request, System $system) {
+      $system->next_test_date = $request->next_test_date;
+      $system->save();
+
+      flash('Next test date updated', 'Success');
+      return redirect()->route('system_show', ['id' => $system->id]);
+    }
+
     public function destroy(System $system)
     {
       if(count($system->tests) > 0) {

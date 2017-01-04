@@ -43,7 +43,14 @@
     @if ($system->next_test_date)
     <div class="contentBar text-center">
 
-      <p><strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}</p>
+      <p><strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}
+
+        <hr>
+
+        <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
+          <i class="fa fa-cog fa-md"></i></button>
+
+      </p>
 
     </div>
     @endif
@@ -484,6 +491,10 @@
     </div>
   </div>
 </div>
+
+@if ($system->next_test_date)
+  @include('partials.modals.edit_next_test_date')
+@endif
 
 @include('partials.modals.edit_system')
 @include('partials.modals.delete_system')
