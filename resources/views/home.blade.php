@@ -9,7 +9,7 @@
 <div class="container-fluid">
 
   <div class="text-center">
-  <h3>Welcome to the SSI-Extranet.</h3>
+  <h3>Welcome to SSI-Extranet.</h3>
   </div>
 
   <div class="row">
