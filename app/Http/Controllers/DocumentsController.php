@@ -64,12 +64,12 @@ class DocumentsController extends Controller
 
       $report = new Document([
 
-        'ext' => $this->extension,
-        'path' => $this->reportPath,
-        'description' => $request->description,
         'documentable_id' => $test->id,
         'documentable_type' => 'App\Test',
+        'description' => $request->description,
+        'path' => $this->destinationFolder,
         'file_name' => $this->reportName,
+        'ext' => $this->extension,
         'added_by' => Auth::id()
 
       ]);

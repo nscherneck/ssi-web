@@ -14,31 +14,20 @@ use App\Test;
 trait ManagesReports
 {
 
-    public $destinationFolder;
+    public $destinationFolder = '/customer-data/test_reports';
     public $extension;
     public $file;
     public $reportName;
     public $reportPath;
-
-    public function setDestinationFolder($test)
-    {
-      // set destination path for report storage
-      $path = 'customer-data/';
-      $path .= strtolower(str_replace(' ', '_', $test->system->site->customer->name)) . '/'; // customer dir
-      $path .= 'sites/';
-      $path .= strtolower(str_replace(' ', '_', $test->system->site->name)) . '/'; //site dir
-      $path .= 'systems/';
-      $path .= strtolower(str_replace(' ', '_', $test->system->name)) . '/'; //system dir
-      $path .= 'tests'; //photos dir
-
-      $this->destinationFolder = $path;
-    }
 
     public function setFileName($test)
     {
       // set file name for report file
       date_default_timezone_set('America/Los_Angeles');
       $this->reportName = $test->test_date->format('Y_m_d') . '_';
+      $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->site->customer->name))) . '_';
+      $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->site->name))) . '_';
+      $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->name))) . '_';
       $this->reportName .= strtolower($test->test_type->name) . '_';
       $this->reportName .= date('Ymd_Gis');
     }
@@ -46,7 +35,6 @@ trait ManagesReports
     public function setFileAttributes($test)
     {
       // set file attributes for report file
-      $this->setDestinationFolder($test);
       $this->setFileName($test);
       $this->reportPath = $this->destinationFolder . '/' . $this->reportName . '.' . $this->extension;
 

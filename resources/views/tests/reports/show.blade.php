@@ -26,7 +26,7 @@
 
 <div class="container-fluid text-center">
 
-<embed src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}" width="800px" height="1000" />
+<embed src="https://s3-us-west-2.amazonaws.com/ssiwebstorage{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" width="800px" height="1000" />
 <br><br>
 
 </div>
