@@ -80,7 +80,7 @@ Route::put('tests/{test}/testnotes/{testnote}/update', 'TestnotesController@upda
 Route::post('test/{test}/report/store', 'DocumentsController@storeTestReport');
 Route::get('test/{test}/report/{document}', 'DocumentsController@showReport');
 Route::delete('test/{test}/report/{document}', 'DocumentsController@destroyTestReport');
-Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
+Route::put('test/{test}/report/{document}', 'DocumentsController@updateTestReport');
 
 // PHOTO ROUTES
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');

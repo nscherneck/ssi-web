@@ -90,9 +90,13 @@ class DocumentsController extends Controller
         //
     }
 
-    public function update(Request $request, $id)
+    public function updateTestReport(Request $request, Test $test, Document $document)
     {
-        //
+      $document->description = $request->description;
+      $document->save();
+
+      flash('Report Description Updated', 'Success');
+      return redirect()->route('test_show', ['id' => $test->id]);
     }
 
     public function destroyTestReport(Test $test, Document $document)
