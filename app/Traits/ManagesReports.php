@@ -55,4 +55,12 @@ trait ManagesReports
 
     }
 
+    private function deleteDocument($document)
+    {
+
+      Storage::delete($this->path . '/' . $document->file_name . '.' . $document->ext);
+
+    }
+
+
 }

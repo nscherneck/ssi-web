@@ -136,8 +136,8 @@
           </td>
         </tr>
 
-        {{-- @include('partials.modals.edit_test_report')
-        @include('partials.modals.delete_test_report') --}}
+        {{-- @include('partials.modals.edit_test_report') --}}
+        @include('partials.modals.delete_test_report')
 
         @endforeach
       </tbody>

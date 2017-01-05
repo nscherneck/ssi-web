@@ -79,7 +79,7 @@ Route::put('tests/{test}/testnotes/{testnote}/update', 'TestnotesController@upda
 
 Route::post('test/{test}/report/store', 'DocumentsController@storeTestReport');
 Route::get('test/{test}/report/{document}', 'DocumentsController@showReport');
-Route::delete('test/{test}/report/delete', 'DocumentsController@destroyTestReport');
+Route::delete('test/{test}/report/{document}', 'DocumentsController@destroyTestReport');
 Route::put('test/{test}/report/update', 'DocumentsController@updateTestReport');
 
 // PHOTO ROUTES

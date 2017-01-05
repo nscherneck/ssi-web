@@ -95,8 +95,12 @@ class DocumentsController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroyTestReport(Test $test, Document $document)
     {
-        //
+        $this->deleteDocument($document);
+        $document->delete();
+
+        flash('Report Deleted', 'Error');
+        return redirect()->route('test_show', ['id' => $test->id]);
     }
 }
