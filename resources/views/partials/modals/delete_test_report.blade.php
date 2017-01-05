@@ -10,7 +10,7 @@
           Delete this report?
         </p>
 
-          <form action="/test/{test}/report/{{ $report->id }}" method="post" accept-charset="UTF-8">
+          <form action="/test/{{ $test->id }}/report/{{ $report->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 
