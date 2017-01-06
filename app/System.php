@@ -161,6 +161,11 @@ class System extends Model
     return $result;
   }
 
+  public function compModules() {
+    $result = $this->components()->where('component_category_id', '=', 15)->get();
+    return $result;
+  }
+
   public function compMiscElectrical() {
     $result = $this->components()->where('component_category_id', '=', 10)->get();
     return $result;

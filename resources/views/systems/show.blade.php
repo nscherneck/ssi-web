@@ -255,6 +255,26 @@
             </tr>
           @endforeach
 
+          @foreach($system->compModules() as $modules)
+            <tr>
+              <td><small>{{ $modules->pivot->quantity }}</small></td>
+              <td><small>{{ $modules->pivot->name }}</small></td>
+              <td><small>{{ $modules->manufacturer->name }}</small></td>
+              <td><small>{{ $modules->model }}</small></td>
+              <td><small>{{ $modules->description }}</small></td>
+              <td><small>{{ $modules->component_category->name }}</small></td>
+              <td><small>@if ($modules->discontinued === 1) Yes @else No @endif</small></td>
+              <td>
+
+                <form action="/system/{{ $system->id }}/component/{{ $modules->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                  {{ csrf_field() }}
+                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                </form>
+
+              </td>
+            </tr>
+          @endforeach
+
           @foreach($system->compMiscElectrical() as $miscelectrical)
             <tr>
               <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
