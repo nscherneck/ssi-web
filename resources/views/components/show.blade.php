@@ -32,6 +32,34 @@
   <br>
 
   <div class="titleBar">
+      <p>Installed At</p>
+  </div>
+
+  <div class="table-responsive">
+
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th><small>Customer</small></th>
+          <th><small>Site</small></th>
+          <th><small>System</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($component->systems as $system)
+          <tr>
+          <td><small><a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a></small></td>
+          <td><small><a href="/system/{{ $system->site->id }}">{{ $system->site->name }}</a></small></td>
+          <td><small><a href="/site/{{ $system->id }}">{{ $system->name }}</a></small></td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+  </div>
+  <br>
+
+  <div class="titleBar">
       <p>Comments</p>
   </div>
 
