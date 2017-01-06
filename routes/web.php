@@ -58,6 +58,7 @@ Route::get('createmanufacturer', 'ManufacturersController@create');
 
 Route::get('createcomponent', 'ComponentsController@create_page');
 Route::post('createcomponent', 'ComponentsController@create');
+Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
 Route::get('system/{system}/addcomponent', 'ComponentsController@add');
 Route::post('update_component_form', 'ComponentsController@update_component_form');
 Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');

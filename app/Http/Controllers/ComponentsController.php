@@ -52,7 +52,6 @@ class ComponentsController extends Controller
 
   }
 
-
   public function create_page() {
     $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
     $component_categories = DB::table('component_category')->orderBy('name', 'asc')->get();
@@ -82,6 +81,11 @@ class ComponentsController extends Controller
 
     flash('Component removed', 'Success');
     return redirect()->route('system_show', ['id' => $system->id]);
+  }
+
+  public function show(Component $component)
+  {
+    return view('components.show', compact('component'));
   }
 
 

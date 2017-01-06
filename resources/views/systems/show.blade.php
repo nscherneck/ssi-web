@@ -140,7 +140,7 @@
               <td width="5%"><small>{{ $panel->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $panel->pivot->name }}</small></td>
               <td width="10%"><small>{{ $panel->manufacturer->name }}</small></td>
-              <td width="10%"><small>{{ $panel->model }}</small></td>
+              <td width="10%"><small><a href="/component/{{ $panel->id }}">{{ $panel->model }}</a></small></td>
               <td width="30%"><small>{{ $panel->description }}</small></td>
               <td width="15%"><small>{{ $panel->component_category->name }}</small></td>
               <td width="10%"><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
