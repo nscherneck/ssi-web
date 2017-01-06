@@ -160,7 +160,7 @@
               <td width="5%"><small>{{ $modularpanel->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $modularpanel->pivot->name }}</small></td>
               <td width="10%"><small>{{ $modularpanel->manufacturer->name }}</small></td>
-              <td width="10%"><small>{{ $modularpanel->model }}</small></td>
+              <td width="10%"><small><a href="/component/{{ $modularpanel->id }}">{{ $modularpanel->model }}</a></small></td>
               <td width="30%"><small>{{ $modularpanel->description }}</small></td>
               <td width="15%"><small>{{ $modularpanel->component_category->name }}</small></td>
               <td width="10%"><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
@@ -180,7 +180,7 @@
               <td><small>{{ $controlequipment->pivot->quantity }}</small></td>
               <td><small>{{ $controlequipment->pivot->name }}</small></td>
               <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
-              <td><small>{{ $controlequipment->model }}</small></td>
+              <td><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
               <td><small>{{ $controlequipment->description }}</small></td>
               <td><small>{{ $controlequipment->component_category->name }}</small></td>
               <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
@@ -200,7 +200,7 @@
               <td><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
               <td><small>{{ $airsamplingdetection->pivot->name }}</small></td>
               <td><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
-              <td><small>{{ $airsamplingdetection->model }}</small></td>
+              <td><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
               <td><small>{{ $airsamplingdetection->description }}</small></td>
               <td><small>{{ $airsamplingdetection->component_category->name }}</small></td>
               <td><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
@@ -220,7 +220,7 @@
               <td><small>{{ $detection->pivot->quantity }}</small></td>
               <td><small>{{ $detection->pivot->name }}</small></td>
               <td><small>{{ $detection->manufacturer->name }}</small></td>
-              <td><small>{{ $detection->model }}</small></td>
+              <td><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
               <td><small>{{ $detection->description }}</small></td>
               <td><small>{{ $detection->component_category->name }}</small></td>
               <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
@@ -240,7 +240,7 @@
               <td><small>{{ $notification->pivot->quantity }}</small></td>
               <td><small>{{ $notification->pivot->name }}</small></td>
               <td><small>{{ $notification->manufacturer->name }}</small></td>
-              <td><small>{{ $notification->model }}</small></td>
+              <td><small><a href="/component/{{ $notification->id }}">{{ $notification->model }}</a></small></td>
               <td><small>{{ $notification->description }}</small></td>
               <td><small>{{ $notification->component_category->name }}</small></td>
               <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
@@ -260,7 +260,7 @@
               <td><small>{{ $modules->pivot->quantity }}</small></td>
               <td><small>{{ $modules->pivot->name }}</small></td>
               <td><small>{{ $modules->manufacturer->name }}</small></td>
-              <td><small>{{ $modules->model }}</small></td>
+              <td><small><a href="/component/{{ $modules->id }}">{{ $modules->model }}</a></small></td>
               <td><small>{{ $modules->description }}</small></td>
               <td><small>{{ $modules->component_category->name }}</small></td>
               <td><small>@if ($modules->discontinued === 1) Yes @else No @endif</small></td>
@@ -280,7 +280,7 @@
               <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
               <td><small>{{ $miscelectrical->pivot->name }}</small></td>
               <td><small>{{ $miscelectrical->manufacturer->name }}</small></td>
-              <td><small>{{ $miscelectrical->model }}</small></td>
+              <td><small><a href="/component/{{ $miscelectrical->id }}">{{ $miscelectrical->model }}</a></small></td>
               <td><small>{{ $miscelectrical->description }}</small></td>
               <td><small>{{ $miscelectrical->component_category->name }}</small></td>
               <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
@@ -300,7 +300,7 @@
               <td><small>{{ $misc->pivot->quantity }}</small></td>
               <td><small>{{ $misc->pivot->name }}</small></td>
               <td><small>{{ $misc->manufacturer->name }}</small></td>
-              <td><small>{{ $misc->model }}</small></td>
+              <td><small><a href="/component/{{ $misc->id }}">{{ $misc->model }}</a></small></td>
               <td><small>{{ $misc->description }}</small></td>
               <td><small>{{ $misc->component_category->name }}</small></td>
               <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
@@ -320,7 +320,7 @@
               <td><small>{{ $accessory->pivot->quantity }}</small></td>
               <td><small>{{ $accessory->pivot->name }}</small></td>
               <td><small>{{ $accessory->manufacturer->name }}</small></td>
-              <td><small>{{ $accessory->model }}</small></td>
+              <td><small><a href="/component/{{ $accessory->id }}">{{ $accessory->model }}</a></small></td>
               <td><small>{{ $accessory->description }}</small></td>
               <td><small>{{ $accessory->component_category->name }}</small></td>
               <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
@@ -340,7 +340,7 @@
               <td><small>{{ $uncategorized->pivot->quantity }}</small></td>
               <td><small>{{ $uncategorized->pivot->name }}</small></td>
               <td><small>{{ $uncategorized->manufacturer->name }}</small></td>
-              <td><small>{{ $uncategorized->model }}</small></td>
+              <td><small><a href="/component/{{ $uncategorized->id }}">{{ $uncategorized->model }}</a></small></td>
               <td><small>{{ $uncategorized->description }}</small></td>
               <td><small>{{ $uncategorized->component_category->name }}</small></td>
               <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
@@ -387,7 +387,7 @@
             <td width="5%"><small>{{ $consumable->pivot->quantity }}</small></td>
             <td width="15%"><small>{{ $consumable->pivot->name }}</small></td>
             <td width="10%"><small>{{ $consumable->manufacturer->name }}</small></td>
-            <td width="10%"><small>{{ $consumable->model }}</small></td>
+            <td width="10%"><small><a href="/component/{{ $consumable->id }}">{{ $consumable->model }}</a></small></td>
             <td width="30%"><small>{{ $consumable->description }}</small></td>
             <td width="15%"><small>{{ $consumable->component_category->name }}</small></td>
             <td width="10%"><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>

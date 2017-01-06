@@ -29,6 +29,11 @@
   <div class="titleBar">
       <p>Manuals</p>
   </div>
+  <br>
+
+  <div class="titleBar">
+      <p>Comments</p>
+  </div>
 
 
   </div>
