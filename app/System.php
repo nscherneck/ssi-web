@@ -191,4 +191,9 @@ class System extends Model
     return $result;
   }
 
+  public function compTank() {
+    $result = $this->components()->where('component_category_id', '=', 7)->get();
+    return $result;
+  }
+
 }

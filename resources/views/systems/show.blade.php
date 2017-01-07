@@ -141,7 +141,13 @@
               <td width="15%"><small>{{ $panel->pivot->name }}</small></td>
               <td width="10%"><small>{{ $panel->manufacturer->name }}</small></td>
               <td width="10%"><small><a href="/component/{{ $panel->id }}">{{ $panel->model }}</a></small></td>
-              <td width="30%"><small>{{ $panel->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($panel->description) > 125)
+                  @php echo substr($panel->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $panel->description }}
+                @endif
+              </small></td>
               <td width="15%"><small>{{ $panel->component_category->name }}</small></td>
               <td width="10%"><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
               <td width="5%">
@@ -161,7 +167,13 @@
               <td width="15%"><small>{{ $modularpanel->pivot->name }}</small></td>
               <td width="10%"><small>{{ $modularpanel->manufacturer->name }}</small></td>
               <td width="10%"><small><a href="/component/{{ $modularpanel->id }}">{{ $modularpanel->model }}</a></small></td>
-              <td width="30%"><small>{{ $modularpanel->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($modularpanel->description) > 125)
+                  @php echo substr($modularpanel->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $modularpanel->description }}
+                @endif
+              </small></td>
               <td width="15%"><small>{{ $modularpanel->component_category->name }}</small></td>
               <td width="10%"><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
               <td width="5%">
@@ -181,7 +193,13 @@
               <td width="15%"><small>{{ $controlequipment->pivot->name }}</small></td>
               <td width="10%"><small>{{ $controlequipment->manufacturer->name }}</small></td>
               <td width="10%"><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
-              <td width="30%"><small>{{ $controlequipment->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($controlequipment->description) > 125)
+                  @php echo substr($controlequipment->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $controlequipment->description }}
+                @endif
+              </small></td>
               <td width="15%"><small>{{ $controlequipment->component_category->name }}</small></td>
               <td width="10%"><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
               <td width="5%">
@@ -201,7 +219,13 @@
               <td width="15%"><small>{{ $airsamplingdetection->pivot->name }}</small></td>
               <td width="10%"><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
               <td width="10%"><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
-              <td width="30%"><small>{{ $airsamplingdetection->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($airsamplingdetection->description) > 125)
+                  @php echo substr($airsamplingdetection->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $airsamplingdetection->description }}
+                @endif
+              </small></td>
               <td width="15%"><small>{{ $airsamplingdetection->component_category->name }}</small></td>
               <td width="10%"><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
               <td width="5%">
@@ -221,7 +245,13 @@
               <td width="15%"><small>{{ $detection->pivot->name }}</small></td>
               <td width="10%"><small>{{ $detection->manufacturer->name }}</small></td>
               <td width="10%"><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
-              <td width="30%"><small>{{ $detection->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($detection->description) > 125)
+                  @php echo substr($detection->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $detection->description }}
+                @endif
+              </small></td>
               <td width="15%"><small>{{ $detection->component_category->name }}</small></td>
               <td width="10%"><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
               <td width="5%">
@@ -241,7 +271,13 @@
               <td><small>{{ $notification->pivot->name }}</small></td>
               <td><small>{{ $notification->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $notification->id }}">{{ $notification->model }}</a></small></td>
-              <td><small>{{ $notification->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($notification->description) > 125)
+                  @php echo substr($notification->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $notification->description }}
+                @endif
+              </small></td>
               <td><small>{{ $notification->component_category->name }}</small></td>
               <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -261,7 +297,13 @@
               <td><small>{{ $modules->pivot->name }}</small></td>
               <td><small>{{ $modules->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $modules->id }}">{{ $modules->model }}</a></small></td>
-              <td><small>{{ $modules->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($modules->description) > 125)
+                  @php echo substr($modules->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $modules->description }}
+                @endif
+              </small></td>
               <td><small>{{ $modules->component_category->name }}</small></td>
               <td><small>@if ($modules->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -281,7 +323,13 @@
               <td><small>{{ $miscelectrical->pivot->name }}</small></td>
               <td><small>{{ $miscelectrical->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $miscelectrical->id }}">{{ $miscelectrical->model }}</a></small></td>
-              <td><small>{{ $miscelectrical->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($miscelectrical->description) > 125)
+                  @php echo substr($miscelectrical->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $miscelectrical->description }}
+                @endif
+              </small></td>
               <td><small>{{ $miscelectrical->component_category->name }}</small></td>
               <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -301,7 +349,13 @@
               <td><small>{{ $misc->pivot->name }}</small></td>
               <td><small>{{ $misc->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $misc->id }}">{{ $misc->model }}</a></small></td>
-              <td><small>{{ $misc->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($misc->description) > 125)
+                  @php echo substr($misc->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $misc->description }}
+                @endif
+              </small></td>
               <td><small>{{ $misc->component_category->name }}</small></td>
               <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -321,7 +375,13 @@
               <td><small>{{ $accessory->pivot->name }}</small></td>
               <td><small>{{ $accessory->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $accessory->id }}">{{ $accessory->model }}</a></small></td>
-              <td><small>{{ $accessory->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($accessory->description) > 125)
+                  @php echo substr($accessory->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $accessory->description }}
+                @endif
+              </small></td>
               <td><small>{{ $accessory->component_category->name }}</small></td>
               <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -341,7 +401,13 @@
               <td><small>{{ $uncategorized->pivot->name }}</small></td>
               <td><small>{{ $uncategorized->manufacturer->name }}</small></td>
               <td><small><a href="/component/{{ $uncategorized->id }}">{{ $uncategorized->model }}</a></small></td>
-              <td><small>{{ $uncategorized->description }}</small></td>
+              <td width="30%"><small>
+                @if(strlen($uncategorized->description) > 125)
+                  @php echo substr($uncategorized->description, 0, 125) . '. . .' @endphp
+                @else
+                  {{ $uncategorized->description }}
+                @endif
+              </small></td>
               <td><small>{{ $uncategorized->component_category->name }}</small></td>
               <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
               <td>
@@ -388,12 +454,73 @@
             <td width="15%"><small>{{ $consumable->pivot->name }}</small></td>
             <td width="10%"><small>{{ $consumable->manufacturer->name }}</small></td>
             <td width="10%"><small><a href="/component/{{ $consumable->id }}">{{ $consumable->model }}</a></small></td>
-            <td width="30%"><small>{{ $consumable->description }}</small></td>
+            <td width="30%"><small>
+              @if(strlen($consumable->description) > 125)
+                @php echo substr($consumable->description, 0, 125) . '. . .' @endphp
+              @else
+                {{ $consumable->description }}
+              @endif
+            </small></td>
             <td width="15%"><small>{{ $consumable->component_category->name }}</small></td>
             <td width="10%"><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
             <td width="5%">
 
               <form action="/system/{{ $system->id }}/component/{{ $consumable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+                {{ csrf_field() }}
+                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+              </form>
+
+            </td>
+          </tr>
+        @endforeach
+
+      </tbody>
+    </table>
+
+  </div>
+
+  @endif
+
+      @if ($system->compTank()->count() > 0)
+
+      <br>
+      <h5>Agent Tanks</h5>
+
+    <div class="table-responsive">
+
+      <table class="table table-hover table-condensed">
+        <thead>
+          <tr class="info">
+            <th><small>Quantity</small></th>
+            <th><small>Name</small></th>
+            <th><small>Manufacturer</small></th>
+            <th><small>Model</small></th>
+            <th><small>Description</small></th>
+            <th><small>Category</small></th>
+            <th><small>Discontinued?</small></th>
+            <th></th>
+          </tr>
+        </thead>
+      <tbody>
+
+        @foreach($system->compTank() as $tank)
+          <tr>
+            <td width="5%"><small>{{ $tank->pivot->quantity }}</small></td>
+            <td width="15%"><small>{{ $tank->pivot->name }}</small></td>
+            <td width="10%"><small>{{ $tank->manufacturer->name }}</small></td>
+            <td width="10%"><small><a href="/component/{{ $tank->id }}">{{ $tank->model }}</a></small></td>
+            <td width="30%"><small>
+              @if(strlen($tank->description) > 125)
+                @php echo substr($tank->description, 0, 125) . '. . .' @endphp
+              @else
+                {{ $tank->description }}
+              @endif
+            </small></td>
+            <td width="15%"><small>{{ $tank->component_category->name }}</small></td>
+            <td width="10%"><small>@if ($tank->discontinued === 1) Yes @else No @endif</small></td>
+            <td width="5%">
+
+              <form action="/system/{{ $system->id }}/component/{{ $tank->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
               </form>
