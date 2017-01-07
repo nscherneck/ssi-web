@@ -49,8 +49,8 @@
         @foreach($component->systems as $system)
           <tr>
           <td><small><a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a></small></td>
-          <td><small><a href="/system/{{ $system->site->id }}">{{ $system->site->name }}</a></small></td>
-          <td><small><a href="/site/{{ $system->id }}">{{ $system->name }}</a></small></td>
+          <td><small><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></small></td>
+          <td><small><a href="/system/{{ $system->id }}">{{ $system->name }}</a></small></td>
         </tr>
         @endforeach
       </tbody>
