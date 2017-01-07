@@ -177,14 +177,14 @@
 
           @foreach($system->compControlEquipment() as $controlequipment)
             <tr>
-              <td><small>{{ $controlequipment->pivot->quantity }}</small></td>
-              <td><small>{{ $controlequipment->pivot->name }}</small></td>
-              <td><small>{{ $controlequipment->manufacturer->name }}</small></td>
-              <td><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
-              <td><small>{{ $controlequipment->description }}</small></td>
-              <td><small>{{ $controlequipment->component_category->name }}</small></td>
-              <td><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+              <td width="5%"><small>{{ $controlequipment->pivot->quantity }}</small></td>
+              <td width="15%"><small>{{ $controlequipment->pivot->name }}</small></td>
+              <td width="10%"><small>{{ $controlequipment->manufacturer->name }}</small></td>
+              <td width="10%"><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
+              <td width="30%"><small>{{ $controlequipment->description }}</small></td>
+              <td width="15%"><small>{{ $controlequipment->component_category->name }}</small></td>
+              <td width="10%"><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $controlequipment->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -197,14 +197,14 @@
 
           @foreach($system->compAirSamplingDetection() as $airsamplingdetection)
             <tr>
-              <td><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
-              <td><small>{{ $airsamplingdetection->pivot->name }}</small></td>
-              <td><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
-              <td><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
-              <td><small>{{ $airsamplingdetection->description }}</small></td>
-              <td><small>{{ $airsamplingdetection->component_category->name }}</small></td>
-              <td><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+              <td width="5%"><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
+              <td width="15%"><small>{{ $airsamplingdetection->pivot->name }}</small></td>
+              <td width="10%"><small>{{ $airsamplingdetection->manufacturer->name }}</small></td>
+              <td width="10%"><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
+              <td width="30%"><small>{{ $airsamplingdetection->description }}</small></td>
+              <td width="15%"><small>{{ $airsamplingdetection->component_category->name }}</small></td>
+              <td width="10%"><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $airsamplingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -217,14 +217,14 @@
 
           @foreach($system->compDetection() as $detection)
             <tr>
-              <td><small>{{ $detection->pivot->quantity }}</small></td>
-              <td><small>{{ $detection->pivot->name }}</small></td>
-              <td><small>{{ $detection->manufacturer->name }}</small></td>
-              <td><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
-              <td><small>{{ $detection->description }}</small></td>
-              <td><small>{{ $detection->component_category->name }}</small></td>
-              <td><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+              <td width="5%"><small>{{ $detection->pivot->quantity }}</small></td>
+              <td width="15%"><small>{{ $detection->pivot->name }}</small></td>
+              <td width="10%"><small>{{ $detection->manufacturer->name }}</small></td>
+              <td width="10%"><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
+              <td width="30%"><small>{{ $detection->description }}</small></td>
+              <td width="15%"><small>{{ $detection->component_category->name }}</small></td>
+              <td width="10%"><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
