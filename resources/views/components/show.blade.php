@@ -14,8 +14,8 @@
   </div>
 
   <br>
-  <h3>{{ $component->manufacturer->name }}</h3>
-  <h5>{{ $component->model }}</h5>
+  <h4>{{ $component->manufacturer->name }}</h4>
+  <h3>{{ $component->model }}</h3>
   <br>
 
   @if($component->discontinued === 1)
@@ -56,7 +56,7 @@
   <br>
 
   <div class="titleBar">
-      <p>Installed At</p>
+      <p>Where It's Installed</p>
   </div>
 
   <div class="table-responsive">
