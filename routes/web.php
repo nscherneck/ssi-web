@@ -60,6 +60,7 @@ Route::post('createcomponent', 'ComponentsController@create');
 Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
 Route::get('system/{system}/addcomponent', 'ComponentsController@add');
 Route::post('update_component_form', 'ComponentsController@update_component_form');
+Route::put('component/{component}', 'ComponentsController@update');
 Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');
 Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detach');
 

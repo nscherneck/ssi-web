@@ -88,5 +88,17 @@ class ComponentsController extends Controller
     return view('components.show', compact('component'));
   }
 
+  public function update(Request $request, Component $component)
+  {
+    $component->model = $request->model;
+    $component->description = $request->description;
+    $component->discontinued = $request->discontinued;
+    $component->save();
+
+    flash('Component updated', 'Success');
+    return redirect()->route('component_show', ['id' => $component->id]);
+
+  }
+
 
 }
