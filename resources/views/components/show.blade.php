@@ -19,7 +19,7 @@
 
   <br>
   @if($component->discontinued === 1)
-    <h5><strong>THIS PART HAS BEEN DISCONINUED BY THE MANUFACTURER</strong></h5>
+    <h5><strong>THIS PART HAS BEEN DISCONTINUED BY THE MANUFACTURER</strong></h5>
     <br>
   @endif
 
