@@ -132,30 +132,35 @@
     <button class="accordion">Systems ({{ $site->systems->count() }})</button>
     <div class="panel">
 
-      <table class="table table-condensed">
-        <thead>
-          <tr>
-            <th><small>System Name</small></th>
-            <th><small>Type</small></th>
-            <th><small>Components</small></th>
-            <th><small>Last Test</small></th>
-            <th><small>SSI Install</small></th>
-            <th><small>SSI Test Acct</small></th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($site->systems as $system)
-          <tr>
-            <td><small><a href="/system/{{ $system->id }}">{{ $system->name }}</a></small></td>
-            <td><small>{{ $system->system_type->type }}</small></td>
-            <td><small>{{ $system->count_components() }}</small></td>
-            <td><small>{{ $system->get_latest_test() }}</small></td>
-            <td><small>@if ($system->ssi_install === 1) Yes @else No @endif</small></td>
-            <td><small>@if ($system->ssi_test_acct === 1) Yes @else No @endif</small></td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+      <div class="table-responsive">
+
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th><small>System Name</small></th>
+              <th><small>Type</small></th>
+              <th><small>Components</small></th>
+              <th><small>Last Test</small></th>
+              <th><small>SSI Install</small></th>
+              <th><small>SSI Test Acct</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($site->systems as $system)
+            <tr>
+              <td><small><a href="/system/{{ $system->id }}">{{ $system->name }}</a></small></td>
+              <td><small>{{ $system->system_type->type }}</small></td>
+              <td><small>{{ $system->count_components() }}</small></td>
+              <td><small>{{ $system->get_latest_test() }}</small></td>
+              <td><small>@if ($system->ssi_install === 1) Yes @else No @endif</small></td>
+              <td><small>@if ($system->ssi_test_acct === 1) Yes @else No @endif</small></td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+      
+      </div>
+
       <br>
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemModal">Add System</button>

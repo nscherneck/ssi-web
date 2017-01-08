@@ -114,30 +114,35 @@
 <button class="accordion">Sites ({{ $customer->count_sites($customer->id) }})</button>
 <div class="panel show">
 
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th><small>Site Name</small></th>
-        <th><small>Address</small></th>
-        <th><small>City</small></th>
-        <th><small>State</small></th>
-        <th><small>Systems</small></th>
-        <th><small>Map</small></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($customer->sites as $site)
+  <div class="table-responsive">
+
+    <table class="table table-condensed">
+      <thead>
         <tr>
-        <td><small><a href="/site/{{ $site->id }}/">{{ $site->name }}</a></small></td>
-        <td><small>{{ $site->address1 }}</small></td>
-        <td><small>{{ $site->city }}</small></td>
-        <td><small>{{ $site->state->abbreviated }}</small></td>
-        <td><small>{{ $site->count_systems($site->id) }}</small></td>
-        <td><small><a href="https://www.google.com/maps/place//@<?= $site->lat ?>,{{ $site->lon }},18z" target="blank">Map</a></small></td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
+          <th><small>Site Name</small></th>
+          <th><small>Address</small></th>
+          <th><small>City</small></th>
+          <th><small>State</small></th>
+          <th><small>Systems</small></th>
+          <th><small>Map</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($customer->sites as $site)
+          <tr>
+          <td><small><a href="/site/{{ $site->id }}/">{{ $site->name }}</a></small></td>
+          <td><small>{{ $site->address1 }}</small></td>
+          <td><small>{{ $site->city }}</small></td>
+          <td><small>{{ $site->state->abbreviated }}</small></td>
+          <td><small>{{ $site->count_systems($site->id) }}</small></td>
+          <td><small><a href="https://www.google.com/maps/place//@<?= $site->lat ?>,{{ $site->lon }},18z" target="blank">Map</a></small></td>
+        </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+  </div>
+
   <br>
 
   <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteModal">Add Site</button>

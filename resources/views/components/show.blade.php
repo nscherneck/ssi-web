@@ -16,8 +16,8 @@
   <br>
   <h3>{{ $component->manufacturer->name }}</h3>
   <h5>{{ $component->model }}</h5>
-
   <br>
+
   @if($component->discontinued === 1)
     <h5><strong>THIS PART HAS BEEN DISCONTINUED BY THE MANUFACTURER</strong></h5>
     <br>
@@ -29,9 +29,16 @@
 
     <p>{{ $component->description }}</p>
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
-      <i class="fa fa-cog fa-md"></i></button>
+  </div>
 
+  <div class="col-md-6">
+
+    <div class="pull-right">
+
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
+        <i class="fa fa-cog fa-md"></i></button>
+
+    </div>
 
   </div>
 
