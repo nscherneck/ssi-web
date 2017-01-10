@@ -45,6 +45,7 @@ class ComponentsController extends Controller
     $component->model = $request->model;
     $component->component_category_id = $request->component_category_id;
     $component->description = $request->description;
+    $component->discontinued = $request->discontinued;
 
     $component->save();
 
