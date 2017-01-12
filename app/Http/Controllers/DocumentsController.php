@@ -88,7 +88,7 @@ class DocumentsController extends Controller
       //   ->header('Content-Type', 'application/pdf')
       //   ->header('Content-Disposition', 'inline');
       $file_path = "https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext;
-      if (isFile($file_path))
+      if (is_file($file_path))
       {
         $file = File::get($file_path);
         $response = Response::make($file, 200);
