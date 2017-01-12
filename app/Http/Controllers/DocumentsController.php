@@ -8,7 +8,6 @@ use Illuminate\Http\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Response;
 
 use App\Traits\ManagesReports;
@@ -92,7 +91,7 @@ class DocumentsController extends Controller
       if (1 === 1)
       {
         $file = Storage::get($file_path);
-        $response = Response::make($file, 200);
+        $response = Response->make($file, 200);
         $response->header('Content-Type', 'application/pdf');
 
         return $response;
