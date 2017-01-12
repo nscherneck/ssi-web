@@ -17,12 +17,12 @@
         @else
             <li><a href="{{ url('home') }}">Home</a></li>
             <li><a href="{{ url('sales') }}">Sales</a></li>
-            <li><a href="{{ url('engineering') }}">Engineering</a></li>
-            <li><a href="{{ url('installation') }}">Installation</a></li>
+            <!-- <li><a href="{{ url('engineering') }}">Engineering</a></li> -->
+            <li><a href="{{ url('installation') }}">Jobs</a></li>
             <li><a href="{{ url('service') }}">Service</a></li>
-            <li><a href="{{ url('docs') }}">Documents & Resources</a></li>
-            <li><a href="{{ url('fleet') }}">Fleet</a></li>
-            <li><a href="{{ url('team') }}">Team</a></li>
+            <li><a href="{{ url('docs') }}">Resources</a></li>
+            <!-- <li><a href="{{ url('fleet') }}">Fleet</a></li> -->
+            <!-- <li><a href="{{ url('team') }}">Team</a></li> -->
             <li><a href="{{ url('admin') }}">Admin</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
