@@ -87,7 +87,7 @@ class DocumentsController extends Controller
       //   ->header('Content-Type', 'application/pdf')
       //   ->header('Content-Disposition', 'inline');
       return response()
-        ->inline("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext), ['content-type' => 'application/pdf'];
+        ->download("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext), ['content-type' => 'application/pdf'];
     }
 
     public function edit($id)
