@@ -90,7 +90,7 @@ class DocumentsController extends Controller
       $file_path = "https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext;
       if (1 === 1)
       {
-        $file = File::get($file_path);
+        $file = Storage::get($file_path);
         $response = Response::make($file, 200);
         $response->header('Content-Type', 'application/pdf');
 
