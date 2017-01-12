@@ -95,8 +95,9 @@ class DocumentsController extends Controller
         $response->header('Content-Type', 'application/pdf');
 
         return $response;
+      } else {
+        echo "NOPE";
       }
-      echo "NOPE";
     }
 
     public function edit($id)
