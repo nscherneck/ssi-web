@@ -84,21 +84,6 @@ class DocumentsController extends Controller
 
     public function showReport(Test $test, Document $document)
     {
-      // return view('tests.reports.show', compact('test', 'document'))
-      // return response()->file("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
-      //   ->header('Content-Type', 'application/pdf')
-      //   ->header('Content-Disposition', 'inline');
-      // $file_path = $document->path . '/' . $document->file_name . '.' . $document->ext;
-      // if (1 === 1)
-      // {
-      //   $file = Storage::get($file_path);
-      //   $response = Response::make($file, 200);
-      //   $response->header('Content-Type', 'application/pdf');
-      //
-      //   return $response;
-      // } else {
-      //   echo "NOPE";
-      // }
 
         $file = $document->path . '/' . $document->file_name . '.' . $document->ext;
         $disk = Storage::disk('s3');
