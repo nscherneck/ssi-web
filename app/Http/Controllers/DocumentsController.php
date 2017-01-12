@@ -8,6 +8,7 @@ use Illuminate\Http\File;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Response;
 
 use App\Traits\ManagesReports;
@@ -87,22 +88,36 @@ class DocumentsController extends Controller
       // return response()->file("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
       //   ->header('Content-Type', 'application/pdf')
       //   ->header('Content-Disposition', 'inline');
-      $file_path = $document->path . '/' . $document->file_name . '.' . $document->ext;
-      if (1 === 1)
-      {
-        $file = Storage::get($file_path);
-        $response = Response->make($file, 200);
-        $response->header('Content-Type', 'application/pdf');
+      // $file_path = $document->path . '/' . $document->file_name . '.' . $document->ext;
+      // if (1 === 1)
+      // {
+      //   $file = Storage::get($file_path);
+      //   $response = Response::make($file, 200);
+      //   $response->header('Content-Type', 'application/pdf');
+      //
+      //   return $response;
+      // } else {
+      //   echo "NOPE";
+      // }
 
-        return $response;
-      } else {
-        echo "NOPE";
-      }
+        $file = $document->path . '/' . $document->file_name . '.' . $document->ext;
+        $disk = Storage::disk('s3');
+
+        $command = $disk->getDriver()->getAdapter()->getClient()->getCommand('GetObject', [
+            'Bucket'                     => config('filesystems.disks.s3.bucket'),
+            'Key'                        => $file,
+            'ResponseContentDisposition' =>  'inline; filename="' . $this->safeFilenameForS3Response($document->file_name . '.' . $document->ext) . '"',
+        ]);
+
+        $request = $disk->getDriver()->getAdapter()->getClient()->createPresignedRequest($command, '+5 minutes');
+        $url = (string) $request->getUri();
+
+        return response()->redirectTo($url);
     }
 
-    public function edit($id)
+    private function safeFilenameForS3Response($filename)
     {
-        //
+        return iconv('UTF-8', 'ASCII//TRANSLIT', $filename);
     }
 
     public function updateTestReport(Request $request, Test $test, Document $document)
