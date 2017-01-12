@@ -87,7 +87,7 @@ class DocumentsController extends Controller
       // return response()->file("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
       //   ->header('Content-Type', 'application/pdf')
       //   ->header('Content-Disposition', 'inline');
-      $file_path = "https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext;
+      $file_path = $document->path . '/' . $document->file_name . '.' . $document->ext;
       if (1 === 1)
       {
         $file = Storage::get($file_path);
