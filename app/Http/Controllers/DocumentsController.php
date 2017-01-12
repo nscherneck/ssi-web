@@ -89,7 +89,7 @@ class DocumentsController extends Controller
 
         $command = $disk->getDriver()->getAdapter()->getClient()->getCommand('GetObject', [
             'Bucket'                     => config('filesystems.disks.s3.bucket'),
-            'Key'                        => $file,
+            'Key'                        => config('AWS_KEY'),
             'ResponseContentDisposition' =>  'inline; filename="' . $this->safeFilenameForS3Response($document->file_name . '.' . $document->ext) . '"',
         ]);
 
