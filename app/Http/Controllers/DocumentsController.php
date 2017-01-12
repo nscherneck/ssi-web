@@ -96,7 +96,7 @@ class DocumentsController extends Controller
 
         return $response;
       }
-  //Not a file....
+      echo "NOPE";
     }
 
     public function edit($id)
