@@ -83,9 +83,19 @@ class DocumentsController extends Controller
     public function showReport(Test $test, Document $document)
     {
       // return view('tests.reports.show', compact('test', 'document'))
-      return response()->file("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
-        ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'inline');
+      // return response()->file("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
+      //   ->header('Content-Type', 'application/pdf')
+      //   ->header('Content-Disposition', 'inline');
+      $file_path = "https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext;
+      if (File::isFile($file_path))
+      {
+        $file = File::get($file_path);
+        $response = Response::make($file, 200);
+        $response->header('Content-Type', 'application/pdf');
+
+        return $response;
+      }
+  //Not a file....
     }
 
     public function edit($id)
