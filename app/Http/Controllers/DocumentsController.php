@@ -83,9 +83,11 @@ class DocumentsController extends Controller
     public function showReport(Test $test, Document $document)
     {
       // return view('tests.reports.show', compact('test', 'document'))
-      return response("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
-        ->header('Content-Type', 'application/pdf')
-        ->header('Content-Disposition', 'inline');
+      // return response("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext)
+      //   ->header('Content-Type', 'application/pdf')
+      //   ->header('Content-Disposition', 'inline');
+      return response()
+        ->inline("https://s3-us-west-2.amazonaws.com/ssiwebstorage" . $document->path . '/' . $document->file_name . '.' . $document->ext), ['content-type' => 'application/pdf'];
     }
 
     public function edit($id)
