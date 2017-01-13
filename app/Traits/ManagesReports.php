@@ -14,7 +14,7 @@ use App\Test;
 trait ManagesReports
 {
 
-    public $destinationFolder = '/customer-data/test_reports';
+    public $destinationFolder = 'customer-data/test_reports';
     public $extension;
     public $file;
     public $reportName;
