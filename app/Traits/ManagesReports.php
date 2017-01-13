@@ -28,7 +28,7 @@ trait ManagesReports
       $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->site->customer->name))) . '_';
       $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->site->name))) . '_';
       $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->system->name))) . '_';
-      $this->reportName .= strtolower($test->test_type->name) . '_';
+      $this->reportName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $test->test_type->name))) . '_';
       $this->reportName .= date('Ymd_Gis');
     }
 
