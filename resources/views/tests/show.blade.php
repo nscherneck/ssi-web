@@ -103,48 +103,52 @@
         <p>Reports</p>
     </div>
 
-    <table class="table table-hover table-condensed">
+    <div class="table-responsive">
 
-      <thead>
-        <tr>
-          <th><small></small></th>
-          <th><small></small></th>
-          <th><small>Description</small></th>
-          <th><small>Added By</small></th>
-          <th><small></small></th>
-          <th><small></small></th>
-        </tr>
-      </thead>
+      <table class="table table-hover table-condensed">
 
-      <tbody>
-        @foreach($test->reports as $report)
+        <thead>
           <tr>
-          <td><i class="fa fa-file"></i></td>
-          <td><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/">{{ $report->file_name }}.{{ $report->ext }}</a></small></td>
-          <td width="40%"><small>{{ $report->description }}</small></td>
-          <td><small>{{ $report->addedBy->first_name }}</small></td>
-          <td>
+            <th><small></small></th>
+            <th><small></small></th>
+            <th><small>Description</small></th>
+            <th><small>Added By</small></th>
+            <th><small></small></th>
+            <th><small></small></th>
+          </tr>
+        </thead>
 
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
-              <i class="fa fa-cog fa-md"></i></button>
+        <tbody>
+          @foreach($test->reports as $report)
+            <tr>
+            <td><i class="fa fa-file"></i></td>
+            <td><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/">{{ $report->file_name }}.{{ $report->ext }}</a></small></td>
+            <td width="40%"><small>{{ $report->description }}</small></td>
+            <td><small>{{ $report->addedBy->first_name }}</small></td>
+            <td>
 
-          </td>
-          <td>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
+                <i class="fa fa-cog fa-md"></i></button>
 
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
-              <i class="fa fa-trash-o fa-md"></i></button>
+            </td>
+            <td>
 
-          </td>
-        </tr>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
+                <i class="fa fa-trash-o fa-md"></i></button>
 
-        @include('partials.modals.edit_test_report')
-        @include('partials.modals.delete_test_report')
+            </td>
+          </tr>
 
-        @endforeach
-      </tbody>
-    </table>
+          @include('partials.modals.edit_test_report')
+          @include('partials.modals.delete_test_report')
+
+          @endforeach
+        </tbody>
+      </table>
+
+    </div>
+
     @endif
-
 
     @if(count($test->deficiencies) > 0)
 
@@ -152,39 +156,44 @@
         <p>Deficiencies</p>
     </div>
 
-    <table class="table table-hover table-condensed">
-      <thead>
-        <tr>
-          <th></th>
-          <th><small>Description</small></th>
-          <th><small>Added By</small></th>
-          <th><small></small></th>
-          <th><small></small></th>
-        </tr>
-      </thead>
+    <div class="table-responsive">
 
-      <tbody>
-        @foreach($test->deficiencies as $deficiency)
+      <table class="table table-hover table-condensed">
+        <thead>
           <tr>
-          <td><i class="fa fa-exclamation-triangle"></i></td>
-          <td width="70%"><small>{{ $deficiency->description }}</small></td>
-          <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
-          <td>
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
-            <i class="fa fa-cog fa-md"></i></button>
-          </td>
-          <td>
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
-              <i class="fa fa-trash-o fa-md"></i></button>
-          </td>
-        </tr>
+            <th></th>
+            <th><small>Description</small></th>
+            <th><small>Added By</small></th>
+            <th><small></small></th>
+            <th><small></small></th>
+          </tr>
+        </thead>
 
-        @include('partials.modals.edit_deficiency')
-        @include('partials.modals.delete_deficiency')
+        <tbody>
+          @foreach($test->deficiencies as $deficiency)
+            <tr>
+            <td><i class="fa fa-exclamation-triangle"></i></td>
+            <td width="70%"><small>{{ $deficiency->description }}</small></td>
+            <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
+            <td>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
+              <i class="fa fa-cog fa-md"></i></button>
+            </td>
+            <td>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
+                <i class="fa fa-trash-o fa-md"></i></button>
+            </td>
+          </tr>
 
-        @endforeach
-      </tbody>
-    </table>
+          @include('partials.modals.edit_deficiency')
+          @include('partials.modals.delete_deficiency')
+
+          @endforeach
+        </tbody>
+      </table>
+
+    </div>
+
     @endif
 
     @if(count($test->testnotes) > 0)
@@ -193,43 +202,48 @@
         <p>Notes</p>
     </div>
 
-    <table class="table table-hover table-condensed">
-      <thead>
-        <tr>
-          <th></th>
-          <th><small>Note</small></th>
-          <th><small>Added By</small></th>
-          <th><small></small></th>
-          <th><small></small></th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($test->testnotes as $testnote)
+    <div class="table-responsive">
+
+      <table class="table table-hover table-condensed">
+        <thead>
           <tr>
-          <td><i class="fa fa-paperclip"></i></td>
-          <td width="70%"><small>{{ $testnote->note }}</small></td>
-          <td><small>{{ $testnote->addedBy->first_name }}</small></td>
-          <td>
+            <th></th>
+            <th><small>Note</small></th>
+            <th><small>Added By</small></th>
+            <th><small></small></th>
+            <th><small></small></th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($test->testnotes as $testnote)
+            <tr>
+            <td><i class="fa fa-paperclip"></i></td>
+            <td width="70%"><small>{{ $testnote->note }}</small></td>
+            <td><small>{{ $testnote->addedBy->first_name }}</small></td>
+            <td>
 
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
-            <i class="fa fa-cog fa-md"></i></button>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
+              <i class="fa fa-cog fa-md"></i></button>
 
-          </td>
-          <td>
+            </td>
+            <td>
 
-            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
-            <i class="fa fa-trash-o fa-md"></i></button>
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
+              <i class="fa fa-trash-o fa-md"></i></button>
 
-          </td>
-        </tr>
+            </td>
+          </tr>
 
-        @include('partials.modals.edit_note')
-        @include('partials.modals.delete_note')
+          @include('partials.modals.edit_note')
+          @include('partials.modals.delete_note')
 
 
-        @endforeach
-      </tbody>
-    </table>
+          @endforeach
+        </tbody>
+      </table>
+
+    </div>
+    
     @endif
 
 
