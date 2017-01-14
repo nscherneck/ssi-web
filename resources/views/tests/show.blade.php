@@ -59,6 +59,7 @@
       <i class="fa fa-cog fa-md"></i> Edit Test</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal">
       <i class="fa fa-trash-o fa-md"></i> Delete Test</button>
+      <hr>
 
   </div>
 
@@ -66,7 +67,7 @@
 
   <div class="col-md-8">
 
-    <div class="buttonBar text-right">
+    <div class="text-center">
 
       @if($test->test_result->name == "Pass with Deficiencies")
 
