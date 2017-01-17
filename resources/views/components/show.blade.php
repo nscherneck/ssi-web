@@ -97,7 +97,7 @@
     <div class="col-md-12">
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentDocumentModal">
-        <i class="icon-plus"></i></button>
+        <i class="fa fa-plus"></i></button>
       <br>
 
     </div>
