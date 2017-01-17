@@ -56,9 +56,9 @@
     </div>
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
-      <i class="fa fa-cog fa-md"></i> Edit Test</button>
+      <i class="icon-cog"></i> Edit Test</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal">
-      <i class="fa fa-trash-o fa-md"></i> Delete Test</button>
+      <i class="icon-trash"></i> Delete Test</button>
       <br><br>
 
   </div>
@@ -128,13 +128,13 @@
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
-                <i class="fa fa-cog fa-md"></i></button>
+                <i class="icon-cog"></i></button>
 
             </td>
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
-                <i class="fa fa-trash-o fa-md"></i></button>
+                <i class="icon-trash"></i></button>
 
             </td>
           </tr>
@@ -177,11 +177,11 @@
             <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
             <td>
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
-              <i class="fa fa-cog fa-md"></i></button>
+              <i class="icon-cog"></i></button>
             </td>
             <td>
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
-                <i class="fa fa-trash-o fa-md"></i></button>
+                <i class="icon-trash"></i></button>
             </td>
           </tr>
 
@@ -223,13 +223,13 @@
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
-              <i class="fa fa-cog fa-md"></i></button>
+              <i class="icon-cog"></i></button>
 
             </td>
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
-              <i class="fa fa-trash-o fa-md"></i></button>
+              <i class="icon-trash"></i></button>
 
             </td>
           </tr>
@@ -243,7 +243,7 @@
       </table>
 
     </div>
-    
+
     @endif
 
 
