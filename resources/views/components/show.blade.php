@@ -36,7 +36,7 @@
     <div class="pull-right">
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
-        <i class="fa fa-cog fa-md"></i></button>
+        <i class="icon-cog"></i></button>
 
     </div>
 
@@ -46,14 +46,64 @@
 </div>
 
   <div class="titleBar">
-      <p>Data Sheets</p>
+      <p>Documents</p>
   </div>
-  <br>
 
-  <div class="titleBar">
-      <p>Manuals</p>
+  <div class="row">
+
+    @if($documents->count() > 0)
+
+    <div class="col-md-12">
+
+      <div class="table-responsive">
+
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th><small>File</small></th>
+              <th><small>Description</small></th>
+              <th><small></small></th>
+              <th><small></small></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($documents as $document)
+            <tr>
+            <td width="40%"><a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
+              {{ $document->file_name }}.{{ $document->ext }}
+              </a>
+            </td>
+            <td width="54%">{{ $document->description }}</td>
+            <td width="3%">
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#">
+                <i class="icon-cog"></i></button>
+            </td>
+            <td width="3%">
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
+                <i class="icon-trash"></i></button>
+            </td>
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+        <hr>
+
+      </div>
+
+    </div>
+
+    @endif
+
+    <div class="col-md-12">
+
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentDocumentModal">
+        <i class="icon-plus"></i></button>
+      <br>
+
+    </div>
+
+
   </div>
-  <br>
 
   <div class="titleBar">
       <p>Where It's Installed</p>
@@ -92,5 +142,6 @@
 </div>
 
 @include('partials.modals.edit_component')
+@include('partials.modals.add_component_document')
 
 @stop

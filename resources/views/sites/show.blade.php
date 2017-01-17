@@ -70,9 +70,9 @@
     @endif
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSiteModal">
-      <i class="fa fa-cog fa-md"></i> Edit Site</button>
+      <i class="icon-cog"></i> Edit Site</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSiteModal">
-      <i class="fa fa-trash-o fa-md"></i> Delete Site</button>
+      <i class="icon-trash"></i> Delete Site</button>
     <br><br>
 
   </div>
@@ -158,7 +158,7 @@
             @endforeach
           </tbody>
         </table>
-      
+
       </div>
 
       <br>

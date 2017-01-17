@@ -11,6 +11,7 @@ use App\Customer;
 use App\Site;
 use App\System;
 use App\Component;
+use App\Document;
 use App\Manufacturer;
 use App\Component_category;
 use DB;
@@ -86,7 +87,11 @@ class ComponentsController extends Controller
 
   public function show(Component $component)
   {
-    return view('components.show', compact('component'));
+    $documents = Document::orderBy('file_name', 'desc')
+      ->where('documentable_id', '=', $component->id)
+      ->where('documentable_type', '=', 'App\Component')
+      ->get();
+    return view('components.show', compact('component', 'documents'));
   }
 
   public function update(Request $request, Component $component)

@@ -63,6 +63,8 @@ Route::post('update_component_form', 'ComponentsController@update_component_form
 Route::put('component/{component}', 'ComponentsController@update');
 Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');
 Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detach');
+Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
+
 
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');;

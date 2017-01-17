@@ -48,7 +48,7 @@
         <hr>
 
         <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
-          <i class="fa fa-cog fa-md"></i></button>
+          <i class="icon-cog"></i></button>
 
       </p>
 
@@ -70,9 +70,9 @@
 
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">
-      <i class="fa fa-cog fa-md"></i> Edit System</button>
+      <i class="icon-cog"></i> Edit System</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
-      <i class="fa fa-trash-o fa-md"></i> Delete System</button>
+      <i class="icon-trash"></i> Delete System</button>
     <br><br>
 
   </div>
@@ -154,7 +154,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -180,7 +180,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $modularpanel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -206,7 +206,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $controlequipment->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -232,7 +232,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $airsamplingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -258,7 +258,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -284,7 +284,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -310,7 +310,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $modules->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -336,7 +336,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $miscelectrical->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -362,7 +362,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $misc->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -388,7 +388,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -414,7 +414,7 @@
 
                 <form action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                  <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
                 </form>
 
               </td>
@@ -467,7 +467,7 @@
 
               <form action="/system/{{ $system->id }}/component/{{ $consumable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
               </form>
 
             </td>
@@ -522,7 +522,7 @@
 
               <form action="/system/{{ $system->id }}/component/{{ $tank->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
-                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o fa-md"></i></button>
+                <button type="submit" class="btn btn-default btn-xs"><i class="icon-trash"></i></button>
               </form>
 
             </td>

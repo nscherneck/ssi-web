@@ -21,5 +21,8 @@ class Component extends Model
     return $this->belongsTo('App\Manufacturer')->orderBy('name', 'asc');
   }
 
+  public function documents() {
+    return $this->morphMany('App\Document', 'documentable');
+  }
 
 }

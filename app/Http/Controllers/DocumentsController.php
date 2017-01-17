@@ -9,12 +9,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Input;
 
 use App\Traits\ManagesReports;
 use App\Http\Requests;
 use App\Customer;
 use App\Site;
 use App\System;
+use App\Component;
 use App\Test;
 use App\Document;
 use DB;
@@ -79,6 +81,37 @@ class DocumentsController extends Controller
 
       flash('Report Added', 'Success');
       return redirect()->route('test_show', ['id' => $test->id]);
+    }
+
+    public function storeComponentDocument(Request $request, Component $component)
+    {
+
+      // save file to storage (S3)
+      $file = Input::file('document');
+      $extension = $file->getClientOriginalExtension();
+      $documentName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+      $componentDocumentFolder = 'customer-data/component_documents';
+
+      Storage::putFileAs($componentDocumentFolder, $file, $documentName . '.' . $extension);
+      Storage::setVisibility($componentDocumentFolder . '/' . $documentName . '.' . $extension, 'public');
+
+      // save record to database
+      $document = new Document([
+
+        'documentable_id' => $component->id,
+        'documentable_type' => 'App\Component',
+        'description' => $request->description,
+        'path' => $componentDocumentFolder,
+        'file_name' => $documentName,
+        'ext' => $extension,
+        'added_by' => Auth::id()
+
+      ]);
+
+      $document->save();
+
+      flash('Document Added', 'Success');
+      return redirect()->route('component_show', ['id' => $component->id]);
     }
 
     public function showReport(Test $test, Document $document)
