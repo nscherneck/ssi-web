@@ -76,11 +76,11 @@
             <td width="54%">{{ $document->description }}</td>
             <td width="3%">
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#">
-                <i class="icon-cog"></i></button>
+                <i class="fa fa-cog"></i></button>
             </td>
             <td width="3%">
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
-                <i class="icon-trash"></i></button>
+                <i class="fa fa-trash"></i></button>
             </td>
             </tr>
             @endforeach
