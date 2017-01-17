@@ -56,9 +56,9 @@
     </div>
 
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
-      <i class="icon-cog"></i> Edit Test</button>
+      <i class="fa fa-cog"></i> Edit Test</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteTestModal">
-      <i class="icon-trash"></i> Delete Test</button>
+      <i class="fa fa-trash-o"></i> Delete Test</button>
       <br><br>
 
   </div>
@@ -72,28 +72,28 @@
       @if($test->test_result->name == "Pass with Deficiencies")
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
-        <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
+        <i class="fa fa-plus"></i> Add Deficiency</button>
 
       @elseif($test->test_result->name == "Fail with Deficiencies")
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
-        <i class="fa fa-exclamation-triangle"></i> Add Deficiency</button>
+        <i class="fa fa-plus"></i> Add Deficiency</button>
 
       @endif
 
       @if($test->test_result->name == "Pass with Deficiencies")
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">
-        <i class="fa fa-paperclip"></i> Add Note</button>
+        <i class="fa fa-plus"></i> Add Note</button>
 
       @elseif($test->test_result->name == "Pass with Notes")
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">
-        <i class="fa fa-paperclip"></i> Add Note</button>
+        <i class="fa fa-plus"></i> Add Note</button>
 
       @endif
 
       <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#addReportModal">
-        <i class="fa fa-folder-open-o"></i> Add Report</button>
+        <i class="fa fa-plus"></i> Add Report</button>
 
     </div>
 
@@ -128,13 +128,13 @@
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
-                <i class="icon-cog"></i></button>
+                <i class="fa fa-cog"></i></button>
 
             </td>
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
-                <i class="icon-trash"></i></button>
+                <i class="fa fa-trash-o"></i></button>
 
             </td>
           </tr>
@@ -177,11 +177,11 @@
             <td><small>{{ $deficiency->addedBy->first_name }}</small></td>
             <td>
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
-              <i class="icon-cog"></i></button>
+              <i class="fa fa-cog"></i></button>
             </td>
             <td>
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
-                <i class="icon-trash"></i></button>
+                <i class="fa fa-trash-o"></i></button>
             </td>
           </tr>
 
@@ -223,13 +223,13 @@
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
-              <i class="icon-cog"></i></button>
+              <i class="fa fa-cog"></i></button>
 
             </td>
             <td>
 
               <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
-              <i class="icon-trash"></i></button>
+              <i class="fa fa-trash-o"></i></button>
 
             </td>
           </tr>
