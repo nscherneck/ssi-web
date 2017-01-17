@@ -36,7 +36,7 @@
     <div class="pull-right">
 
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
-        <i class="icon-cog"></i></button>
+        <i class="fa fa-cog"></i></button>
 
     </div>
 
