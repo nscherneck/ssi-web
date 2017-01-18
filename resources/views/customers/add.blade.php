@@ -5,7 +5,7 @@
 
 @include('partials.nav')
 
-<div class="container-fluid">
+<div class="container">
 
   <div class="row">
     <div class="col-md-4">
@@ -45,10 +45,10 @@
       </div>
 
       * Zip:  <input required name="zip" type="text" value="" class="form-control"><br>
-      Phone:  <input name="phone" type="tel" value="" class="form-control"><br>
+      Phone:  <input name="phone" type="tel" value="" placeholder="XXX-XXX-XXXX" class="form-control"><br>
       Fax:  <input name="fax" type="tel" value="" class="form-control"><br>
-      Website:  <input name="web" type="url" value="" class="form-control"><br>
-      Email:  <input name="email" type="text" value="" class="form-control"><br>
+      Website:  <input name="web" type="url" value="" placeholder="http://www.example.com" class="form-control"><br>
+      Email:  <input name="email" type="email" value="" class="form-control"><br>
       Notes:  <textarea name="notes" class="form-control"></textarea><br>
       <br>
       <button type="submit" class="btn btn-primary">Create Customer</button>

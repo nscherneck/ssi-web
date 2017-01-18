@@ -12,6 +12,7 @@ use App\Site;
 use App\System;
 use App\Test;
 use App\Photo;
+use DB;
 
 class PagesController extends Controller
 {
@@ -87,7 +88,8 @@ class PagesController extends Controller
 
     public function admin()
     {
-      return view('admin');
+      $states = DB::table('states')->get();
+      return view('admin', compact('states'));
     }
 
 }

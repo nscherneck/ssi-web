@@ -29,7 +29,7 @@ Route::get('admin', 'PagesController@admin')->name('admin');
 Route::get('customers', 'CustomersController@index')->name('customers');
 Route::get('customer/{customer}', 'CustomersController@show')->name('customer_show');
 Route::get('customers/create', 'CustomersController@create');
-Route::post('customers/create', 'CustomersController@store');
+Route::post('customers', 'CustomersController@store');
 Route::put('customer/{customer}/update', 'CustomersController@update');
 Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 

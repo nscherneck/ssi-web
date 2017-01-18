@@ -16,19 +16,19 @@
 
         <div class="form-group">
 
-          Site Name: <input type="text" name="name" value="" class="form-control"><br>
-          Address: <input type="text" name="address1" value="" class="form-control"><br>
+          Site Name: <input required type="text" name="name" value="" class="form-control"><br>
+          Address: <input required type="text" name="address1" value="" class="form-control"><br>
           Address: <input type="text" name="address2" value="" class="form-control"><br>
-          City: <input type="text" name="city" value="" class="form-control"><br>
-          State:  <select name="state_id" class="form-control">
+          City: <input required type="text" name="city" value="" class="form-control"><br>
+          State:  <select required name="state_id" class="form-control">
             @foreach($states as $state)
               <option value="{{ $state->id }}">{{ $state->state }}</option>
             @endforeach
           </select><br>
-          Zip Code: <input type="text" name="zip" value="" class="form-control"><br>
-          Latitude: <input type="text" id="lat" name="lat" value="" class="form-control"><br>
-          Longitude: <input type="text" id="lon" name="lon" value="" class="form-control"><br>
-          Phone: <input type="text" name="phone" value="" class="form-control"><br>
+          Zip Code: <input required type="text" name="zip" value="" class="form-control"><br>
+          Latitude: <input required type="text" id="lat" name="lat" value="" placeholder="45.0000" class="form-control"><br>
+          Longitude: <input required type="text" id="lon" name="lon" value="" placeholder="-125.0000" class="form-control"><br>
+          Phone: <input type="text" name="phone" value="" placeholder="XXX-XXX-XXXX" class="form-control"><br>
           Fax: <input type="text" name="fax" value="" class="form-control"><br>
           Notes: <textarea name="notes" class="form-control"></textarea><br>
 
@@ -43,4 +43,4 @@
   </div>
 </div>
 
-<script src="{{ URL::asset('js/add_site_form.js') }}"></script>
+<!-- <script src="{{ URL::asset('js/add_site_form.js') }}"></script> -->

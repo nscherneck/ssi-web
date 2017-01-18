@@ -13,7 +13,7 @@
   <hr>
   <h5>Customers</h5>
   <ul>
-    <li><a href="/customers/create">Add a Customer</a></li>
+    <li><a data-toggle="modal" data-target="#addCustomerModal">Add a Customer</a></li>
   </ul>
 
   <h5>Systems</h5>
@@ -33,6 +33,10 @@
     <li><a href="#">Delete a Test Type</a></li>
     <li><a href="#">Add a Test Result</a></li>
     <li><a href="#">Delete a Test Result</a></li>
+  </ul>
+
 </div>
+
+@include('partials.modals.add_customer')
 
 @stop
