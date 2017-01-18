@@ -33,9 +33,9 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($components $component)
+            @foreach($components as $component)
               <tr>
-              <td width="15%"><small><a href="/component/{{ component->id }}">{{ $component->model }}</a></small></td>
+              <td width="15%"><small><a href="/component/{{ $component->id }}">{{ $component->model }}</a></small></td>
               <td width="60%"><small>
                 @if(strlen($component->description) > 125)
                   @php echo substr($component->description, 0, 125) . '. . .' @endphp
@@ -43,8 +43,8 @@
                   {{ $component->description }}
                 @endif
               </small></td>
-              <td width="15%"><small>{{ $panel->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
+              <td width="15%"><small>{{ $component->component_category->name }}</small></td>
+              <td width="10%"><small>@if ($component->discontinued === 1) Yes @else No @endif</small></td>
             </tr>
             @endforeach
           </tbody>

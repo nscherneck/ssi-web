@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
+use App\Manufacturer;
+use App\Component;
+use DB;
 
 class ManufacturersController extends Controller
 {
@@ -47,7 +49,7 @@ class ManufacturersController extends Controller
      */
     public function show(Manufacturer $manufacturer)
     {
-        $components = DB::table('component')
+        $components = Component::orderBy('model')
           ->where('manufacturer_id', $manufacturer->id)
           ->get();
         return view('manufacturers.show', compact('manufacturer', 'components'));
