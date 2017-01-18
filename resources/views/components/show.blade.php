@@ -14,7 +14,7 @@
   </div>
 
   <br>
-  <h4>{{ $component->manufacturer->name }}</h4>
+  <h4><a href="/manufacturers/{{ $manufacturer->id }}">{{ $component->manufacturer->name }}</a></h4>
   <h3>{{ $component->model }}</h3>
   <br>
 

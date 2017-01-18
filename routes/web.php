@@ -53,8 +53,9 @@ Route::post('createsystemtype', 'SystemTypesController@store');
 Route::put('system/{system}/next_test_date', 'SystemsController@updateNextTestDate');
 
 
-// COMPONENT ROUTES
+// MANUFCATURER AND COMPONENT ROUTES
 Route::get('createmanufacturer', 'ManufacturersController@create');
+Route::get('manufacturers/{manufacturer}', 'ManufacturersController@show');
 Route::get('createcomponent', 'ComponentsController@create_page');
 Route::post('createcomponent', 'ComponentsController@create');
 Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
