@@ -29,13 +29,13 @@
 
           <div class="form-group row">
             <div class="col-sm-12">
-              <input required name="address2" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Address" placeholder="Address">
+              <input name="address2" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Address" placeholder="Address">
             </div>
           </div>
 
           <div class="form-group row">
             <div class="col-sm-12">
-              <input required name="address3" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Address" placeholder="Address">
+              <input name="address3" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Address" placeholder="Address">
             </div>
           </div>
 
