@@ -105,5 +105,3 @@
     </div>
   </div>
 </div>
-
-<!-- <script src="{{ URL::asset('js/add_site_form.js') }}"></script> -->
