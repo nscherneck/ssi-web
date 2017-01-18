@@ -69,9 +69,11 @@
           <tbody>
             @foreach($documents as $document)
             <tr>
-            <td width="40%"><a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
+            <td width="40%"><small>
+              <a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
               {{ $document->file_name }}.{{ $document->ext }}
               </a>
+            </small>
             </td>
             <td width="54%">{{ $document->description }}</td>
             <td width="3%">
