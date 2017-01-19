@@ -140,6 +140,7 @@ class ManufacturersController extends Controller
       $manufacturer->phone = $request->phone;
       $manufacturer->fax = $request->fax;
       $manufacturer->web = $request->web;
+      $manufacturer->distributor_login = $request->distributor_login;
       $manufacturer->email = $request->email;
       $manufacturer->notes = $request->notes;
       $manufacturer->updated_by = Auth::id();
