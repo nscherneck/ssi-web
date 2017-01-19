@@ -14,14 +14,12 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
           <div class="form-group row">
-            <!-- <label for="name" class="col-sm-2 col-form-label">* Name</label> -->
             <div class="col-sm-12">
               <input required name="name" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Customer Name" placeholder="Customer Name">
             </div>
           </div>
 
           <div class="form-group row">
-            <!-- <label for="address1" class="col-sm-2 col-form-label">* Address</label> -->
             <div class="col-sm-12">
               <input required name="address1" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Address" placeholder="Address">
             </div>

@@ -16,4 +16,9 @@ class State extends Model
     {
       return $this->hasMany('App\Site');
     }
+
+    public function manufacturers()
+    {
+      return $this->hasMany('App\Manufacturer');
+    }
 }

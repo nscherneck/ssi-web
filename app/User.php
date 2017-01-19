@@ -47,10 +47,14 @@ class User extends Authenticatable
       return $this->hasMany('App\Test');
     }
 
-
     public function deficiencies() // technician who completed test
     {
       return $this->hasMany('App\Deficiency');
+    }
+
+    public function manufacturers() // technician who completed test
+    {
+      return $this->hasMany('App\Manufacturer');
     }
 
 }

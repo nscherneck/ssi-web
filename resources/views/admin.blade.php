@@ -13,7 +13,7 @@
   <hr>
   <h5>Customers</h5>
   <ul>
-    <li><a data-toggle="modal" data-target="#addCustomerModal">Add a Customer</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#addCustomerModal">Add a Customer</a></li>
   </ul>
 
   <h5>Systems</h5>
@@ -23,7 +23,8 @@
 
   <h5>Components</h5>
   <ul>
-    <li><a href="/createmanufacturer">Add a Manufacturer</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#addManufacturerModal">Add a Manufacturer</a></li>
+    <li><a href="/manufacturers">Manufacturer Index</a></li>
     <li><a href="/createcomponent">Add a Component</a></li>
   </ul>
 
@@ -38,5 +39,6 @@
 </div>
 
 @include('partials.modals.add_customer')
+@include('partials.modals.add_manufacturer')
 
 @stop
