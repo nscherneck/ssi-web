@@ -18,7 +18,7 @@
     <div class="col-md-12">
 
       <div class="titleBar">
-          <p>Components</p>
+          <p>Components ({{ $components->count() }})</p>
       </div>
 
       <div class="table-responsive">
