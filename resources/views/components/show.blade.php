@@ -46,12 +46,9 @@
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading">Where It's Installed</div>
-        <div class="panel-body">
+        <div class="panel-heading">Where It's Installed ({{ $component->systems->count() }})</div>
 
-          <div class="table-responsive">
-
-            <table class="table table-condensed">
+            <table class="table">
               <thead>
                 <tr>
                   <th><small>Customer</small></th>
@@ -70,8 +67,6 @@
               </tbody>
             </table>
 
-          </div>
-        </div>
       </div>
 
     </div>
@@ -79,14 +74,13 @@
     <div class="col-md-6">
 
       <div class="panel panel-default">
-        <div class="panel-heading">Documents</div>
-        <div class="panel-body">
+        <div class="panel-heading">Documents ({{ $documents->count() }})</div>
 
           @if($documents->count() > 0)
 
-          <div class="table-responsive">
+          <!-- <div class="table-responsive"> -->
 
-            <table class="table table-condensed">
+            <table class="table">
               <thead>
                 <tr>
                   <th><small>File</small></th>
@@ -116,15 +110,18 @@
               </tbody>
             </table>
 
-          </div>
+          <!-- </div> -->
 
           @endif
 
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentDocumentModal">
-            <i class="fa fa-plus"></i></button>
-          <br>
+          <div class="panel-body">
 
-        </div>
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentDocumentModal">
+              <i class="fa fa-plus"></i></button>
+            <br>
+
+          </div>
+
       </div>
 
       <div class="panel panel-default">

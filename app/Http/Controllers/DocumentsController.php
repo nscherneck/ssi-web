@@ -100,7 +100,6 @@ class DocumentsController extends Controller
 
         'documentable_id' => $component->id,
         'documentable_type' => 'App\Component',
-        'description' => $request->description,
         'path' => $componentDocumentFolder,
         'file_name' => $documentName,
         'ext' => $extension,

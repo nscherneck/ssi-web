@@ -46,6 +46,9 @@
                     @if($manufacturer->email)<strong>Email:</strong> <a href="mailto:{{ $manufacturer->email }}">{{ $manufacturer->email }}</a>@endif
                   </small>
                   </p>
+                  
+                  <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateManufacturerModal">
+                    <i class="fa fa-cog"></i></button>
 
                 </div>
               </div>
@@ -77,29 +80,19 @@
                 </div>
               </div>
 
-              <div class="pull-right">
-
-                <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateManufacturerModal">
-                  <i class="fa fa-cog"></i></button>
-
-              </div>
             </div>
 
       </div>
 
-      <div class="titleBar">
-          <p>Components ({{ $components->count() }})</p>
-      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Components ({{ $components->count() }})</div>
 
-      <div class="table-responsive">
-
-        <table class="table table-condensed">
+        <table class="table">
           <thead>
             <tr>
               <th><small><a href="/manufacturers/{{ $manufacturer->id }}?sort=model">Model</small></th>
               <th><small>Description</a></small></th>
               <th><small><a href="/manufacturers/{{ $manufacturer->id }}?sort=component_category_id">Category</a></small></th>
-              <th><small>Discontinued</small></th>
             </tr>
           </thead>
           <tbody>
@@ -113,14 +106,11 @@
                   {{ $component->description }}
                 @endif
               </small></td>
-              <td width="15%"><small>{{ $component->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($component->discontinued === 1) Yes @else No @endif</small></td>
+              <td width="25%"><small>{{ $component->component_category->name }}</small></td>
             </tr>
             @endforeach
           </tbody>
         </table>
-
-      </div>
 
 
     </div>

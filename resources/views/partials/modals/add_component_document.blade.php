@@ -9,7 +9,7 @@
       <div class="modal-header">
 
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title">Add Component Document</h5>
+        <h5 class="modal-title">Add Document</h5>
 
       </div>
 
@@ -22,10 +22,12 @@
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
             <input type="file" name="document" accept="file/*"><br>
-            Description:<br>
-            <textarea rows="4" name="description" style="width: 80%"></textarea><br><br>
 
-            <button type="submit" class="btn btn-primary">Add</button>
+        <div class="modal-footer">
+
+          <button type="submit" class="btn btn-primary">Add</button>
+
+        </div>
 
           </form>
 
