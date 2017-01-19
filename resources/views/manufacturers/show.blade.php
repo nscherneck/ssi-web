@@ -26,9 +26,9 @@
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th><small>Model</small></th>
-              <th><small>Description</small></th>
-              <th><small>Category</small></th>
+              <th><small><a href="/manufacturers/{{ $manufacturer->id }}?sort=model">Model</small></th>
+              <th><small>Description</a></small></th>
+              <th><small><a href="/manufacturers/{{ $manufacturer->id }}?sort=component_category_id">Category</a></small></th>
               <th><small>Discontinued</small></th>
             </tr>
           </thead>
@@ -37,8 +37,8 @@
               <tr>
               <td width="15%"><small><a href="/component/{{ $component->id }}">{{ $component->model }}</a></small></td>
               <td width="60%"><small>
-                @if(strlen($component->description) > 125)
-                  @php echo substr($component->description, 0, 125) . '. . .' @endphp
+                @if(strlen($component->description) > 110)
+                  @php echo substr($component->description, 0, 110) . '. . .' @endphp
                 @else
                   {{ $component->description }}
                 @endif

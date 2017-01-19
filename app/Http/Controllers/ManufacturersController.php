@@ -10,6 +10,12 @@ use DB;
 
 class ManufacturersController extends Controller
 {
+
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,12 +53,18 @@ class ManufacturersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Manufacturer $manufacturer)
+    public function show(Request $request, Manufacturer $manufacturer)
     {
+      if($request->has('sort')) {
+        $components = Component::orderBy($request->sort)
+          ->where('manufacturer_id', $manufacturer->id)
+          ->get();
+      } else {
         $components = Component::orderBy('model')
           ->where('manufacturer_id', $manufacturer->id)
           ->get();
-        return view('manufacturers.show', compact('manufacturer', 'components'));
+      }
+      return view('manufacturers.show', compact('manufacturer', 'components'));
     }
 
     /**

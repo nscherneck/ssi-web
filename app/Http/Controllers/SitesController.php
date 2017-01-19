@@ -24,9 +24,11 @@ class SitesController extends Controller
     public function index(Request $request)
     {
       if($request->has('sort')) {
-        $sites = Site::orderBy($request->sort)->paginate(20);
+        $sites = Site::orderBy($request->sort)
+        ->paginate(20);
       } else {
-        $sites = Site::orderBy('created_at', 'desc')->paginate(20);
+        $sites = Site::orderBy('created_at', 'desc')
+        ->paginate(20);
       }
       return view('sites.index', compact('sites'));
     }
