@@ -12,8 +12,8 @@
 
       var data = google.visualization.arrayToDataTable([
         ['System Type', 'Quantity'],
-        ['Fire Alarm', {{ $quantityFireAlarm }}],
         ['Clean Agent', {{ $quantityCleanAgent }}],
+        ['Fire Alarm', {{ $quantityFireAlarm }}],
         ['Inert Gas', {{ $quantityInertGas }}],
         ['Dry Chemical', {{ $quantityDryChem }}],
         ['Wet Chemical', {{ $quantityWetChem }}],
@@ -34,7 +34,8 @@
 
       var options = {
         title: 'Systems',
-        pieHole: 0.4
+        pieHole: 0.4,
+        pieStartAngle: 220
       };
 
       var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
