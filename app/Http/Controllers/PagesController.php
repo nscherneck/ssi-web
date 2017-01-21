@@ -71,6 +71,48 @@ class PagesController extends Controller
       return view('service', compact('tests', 'systemduefortest', 'recentphotos', 'recentsystems'));
     }
 
+    public function serviceMetrics()
+    {
+      $quantityFireAlarm = System::where('system_type_id', 1)->count();
+      $quantityCleanAgent = System::where('system_type_id', 2)->count();
+      $quantityInertGas = System::where('system_type_id', 3)->count();
+      $quantityDryChem = System::where('system_type_id', 4)->count();
+      $quantityWetChem = System::where('system_type_id', 5)->count();
+      $quantityAerosol = System::where('system_type_id', 6)->count();
+      $quantityFireSrinklerWet = System::where('system_type_id', 7)->count();
+      $quantityFireSrinklerDry = System::where('system_type_id', 8)->count();
+      $quantityFireSrinklerPreaction = System::where('system_type_id', 9)->count();
+      $quantityFireSrinklerDeluge = System::where('system_type_id', 10)->count();
+      $quantityFireSrinklerFoam = System::where('system_type_id', 11)->count();
+      $quantityFEX = System::where('system_type_id', 12)->count();
+      $quantityLoCO2 = System::where('system_type_id', 13)->count();
+      $quantityHiCO2 = System::where('system_type_id', 14)->count();
+      $quantityAirSampling = System::where('system_type_id', 15)->count();
+      $quantityHEF = System::where('system_type_id', 16)->count();
+      $quantityWatermist = System::where('system_type_id', 17)->count();
+      $quantityBackflow = System::where('system_type_id', 18)->count();
+      return view('service.metrics', compact(
+        'quantityFireAlarm',
+        'quantityCleanAgent',
+        'quantityInertGas',
+        'quantityDryChem',
+        'quantityWetChem',
+        'quantityAerosol',
+        'quantityFireSrinklerWet',
+        'quantityFireSrinklerDry',
+        'quantityFireSrinklerPreaction',
+        'quantityFireSrinklerDeluge',
+        'quantityFireSrinklerFoam',
+        'quantityFEX',
+        'quantityLoCO2',
+        'quantityHiCO2',
+        'quantityAirSampling',
+        'quantityHEF',
+        'quantityWatermist',
+        'quantityBackflow'
+        ));
+    }
+
     public function docs()
     {
       return view('docs');

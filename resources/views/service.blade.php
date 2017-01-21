@@ -8,7 +8,7 @@
 
 <div class="container-fluid">
 
-  <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
+  <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a> | <a href="/servicemetrics">Service Metrics</a>
 
   <div class="titleBar">
       <p>Recent Tests</p>
