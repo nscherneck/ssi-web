@@ -33,10 +33,11 @@
       ]);
 
       var options = {
-        title: 'Systems'
+        title: 'Systems',
+        pieHole: 0.4
       };
 
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 
       chart.draw(data, options);
     }
@@ -52,7 +53,7 @@
   <a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
   <br><br>
 
-  <div id="piechart" style="width: 800px; height: 500px;"></div>
+  <div id="donutchart" style="width: 800px; height: 500px;"></div>
 
 </div>
 
