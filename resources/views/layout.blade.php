@@ -20,6 +20,8 @@
 
     <title> @yield('title') </title>
 
+@yield('head')
+
   </head>
 
   <body style="padding-top: 50px">

@@ -2,6 +2,46 @@
 
 @section('title', 'SSI-Extranet | Service')
 
+@section('head')
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+
+      var data = google.visualization.arrayToDataTable([
+        ['System Type', 'Quantity'],
+        ['Fire Alarm', {{ $quantityFireAlarm }}],
+        ['Clean Agent', {{ $quantityCleanAgent }}],
+        ['Inert Gas', {{ $quantityInertGas }}],
+        ['Dry Chemical', {{ $quantityDryChem }}],
+        ['Wet Chemical', {{ $quantityWetChem }}],
+        ['Aerosol',{{ $quantityAerosol }}],
+        ['Fire Sprinkler (wet)', {{ $quantityFireSrinklerWet }}],
+        ['Fire Sprinkler (dry)', {{ $quantityFireSrinklerDry }}],
+        ['Fire Sprinkler (preaction)', {{ $quantityFireSrinklerPreaction }}],
+        ['Fire Sprinkler (deluge)', {{ $quantityFireSrinklerDeluge }}],
+        ['Fire Sprinkler (foam)', {{ $quantityFireSrinklerFoam }}],
+        ['Fire Extinguisher', {{ $quantityFEX }}],
+        ['Low-Pressure CO2', {{ $quantityLoCO2 }}],
+        ['High-Pressure CO2', {{ $quantityHiCO2 }}],
+        ['Air Sampling', {{ $quantityAirSampling }}],
+        ['High-Expansion Foam', {{ $quantityHEF }}],
+        ['Watermist', {{ $quantityWatermist }}],
+        ['Backflow Preventer', {{ $quantityBackflow }}]
+      ]);
+
+      var options = {
+        title: 'Systems'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
 @section('content')
 
 @include('partials.nav')
@@ -12,26 +52,7 @@
   <a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
   <br><br>
 
-  <p>
-    Fire Alarm: {{ $quantityFireAlarm }}<br>
-    Clean Agent: {{ $quantityCleanAgent }}<br>
-    Inert Gas: {{ $quantityInertGas }}<br>
-    Dry Chemical: {{ $quantityDryChem }}<br>
-    Wet Chemical: {{ $quantityWetChem }}<br>
-    Aerosol: {{ $quantityAerosol }}<br>
-    Fire Sprinker (wet): {{ $quantityFireSrinklerWet }}<br>
-    Fire Sprinkler (dry): {{ $quantityFireSrinklerDry }}<br>
-    Fire Sprinkler (preaction): {{ $quantityFireSrinklerPreaction }}<br>
-    Fire Sprinkler (deluge): {{ $quantityFireSrinklerDeluge }}<br>
-    Fire Sprinkler (foam): {{ $quantityFireSrinklerFoam }}<br>
-    Fire Extinguisher: {{ $quantityFEX }}<br>
-    Low-Pressure CO2: {{ $quantityLoCO2 }}<br>
-    High-Pressure CO2: {{ $quantityHiCO2 }}<br>
-    Air Sampling: {{ $quantityAirSampling }}<br>
-    High-Expansion Foam: {{ $quantityHEF }}<br>
-    Watermist: {{ $quantityWatermist }}<br>
-    Backflow Preventer: {{ $quantityBackflow }}<br>
-  </p>
+  <div id="piechart" style="width: 800px; height: 500px;"></div>
 
 </div>
 
