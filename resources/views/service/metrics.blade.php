@@ -65,10 +65,9 @@ google.charts.load('current', {'packages':['bar']});
         ]);
 
         var options = {
-          width: 900,
           axes: {
             y: {
-              distance: {label: 'Quantity'}, // Left y-axis.
+              distance: {label: ''}, // Left y-axis.
             }
           }
         };
@@ -94,7 +93,7 @@ google.charts.load('current', {'packages':['bar']});
 
 <div class="row">
 
-  <div class="col-sm-6">
+  <div class="col-lg-9">
 
 
 <div class="panel panel-default">
