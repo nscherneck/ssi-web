@@ -66,18 +66,9 @@ google.charts.load('current', {'packages':['bar']});
 
         var options = {
           width: 900,
-          chart: {
-            title: 'Quantity of Tests Over the Past Year',
-            subtitle: 'All System Types'
-          },
-          series: {
-            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
-            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
-          },
           axes: {
             y: {
-              distance: {label: 'parsecs'}, // Left y-axis.
-              brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+              distance: {label: 'Quantity'}, // Left y-axis.
             }
           }
         };
@@ -88,6 +79,8 @@ google.charts.load('current', {'packages':['bar']});
 
     }
   </script>
+
+@stop
 
 @section('content')
 
