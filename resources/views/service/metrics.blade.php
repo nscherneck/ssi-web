@@ -5,6 +5,7 @@
 @section('head')
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -42,40 +43,6 @@
 
       chart.draw(data, options);
 
-// -----------------------------------------
-
-google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Month', 'Quantity of Tests'],
-          ['-11', {{ $testsTotalTrailingTwelve[11] }}],
-          ['-10', {{ $testsTotalTrailingTwelve[10] }}],
-          ['-9', {{ $testsTotalTrailingTwelve[9] }}],
-          ['-8', {{ $testsTotalTrailingTwelve[8] }}],
-          ['-7', {{ $testsTotalTrailingTwelve[7] }}],
-          ['-6', {{ $testsTotalTrailingTwelve[6] }}],
-          ['-5', {{ $testsTotalTrailingTwelve[5] }}],
-          ['-4', {{ $testsTotalTrailingTwelve[4] }}],
-          ['-3', {{ $testsTotalTrailingTwelve[3] }}],
-          ['-2', {{ $testsTotalTrailingTwelve[2] }}],
-          ['-1', {{ $testsTotalTrailingTwelve[1] }}],
-          ['This Month', {{ $testsTotalTrailingTwelve[0] }}],
-        ]);
-
-        var options = {
-          axes: {
-            y: {
-              distance: {label: ''}, // Left y-axis.
-            }
-          }
-        };
-
-      var chart = new google.charts.Bar(document.getElementById('dual_y_div'));
-      chart.draw(data, options);
-    };
-
     }
   </script>
 
@@ -95,27 +62,90 @@ google.charts.load('current', {'packages':['bar']});
 
   <div class="col-lg-9">
 
+    <!-- Google Visualization donut chart -->
 
-<div class="panel panel-default">
-<div class="panel-heading">Total Systems</div>
-  <div class="panel-body">
+    <div class="panel panel-default">
+    <div class="panel-heading">Total Systems</div>
+      <div class="panel-body">
 
-    <div id="donutchart" style="width: 800px; height: 380px;"></div>
+        <div id="donutchart" style="width: 800px; height: 380px;"></div>
+
+      </div>
+    </div>
+
+    <!-- end -->
+
+    <canvas id="myBarChart" width="400" height="400"></canvas>
+
+    <script type="text/javascript">
+      var ctx = document.getElementById("myBarChart");
+      var myBarChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ["-11", "-10", "-9", "-8", "-7", "-6", "-5", "-4", "-3", "-2", "-1", "This Month"],
+              datasets: [{
+                  label: '# of Tests',
+                  data: [
+                    {{ $testsTotalTrailingTwelve[11] }},
+                    {{ $testsTotalTrailingTwelve[10] }},
+                    {{ $testsTotalTrailingTwelve[9] }},
+                    {{ $testsTotalTrailingTwelve[8] }},
+                    {{ $testsTotalTrailingTwelve[7] }},
+                    {{ $testsTotalTrailingTwelve[6] }},
+                    {{ $testsTotalTrailingTwelve[5] }},
+                    {{ $testsTotalTrailingTwelve[4] }},
+                    {{ $testsTotalTrailingTwelve[3] }},
+                    {{ $testsTotalTrailingTwelve[2] }},
+                    {{ $testsTotalTrailingTwelve[1] }},
+                    {{ $testsTotalTrailingTwelve[0] }}
+                  ],
+                  backgroundColor: [
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(54, 162, 235, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(54, 162, 235, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              responsive: true,
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero:true
+                      }
+                  }]
+              }
+          }
+      });
+
+    </script>
+
 
   </div>
-</div>
-
-<div class="panel panel-default">
-<div class="panel-heading">Tests By Month (Trailing 12)</div>
-  <div class="panel-body">
-
-    <div id="dual_y_div" style="width: 800px; height: 380px;"></div>
-
-  </div>
-</div>
-
-</div>
-
 </div>
 
 </div>
