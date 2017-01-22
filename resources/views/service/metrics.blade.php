@@ -12,28 +12,28 @@
 
       var data = google.visualization.arrayToDataTable([
         ['System Type', 'Quantity'],
-        ['Clean Agent', {{ $quantityCleanAgent }}],
-        ['Fire Alarm', {{ $quantityFireAlarm }}],
-        ['Inert Gas', {{ $quantityInertGas }}],
-        ['Dry Chemical', {{ $quantityDryChem }}],
-        ['Wet Chemical', {{ $quantityWetChem }}],
-        ['Aerosol',{{ $quantityAerosol }}],
-        ['Fire Sprinkler (wet)', {{ $quantityFireSrinklerWet }}],
-        ['Fire Sprinkler (dry)', {{ $quantityFireSrinklerDry }}],
-        ['Fire Sprinkler (preaction)', {{ $quantityFireSrinklerPreaction }}],
-        ['Fire Sprinkler (deluge)', {{ $quantityFireSrinklerDeluge }}],
-        ['Fire Sprinkler (foam)', {{ $quantityFireSrinklerFoam }}],
-        ['Fire Extinguisher', {{ $quantityFEX }}],
-        ['Low-Pressure CO2', {{ $quantityLoCO2 }}],
-        ['High-Pressure CO2', {{ $quantityHiCO2 }}],
-        ['Air Sampling', {{ $quantityAirSampling }}],
-        ['High-Expansion Foam', {{ $quantityHEF }}],
-        ['Watermist', {{ $quantityWatermist }}],
-        ['Backflow Preventer', {{ $quantityBackflow }}]
+        ['Clean Agent', {{ $quantitySystemType[0] }}],
+        ['Fire Alarm', {{ $quantitySystemType[1] }}],
+        ['Inert Gas', {{ $quantitySystemType[2] }}],
+        ['Dry Chemical', {{ $quantitySystemType[3] }}],
+        ['Wet Chemical', {{ $quantitySystemType[4] }}],
+        ['Aerosol',{{ $quantitySystemType[5] }}],
+        ['Fire Sprinkler (wet)', {{ $quantitySystemType[6] }}],
+        ['Fire Sprinkler (dry)', {{ $quantitySystemType[7] }}],
+        ['Fire Sprinkler (preaction)', {{ $quantitySystemType[8] }}],
+        ['Fire Sprinkler (deluge)', {{ $quantitySystemType[9] }}],
+        ['Fire Sprinkler (foam)', {{ $quantitySystemType[10] }}],
+        ['Fire Extinguisher', {{ $quantitySystemType[11] }}],
+        ['Low-Pressure CO2', {{ $quantitySystemType[12] }}],
+        ['High-Pressure CO2', {{ $quantitySystemType[13] }}],
+        ['Air Sampling', {{ $quantitySystemType[14] }}],
+        ['High-Expansion Foam', {{ $quantitySystemType[15] }}],
+        ['Watermist', {{ $quantitySystemType[16] }}],
+        ['Backflow Preventer', {{ $quantitySystemType[17] }}]
       ]);
 
       var options = {
-        title: 'Systems',
+        title: 'Systems ({{ $quantityTotal }})',
         pieHole: 0.4,
         pieStartAngle: 220
       };
@@ -41,6 +41,51 @@
       var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 
       chart.draw(data, options);
+
+// -----------------------------------------
+
+google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Month', 'Quantity of Tests'],
+          ['-11', {{ $testsTotalTrailingTwelve[11] }}],
+          ['-10', {{ $testsTotalTrailingTwelve[10] }}],
+          ['-9', {{ $testsTotalTrailingTwelve[9] }}],
+          ['-8', {{ $testsTotalTrailingTwelve[8] }}],
+          ['-7', {{ $testsTotalTrailingTwelve[7] }}],
+          ['-6', {{ $testsTotalTrailingTwelve[6] }}],
+          ['-5', {{ $testsTotalTrailingTwelve[5] }}],
+          ['-4', {{ $testsTotalTrailingTwelve[4] }}],
+          ['-3', {{ $testsTotalTrailingTwelve[3] }}],
+          ['-2', {{ $testsTotalTrailingTwelve[2] }}],
+          ['-1', {{ $testsTotalTrailingTwelve[1] }}],
+          ['This Month', {{ $testsTotalTrailingTwelve[0] }}],
+        ]);
+
+        var options = {
+          width: 900,
+          chart: {
+            title: '# of Tests Over the Past Year',
+            subtitle: 'Totes Magotes'
+          },
+          series: {
+            0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
+            1: { axis: 'brightness' } // Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            y: {
+              distance: {label: 'parsecs'}, // Left y-axis.
+              brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dual_y_div'));
+      chart.draw(data, options);
+    };
+
     }
   </script>
 
@@ -54,7 +99,32 @@
   <a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
   <br><br>
 
-  <div id="donutchart" style="width: 800px; height: 500px;"></div>
+<div class="row">
+
+  <div class="col-sm-6">
+
+
+<div class="panel panel-default">
+<div class="panel-heading">Total Systems</div>
+  <div class="panel-body">
+
+    <div id="donutchart" style="width: 800px; height: 380px;"></div>
+
+  </div>
+</div>
+
+<div class="panel panel-default">
+<div class="panel-heading">Tests By Month (Trailing 12)</div>
+  <div class="panel-body">
+
+    <div id="dual_y_div" style="width: 800px; height: 380px;"></div>
+
+  </div>
+</div>
+
+</div>
+
+</div>
 
 </div>
 
