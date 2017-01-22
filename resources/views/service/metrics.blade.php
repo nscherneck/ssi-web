@@ -67,8 +67,8 @@ google.charts.load('current', {'packages':['bar']});
         var options = {
           width: 900,
           chart: {
-            title: '# of Tests Over the Past Year',
-            subtitle: 'Totes Magotes'
+            title: 'Quantity of Tests Over the Past Year',
+            subtitle: 'All System Types'
           },
           series: {
             0: { axis: 'distance' }, // Bind series 0 to an axis named 'distance'.
