@@ -75,7 +75,7 @@
 
     <!-- end -->
 
-    <canvas id="myBarChart" width="400" height="400"></canvas>
+    <canvas id="myBarChart" height="300"></canvas>
 
     <script type="text/javascript">
       var ctx = document.getElementById("myBarChart");
