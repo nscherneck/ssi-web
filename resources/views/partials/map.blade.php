@@ -36,5 +36,5 @@ function initMap() {
 </script>
 
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKezKyMqT8mCqQlXgw9L3VDacLeNs-akU&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key={{ config('services.google_maps.key')}}&callback=initMap">
 </script>

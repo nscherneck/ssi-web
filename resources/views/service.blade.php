@@ -12,6 +12,8 @@
 
 @include('partials.nav')
 
+@include('partials.flash')
+
 <div class="container-fluid">
 
   <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
@@ -19,7 +21,7 @@
 
   <div class="row">
 
-    <div class="col-lg-4">
+    <div class="col-lg-4 no-gutter-right">
 
       <div class="panel panel-default panel-info">
       <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> Tests per Month</div>

@@ -2,6 +2,12 @@
 
 @section('title', 'SSI-Extranet | Customer Record')
 
+@section('head')
+
+<!-- <script src="{{ URL::asset('css/customers_map.css') }}"></script> -->
+
+@stop
+
 @section('content')
 
 @include('partials.nav')
@@ -21,157 +27,161 @@
 
 <div class="row">
 
-  <div class="col-md-3 no-gutter-right">
+  <div class="col-lg-3 no-gutter-right">
 
-    <div class="headerBar text-center">
-      <h3>{{ $customer->name }}</h3>
+    <div class="panel panel-primary text-center">
+      <div class="panel-heading"><h4>{{ $customer->name }}</h4></div>
     </div>
 
-    <div class="contentBar">
-      <p>
-        {{ $customer->address1 }}<br>
-        @if ($customer->address2)
-        {{ $customer->address2 }}<br>
-        @endif
-        @if ($customer->address3)
-        {{ $customer->address3 }}<br>
-        @endif
-        {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
-        <a href="http://{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
-      </p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Customer Info</div>
+      <div class="panel-body">
+        <p>
+          <small>
+            {{ $customer->address1 }}<br>
+            @if ($customer->address2)
+            {{ $customer->address2 }}<br>
+            @endif
+            @if ($customer->address3)
+            {{ $customer->address3 }}<br>
+            @endif
+            {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
+            <a href="http://{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
+          </small>
+        </p>
+      </div>
     </div>
 
-    <div class="contentBar">
-
-      <p><small>
-        <strong>Added:</strong> {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        <strong>Added By:</strong> {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
-        @if($customer->updated_by)
-        <hr>
-        <strong>Edited:</strong> {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        <strong>Edited By:</strong> {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
-        @endif
-      </small></p>
-
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <p>
+          <small>
+            <strong>Added:</strong> {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+            <strong>Added By:</strong> {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
+            @if($customer->updated_by)
+            <hr>
+            <strong>Edited:</strong> {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+            <strong>Edited By:</strong> {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
+            @endif
+          </small>
+        </p>
+      </div>
     </div>
 
     @if ($customer->notes)
-    <div class="contentBar">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <p>
+            <p><small>
+              <strong>Notes: </strong>
+            </small></p>
 
-      <p><small>
-        <strong>Notes: </strong>
-      </small></p>
-
-      <p><small>
-        {{ $customer->notes }}
-      </small></p>
-
+            <p><small>
+              {{ $customer->notes }}
+            </small></p>
+        </p>
+      </div>
     </div>
     @endif
 
+  <div class="text-center">
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">
       <i class="fa fa-cog"></i> Edit Customer</button>
     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
       <i class="fa fa-trash"></i> Delete Customer</button>
     <br><br>
+  </div>
 
   </div>
 
 <!--          RIGHT SIDE CONTENT         -->
 
-  <div class="col-md-9">
+  <div class="col-lg-9">
 
-    <style>
-  button.accordion {
-      background-color: #eee;
-      color: #444;
-      cursor: pointer;
-      padding: 10px;
-      width: 100%;
-      border:1px solid gray;
-      border-radius: 5px;
-      text-align: left;
-      outline: none;
-      font-size: 12px;
-      transition: 2.8s;
-  }
+    <div class="row">
 
-  button.accordion.active, button.accordion:hover {
-      background-color: #ddd;
-  }
+      <div class="col-lg-12">
 
-  div.panel {
-      padding: 0 2px;
-      display: none;
-      background-color: white;
-  }
+        @include('partials.customers_map')
 
-  div.panel.show {
-      display: block;
-  }
-  </style>
+      </div>
 
-<button class="accordion">Sites ({{ $customer->count_sites($customer->id) }})</button>
-<div class="panel show">
+      </div>
 
-  <div class="table-responsive">
+    <div class="row">
 
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th><small>Site Name</small></th>
-          <th><small>Address</small></th>
-          <th><small>City</small></th>
-          <th><small>State</small></th>
-          <th><small>Systems</small></th>
-          <th><small>Map</small></th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach($customer->sites as $site)
-          <tr>
-          <td><small><a href="/site/{{ $site->id }}/">{{ $site->name }}</a></small></td>
-          <td><small>{{ $site->address1 }}</small></td>
-          <td><small>{{ $site->city }}</small></td>
-          <td><small>{{ $site->state->abbreviated }}</small></td>
-          <td><small>{{ $site->count_systems($site->id) }}</small></td>
-          <td><small><a href="https://www.google.com/maps/place//@<?= $site->lat ?>,{{ $site->lon }},18z" target="blank">Map</a></small></td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
+      <div class="col-lg-8 no-gutter-right">
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Sites ({{ $customer->sites->count() }})</div>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th><small>Site Name</small></th>
+                  <th><small>Address</small></th>
+                  <th><small>City</small></th>
+                  <th><small>State</small></th>
+                  <th><small>Map</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($customer->sites as $site)
+                  <tr>
+                  <td><small><a href="/site/{{ $site->id }}/">{{ $site->name }}</a></small></td>
+                  <td><small>{{ $site->address1 }}</small></td>
+                  <td><small>{{ $site->city }}</small></td>
+                  <td><small>{{ $site->state->abbreviated }}</small></td>
+                  <td><small><a href="https://www.google.com/maps/place//@<?= $site->lat ?>,{{ $site->lon }},18z" target="blank">Map</a></small></td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+        </div>
+
+      </div>
+
+      <div class="col-lg-4">
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Documents</div>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th><small>File</small></th>
+                  <th><small></small></th>
+                  <th><small></small></th>
+                </tr>
+              </thead>
+              <tbody>
+{{--               @foreach($documents as $document)
+                <tr>
+                <td width="90%"><small>
+                  <a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
+                  {{ $document->file_name }}.{{ $document->ext }}
+                  </a>
+                </small>
+                </td>
+                <td width="5%">
+                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#">
+                    <i class="fa fa-cog"></i></button>
+                </td>
+                <td width="5%">
+                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
+                    <i class="fa fa-trash"></i></button>
+                </td>
+                </tr>
+                @endforeach --}}
+              </tbody>
+            </table>
+        </div>
+
+      </div>
 
   </div>
 
-  <br>
 
-  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteModal">Add Site</button>
-  <br><br>
 
-</div>
 
-<button class="accordion">Documents</button>
-<div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-
-<button class="accordion">Comments</button>
-<div class="panel">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<br><br>
-
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-    acc[i].onclick = function(){
-        this.classList.toggle("active");
-        this.nextElementSibling.classList.toggle("show");
-  }
-}
-</script>
 
   </div>
 
