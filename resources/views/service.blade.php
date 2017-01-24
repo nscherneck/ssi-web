@@ -2,13 +2,89 @@
 
 @section('title', 'SSI-Extranet | Service')
 
+@section('head')
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+
+@stop
+
 @section('content')
 
 @include('partials.nav')
 
 <div class="container-fluid">
 
-  <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a> | <a href="/servicemetrics">Service Metrics</a>
+  <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
+  <br><br>
+
+  <div class="row">
+
+    <div class="col-lg-4">
+
+      <div class="panel panel-default panel-info">
+      <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> Tests per Month</div>
+        <div class="panel-body">
+
+        <canvas id="myBarChart" width="250" height="150"></canvas>
+
+      </div>
+    </div>
+
+    @include('scripts.tests_per_month_chart')
+
+    <div class="panel panel-default panel-info">
+    <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> Total Systems by Type ({{ $quantityTotal }})</div>
+      <div class="panel-body">
+
+        <div>
+          <canvas id="myDonutChart" width="500" height="300"></canvas>
+        </div>
+
+      </div>
+    </div>
+
+  @include('scripts.systems_by_category_chart')
+
+  </div>
+
+  <div class="col-lg-8">
+
+    <div class="titleBar">
+        <p>Systems Due For Test</p>
+    </div>
+
+    <div class="table-responsive">
+
+      <table class="table table-hover table-condensed" style="font-size: 11px">
+        <thead>
+          <tr>
+            <th>Due</th>
+            <th>System</th>
+            <th>System Type</th>
+            <th>Components</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($systemduefortest as $system)
+            <tr>
+            <td>{{ $system->next_test_date->format('F') }}</td>
+            <td>
+              <a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a>  -
+                <a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a>  -
+                  <a href="/system/{{ $system->id }}">{{ $system->name }}</a>
+            </td>
+            <td>{{ $system->system_type->type }}</td>
+            <td>{{ $system->count_components() }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+
+    </div>
+
+  </div>
+
+</div>
 
   <div class="titleBar">
       <p>Recent Tests</p>
@@ -55,41 +131,6 @@
 
   </div>
 
-
-
-      <div class="titleBar">
-          <p>Systems Due For Test</p>
-      </div>
-
-      <div class="table-responsive">
-
-        <table class="table table-hover table-condensed" style="font-size: 11px">
-          <thead>
-            <tr>
-              <th>Due</th>
-              <th>System</th>
-              <th>System Type</th>
-              <th>Components</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($systemduefortest as $system)
-              <tr>
-              <td>{{ $system->next_test_date->format('F') }}</td>
-              <td>
-                <a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a>  -
-                  <a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a>  -
-                    <a href="/system/{{ $system->id }}">{{ $system->name }}</a>
-              </td>
-              <td>{{ $system->system_type->type }}</td>
-              <td>{{ $system->count_components() }}</td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-
-      </div>
-
   <div class="titleBar">
     <p>Recently Added Systems</p>
   </div>
@@ -122,6 +163,8 @@
     </table>
 
   </div>
+
+</div>
 
 </div>
 
