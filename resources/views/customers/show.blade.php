@@ -192,6 +192,32 @@
 
         </div>
 
+        <div class="panel panel-info">
+          <div class="panel-heading">Comments</div>
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th><small></small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <td>
+                </td>
+                </tr>
+              </tbody>
+            </table>
+
+          <div class="panel-body">
+
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerCommentDocumentModal">
+              <i class="fa fa-plus"></i></button>
+            <br>
+
+          </div>
+
+        </div>
+
 
 
       </div>

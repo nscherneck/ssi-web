@@ -51,11 +51,13 @@
 
   <div class="col-lg-8">
 
-    <div class="titleBar">
-        <p>Systems Due For Test</p>
-    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading"><i class="fa fa-tag" aria-hidden="true"></i> Systems Due For Test</div>
+        <div class="panel-body">
 
-    <div class="table-responsive">
+          @include('partials.systems_due_map')
+
+        </div>
 
       <table class="table table-hover table-condensed" style="font-size: 11px">
         <thead>
@@ -83,10 +85,9 @@
       </table>
 
     </div>
-
   </div>
 
-</div>
+  </div>
 
   <div class="titleBar">
       <p>Recent Tests</p>
