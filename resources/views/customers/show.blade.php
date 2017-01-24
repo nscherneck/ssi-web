@@ -22,7 +22,6 @@
     <li>{{ $customer->name }}</li>
   </ol>
 
-
 <!--          LEFT SIDE CONTENT         -->
 
 <div class="row">
@@ -136,6 +135,15 @@
                 @endforeach
               </tbody>
             </table>
+
+            <div class="panel-body">
+
+              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteModal">
+                <i class="fa fa-plus"></i></button>
+              <br>
+
+            </div>
+
         </div>
 
       </div>
@@ -173,7 +181,18 @@
                 @endforeach --}}
               </tbody>
             </table>
+
+          <div class="panel-body">
+
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerDocumentModal">
+              <i class="fa fa-plus"></i></button>
+            <br>
+
+          </div>
+
         </div>
+
+
 
       </div>
 
