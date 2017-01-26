@@ -89,7 +89,6 @@
                 <tr>
                   <th><small>File</small></th>
                   <th><small></small></th>
-                  <th><small></small></th>
                 </tr>
               </thead>
               <tbody>
@@ -100,10 +99,6 @@
                   {{ $document->file_name }}.{{ $document->ext }}
                   </a>
                 </small>
-                </td>
-                <td width="5%">
-                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#">
-                    <i class="fa fa-cog"></i></button>
                 </td>
                 <td width="5%">
                   <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
