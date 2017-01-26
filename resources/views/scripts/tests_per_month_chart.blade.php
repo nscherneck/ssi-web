@@ -1,5 +1,9 @@
   <script type="text/javascript">
+  
     var ctx = document.getElementById("myBarChart");
+
+    Chart.defaults.global.legend.display = false;
+
     var myBarChart = new Chart(ctx, {
         type: 'bar',
         data: {

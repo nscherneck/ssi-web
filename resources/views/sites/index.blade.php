@@ -6,11 +6,14 @@
 
 @include('partials.nav')
 
-  <div class="container">
+  <div class="container-fluid">
 
-    <br><a href="/customers">Customers Index</a> | <a href="/sites">Sites Index</a>
+    <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin: 10px 0; text-decoration: none;">
+      <button type="button" class="btn btn-default"><a href="/customers" style="text-decoration: none;">Customers Index</a></button>
+      <button type="button" class="btn btn-default"><a href="/sites" style="text-decoration: none;">Sites Index</a></button>
+    </div>
 
-    <div class="titleBar">
+    <div class="titleBar" style="margin-top: 0;">
         <p>Sites Index</p>
     </div>
 
