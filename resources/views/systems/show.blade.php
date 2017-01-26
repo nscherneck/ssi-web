@@ -82,6 +82,7 @@
         <i class="fa fa-cog"></i></button>
       <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
         <i class="fa fa-trash-o"></i></button>
+      <br><br>
 
     </div>
 
