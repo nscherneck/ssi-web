@@ -30,13 +30,13 @@
   <table class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th><a href="{{ $sites->appends(['sort' => 'created_at'])->url($sites->currentPage()) }}"><small>Created</small></a></th>
-        <th><a href="{{ $sites->appends(['sort' => 'customer_id'])->url($sites->currentPage()) }}"><small>Customer</small></a></th>
+        <th><small>Created</small></th>
+        <th><small>Customer</small></th>
         <th><small>Site</small></th>
         <th><small>Address</small></th>
-        <th><a href="{{ $sites->appends(['sort' => 'city'])->url($sites->currentPage()) }}"><small>City</small></a></th>
-        <th><a href="{{ $sites->appends(['sort' => 'state_id'])->url($sites->currentPage()) }}"><small>State</small></a></th>
-        <th><a href="{{ $sites->appends(['sort' => 'zip'])->url($sites->currentPage()) }}"><small>Zip</small></a></th>
+        <th><small>City</small></th>
+        <th><small>State</small></th>
+        <th><small>Zip</small></th>
         <th><small>Systems</small></th>
       </tr>
     </thead>
@@ -57,8 +57,6 @@
   </table>
 
   <div class="col-md-12 text-center">
-
-    {{ $sites->appends(['sort' => request('sort', 'created_at')])->links() }}
 
   </div>
 
