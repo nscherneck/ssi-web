@@ -13,6 +13,16 @@
       <button type="button" class="btn btn-default"><a href="/sites" style="text-decoration: none;">Sites Index</a></button>
     </div>
 
+    <div class="panel panel-info">
+      <div class="panel-heading"><i class="fa fa-tag" aria-hidden="true"></i>All Sites</div>
+      <div class="panel-body">
+
+        @include('partials.sites_index_map')
+
+      </div>
+    </div>
+
+
     <div class="titleBar" style="margin-top: 0;">
         <p>Sites Index</p>
     </div>
