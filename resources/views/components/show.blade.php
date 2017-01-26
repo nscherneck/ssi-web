@@ -39,13 +39,17 @@
             </small>
           </p>
 
+        </div>
+
+        <div class="panel-footer">
+
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
             <i class="fa fa-cog"></i></button>
 
         </div>
       </div>
 
-      <div class="panel panel-default">
+      <div class="panel panel-info">
         <div class="panel-heading">Where It's Installed ({{ $component->systems->count() }})</div>
 
             <table class="table">
@@ -114,7 +118,7 @@
 
           @endif
 
-          <div class="panel-body">
+          <div class="panel-footer">
 
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentDocumentModal">
               <i class="fa fa-plus"></i></button>
@@ -128,8 +132,16 @@
         <div class="panel-heading">Comments</div>
         <div class="panel-body">
 
+        </div>
+
+        <div class="panel-footer">
+
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentCommentDocumentModal">
+            <i class="fa fa-plus"></i></button>
+          <br>
 
         </div>
+
       </div>
 
     </div>
