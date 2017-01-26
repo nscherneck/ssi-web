@@ -24,56 +24,66 @@
 
   <div class="col-md-3 no-gutter-right">
 
-    <div class="headerBar text-center">
-      <h3>{{ $system->name }}</h3>
+    <div class="panel panel-primary text-center">
+      <div class="panel-heading"><h4>{{ $system->name }}</h4></div>
     </div>
 
-    <div class="contentBar">
-
-      <p><small>
-        <strong>System Type:</strong> {{ $system->system_type->type }}<br>
-        <strong>Installation Date:</strong> {{ $system->install_date->format('F d, Y') }}<br>
-        <hr>
-        <strong>Installed by SSI:</strong>@if ($system->ssi_install == 1) Yes @else No @endif<br>
-        <strong>Testing by SSI:</strong>@if ($system->ssi_test_acct == 1) Yes @else No @endif<br>
-      </small></p>
-
+    <div class="panel panel-primary">
+      <div class="panel-heading">Site Info</div>
+      <div class="panel-body">
+        <p>
+          <small>
+            <strong>System Type:</strong> {{ $system->system_type->type }}<br>
+            <strong>Installation Date:</strong> {{ $system->install_date->format('F d, Y') }}<br>
+            <hr>
+            <strong>Installed by SSI:</strong>@if ($system->ssi_install == 1) Yes @else No @endif<br>
+            <strong>Testing by SSI:</strong>@if ($system->ssi_test_acct == 1) Yes @else No @endif<br>
+          </small>
+        </p>
+      </div>
     </div>
 
     @if ($system->next_test_date)
-    <div class="contentBar text-center">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <p>
+          <strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}
 
-      <p><strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}
+          <hr>
 
-        <hr>
+          <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
+            <i class="fa fa-cog"></i></button>
 
-        <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
-          <i class="fa fa-cog"></i></button>
-
-      </p>
-
+        </p>
+      </div>
     </div>
     @endif
 
-    <div class="contentBar">
-
-      <p><small>
-        <strong>Added:</strong> {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        <strong>Added By:</strong> {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br>
-        @if ($system->updated_by)
-        <hr>
-        <strong>Edited:</strong> {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-        <strong>Edited By:</strong> {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br>
-        @endif
-      </small></p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Site Info</div>
+      <div class="panel-body">
+        <p>
+          <small>
+            <strong>Added:</strong> {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+            <strong>Added By:</strong> {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br>
+            @if ($system->updated_by)
+            <hr>
+            <strong>Edited:</strong> {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
+            <strong>Edited By:</strong> {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br>
+            @endif
+          </small>
+        </p>
+      </div>
     </div>
 
+    <div class="text-center">
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">
-      <i class="fa fa-cog"></i> Edit System</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
-      <i class="fa fa-trash-o"></i> Delete System</button>
-    <br><br>
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemModal">
+        <i class="fa fa-cog"></i></button>
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
+        <i class="fa fa-trash-o"></i></button>
+
+    </div>
 
   </div>
 
@@ -81,40 +91,9 @@
 
 <div class="col-md-9">
 
-<style>
-  button.accordion {
-      background-color: #eee;
-      color: #444;
-      cursor: pointer;
-      padding: 6px;
-      width: 100%;
-      border:1px solid gray;
-      border-radius: 5px;
-      text-align: center;
-      outline: none;
-      font-size: 10px;
-      transition: 0.4s;
-  }
-
-  button.accordion.active, button.accordion:hover {
-      background-color: #999;
-      color: #fff;
-
-  }
-
-  div.panel {
-      padding: 8px 4px;
-      display: none;
-      background-color: white;
-  }
-
-  div.panel.show {
-      display: block;
-  }
-</style>
-
-  <button class="accordion">Components ({{ $system->count_components() }})</button>
-  <div class="panel">
+  <div class="titleBar" style="margin-top: 0">
+    <p>Components ({{ $system->count_components() }})</p>
+  </div>
 
     <h5>Detection & Controls</h5>
 
@@ -536,108 +515,161 @@
 
   @endif
 
+  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#attachComponentModal">
+  <i class="fa fa-plus" aria-hidden="true"></i>
+  </button>
   <hr>
-  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#attachComponentModal">Attach Component</button>
 
-  </div>
+  <div class="row">
 
-  <button class="accordion">Tests & Inspections ({{ count($system->tests) }})</button>
-  <div class="panel">
+    <div class="col-lg-6 no-gutter-right">
 
-    <div class="table-responsive">
+      <div class="panel panel-info">
+        <div class="panel-heading">Tests & Inspections ({{ count($system->tests) }})</div>
 
-      <table class="table table-striped table-condensed">
-        <thead>
-          <tr>
-            <th><small>Test Date</small></th>
-            <th><small>Technician</small></th>
-            <th><small>Type</small></th>
-            <th><small>Result</small></th>
-            <th><small>Added By</small></th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($system->tests as $test)
+          <table class="table table-condensed">
+            <thead>
+              <tr>
+                <th><small>Test Date</small></th>
+                <th><small>Technician</small></th>
+                <th><small>Type</small></th>
+                <th><small>Result</small></th>
+                <th><small>Added By</small></th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($system->tests as $test)
+                <tr>
+                <td><small><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
+                <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
+                <td><small>{{ $test->test_type->name }}</small></td>
+                <td><small>{{ $test->test_result->name }}</small></td>
+                <td><small>{{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}</small></td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+
+        <div class="panel-footer text-left">
+
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestModal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+
+        </div>
+
+      </div> <!-- END OF PANEL -->
+
+    </div> <!-- END OF COL-6 -->
+
+    <div class="col-lg-6 no-gutter-right">
+
+      <div class="panel panel-info">
+      <div class="panel-heading">System Documents</div>
+
+        <table class="table table-condensed">
+          <thead>
             <tr>
-            <td><small><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
-            <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
-            <td><small>{{ $test->test_type->name }}</small></td>
-            <td><small>{{ $test->test_result->name }}</small></td>
-            <td><small>{{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}</small></td>
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+              <th><small>Name</small></th>
+              <th><small>-</small></th>
+              <th><small>-</small></th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
 
-    </div>
+      <div class="panel-body"></div>
 
-    <hr>
+      <div class="panel-footer text-left">
 
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestModal">Add Test</button>
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemDocumentModal">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+        </button>
 
-  </div>
+      </div>
 
-  <button class="accordion">Documents (0)</button>
-  <div class="panel">
+      </div> <!-- END OF PANEL -->
 
-    Lorem ipsum dolor amet. 3<br>
-    Lorem ipsum dolor amet. 3<br>
+    </div> <!-- END OF COL-6 -->
 
-    <hr>
-    <a href="#"><small>Add a Document</small></a>
+  </div> <!-- END OF ROW -->
 
-  </div>
+  <!-- PHOTOS PANEL -->
 
-  <button class="accordion">Photos ({{ count($system->photos) }})</button>
-  <div class="panel">
+      <div class="panel panel-info">
+        <div class="panel-heading">System Photos ({{ count($system->photos) }})</div>
+        <div class="panel-body text-center">
 
-      @if($photos->count() > 0)
+          @if($photos->count() > 0)
 
-        @foreach($photos as $photo)
+            @foreach($photos as $photo)
 
-          <div id="systemPhoto">
-            <a href="/system/photo/{{ $photo->id }}/">
-            <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/thumbnails/thumb-{{ $photo->file_name }}.{{ $photo->ext }}" width="178px" height="auto"></a><br><br>
-            <p><small><strong>{{ $photo->caption }}</strong><br>
-            {{ $photo->getSize() }}</small></p>
+              <div id="systemPhoto">
+                <a href="/system/photo/{{ $photo->id }}/">
+                <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/thumbnails/thumb-{{ $photo->file_name }}.{{ $photo->ext }}" width="178px" height="auto"></a><br><br>
+                <p><small><strong>{{ $photo->caption }}</strong><br>
+                {{ $photo->getSize() }}</small></p>
+              </div>
+
+            @endforeach
+
+          @endif
+
+        </div>
+
+        <div class="panel-footer text-left">
+
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemPhotoModal">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </button>
+
+        </div>
+
+      </div> <!-- END OF PANEL -->
+
+      <div class="row">
+
+        <div class="col-lg-6 no-gutter-right">
+
+          <div class="panel panel-info">
+          <div class="panel-heading">System Comments</div>
+
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th><small>Job #</small></th>
+                  <th><small>Name</small></th>
+                  <th><small>Scope of Work</small></th>
+                  <th><small>Stage</small></th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+
+          <div class="panel-body"></div>
+
+          <div class="panel-footer text-left">
+
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemCommentModal">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+
           </div>
 
-        @endforeach
+          </div> <!-- END OF PANEL -->
 
-      @endif
+        </div> <!-- END OF COL-6 -->
 
-    <hr>
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemPhotoModal">Add Photo</button>
+    </div> <!-- END OF ROW -->
 
-  </div>
+</div> <!-- END OF COL-9 -->
 
-  <button class="accordion">Comments (0)</button>
-  <div class="panel">
 
-    Lorem ipsum dolor amet. 5<br>
-    Lorem ipsum dolor amet. 5<br>
 
-    <hr>
-    <a href="#"><small>Add a Comment</small></a>
-
-  </div>
-  <br><br>
-
-  <script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-
-  for (i = 0; i < acc.length; i++) {
-      acc[i].onclick = function(){
-          this.classList.toggle("active");
-          this.nextElementSibling.classList.toggle("show");
-    }
-  }
-  </script>
-
-    </div>
-  </div>
-</div>
+  </div> <!-- END OF MAIN ROW -->
+</div> <!-- END OF CONTAINER -->
 
 @if ($system->next_test_date)
   @include('partials.modals.edit_next_test_date')

@@ -130,9 +130,13 @@
 }
 
 @media (min-width: 800px) {
-  
+
   .no-gutter-right {
       padding-right:0;
+  }
+
+  .no-margin-top{
+    margin-top: 0;
   }
 
 }
