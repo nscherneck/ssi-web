@@ -44,8 +44,8 @@
     </div>
 
     @if ($system->next_test_date)
-    <div class="panel panel-primary">
-      <div class="panel-body">
+    <div class="panel panel-danger">
+      <div class="panel-body text-center">
         <p>
           <strong>Next Test Due:</strong> {{ $system->next_test_date->format('F Y') }}
 
