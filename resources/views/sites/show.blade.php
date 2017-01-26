@@ -126,7 +126,7 @@
 
     <div class="row">
 
-      <div class="col-lg-6">
+      <div class="col-lg-6 no-gutter-right">
 
         <div class="panel panel-info">
           <div class="panel-heading">Systems ({{ $site->systems->count() }})</div>
@@ -165,7 +165,7 @@
       <div class="col-lg-6">
 
         <div class="panel panel-info">
-        <div class="panel-heading">Jobs(0)</div>
+        <div class="panel-heading">Jobs (0)</div>
 
           <table class="table table-condensed">
             <thead>
@@ -199,7 +199,7 @@
 
         <div class="row">
 
-          <div class="col-lg-6">
+          <div class="col-lg-6 no-gutter-right">
 
             <div class="panel panel-info">
             <div class="panel-heading">Site Documents</div>
