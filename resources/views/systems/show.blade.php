@@ -638,10 +638,8 @@
             <table class="table table-condensed">
               <thead>
                 <tr>
-                  <th><small>Job #</small></th>
-                  <th><small>Name</small></th>
-                  <th><small>Scope of Work</small></th>
-                  <th><small>Stage</small></th>
+                  <th><small>Comment</small></th>
+                  <th><small>By</small></th>
                 </tr>
               </thead>
               <tbody>
