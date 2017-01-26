@@ -408,7 +408,6 @@
 
       @if ($system->compConsumable()->count() > 0)
 
-      <br>
       <h5>Renewable Components</h5>
 
     <div class="table-responsive">
