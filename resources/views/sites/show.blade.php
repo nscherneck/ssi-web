@@ -152,7 +152,7 @@
               </tbody>
             </table>
 
-          <div class="panel-body">
+          <div class="panel-footer">
 
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
 
@@ -191,8 +191,12 @@
     <!-- PHOTOS PANEL -->
 
         <div class="panel panel-info">
-          <div class="panel-heading">Site Photos</div>
+          <div class="panel-heading">Site Photos (0)</div>
           <div class="panel-body">
+          </div>
+
+          <div class="panel-footer">
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSitePhotoModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
           </div>
 
         </div> <!-- END OF PANEL -->
@@ -202,7 +206,7 @@
           <div class="col-lg-6 no-gutter-right">
 
             <div class="panel panel-info">
-            <div class="panel-heading">Site Documents</div>
+            <div class="panel-heading">Site Documents (0)</div>
 
               <table class="table table-condensed">
                 <thead>
@@ -217,7 +221,9 @@
                 </tbody>
               </table>
 
-            <div class="panel-body"></div>
+              <div class="panel-footer">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteDocumentModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              </div>
 
             </div> <!-- END OF PANEL -->
 
@@ -226,22 +232,22 @@
           <div class="col-lg-6">
 
             <div class="panel panel-info">
-            <div class="panel-heading">Site Comments</div>
+            <div class="panel-heading">Site Comments (0)</div>
 
               <table class="table table-condensed">
                 <thead>
                   <tr>
-                    <th><small>Job #</small></th>
-                    <th><small>Name</small></th>
-                    <th><small>Scope of Work</small></th>
-                    <th><small>Stage</small></th>
+                    <th><small>Comment</small></th>
+                    <th><small>By</small></th>
                   </tr>
                 </thead>
                 <tbody>
                 </tbody>
               </table>
 
-            <div class="panel-body"></div>
+              <div class="panel-footer">
+                <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteCommentModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
+              </div>
 
             </div> <!-- END OF PANEL -->
 

@@ -136,7 +136,7 @@
               </tbody>
             </table>
 
-            <div class="panel-body">
+            <div class="panel-footer">
 
               <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteModal">
                 <i class="fa fa-plus"></i></button>
@@ -182,7 +182,7 @@
               </tbody>
             </table>
 
-          <div class="panel-body">
+          <div class="panel-footer">
 
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerDocumentModal">
               <i class="fa fa-plus"></i></button>
@@ -197,22 +197,18 @@
             <table class="table table-condensed">
               <thead>
                 <tr>
-                  <th><small></small></th>
+                  <th><small>Comment</small></th>
+                  <th><small>By</small></th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                <td>
-                </td>
-                </tr>
               </tbody>
             </table>
 
-          <div class="panel-body">
+          <div class="panel-footer">
 
             <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerCommentDocumentModal">
               <i class="fa fa-plus"></i></button>
-            <br>
 
           </div>
 
