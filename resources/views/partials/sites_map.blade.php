@@ -14,7 +14,7 @@ function initMap() {
     '<div id="bodyContent">'+
     '<p><strong>{{ $site->customer->name }} / {{ $site->name }}</strong><br>'+
     '{{ $site->address1 }}<br>' +
-    '{{ $site->city }}, {{ $site->state }} {{ $site->zip }}</p>' +
+    '{{ $site->city }}, {{ $site->state->abbreviated }} {{ $site->zip }}</p>' +
     '</div>'+
     '</div>';
 

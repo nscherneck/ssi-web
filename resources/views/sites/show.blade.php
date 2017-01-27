@@ -95,7 +95,7 @@
 
     <script> var myLatLng = {lat: {{ $site->lat }}, lng: {{ $site->lon }}}; </script>
 
-    @include('partials.map')
+    @include('partials.sites_map')
 
     <br>
 
