@@ -14,7 +14,7 @@
     </div>
 
     <div class="panel panel-info">
-      <div class="panel-heading"><i class="fa fa-map-marker" aria-hidden="true"></i> All Sites</div>
+      <div class="panel-heading"><i class="fa fa-map-marker" aria-hidden="true"></i> All Sites ({{ $sites->count() }})</div>
       <div class="panel-body">
 
         @include('partials.sites_index_map')
