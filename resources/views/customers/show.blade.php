@@ -85,9 +85,9 @@
 
   <div class="text-center">
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">
-      <i class="fa fa-cog"></i> Edit Customer</button>
-    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
-      <i class="fa fa-trash"></i> Delete Customer</button>
+      <i class="fa fa-cog"></i></button>
+    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
+      <i class="fa fa-trash"></i></button>
     <br><br>
   </div>
 
@@ -151,7 +151,7 @@
       <div class="col-lg-4">
 
         <div class="panel panel-info">
-          <div class="panel-heading">Documents</div>
+          <div class="panel-heading">Documents (0)</div>
             <table class="table table-condensed">
               <thead>
                 <tr>
@@ -193,7 +193,7 @@
         </div>
 
         <div class="panel panel-info">
-          <div class="panel-heading">Comments</div>
+          <div class="panel-heading">Comments (0)</div>
             <table class="table table-condensed">
               <thead>
                 <tr>
