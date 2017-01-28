@@ -5,7 +5,7 @@
 @section('head')
 
 <style type="text/css">
-   body { background: #3c8987 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+   body { background: #5F98B9 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
 </style>
 
 @stop
