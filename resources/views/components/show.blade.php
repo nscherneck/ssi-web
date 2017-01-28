@@ -2,6 +2,14 @@
 
 @section('title', 'SSI-Extranet | Component')
 
+@section('head')
+
+<style type="text/css">
+   body { background: #3c8987 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+@stop
+
 @section('content')
 
 @include('partials.nav')
@@ -49,7 +57,7 @@
         </div>
       </div>
 
-      <div class="panel panel-info">
+      <div class="panel panel-default">
         <div class="panel-heading">Where It's Installed ({{ $component->systems->count() }})</div>
 
             <table class="table">

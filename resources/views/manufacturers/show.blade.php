@@ -2,6 +2,14 @@
 
 @section('title', 'SSI-Extranet | Manufacturer')
 
+@section('head')
+
+<style type="text/css">
+   body { background: #3c8987 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+@stop
+
 @section('content')
 
 @include('partials.nav')
@@ -23,7 +31,7 @@
 
       <div class="row">
 
-            <div class="col-md-6">
+            <div class="col-md-6 no-gutter-right">
 
               <div class="panel panel-default">
                 <div class="panel-heading">General Information</div>
@@ -33,7 +41,7 @@
                   <small>
                     @if($manufacturer->address1){{ $manufacturer->address1 }}<br>@endif
                     @if($manufacturer->address2){{ $manufacturer->address2 }}<br>@endif
-                    @if($manufacturer->city){{ $manufacturer->city }},@endif @if($manufacturer->state_id){{ $manufacturer->state->state }}@endif @if($manufacturer->zip){{ $manufacturer->zip }}@endif
+                    @if($manufacturer->city){{ $manufacturer->city }},@endif @if($manufacturer->state_id){{ $manufacturer->state->abbreviated }}@endif @if($manufacturer->zip){{ $manufacturer->zip }}@endif
                   </small>
                   </p>
                   <hr>
@@ -46,7 +54,7 @@
                     @if($manufacturer->email)<strong>Email:</strong> <a href="mailto:{{ $manufacturer->email }}">{{ $manufacturer->email }}</a>@endif
                   </small>
                   </p>
-                  
+
                   <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateManufacturerModal">
                     <i class="fa fa-cog"></i></button>
 
@@ -87,7 +95,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">Components ({{ $components->count() }})</div>
 
-        <table class="table">
+        <table class="table table-condensed">
           <thead>
             <tr>
               <th><small><a href="/manufacturers/{{ $manufacturer->id }}?sort=model">Model</small></th>
