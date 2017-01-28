@@ -6,8 +6,8 @@
 
   var donutdata = {
     labels: [
-      "Clean Agent",
       "Fire Alarm",
+      "Clean Agent",
       "Inert Gas",
       "Dry Chemical",
       "Wet Chemical",
