@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-md-4 no-gutter-right">
 
-      <div class="titleBar">
+      <div class="titleBar" style="margin-top: 0">
         <p>Recent Photos</p>
       </div>
 
@@ -63,6 +63,33 @@
     </div>
 
     <div class="col-md-4 no-gutter-right">
+
+      <div class="panel panel-info">
+        <div class="panel-heading"><small>Recent Component Docs</small></div>
+
+          <table class="table table-condensed">
+
+            <thead>
+              <tr>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($recentcomponentdocs as $doc)
+              <tr>
+                <td>
+                  <small>
+                    <a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $doc->path }}/{{ $doc->file_name }}.{{ $doc->ext }}" target="blank">
+                      {{ $doc->file_name }}.{{ $doc->ext }}
+                    </a>
+                  </small>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+
+          </table>
+
+      </div> <!-- END OF PANEL -->
 
     </div>
 

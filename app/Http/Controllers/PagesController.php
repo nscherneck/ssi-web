@@ -12,6 +12,7 @@ use App\Site;
 use App\System;
 use App\Test;
 use App\Photo;
+use App\Document;
 use DB;
 
 class PagesController extends Controller
@@ -28,7 +29,12 @@ class PagesController extends Controller
       ->take(10)
       ->get();
 
-      return view('home', compact('recentphotos'));
+      $recentcomponentdocs = Document::orderBy('created_at', 'desc')
+      ->where('documentable_type', 'App\Component')
+      ->take(25)
+      ->get();
+
+      return view('home', compact('recentphotos', 'recentcomponentdocs'));
     }
 
     public function customer()
