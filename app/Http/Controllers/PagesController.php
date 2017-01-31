@@ -26,13 +26,13 @@ class PagesController extends Controller
     public function home()
     {
       $recentphotos = Photo::orderBy('created_at', 'desc')
-      ->take(10)
-      ->get();
+        ->take(10)
+        ->get();
 
       $recentcomponentdocs = Document::orderBy('created_at', 'desc')
-      ->where('documentable_type', 'App\Component')
-      ->take(25)
-      ->get();
+        ->where('documentable_type', 'App\Component')
+        ->take(25)
+        ->get();
 
       return view('home', compact('recentphotos', 'recentcomponentdocs'));
     }

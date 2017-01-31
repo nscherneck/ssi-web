@@ -16,7 +16,7 @@
     <div class="col-md-4 no-gutter-right">
 
       <div class="titleBar" style="margin-top: 0">
-        <p>Recent Photos</p>
+        <p><i class="fa fa-camera" aria-hidden="true"></i> Recent Photos</p>
       </div>
 
       @if($recentphotos->count() > 0)
@@ -65,7 +65,7 @@
     <div class="col-md-4 no-gutter-right">
 
       <div class="panel panel-info">
-        <div class="panel-heading"><small>Recent Component Docs</small></div>
+        <div class="panel-heading"><i class="fa fa-file-text-o" aria-hidden="true"></i> Recent Component Docs</div>
 
           <table class="table table-condensed">
 
