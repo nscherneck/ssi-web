@@ -36,6 +36,7 @@
 
   @include('scripts.tests_per_month_chart')
 
+
     <div class="panel panel-default panel-info">
     <div class="panel-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> Total Systems by Type ({{ $quantityTotal }})</div>
       <div class="panel-body">

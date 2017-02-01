@@ -1,5 +1,5 @@
   <script type="text/javascript">
-  
+
     var ctx = document.getElementById("myBarChart");
 
     Chart.defaults.global.legend.display = false;
@@ -8,17 +8,17 @@
         type: 'bar',
         data: {
             labels: [
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(11)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(10)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(9)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(8)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(7)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(6)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(5)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(4)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(3)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonths(2)->format('F') }}",
-              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonth()->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(11)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(10)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(9)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(8)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(7)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(6)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(5)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(4)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(3)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthsNoOverflow(2)->format('F') }}",
+              "{{ \Carbon\Carbon::now('America/Los_Angeles')->subMonthNoOverflow()->format('F') }}",
               "{{ \Carbon\Carbon::now('America/Los_Angeles')->format('F') }}"
               ],
             datasets: [{

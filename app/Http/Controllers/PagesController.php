@@ -87,13 +87,13 @@ class PagesController extends Controller
           $start_now = Carbon::now('America/Los_Angeles');
           $end_now = Carbon::now('America/Los_Angeles');
 
-          $start_date = $start_now->subMonths($b)->startOfMonth()->toDateString();
+          $start_date = $start_now->subMonthsNoOverflow($b)->startOfMonth()->toDateString();
 
           if($b === 0)
           {
             $end_date = $end_now->endOfMonth()->toDateString();
           } else {
-            $end_date = $end_now->subMonths($b)->endOfMonth()->toDateString();
+            $end_date = $end_now->subMonthsNoOverflow($b)->endOfMonth()->toDateString();
           }
 
           $testsTotalTrailingTwelve[] = Test::orderBy('test_date', 'desc')
@@ -102,21 +102,21 @@ class PagesController extends Controller
         }
 
         // tests by month, trailing 12 - array to verify start and end dates
-        // $testsTotalTrailingTwelveDates = [];
+        // $testArray = [];
         // for($c = 0; $c <= 11; $c++){
         //   $start_now2 = Carbon::now('America/Los_Angeles');
         //   $end_now2 = Carbon::now('America/Los_Angeles');
         //
-        //   $start_date2 = $start_now2->subMonths($c)->startOfMonth()->toDateString();
+        //   $start_date2 = $start_now2->subMonthsNoOverflow($c)->startOfMonth()->toDateString();
         //
         //   if($c === 0)
         //   {
         //     $end_date2 = $end_now2->endOfMonth()->toDateString();
         //   } else {
-        //     $end_date2 = $end_now2->subMonths($c)->endOfMonth()->toDateString();
+        //     $end_date2 = $end_now2->subMonthsNoOverflow($c)->endOfMonth()->toDateString();
         //   }
         //
-        //   $testsTotalTrailingTwelveDates[] = [
+        //   $testArray[] = [
         //     "index" => $c,
         //     "start_date" => $start_date2,
         //     "end_date" => $end_date2
