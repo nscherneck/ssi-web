@@ -159,8 +159,4 @@
 @include('partials.modals.edit_test')
 @include('partials.modals.delete_test')
 
-@include('partials.flash_javascript_include')
-
-@include('partials.sa_flash')
-
 @stop
