@@ -12,9 +12,9 @@
 
 @include('partials.nav')
 
-@include('partials.flash')
-
 <div class="container-fluid">
+
+  @include('partials.flash')
 
   <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin: 10px 0; text-decoration: none;">
     <button type="button" class="btn btn-default"><a href="/customers" style="text-decoration: none;">Customers Index</a></button>
