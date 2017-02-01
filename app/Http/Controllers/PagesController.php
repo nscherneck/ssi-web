@@ -64,8 +64,8 @@ class PagesController extends Controller
 
       // systems due for test
       $start_date_raw = Carbon::now('America/Los_Angeles')->startOfMonth();
-      $start_date = $start_date_raw->toDateString();
-      $end_date = $start_date_raw->addMonths(4)->toDateString();
+      $start_date = $start_date_raw->subMonth()->toDateString();
+      $end_date = $start_date_raw->addMonthsNoOverflow(2)->endOfMonth()->toDateString();
 
       // metrics
       $systemduefortest = System::orderBy('next_test_date', 'asc')
