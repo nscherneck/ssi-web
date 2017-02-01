@@ -68,7 +68,7 @@ class CustomersController extends Controller
 
       $customer->save();
 
-      flash('Customer created', 'Success');
+      flash('Sucess!', 'Customer created.');
       return redirect()->route('admin');
     }
 
@@ -105,7 +105,7 @@ class CustomersController extends Controller
 
       $customer->update();
 
-      flash('Customer updated', 'Success');
+      flash('Sucess!', 'Customer updated.', 'success');
       return redirect()->route('customer_show', ['id' => $customer->id]);
     }
 
@@ -113,11 +113,11 @@ class CustomersController extends Controller
     {
 
       if(count($customer->sites) > 0) {
-        flash('Cannot delete customer, it has one or more sites', 'Error');
+        flash('Nope!', 'Cannot delete customer, it has one or more sites.', 'warning');
         return redirect()->route('customer_show', ['id' => $customer->id]);
       } else {
         $customer->delete();
-        flash('Customer Deleted', 'Success');
+        flash('Success1', 'Customer deleted.', 'danger');
         return redirect()->route('admin');
       }
 

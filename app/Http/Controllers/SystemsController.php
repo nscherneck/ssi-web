@@ -46,7 +46,7 @@ class SystemsController extends Controller
 
       $system->save();
 
-      flash('System created', 'Success');
+      flash('Sucess!', 'System created.');
       return redirect()->route('site_show', ['id' => $site->id]);
     }
 
@@ -61,7 +61,7 @@ class SystemsController extends Controller
 
         $system->update();
 
-        flash('System updated', 'Success');
+        flash('Sucess!', 'System updated.', 'Success');
         return redirect()->route('system_show', ['id' => $system->id]);
     }
 
@@ -69,20 +69,20 @@ class SystemsController extends Controller
       $system->next_test_date = $request->next_test_date;
       $system->save();
 
-      flash('Next test date updated', 'Success');
+      flash('Sucess!', 'Next test date updated.', 'success');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
 
     public function destroy(System $system)
     {
       if(count($system->tests) > 0) {
-        flash('Cannot delete system, it has one or more tests', 'Error');
+        flash('Nope!', 'Cannot delete system, it has one or more tests', 'warning');
         return redirect()->route('system_show', ['id' => $system->id]);
       } else {
         $site = Site::find($system->site_id);
         $system->delete();
 
-        flash('System deleted', 'Error');
+        flash('Sucess!', 'System deleted.', 'danger');
         return redirect()->route('site_show', ['id' => $site->id]);
       }
     }

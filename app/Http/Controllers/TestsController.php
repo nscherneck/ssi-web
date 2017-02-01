@@ -73,7 +73,7 @@ class TestsController extends Controller
       $system->next_test_date = $this->setNextTestDate($system, $test->test_date);
       $system->update();
 
-      flash('Test created', 'Success');
+      flash('Success!', 'Test created.');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
 
@@ -111,7 +111,7 @@ class TestsController extends Controller
       $test->updated_by = Auth::id();
       $test->update();
 
-      flash('Test updated', 'Success');
+      flash('Success!', 'Test updated.', 'success');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -136,7 +136,7 @@ class TestsController extends Controller
           $system->update();
         }
 
-        flash('Test deleted', 'Error');
+        flash('Success!', 'Test deleted.', 'danger');
         return redirect()->route('system_show', ['id' => $system->id]);
     }
 

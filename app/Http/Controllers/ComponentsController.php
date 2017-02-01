@@ -71,7 +71,7 @@ class ComponentsController extends Controller
 
     $system->components()->attach($request->component_id, ['quantity' => $request->quantity, 'name' => $request->name, ]);
 
-    flash('Component attached', 'Success');
+    flash('Success!', 'Component attached.');
     return redirect()->route('system_show', ['id' => $system->id]);
 
   }
@@ -81,7 +81,7 @@ class ComponentsController extends Controller
     // $system->components()->detach($component->id);
     DB::table('components_systems')->where('id', $id)->delete();
 
-    flash('Component removed', 'Success');
+    flash('Success!', 'Component removed.', 'success');
     return redirect()->route('system_show', ['id' => $system->id]);
   }
 
@@ -101,7 +101,7 @@ class ComponentsController extends Controller
     $component->discontinued = $request->discontinued;
     $component->save();
 
-    flash('Component updated', 'Success');
+    flash('Success!', 'Component updated.', 'success');
     return redirect()->route('component_show', ['id' => $component->id]);
 
   }

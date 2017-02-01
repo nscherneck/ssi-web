@@ -62,7 +62,7 @@ class PhotosController extends Controller
       // pass in the file and the model
       $this->saveImageFiles($file, $photo);
 
-      flash('Photo Added', 'Success');
+      flash('Sucess!', 'Photo added.');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
 
@@ -89,7 +89,7 @@ class PhotosController extends Controller
       $photo->caption = $request->caption;
       $photo->save();
 
-      flash('Photo Updated', 'Success');
+      flash('Sucess!', 'Photo updated.', 'success');
       return redirect()->route('system_photo_show', ['id' => $photo->id]);
     }
 
@@ -114,7 +114,7 @@ class PhotosController extends Controller
       $this->deleteExistingImages($photo);
       $photo->delete();
 
-      flash('Photo Deleted', 'Error');
+      flash('Sucess!', 'Photo deleted.', 'danger');
       return redirect()->route('system_show', ['id' => $system->id]);
     }
 }

@@ -6,9 +6,9 @@
 
 @include('partials.nav')
 
-@include('partials.flash')
-
 <div class="container">
+
+  @include('partials.flash')
 
   <!--          BREADCRUMB LINKS         -->
 
@@ -158,5 +158,9 @@
 @include('partials.modals.add_test_report')
 @include('partials.modals.edit_test')
 @include('partials.modals.delete_test')
+
+@include('partials.flash_javascript_include')
+
+@include('partials.sa_flash')
 
 @stop

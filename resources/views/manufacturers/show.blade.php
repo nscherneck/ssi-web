@@ -14,9 +14,10 @@
 
 @include('partials.nav')
 
-@include('partials.flash')
-
 <div class="container">
+
+  @include('partials.flash')
+
   <div class="">
     <br>
     <ol class="breadcrumb small">

@@ -79,7 +79,7 @@ class DocumentsController extends Controller
 
       $report->save();
 
-      flash('Report Added', 'Success');
+      flash('Sucess!', 'Report added.');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -109,7 +109,7 @@ class DocumentsController extends Controller
 
       $document->save();
 
-      flash('Document Added', 'Success');
+      flash('Sucess!', 'Document added.');
       return redirect()->route('component_show', ['id' => $component->id]);
     }
 
@@ -141,16 +141,16 @@ class DocumentsController extends Controller
       $document->description = $request->description;
       $document->save();
 
-      flash('Report Description Updated', 'Success');
+      flash('Sucess!', 'Report Description updated.', 'success');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
     public function destroyTestReport(Test $test, Document $document)
     {
-        $this->deleteDocument($document);
-        $document->delete();
+      $this->deleteDocument($document);
+      $document->delete();
 
-        flash('Report Deleted', 'Error');
-        return redirect()->route('test_show', ['id' => $test->id]);
+      flash('Sucess!', 'Report deleted.', 'danger');
+      return redirect()->route('test_show', ['id' => $test->id]);
     }
 }

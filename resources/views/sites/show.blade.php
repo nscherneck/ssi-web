@@ -6,10 +6,10 @@
 
 @include('partials.nav')
 
-@include('partials.flash')
-
 <div class="container-fluid">
 
+  @include('partials.flash')
+  
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>

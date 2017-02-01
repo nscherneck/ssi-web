@@ -35,7 +35,7 @@ class TestnotesController extends Controller
         $testnote->added_by = Auth::id();
         $testnote->save();
 
-        flash('Note added', 'Success');
+        flash('Sucess!', 'Note added.');
         return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -55,7 +55,7 @@ class TestnotesController extends Controller
          $testnote->note = $request->note;
          $testnote->update();
 
-         flash('Note updated', 'Success');
+         flash('Success!', 'Note updated.', 'success');
          return redirect()->route('test_show', ['id' => $test->id]);
      }
 
@@ -63,7 +63,11 @@ class TestnotesController extends Controller
      {
        $testnote->delete();
 
-       flash('Note deleted', 'Error');
+      //  flash('Note deleted', 'Error');
+      flash('Success!', 'Note deleted.', 'danger');
+      //  notify()->flash('Note deleted', 'error', [
+      //     'timer' => 2000,
+      // ]);
        return redirect()->route('test_show', ['id' => $test->id]);
 
      }

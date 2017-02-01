@@ -56,7 +56,7 @@ class SitesController extends Controller
 
       $site->save();
 
-      flash('Site created', 'Success');
+      flash('Sucess!', 'Site created.');
       return redirect()->route('customer_show', ['id' => $customer->id]);
     }
 
@@ -92,7 +92,7 @@ class SitesController extends Controller
 
       $site->update();
 
-      flash('Site updated', 'Success');
+      flash('Sucess!', 'Site updated.', 'success');
       return redirect()->route('site_show', ['id' => $site->id]);
     }
 
@@ -102,12 +102,12 @@ class SitesController extends Controller
       $site = Site::find($site->id);
 
       if(count($site->systems) > 0) {
-        flash('Cannot delete site, it has one or more systems', 'Error');
+        flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
         return redirect()->route('site_show', ['id' => $site->id]);
       } else {
         $customer = Customer::find($site->customer_id);
         $site->delete();
-        flash('Site Deleted', 'Success');
+        flash('Sucess!', 'Site deleted.', 'danger');
         return redirect()->route('customer_show', ['id' => $customer->id]);
       }
 
