@@ -60,7 +60,7 @@ class PagesController extends Controller
     public function service()
     {
       // get 40 most recent tests
-      $tests = Test::orderBy('test_date', 'desc')->take(40)->get();
+      $tests = Test::orderBy('test_date', 'desc')->take(100)->get();
 
       // systems due for test
       $start_date_raw = Carbon::now('America/Los_Angeles')->startOfMonth();
