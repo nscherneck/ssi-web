@@ -68,7 +68,7 @@ class CustomersController extends Controller
 
       $customer->save();
 
-      flash('Sucess!', 'Customer created.');
+      flash('Success!', 'Customer created.');
       return redirect()->route('admin');
     }
 
@@ -105,7 +105,7 @@ class CustomersController extends Controller
 
       $customer->update();
 
-      flash('Sucess!', 'Customer updated.', 'success');
+      flash('Success!', 'Customer updated.', 'success');
       return redirect()->route('customer_show', ['id' => $customer->id]);
     }
 

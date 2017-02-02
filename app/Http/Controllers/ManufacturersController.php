@@ -75,7 +75,7 @@ class ManufacturersController extends Controller
 
       $manufacturer->save();
 
-      flash('Sucess!', 'Manufacturer added.');
+      flash('Success!', 'Manufacturer added.');
       return redirect()->route('admin');
 
     }
@@ -147,7 +147,7 @@ class ManufacturersController extends Controller
 
       $manufacturer->save();
 
-      flash('Sucess!', 'Manufacturer updated', 'success');
+      flash('Success!', 'Manufacturer updated', 'success');
       return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);
 
     }

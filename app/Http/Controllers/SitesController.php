@@ -56,7 +56,7 @@ class SitesController extends Controller
 
       $site->save();
 
-      flash('Sucess!', 'Site created.');
+      flash('Success!', 'Site created.');
       return redirect()->route('customer_show', ['id' => $customer->id]);
     }
 
@@ -92,7 +92,7 @@ class SitesController extends Controller
 
       $site->update();
 
-      flash('Sucess!', 'Site updated.', 'success');
+      flash('Success!', 'Site updated.', 'success');
       return redirect()->route('site_show', ['id' => $site->id]);
     }
 
@@ -107,7 +107,7 @@ class SitesController extends Controller
       } else {
         $customer = Customer::find($site->customer_id);
         $site->delete();
-        flash('Sucess!', 'Site deleted.', 'danger');
+        flash('Success!', 'Site deleted.', 'danger');
         return redirect()->route('customer_show', ['id' => $customer->id]);
       }
 

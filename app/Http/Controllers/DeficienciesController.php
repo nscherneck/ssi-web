@@ -46,7 +46,7 @@ class DeficienciesController extends Controller
         $deficiency->added_by = Auth::id();
         $deficiency->save();
 
-        flash('Sucess!', 'Deficiency added.');
+        flash('Success!', 'Deficiency added.');
         return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -85,7 +85,7 @@ class DeficienciesController extends Controller
         $deficiency->description = $request->description;
         $deficiency->update();
 
-        flash('Sucess!', 'Deficiency updated.', 'success');
+        flash('Success!', 'Deficiency updated.', 'success');
         return redirect()->route('test_show', ['id' => $test->id]);
 
     }
@@ -100,7 +100,7 @@ class DeficienciesController extends Controller
     {
       $deficiency->delete();
 
-      flash('Sucess!', 'Deficiency deleted.', 'danger');
+      flash('Success!', 'Deficiency deleted.', 'danger');
       return redirect()->route('test_show', ['id' => $test->id]);
 
     }

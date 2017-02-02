@@ -35,7 +35,7 @@ class TestnotesController extends Controller
         $testnote->added_by = Auth::id();
         $testnote->save();
 
-        flash('Sucess!', 'Note added.');
+        flash('Success!', 'Note added.');
         return redirect()->route('test_show', ['id' => $test->id]);
     }
 
