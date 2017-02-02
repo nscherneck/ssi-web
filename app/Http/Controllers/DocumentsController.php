@@ -79,7 +79,7 @@ class DocumentsController extends Controller
 
       $report->save();
 
-      flash('Sucess!', 'Report added.');
+      flash('Success!', 'Report added.');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -109,7 +109,7 @@ class DocumentsController extends Controller
 
       $document->save();
 
-      flash('Sucess!', 'Document added.');
+      flash('Success!', 'Document added.');
       return redirect()->route('component_show', ['id' => $component->id]);
     }
 
@@ -141,7 +141,7 @@ class DocumentsController extends Controller
       $document->description = $request->description;
       $document->save();
 
-      flash('Sucess!', 'Report Description updated.', 'success');
+      flash('Success!', 'Report Description updated.', 'success');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
@@ -150,7 +150,7 @@ class DocumentsController extends Controller
       $this->deleteDocument($document);
       $document->delete();
 
-      flash('Sucess!', 'Report deleted.', 'danger');
+      flash('Success!', 'Report deleted.', 'danger');
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 }
