@@ -81,7 +81,7 @@
             <tbody>
               @foreach($test->reports as $report)
                 <tr>
-                <td width="70%"><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/">Report</a></small></td>
+                <td width="70%"><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank">Report</a></small></td>
                 <td><small>{{ $report->description }}</small></td>
                 <td><small>{{ $report->addedBy->first_name }}</small></td>
                 <td>
