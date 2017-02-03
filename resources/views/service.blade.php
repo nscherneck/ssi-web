@@ -17,8 +17,8 @@
   @include('partials.flash')
 
   <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin: 10px 0; text-decoration: none;">
-    <button type="button" class="btn btn-default"><a href="/customers" style="text-decoration: none;">Customers Index</a></button>
-    <button type="button" class="btn btn-default"><a href="/sites" style="text-decoration: none;">Sites Index</a></button>
+    <a href="/customers" style="text-decoration: none;" type="button" class="btn btn-default">Customers Index</a>
+    <a href="/sites" style="text-decoration: none;" type="button" class="btn btn-default">Sites Index</a>
   </div>
 
   <div class="row">
