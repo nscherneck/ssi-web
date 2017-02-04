@@ -50,6 +50,44 @@
 
   @include('scripts.systems_by_category_chart')
 
+    <div class="panel panel-default panel-info">
+    <div class="panel-heading"><i class="fa fa-search" aria-hidden="true"></i> Search Tests by Customer</div>
+      <div class="panel-body">
+
+        <form action="/tests/search" method="POST">
+
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
+        <div class="form-group">
+
+          <small>Customer:</small> <select name="customer_id" class="form-control">
+              <option value="0">Select Customer</option>
+            @foreach ($customers as $customer)
+              <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+            @endforeach
+          </select>
+          <br>
+
+          <div class="row">
+
+            <div class="col-lg-6">
+              <small>Start Date:</small> <input type="date" name="start_date" value="" class="form-control">
+            </div>
+
+            <div class="col-lg-6">
+              <small>End Date:</small> <input type="date" name="end_date" value="" class="form-control">
+            </div>
+
+          </div> <!-- END OF ROW -->
+          <br>
+
+          <button type="submit" class="btn btn-primary pull-right">Search</button>
+        </div>
+      </form>
+
+      </div>
+    </div> <!-- END OF PANEL -->
+
   </div>
 
   <div class="col-lg-8">

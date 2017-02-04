@@ -6,9 +6,10 @@
 
 @include('partials.nav')
 
-@include('partials.flash')
-
 <div class="container-fluid">
+
+  @include('partials.flash')
+
   <h3>Admin Page</h3>
   <hr>
   <h5>Customers</h5>

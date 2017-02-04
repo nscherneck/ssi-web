@@ -76,6 +76,8 @@ Route::post('system/{system}/tests/store', 'TestsController@store');
 Route::put('tests/{test}/update', 'TestsController@update');
 Route::delete('tests/{test}/delete', 'TestsController@destroy');
 
+Route::post('tests/search', 'TestsController@search');
+
 Route::post('tests/{test}/deficiencies/store', 'DeficienciesController@store');
 Route::delete('tests/{test}/deficiencies/{deficiency}/delete', 'DeficienciesController@destroy');
 Route::put('tests/{test}/deficiencies/{deficiency}/update', 'DeficienciesController@update');

@@ -32,12 +32,9 @@ class Customer extends Model
   {
     return $this->belongsTo('App\User', 'added_by');
   }
-
   public function updatedBy() // technician who completed test
   {
     return $this->belongsTo('App\User', 'updated_by');
   }
-
-
 
 }

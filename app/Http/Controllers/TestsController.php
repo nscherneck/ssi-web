@@ -140,6 +140,17 @@ class TestsController extends Controller
         return redirect()->route('system_show', ['id' => $system->id]);
     }
 
+    public function search(Request $request)
+    {
+      $customer = Customer::findOrFail($request->customer_id);
+
+      // $tests = Test::orderBy('test_date', 'desc')
+      //   ->whereBetween('test_date', [$request->start_date, $request->end_date])
+      //   ->get();
+
+      return view('tests.search_results', compact('customer'));
+    }
+
     public function setNextTestDate($system, $date)
     {
         switch ($system->system_type_id) {

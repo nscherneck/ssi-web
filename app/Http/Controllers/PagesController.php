@@ -59,6 +59,7 @@ class PagesController extends Controller
 
     public function service()
     {
+      $customers = Customer::orderBy('name')->get();
       // get 40 most recent tests
       $tests = Test::orderBy('test_date', 'desc')->take(100)->get();
 
@@ -127,6 +128,7 @@ class PagesController extends Controller
       $recentsystems = System::orderBy('created_at', 'desc')->take(15)->get();
 
       return view('service', compact(
+          'customers',
           'tests',
           'systemduefortest',
           'recentsystems',
