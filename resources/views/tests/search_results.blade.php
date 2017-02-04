@@ -15,35 +15,57 @@
 
 </div>
 
-<div class="container">
+<div class="container-fluid">
 
   <div class="titleBar" style="margin-top: 0">
       <p>Tests Search Results</p>
   </div>
 
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <th><small>Site Name</small></th>
-        <th><small>Test Date</small></th>
-        <th><small>-</small></th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach($customer->sites as $site)
-        @foreach($site->systems as $system)
-          @foreach($system->tests as $test)
-            <tr>
-              <td><small>{{ $test->system->site->customer->name }} / {{ $test->system->site->name }} / {{ $test->system->name }}</small></td>
-              <td><small><a href="/test/{{ $test->id }}">{{ $test->test_date->format('M d Y') }}</a></small></td>
-              <td><small></small></td>
-            </tr>
-          @endforeach
+  <div class="table-responsive">
+
+    <table class="table table-hover table-condensed" style="font-size: 11px">
+      <thead>
+        <tr>
+          <th>Test Date</th>
+          <th>Reports</th>
+          <th>Technician</th>
+          <th>System</th>
+          <th>System Type</th>
+          <th>Components</th>
+          <th>Test Type</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($customer->sites as $site)
+          @foreach($site->systems as $system)
+            @foreach($system->tests as $test)
+              <tr
+                <?php echo ($test->test_result->name == 'Pass with Deficiencies') ? "class=\"warning\"" : ""; ?>
+                <?php echo ($test->test_result->name == 'Fail with Deficiencies') ? "class=\"danger\"" : ""; ?>
+                >
+                <td><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F j, Y') }}</a></td>
+                <td>{{ $test->reports->count() }}</td>
+                <td>{{ $test->technician->first_name }}</a></td>
+                <td>
+                  <a href="/customer/{{ $test->system->site->customer->id }}">{{ $test->system->site->customer->name }}</a>  -
+                    <a href="/site/{{ $test->system->site->id }}">{{ $test->system->site->name }}</a>  -
+                      <a href="/system/{{ $test->system->id }}">{{ $test->system->name }}</a>
+                </td>
+                <td>{{ $test->system->system_type->type }}</td>
+                <td>{{ $test->system->count_components() }}</td>
+                <td>{{ $test->test_type->name }}</td>
+                <td>{{ $test->test_result->name }}</td>
+
+              </tr>
         @endforeach
       @endforeach
-    </tbody>
-  </table>
+    @endforeach
+      </tbody>
+    </table>
 
-</div>
+  </div> <!-- END OF RESPONSIVE TABLE DIV -->
+
+</div> <!-- END OF CONTAINER -->
 
 @stop
