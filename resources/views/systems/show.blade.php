@@ -29,7 +29,7 @@
     </div>
 
     <div class="panel panel-primary">
-      <div class="panel-heading">Site Info</div>
+      <div class="panel-heading">System Info</div>
       <div class="panel-body">
         <p>
           <small>
