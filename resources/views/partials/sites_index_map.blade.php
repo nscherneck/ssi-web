@@ -33,10 +33,10 @@
       var infoWindowContent = [
           @foreach($sites as $site)
             ['<div class="info_content">' +
-            '<h5><a href="/customer/{!! $site->customer->id !!}" target="blank">{!! $site->customer->name !!}</a> | <a href="/site/{{ $site->id }}" target="blank">{{ $site->name }}</a></h5>' +
+            '<h5><a href="/customer/{{ $site->customer->id }}" target="blank">{{ $site->customer->name }}</a> | <a href="/site/{{ $site->id }}" target="blank">{{ $site->name }}</a></h5>' +
             '<p><small><strong>' +
             @foreach($site->systems as $system)
-                '&nbsp;<a href="/system/{{ $system->id }}" target="blank">{!! $system->name !!}</a><br>' +
+                '&nbsp;<a href="/system/{{ $system->id }}" target="blank">{{ $system->name }}</a><br>' +
                 @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Due: {{ $system->next_test_date->format('F Y') }}<br>' + @endif
                 @foreach($system->tests as $test)
                   '&nbsp;&nbsp;&nbsp;&nbsp;<a href="/tests/{{ $test->id }}" target="blank">{{ $test->test_date->format('F d, Y') }} | {{ $test->test_type->name }}</a><br>' +
