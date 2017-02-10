@@ -16,7 +16,7 @@
 
         <div class="form-group">
 
-          <input type="file" name="image" accept="image/*"><br>
+          <input type="file" name="image" accept="image/*" required><br>
           Caption:<br>
           <textarea rows="4" name="caption" style="width: 80%"></textarea><br><br>
 

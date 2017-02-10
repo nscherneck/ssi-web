@@ -16,21 +16,21 @@
 
         <div class="form-group">
 
-          Name: <input type="text" name="name" value="" class="form-control"><br>
-          Type: <select name="type" class="form-control">
-              <option value="0">Select System Type</option>
+          <input type="text" name="name" value="" class="form-control" placeholder="System Name" required><br>
+          <select name="type" class="form-control" required>
+              <option value="0" disabled selected>Select System Type</option>
             @foreach ($system_types as $system_type)
               <option value="{{ $system_type->id }}">{{ $system_type->type }}</option>
             @endforeach
           </select><br>
-          Installation Date: <input type="date" name="install_date" value="" class="form-control"><br>
-          Installed by SSI: <select name="ssi_install" class="form-control">
-            <option value="0">...</option>
+          Installation Date: <input type="date" name="install_date" value="2000-01-01" class="form-control"><br>
+          <select name="ssi_install" class="form-control" required>
+            <option value="0" disabled selected>Installed by SSI?</option>
             <option value="1">Yes</option>
             <option value="0">No</option>
           </select><br>
-          Tests & Inspections by SSI: <select name="ssi_test_acct" class="form-control">
-            <option value="0">...</option>
+          <select name="ssi_test_acct" class="form-control" required>
+            <option value="0" disabled selected>Tests by SSI?</option>
             <option value="1">Yes</option>
             <option value="0">No</option>
           </select>

@@ -20,7 +20,7 @@
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <textarea name="note" class="form-control" rows="3" id="note"></textarea><br>
+            <textarea name="note" class="form-control" rows="3" id="note" required></textarea><br>
 
             <button type="submit" class="btn btn-primary">Add</button>
 

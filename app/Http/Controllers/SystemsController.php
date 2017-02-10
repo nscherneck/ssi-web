@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 use App\Http\Requests;
 use App\Customer;
@@ -24,13 +25,14 @@ class SystemsController extends Controller
 
     public function show(System $system)
     {
-      $test_types = DB::table('test_types')->get();
-      $test_results = DB::table('test_results')->get();
-      $technicians = DB::table('users')->get();
+      $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
+      $test_types = DB::table('test_types')->orderBy('name')->get();
+      $test_results = DB::table('test_results')->orderBy('name')->get();
+      $technicians = DB::table('users')->orderBy('first_name')->get();
       $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
       $system_types = DB::table('system_types')->get();
       $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();
-      return view('systems.show', compact('system', 'test_types', 'test_results', 'technicians', 'manufacturers', 'system_types', 'photos'));
+      return view('systems.show', compact('now', 'system', 'test_types', 'test_results', 'technicians', 'manufacturers', 'system_types', 'photos'));
     }
 
     public function store(Request $request, Site $site)

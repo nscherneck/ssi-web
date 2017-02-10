@@ -71,11 +71,11 @@
           <div class="row">
 
             <div class="col-lg-6">
-              <small>Start Date:</small> <input type="date" name="start_date" value="" class="form-control">
+              <small>Start Date:</small> <input type="date" name="start_date" value="" class="form-control" required>
             </div>
 
             <div class="col-lg-6">
-              <small>End Date:</small> <input type="date" name="end_date" value="" class="form-control">
+              <small>End Date:</small> <input type="date" name="end_date" value="" class="form-control" required>
             </div>
 
           </div> <!-- END OF ROW -->
