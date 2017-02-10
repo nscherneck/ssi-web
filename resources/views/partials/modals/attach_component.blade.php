@@ -1,5 +1,3 @@
-<script   src="http://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
-
 <script>
 
 function fetch_select(val)
@@ -49,7 +47,7 @@ function fetch_select(val)
 </script>
 
 
-<!-- add Deficiency Modal -->
+<!-- attach component modal -->
 <div class="modal fade" id="attachComponentModal" role="dialog">
   <div class="modal-dialog">
 
@@ -67,18 +65,18 @@ function fetch_select(val)
 
         <div class="form-group">
 
-          Name:  <input  name="name" type="text" value="" class="form-control"><br>
-          Quantity:  <input  name="quantity" type="text" value="" class="form-control"><br>
-          Manufacturer: <select name="manufacturer_id" class="form-control" onchange="fetch_select(this.value);">
-              <option value="">Select Manufacturer</option>
+          <input  name="name" type="text" value="" class="form-control" placeholder="Note" ><br>
+          <input  name="quantity" type="text" value="" class="form-control" placeholder="Quantity" required><br>
+          <select name="manufacturer_id" class="form-control" onchange="fetch_select(this.value);" required>
+              <option value="" disabled selected>Choose Manufacturer</option>
             @foreach ($manufacturers as $manufacturer)
               <option value="{{ $manufacturer->id }}">{{ $manufacturer->name }}</option>
             @endforeach
           </select><br>
-          Model: <select id="model" name="component_id" class="form-control">
-            <option id="default">Choose Manufacturer</option>
-          </select><br>
-          Description:<br>
+          <select id="model" name="component_id" class="form-control" required>
+            <option id="default">Model - Choose Manufacturer Above</option>
+          </select>
+
           <div class="description" style="width:100%; padding:1em;">
             <p id="description"></p>
           </div>
@@ -96,7 +94,7 @@ function fetch_select(val)
 
             });
           </script>
-          
+
           <button type="submit" class="btn btn-primary">Attach</button>
         </div>
       </form>

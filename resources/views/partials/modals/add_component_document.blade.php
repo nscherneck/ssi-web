@@ -21,7 +21,7 @@
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-            <input type="file" name="document" accept="file/*"><br>
+            <input type="file" name="document" accept="file/*" required><br>
 
         <div class="modal-footer">
 
