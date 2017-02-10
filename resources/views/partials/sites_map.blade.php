@@ -1,4 +1,4 @@
-<div id="map" style="width:100%;height:300px;border:1px solid;"></div>
+<div id="map" style="width:100%;height:300px;border: 1px solid black"></div>
 <script>
 
 function initMap() {

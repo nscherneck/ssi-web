@@ -1,5 +1,5 @@
 <div id="map_wrapper" style="height: 400px;">
-    <div id="map_canvas" class="mapping" style="width: 100%; height: 100%; border: 1px solid black"></div>
+    <div id="map_canvas" class="mapping" style="width: 100%; height: 100%; border: 0;"></div>
 </div>
 
 <script>
