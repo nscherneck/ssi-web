@@ -94,7 +94,7 @@
 
     <div class="panel panel-info">
         <div class="panel-heading"><i class="fa fa-tag" aria-hidden="true"></i> Systems Due For Test</div>
-        <div class="panel-body">
+        <div class="panel-body" style="padding: 10px;">
 
           @include('partials.systems_due_map')
 
