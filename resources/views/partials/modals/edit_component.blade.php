@@ -32,6 +32,18 @@
           </div>
 
           <div class="form-group row">
+            <label for="discontinued" class="col-sm-2 col-form-label">Category:</label>
+            <div class="col-sm-10">
+              <select name="component_category_id" class="form-control">
+                  <option value="{{ $component->component_category->id }}">{{ $component->component_category->name }}</option>
+                  @foreach ($component_categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                  @endforeach
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row">
             <label for="discontinued" class="col-sm-2 col-form-label">Discontinued:</label>
             <div class="col-sm-10">
               <select name="discontinued" class="form-control">

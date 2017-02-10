@@ -91,13 +91,15 @@ class ComponentsController extends Controller
       ->where('documentable_id', '=', $component->id)
       ->where('documentable_type', '=', 'App\Component')
       ->get();
-    return view('components.show', compact('component', 'documents'));
+    $component_categories = DB::table('component_category')->orderBy('name', 'asc')->get();
+    return view('components.show', compact('component', 'documents', 'component_categories'));
   }
 
   public function update(Request $request, Component $component)
   {
     $component->model = $request->model;
     $component->description = $request->description;
+    $component->component_category_id = $request->component_category_id;
     $component->discontinued = $request->discontinued;
     $component->save();
 

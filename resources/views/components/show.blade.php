@@ -42,9 +42,21 @@
             <hr>
           @endif
 
+          <p><strong>Description</strong></p>
+
           <p>
             <small>
               {{ $component->description }}
+            </small>
+          </p>
+
+          <hr>
+
+          <p><strong>Category:</strong> {{ $component->component_category->name }}</p>
+
+          <p>
+            <small>
+
             </small>
           </p>
 
