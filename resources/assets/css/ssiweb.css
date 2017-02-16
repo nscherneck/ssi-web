@@ -55,26 +55,6 @@
 
  /* session alerts */
 
-.Alert {
-  padding: 10px;
-  width: 100%;
-}
-
-.Alert--Info {
-  background: gray;
-  color: white;
-}
-
-.Alert--Success {
-  background: green;
-  color: white;
-}
-
-.Alert--Error {
-  background: red;
-  color: white;
-}
-
  /* photos */
 
 #systemPhoto {

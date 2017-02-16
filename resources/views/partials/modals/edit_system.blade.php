@@ -29,21 +29,26 @@
               <option value="{{ $system->ssi_install }}">@if($system->ssi_install == 0) No @elseif($system->ssi_install == 1) Yes @endif</option>
               <option value="1">Yes</option>
               <option value="0">No</option>
-            </select><br>
+            </select>
+            <br>
             Tests & Inspections by SSI: <select name="ssi_test_acct" class="form-control">
               <option value="{{ $system->ssi_test_acct }}">@if($system->ssi_test_acct == 0) No @elseif($system->ssi_test_acct == 1) Yes @endif</option>
               <option value="1">Yes</option>
               <option value="0">No</option>
             </select>
-
-
             <br>
-            <button type="submit" class="btn btn-default">Update</button>
+            <textarea name="notes" class="form-control" rows="4" placeholder="System Notes">{{ $system->notes }}</textarea>
+
           </div>
 
-        </form>
+    </div>
 
-      </div>
+    <div class="panel-footer">
+      <button type="submit" class="btn btn-default">Update</button>
+    </div>
+
+  </form>
+
     </div>
   </div>
 </div>

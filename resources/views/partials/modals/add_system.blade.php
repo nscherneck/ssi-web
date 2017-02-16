@@ -28,12 +28,17 @@
             <option value="0" disabled selected>Installed by SSI?</option>
             <option value="1">Yes</option>
             <option value="0">No</option>
-          </select><br>
+          </select>
+          <br>
+
           <select name="ssi_test_acct" class="form-control" required>
             <option value="0" disabled selected>Tests by SSI?</option>
             <option value="1">Yes</option>
             <option value="0">No</option>
           </select>
+          <br>
+
+          <textarea name="notes" class="form-control" placeholder="System Notes" rows="4"></textarea><br>
 
           <br>
           <button type="submit" class="btn btn-primary">Add</button>

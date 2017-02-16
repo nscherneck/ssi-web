@@ -44,6 +44,7 @@ class SystemsController extends Controller
       $system->install_date = $request->install_date;
       $system->ssi_install = $request->ssi_install;
       $system->ssi_test_acct = $request->ssi_test_acct;
+      $system->notes = $request->notes;
       $system->added_by = Auth::id();
 
       $system->save();
@@ -59,6 +60,7 @@ class SystemsController extends Controller
         $system->install_date = $request->install_date;
         $system->ssi_install = $request->ssi_install;
         $system->ssi_test_acct = $request->ssi_test_acct;
+        $system->notes = $request->notes;
         $system->updated_by = Auth::id();
 
         $system->update();
