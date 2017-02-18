@@ -44,6 +44,15 @@ function fetch_select(val)
 
 }
 
+  $(document).ready(function() {
+       $(':input[type="submit"]').prop('disabled', true);
+       $('#quantity').keyup(function() {
+          if($(this).val() != '') {
+             $(':input[type="submit"]').prop('disabled', false);
+          }
+       });
+   });
+
 </script>
 
 
@@ -65,8 +74,8 @@ function fetch_select(val)
 
         <div class="form-group">
 
-          <input  name="name" type="text" value="" class="form-control" placeholder="Note" ><br>
-          <input  name="quantity" type="text" value="" class="form-control" placeholder="Quantity" required><br>
+          <input name="name" type="text" value="" class="form-control" placeholder="Note" ><br>
+          <input id="quantity" name="quantity" type="text" value="" class="form-control" placeholder="Quantity" required><br>
           <select name="manufacturer_id" class="form-control" onchange="fetch_select(this.value);" required>
               <option value="" disabled selected>Choose Manufacturer</option>
             @foreach ($manufacturers as $manufacturer)
@@ -77,7 +86,7 @@ function fetch_select(val)
             <option id="default">Model - Choose Manufacturer Above</option>
           </select>
 
-          <div class="description" style="width:100%; padding:1em;">
+          <div class="description" style="width:100%; padding: 1em 0.25em 0 0.25em;">
             <p id="description"></p>
           </div>
 
@@ -95,11 +104,14 @@ function fetch_select(val)
             });
           </script>
 
-          <button type="submit" class="btn btn-primary">Attach</button>
         </div>
-      </form>
 
       </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Attach</button>
+      </div>
+    </form>
+
     </div>
   </div>
 </div>

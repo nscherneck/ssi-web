@@ -54,4 +54,9 @@ class Test extends Model
       return $this->hasMany('App\Testnote');
     }
 
+    public function scopeOfRange($query, $start_date, $end_date)
+    {
+      return $query->whereBetween('test_date', [$start_date, $end_date]);
+    }
+
 }

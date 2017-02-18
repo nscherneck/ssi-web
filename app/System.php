@@ -33,7 +33,7 @@ class System extends Model
   public function photos() {
     return $this->morphMany('App\Photo', 'photoable');
   }
-
+ 
   public function addedBy() // technician who completed test
   {
     return $this->belongsTo('App\User', 'added_by');

@@ -142,13 +142,19 @@ class TestsController extends Controller
 
     public function search(Request $request)
     {
-      $customer = Customer::findOrFail($request->customer_id);
+
+      $customers = Customer::find($request->customer_id)->systems()->with(['tests' => function ($query) {
+          $query->whereBetween('test_date', [$request->start_date, $request->end_date]);
+      }])->get();
+
+      // $tests = Test::ofRange($request->start_date, $request->end_date)->orderBy('test_date', 'desc')->get();
+      // $customer = Customer::findOrFail($request->customer_id);
 
       // $tests = Test::orderBy('test_date', 'desc')
       //   ->whereBetween('test_date', [$request->start_date, $request->end_date])
       //   ->get();
 
-      return view('tests.search_results', compact('customer'));
+      return view('tests.search_results', compact('customers'));
     }
 
     public function setNextTestDate($system, $date)
