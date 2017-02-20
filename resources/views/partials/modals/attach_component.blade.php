@@ -44,14 +44,14 @@ function fetch_select(val)
 
 }
 
-  $(document).ready(function() {
-       $(':input[type="submit"]').prop('disabled', true);
-       $('#quantity').keyup(function() {
-          if($(this).val() != '') {
-             $(':input[type="submit"]').prop('disabled', false);
-          }
-       });
-   });
+  // $(document).ready(function() {
+  //      $(':input[type="submit"]').prop('disabled', true);
+  //      $('#quantity').keyup(function() {
+  //         if($(this).val() != '') {
+  //            $(':input[type="submit"]').prop('disabled', false);
+  //         }
+  //      });
+  //  });
 
 </script>
 
@@ -108,7 +108,7 @@ function fetch_select(val)
 
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Attach</button>
+        <button id="attachButton" type="submit" class="btn btn-primary">Attach</button>
       </div>
     </form>
 
