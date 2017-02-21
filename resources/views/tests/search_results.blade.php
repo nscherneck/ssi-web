@@ -37,9 +37,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($customer->sites as $site)
-          @foreach($site->systems as $system)
-            @foreach($system->tests as $test)
+        @foreach($tests as $test)
               <tr
                 <?php echo ($test->test_result->name == 'Pass with Deficiencies') ? "class=\"warning\"" : ""; ?>
                 <?php echo ($test->test_result->name == 'Fail with Deficiencies') ? "class=\"danger\"" : ""; ?>
@@ -58,8 +56,6 @@
                 <td>{{ $test->test_result->name }}</td>
 
               </tr>
-        @endforeach
-      @endforeach
     @endforeach
       </tbody>
     </table>
