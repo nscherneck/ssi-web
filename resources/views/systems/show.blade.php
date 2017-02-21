@@ -60,7 +60,7 @@
     @endif
 
     <div class="panel panel-primary">
-      <div class="panel-heading">Site Info</div>
+      <div class="panel-heading">System Info</div>
       <div class="panel-body">
         <p>
           <small>
@@ -75,6 +75,22 @@
         </p>
       </div>
     </div>
+
+    @if ($system->notes)
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <p>
+            <p><small>
+              <strong>Notes: </strong>
+            </small></p>
+
+            <p><small>
+              {{ $system->notes }}
+            </small></p>
+        </p>
+      </div>
+    </div>
+    @endif
 
     <div class="text-center">
 

@@ -21,7 +21,7 @@
 
             <div class="form-group row">
               <div class="col-sm-12">
-                <input required name="name" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Customer Name" placeholder="Customer Name">
+                <input required name="name" type="text" value="" class="form-control form-control-sm" id="smFormGroupInput" title="Manufacturer Name" placeholder="Manufacturer Name">
               </div>
             </div>
 
@@ -102,7 +102,7 @@
 
             <div class="modal-footer">
 
-              <button type="submit" class="btn btn-default">Update</button>
+              <button type="submit" class="btn btn-default">Add</button>
 
             </div>
 
