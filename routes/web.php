@@ -2,17 +2,6 @@
 
 use App\Mail\WeeklyUpdate;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a Closure or controller method. Build something great!
-|
-*/
-
 // BASE NAV ROUTES
 Route::get('/', 'PagesController@home')->name('home');
 Route::get('customer', 'PagesController@customer')->name('customer');
