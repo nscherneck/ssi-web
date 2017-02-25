@@ -53,7 +53,6 @@ Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
 Route::put('system/{system}/next_test_date', 'SystemsController@updateNextTestDate');
 
-
 // MANUFACTURER AND COMPONENT ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');
 Route::get('manufacturers', 'ManufacturersController@index');
@@ -68,7 +67,6 @@ Route::put('component/{component}', 'ComponentsController@update');
 Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');
 Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detach');
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
-
 
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');;
@@ -101,7 +99,7 @@ Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
 Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
 Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
 
-
+// MAIL ROUTES
 Route::get('/sendweekly', function () {
   Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
   return view('customers.index');
