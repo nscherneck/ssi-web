@@ -35,7 +35,7 @@ Route::put('customer/{customer}/update', 'CustomersController@update');
 Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
 // SITE ROUTES
-Route::get('/sites', 'SitesController@index');
+Route::get('/sites', 'SitesController@index')->name('sites');
 Route::post('customer/{customer}/site/create', 'SitesController@create');
 Route::get('customer/{customer}/addsite', 'SitesController@add');
 Route::get('site/{site}', 'SitesController@show')->name('site_show');
