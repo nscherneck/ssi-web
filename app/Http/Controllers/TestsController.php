@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use App\Site;
+use App\Test;
+use App\System;
+use App\Customer;
+use App\TestFilters;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use DB;
-
-use App\Http\Requests;
-use App\Customer;
-use App\Site;
-use App\System;
-use App\Test;
 
 
 class TestsController extends Controller
@@ -21,35 +21,14 @@ class TestsController extends Controller
       $this->middleware('auth');
     }
 
-    public function index()
+    public function index(TestFilters $filters)
     {
-        //
+        $technicians = DB::table('users')->get();
+        $test_results = DB::table('test_results')->get();
+        $test_types = DB::table('test_types')->get();
+        $tests = Test::filter($filters)->orderBy('test_date', 'desc')->get();
+        return view('tests.index', compact('tests', 'technicians', 'test_results', 'test_types'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create($id)
-    {
-
-      $system = System::find($id);
-      $site = Site::find($system->site_id);
-      $customer = Customer::find($site->customer_id);
-      $test_types = DB::table('test_types')->get();
-      $test_results = DB::table('test_results')->get();
-      $technicians = DB::table('users')->get();
-      return view('tests.add', compact('customer', 'site', 'system', 'test_types', 'test_results', 'technicians'));
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
     public function store(Request $request, System $system)
     {
@@ -77,12 +56,7 @@ class TestsController extends Controller
       return redirect()->route('system_show', ['id' => $system->id]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function show(Test $test)
     {
       $test_types = DB::table('test_types')->get();
@@ -91,12 +65,6 @@ class TestsController extends Controller
       return view('tests.show', compact('test', 'test_types', 'test_results', 'technicians'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
@@ -115,12 +83,6 @@ class TestsController extends Controller
       return redirect()->route('test_show', ['id' => $test->id]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Test $test)
     {
         $system = System::find($test->system_id);

@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\QueryFilter;
+use Illuminate\Database\Eloquent\Model;
 
 class Test extends Model
 {
@@ -57,6 +58,11 @@ class Test extends Model
     public function scopeOfRange($query, $start_date, $end_date)
     {
       return $query->whereBetween('test_date', [$start_date, $end_date]);
+    }
+
+    public function scopeFilter($query, QueryFilter $filters)
+    {
+      return $filters->apply($query);
     }
 
 }

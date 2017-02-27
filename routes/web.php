@@ -58,7 +58,8 @@ Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detac
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
 
 // TEST ROUTES
-Route::get('tests/{test}', 'TestsController@show')->name('test_show');;
+Route::get('tests/{test}', 'TestsController@show')->name('test_show');
+Route::get('tests', 'TestsController@index')->name('tests');
 Route::post('system/{system}/tests/store', 'TestsController@store');
 Route::put('tests/{test}/update', 'TestsController@update');
 Route::delete('tests/{test}/delete', 'TestsController@destroy');
