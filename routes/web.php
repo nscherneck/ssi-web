@@ -15,6 +15,11 @@ Route::get('fleet', 'PagesController@fleet')->name('fleet');
 Route::get('team', 'PagesController@team')->name('team');
 Route::get('admin', 'PagesController@admin')->name('admin');
 
+// USER ROUTES
+Route::get('profile', 'UsersController@profile')->name('profile');
+Route::get('changepassword', 'UsersController@changePasswordView')->name('change_password');
+Route::post('changepassword', 'UsersController@changePassword');
+
 // CUSTOMER ROUTES
 Route::get('customers', 'CustomersController@index')->name('customers');
 Route::get('customer/{customer}', 'CustomersController@show')->name('customer_show');

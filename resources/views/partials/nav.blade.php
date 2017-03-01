@@ -31,7 +31,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="#">
+                        <a href="/profile">
                             Profile
                         </a>
 
