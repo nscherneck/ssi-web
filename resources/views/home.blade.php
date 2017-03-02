@@ -13,7 +13,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-4 no-gutter-right">
+    <div class="col-lg-4 no-gutter-right">
 
       <div class="titleBar" style="margin-top: 0">
         <p><i class="fa fa-camera" aria-hidden="true"></i> Recent Photos</p>
@@ -62,7 +62,53 @@
       @endif
     </div>
 
-    <div class="col-md-4 no-gutter-right">
+    <div class="col-lg-4 no-gutter-right">
+
+      <div class="panel panel-info">
+        <div class="panel-heading"><i class="fa fa-file-text-o" aria-hidden="true"></i> Recently Added Components</div>
+
+          <table class="table table-condensed">
+
+            <thead>
+              <tr>
+              <th>Manufacturer</th>
+              <th>Model</th>
+              <th>Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($recentcomponents as $component)
+              <tr>
+                <td>
+                  <small>
+                    <a href="/manufacturer/{{ $component->manufacturer_id }}">
+                      {{ $component->manufacturer->name }}
+                    </a>
+                  </small>
+                </td>
+                <td>
+                  <small>
+                    <a href="/component/{{ $component->id }}">
+                      {{ $component->model }}
+                    </a>
+                  </small>
+                </td>                
+                <td>
+                  <small>
+                      {{ $component->component_category->name }}
+                  </small>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+
+          </table>
+
+      </div> <!-- END OF PANEL -->
+
+    </div> <!-- END OF COL -->
+
+    <div class="col-lg-4">
 
       <div class="panel panel-info">
         <div class="panel-heading"><i class="fa fa-file-text-o" aria-hidden="true"></i> Recent Component Docs</div>
@@ -91,15 +137,12 @@
 
       </div> <!-- END OF PANEL -->
 
-    </div>
+    </div> <!-- END OF COL -->
 
-    <div class="col-md-4">
 
-    </div>
+  </div> <!-- END OF ROW -->
 
-  </div>
-
-</div>
+</div> <!-- END OF CONTAINER -->
 
 
 

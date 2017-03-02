@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
-
-use App\Http\Requests;
-use App\Customer;
+use DB;
 use App\Site;
-use App\System;
 use App\Test;
 use App\Photo;
+use App\System;
+use App\Customer;
 use App\Document;
-use DB;
+use App\Component;
+use Carbon\Carbon;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PagesController extends Controller
 {
@@ -34,7 +34,11 @@ class PagesController extends Controller
         ->take(25)
         ->get();
 
-      return view('home', compact('recentphotos', 'recentcomponentdocs'));
+      $recentcomponents = Component::orderBy('created_at', 'desc')
+        ->take(25)
+        ->get();
+
+      return view('home', compact('recentphotos', 'recentcomponentdocs', 'recentcomponents'));
     }
 
     public function customer()

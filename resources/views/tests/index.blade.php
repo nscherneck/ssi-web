@@ -76,7 +76,7 @@
     </div> <!-- END OF PANEL BODY -->
 
     <div class="panel-footer">
-      <button type="submit" class="btn btn-primary pull-right">Filter</button>
+      <button type="submit" class="btn btn-primary">Filter</button>
     </div> <!-- END OF FOOTER -->
 
     </form>
