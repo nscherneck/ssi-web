@@ -115,7 +115,6 @@ class DocumentsController extends Controller
 
     public function showReport(Test $test, Document $document)
     {
-
         $file = $document->path . '/' . $document->file_name . '.' . $document->ext;
         $disk = Storage::disk('s3');
 
