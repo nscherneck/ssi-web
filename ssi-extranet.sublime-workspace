@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"call_user",
+				"call_user_func_array"
+			],
+			[
+				"R",
+				"request"
+			],
+			[
+				"test",
+				"test_type_id"
+			],
+			[
 				"class",
 				"class\tNew Class"
 			],
@@ -24,16 +36,28 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "artisan make",
+		"last_filter": "install",
 		"selected_items":
 		[
 			[
-				"artisan make",
-				"Laravel Artisan 5: Make:Controller"
-			],
-			[
 				"install",
 				"Package Control: Install Package"
+			],
+			[
+				"pull",
+				"git: pull"
+			],
+			[
+				"log",
+				"git: log"
+			],
+			[
+				"git add",
+				"git: add (edit)"
+			],
+			[
+				"artisan make",
+				"Laravel Artisan 5: Make:Controller"
 			],
 			[
 				"php",
@@ -76,7 +100,7 @@
 				"PackageResourceViewer: Extract Package"
 			]
 		],
-		"width": 382.0
+		"width": 494.0
 	},
 	"console":
 	{
@@ -102,12 +126,38 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Nathan/Code/ssi-web/app/TestFilters.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Test.php",
+		"/C/Users/Nathan/Code/ssi-web/routes/web.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Http/Controllers/TestsController.php",
+		"/C/Users/Nathan/Code/ssi-web/app/QueryFilter.php",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/tests/index.blade.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Traits/ManagesReports.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Http/Controllers/DocumentsController.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Http/Controllers/PagesController.php",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/home.blade.php",
 		"/C/Users/Nathan/Code/ssi-web/composer.json",
+		"/C/Users/Nathan/Code/ssi-web/package.json",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/partials/modals/edit_component.blade.php",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/partials/modals/add_customer.blade.php",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/service.blade.php",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/BracketFlasher/BracketFlasher.sublime-settings",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/User/snippets/bootstrap-col-6-lg.sublime-snippet",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/User/snippets/bootstrap-row.sublime-snippet",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/User/snippets/bootstrap-col-3-lg.sublime-snippet",
+		"/C/Users/Nathan/Code/ssi-web/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php",
+		"/C/Users/Nathan/Code/ssi-web/app/Component.php",
+		"/C/users/nathan/Code/ticketbeast2/tests/features/PurchaseTicketsTest.php",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/customers/show.blade.php",
+		"/C/Users/Nathan/Code/ssi-web/ssi-extranet.sublime-project",
+		"/C/Users/Nathan/Code/ssi-web/resources/views/partials/modals/attach_component.blade.php",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/GitSavvy/GitSavvy.sublime-settings",
+		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/C/Users/Nathan/Code/ssi-web/.gitignore",
 		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/SublimeLinter/SublimeLinter.sublime-settings",
 		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Nathan/AppData/Roaming/Sublime Text 3/Packages/Laravel 5 Artisan/Laravel 5 Artisan.sublime-settings",
-		"/C/Users/Nathan/Code/ssi-web/routes/web.php",
 		"/C/Users/Nathan/Code/ssi-web/resources/views/partials/modals/add_manufacturer.blade.php",
 		"/C/Users/Nathan/Code/ssi-web/app/System.php",
 		"/C/Users/Nathan/Desktop/delete.php",
@@ -146,7 +196,7 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 70.0
 	},
 	"find_in_files":
 	{
@@ -160,6 +210,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"doc",
+			"radio",
+			"selected",
+			"type",
+			"technician",
+			"test_results",
+			"5",
+			"builder",
+			"Builder",
+			"protected",
+			"test_type_id",
+			"test_type",
+			"technician_id",
 			"visibility",
 			"python",
 			"hello",
@@ -236,6 +299,10 @@
 	{
 		"height": 0.0
 	},
+	"output.show_commit_info":
+	{
+		"height": 180.0
+	},
 	"pinned_build_system": "",
 	"project": "ssi-extranet.sublime-project",
 	"replace":
@@ -249,6 +316,34 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"home",
+				"resources\\views\\home.blade.php"
+			],
+			[
+				"web",
+				"routes\\web.php"
+			],
+			[
+				"service",
+				"resources\\views\\service.blade.php"
+			],
+			[
+				"builder",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Builder.php"
+			],
+			[
+				"testsc",
+				"ssi-web\\app\\Http\\Controllers\\TestsController.php"
+			],
+			[
+				"test",
+				"ssi-web\\app\\Test.php"
+			],
+			[
+				"attac",
+				"resources\\views\\partials\\modals\\attach_component.blade.php"
+			],
 			[
 				"add_man",
 				"resources\\views\\partials\\modals\\add_manufacturer.blade.php"
@@ -264,10 +359,6 @@
 			[
 				"customer",
 				"app\\Customer.php"
-			],
-			[
-				"web",
-				"routes\\web.php"
 			],
 			[
 				"we",

@@ -65,7 +65,7 @@
     <div class="col-lg-4 no-gutter-right">
 
       <div class="panel panel-info">
-        <div class="panel-heading"><i class="fa fa-file-text-o" aria-hidden="true"></i> Recently Added Components</div>
+        <div class="panel-heading"><i class="fa fa-cogs" aria-hidden="true"></i> Recently Added Components</div>
 
           <table class="table table-condensed">
 
@@ -81,7 +81,7 @@
               <tr>
                 <td>
                   <small>
-                    <a href="/manufacturer/{{ $component->manufacturer_id }}">
+                    <a href="/manufacturers/{{ $component->manufacturer_id }}">
                       {{ $component->manufacturer->name }}
                     </a>
                   </small>
