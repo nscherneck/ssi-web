@@ -5,11 +5,16 @@ namespace App;
 use DB;
 use App\QueryFilter;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Test extends Model
 {
+
+    use LogsActivity;
+
     protected $dates = ['test_date', 'updated_at', 'created_at'];
     protected $fillable = ['test_date', 'added_by', 'technician_id', 'system_id', 'test_result_id', 'test_type_id', 'added_by', 'updated_by', 'updated_at'];
+    protected static $logAttributes = ['test_date', 'test_type_id', 'test_result', 'system_id'];
 
     public function system()
     {

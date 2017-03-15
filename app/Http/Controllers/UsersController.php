@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
 use Hash;
-
 use Validator;
 
 class UsersController extends Controller
@@ -14,7 +13,9 @@ class UsersController extends Controller
     
     public function profile()
     {
-    	return view('user.profile');
+        $activityItems = \Auth::user()->activity;
+        $sortedActivityItems = $activityItems->sortByDesc('created_at')->take(15);
+    	return view('user.profile', compact('sortedActivityItems'));
     }
 
     public function changePasswordView()

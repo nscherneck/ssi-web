@@ -2,15 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Carbon\Carbon;
 use DB;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Site extends Model
 {
+  
+    use LogsActivity;
 
     protected $dates = ['created_at', 'updated_at'];
     protected $fillable =  ['name', 'address1', 'address2', 'city', 'state_id', 'zip', 'lat', 'lon', 'phone', 'fax', 'notes', 'added_by', 'updated_by', 'updated_at'];
+    protected static $logAttributes = ['name'];
 
     public function customer() {
       return $this->belongsTo('App\Customer');
