@@ -2,17 +2,21 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class System extends Model
 {
+
+  use LogsActivity;
 
   protected $dates = ['install_date', 'next_test_date', 'created_at', 'updated_at'];
   protected $fillable = ['system_type_id', 'name', 'install_date', 'ssi_install', 'ssi_test_acct', 'next_test_date', 'notes', 'added_by', 'updated_by', 'updated_at'];
   protected $casts = [
     'is_active' => 'boolean',
   ];
+  protected static $logAttributes = ['name'];
 
   public function site() {
     return $this->belongsTo('App\Site');

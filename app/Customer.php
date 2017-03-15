@@ -2,14 +2,17 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Customer extends Model
 {
+    use LogsActivity;
 
     protected $dates = ['created_at', 'updated_at'];
     protected $fillable = ['name', 'address1', 'address2', 'address3', 'city', 'state_id', 'zip', 'phone', 'fax', 'web', 'email', 'notes', 'added_by', 'updated_by', 'updated_at'];
+    protected static $logAttributes = ['name'];
 
     public function sites() {
     return $this->hasMany('App\Site')->orderBy('name', 'asc');
