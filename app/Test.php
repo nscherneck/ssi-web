@@ -70,4 +70,9 @@ class Test extends Model
       return $filters->apply($query);
     }
 
+    public function getFormattedTestDateAttribute()
+    {
+      return $this->test_date->format('F j, Y');
+    }
+
 }

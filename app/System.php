@@ -16,7 +16,7 @@ class System extends Model
   protected $casts = [
     'is_active' => 'boolean',
   ];
-  protected static $logAttributes = ['name'];
+  protected static $logAttributes = ['notes'];
 
   public function site() {
     return $this->belongsTo('App\Site');

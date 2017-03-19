@@ -135,7 +135,7 @@
             <tr>
               <td width="5%"><small>{{ $panel->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $panel->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturers/{{ $panel->manufacturer->id }}">{{ $panel->manufacturer->name }}</a></small></td>
+              <td width="10%"><small><a href="/manufacturer/{{ $panel->manufacturer->id }}">{{ $panel->manufacturer->name }}</a></small></td>
               <td width="10%"><small><a href="/component/{{ $panel->id }}">{{ $panel->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($panel->description) > 125)
@@ -161,7 +161,7 @@
             <tr>
               <td width="5%"><small>{{ $modularpanel->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $modularpanel->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturers/{{ $modularpanel->manufacturer->id }}">{{ $modularpanel->manufacturer->name }}</a></small></td>
+              <td width="10%"><small><a href="/manufacturer/{{ $modularpanel->manufacturer->id }}">{{ $modularpanel->manufacturer->name }}</a></small></td>
               <td width="10%"><small><a href="/component/{{ $modularpanel->id }}">{{ $modularpanel->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($modularpanel->description) > 125)
@@ -187,7 +187,7 @@
             <tr>
               <td width="5%"><small>{{ $controlequipment->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $controlequipment->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturers/{{ $controlequipment->manufacturer->id }}">{{ $controlequipment->manufacturer->name }}</a></small></td>
+              <td width="10%"><small><a href="/manufacturer/{{ $controlequipment->manufacturer->id }}">{{ $controlequipment->manufacturer->name }}</a></small></td>
               <td width="10%"><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($controlequipment->description) > 125)
@@ -213,7 +213,7 @@
             <tr>
               <td width="5%"><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $airsamplingdetection->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturers/{{ $airsamplingdetection->manufacturer->id }}">{{ $airsamplingdetection->manufacturer->name }}</a></small></td>
+              <td width="10%"><small><a href="/manufacturer/{{ $airsamplingdetection->manufacturer->id }}">{{ $airsamplingdetection->manufacturer->name }}</a></small></td>
               <td width="10%"><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($airsamplingdetection->description) > 125)
@@ -239,7 +239,7 @@
             <tr>
               <td width="5%"><small>{{ $detection->pivot->quantity }}</small></td>
               <td width="15%"><small>{{ $detection->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturers/{{ $detection->manufacturer->id }}">{{ $detection->manufacturer->name }}</a></small></td>
+              <td width="10%"><small><a href="/manufacturer/{{ $detection->manufacturer->id }}">{{ $detection->manufacturer->name }}</a></small></td>
               <td width="10%"><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($detection->description) > 125)
@@ -265,7 +265,7 @@
             <tr>
               <td><small>{{ $notification->pivot->quantity }}</small></td>
               <td><small>{{ $notification->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $notification->manufacturer->id }}">{{ $notification->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $notification->manufacturer->id }}">{{ $notification->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $notification->id }}">{{ $notification->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($notification->description) > 125)
@@ -291,7 +291,7 @@
             <tr>
               <td><small>{{ $modules->pivot->quantity }}</small></td>
               <td><small>{{ $modules->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $modules->manufacturer->id }}">{{ $modules->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $modules->manufacturer->id }}">{{ $modules->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $modules->id }}">{{ $modules->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($modules->description) > 125)
@@ -317,7 +317,7 @@
             <tr>
               <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
               <td><small>{{ $miscelectrical->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $miscelectrical->manufacturer->id }}">{{ $miscelectrical->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $miscelectrical->manufacturer->id }}">{{ $miscelectrical->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $miscelectrical->id }}">{{ $miscelectrical->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($miscelectrical->description) > 125)
@@ -343,7 +343,7 @@
             <tr>
               <td><small>{{ $misc->pivot->quantity }}</small></td>
               <td><small>{{ $misc->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $misc->manufacturer->id }}">{{ $misc->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $misc->manufacturer->id }}">{{ $misc->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $misc->id }}">{{ $misc->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($misc->description) > 125)
@@ -369,7 +369,7 @@
             <tr>
               <td><small>{{ $accessory->pivot->quantity }}</small></td>
               <td><small>{{ $accessory->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $accessory->manufacturer->id }}">{{ $accessory->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $accessory->manufacturer->id }}">{{ $accessory->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $accessory->id }}">{{ $accessory->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($accessory->description) > 125)
@@ -395,7 +395,7 @@
             <tr>
               <td><small>{{ $uncategorized->pivot->quantity }}</small></td>
               <td><small>{{ $uncategorized->pivot->name }}</small></td>
-              <td><small><a href="/manufacturers/{{ $uncategorized->manufacturer->id }}">{{ $uncategorized->manufacturer->name }}</a></small></td>
+              <td><small><a href="/manufacturer/{{ $uncategorized->manufacturer->id }}">{{ $uncategorized->manufacturer->name }}</a></small></td>
               <td><small><a href="/component/{{ $uncategorized->id }}">{{ $uncategorized->model }}</a></small></td>
               <td width="30%"><small>
                 @if(strlen($uncategorized->description) > 125)
@@ -447,7 +447,7 @@
           <tr>
             <td width="5%"><small>{{ $consumable->pivot->quantity }}</small></td>
             <td width="15%"><small>{{ $consumable->pivot->name }}</small></td>
-            <td width="10%"><small><a href="/manufacturers/{{ $consumable->manufacturer->id }}">{{ $consumable->manufacturer->name }}</a></small></td>
+            <td width="10%"><small><a href="/manufacturer/{{ $consumable->manufacturer->id }}">{{ $consumable->manufacturer->name }}</a></small></td>
             <td width="10%"><small><a href="/component/{{ $consumable->id }}">{{ $consumable->model }}</a></small></td>
             <td width="30%"><small>
               @if(strlen($consumable->description) > 125)
@@ -502,7 +502,7 @@
           <tr>
             <td width="5%"><small>{{ $tank->pivot->quantity }}</small></td>
             <td width="15%"><small>{{ $tank->pivot->name }}</small></td>
-            <td width="10%"><small><a href="/manufacturers/{{ $tank->manufacturer->id }}">{{ $tank->manufacturer->name }}</a></small></td>
+            <td width="10%"><small><a href="/manufacturer/{{ $tank->manufacturer->id }}">{{ $tank->manufacturer->name }}</a></small></td>
             <td width="10%"><small><a href="/component/{{ $tank->id }}">{{ $tank->model }}</a></small></td>
             <td width="30%"><small>
               @if(strlen($tank->description) > 125)

@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Activitylog\Models\Activity;
 
 class PagesController extends Controller
 {
@@ -25,6 +26,12 @@ class PagesController extends Controller
 
     public function home()
     {
+      $activityItems = Activity::with(['causer', 'subject'])
+            ->orderBy('created_at', 'desc')
+            ->take(20)
+            ->get();
+      
+
       $recentphotos = Photo::orderBy('created_at', 'desc')
         ->take(10)
         ->get();
@@ -38,7 +45,8 @@ class PagesController extends Controller
         ->take(25)
         ->get();
 
-      return view('home', compact('recentphotos', 'recentcomponentdocs', 'recentcomponents'));
+      return view('home.show', 
+        compact('activityItems', 'recentphotos', 'recentcomponentdocs', 'recentcomponents'));
     }
 
     public function customer()
