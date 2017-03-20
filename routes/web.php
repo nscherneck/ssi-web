@@ -50,7 +50,7 @@ Route::put('system/{system}/next_test_date', 'SystemsController@updateNextTestDa
 // MANUFACTURER AND COMPONENT ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');
 Route::get('manufacturers', 'ManufacturersController@index');
-Route::get('manufacturers/{manufacturer}', 'ManufacturersController@show')->name('manufacturer_show');
+Route::get('manufacturer/{manufacturer}', 'ManufacturersController@show')->name('manufacturer_show');
 Route::put('manufacturers/{manufacturer}', 'ManufacturersController@update');
 Route::get('createcomponent', 'ComponentsController@create_page');
 Route::post('createcomponent', 'ComponentsController@create');

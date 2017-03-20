@@ -117,7 +117,7 @@ class CustomersController extends Controller
         return redirect()->route('customer_show', ['id' => $customer->id]);
       } else {
         $customer->delete();
-        flash('Success1', 'Customer deleted.', 'danger');
+        flash('Success!', 'Customer deleted.', 'danger');
         return redirect()->route('admin');
       }
 

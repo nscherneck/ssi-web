@@ -12,7 +12,7 @@ class Customer extends Model
 
     protected $dates = ['created_at', 'updated_at'];
     protected $fillable = ['name', 'address1', 'address2', 'address3', 'city', 'state_id', 'zip', 'phone', 'fax', 'web', 'email', 'notes', 'added_by', 'updated_by', 'updated_at'];
-    protected static $logAttributes = ['name'];
+    protected static $logAttributes = ['notes'];
 
     public function sites() {
     return $this->hasMany('App\Site')->orderBy('name', 'asc');

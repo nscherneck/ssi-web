@@ -40,6 +40,9 @@
 
 	<div class="col-lg-9">
 
+	<h4>Recent Activity</h4>
+	@include('user.activity_feed.feed')
+
 	</div> <!-- END OF COLUMN -->
 
 </div>

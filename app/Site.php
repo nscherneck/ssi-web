@@ -14,7 +14,7 @@ class Site extends Model
 
     protected $dates = ['created_at', 'updated_at'];
     protected $fillable =  ['name', 'address1', 'address2', 'city', 'state_id', 'zip', 'lat', 'lon', 'phone', 'fax', 'notes', 'added_by', 'updated_by', 'updated_at'];
-    protected static $logAttributes = ['name'];
+    protected static $logAttributes = ['notes'];
 
     public function customer() {
       return $this->belongsTo('App\Customer');
