@@ -11,19 +11,42 @@ class System extends Model
 
   use LogsActivity;
 
-  protected $dates = ['install_date', 'next_test_date', 'created_at', 'updated_at'];
-  protected $fillable = ['system_type_id', 'name', 'install_date', 'ssi_install', 'ssi_test_acct', 'next_test_date', 'notes', 'added_by', 'updated_by', 'updated_at'];
+  protected $dates = [
+    'install_date', 
+    'next_test_date', 
+    'created_at', 
+    'updated_at'
+    ];
+
+  protected $fillable = [
+    'system_type_id', 
+    'name', 
+    'install_date', 
+    'ssi_install', 
+    'ssi_test_acct', 
+    'next_test_date', 
+    'notes', 
+    'added_by', 
+    'updated_by', 
+    'updated_at'
+    ];
+
   protected $casts = [
     'is_active' => 'boolean',
-  ];
-  protected static $logAttributes = ['notes'];
+    ];
+
+  protected static $logAttributes = [
+    'notes'
+    ];
 
   public function site() {
     return $this->belongsTo('App\Site');
   }
 
   public function components() {
-    return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')->withPivot('quantity', 'name', 'id')->orderBy('model', 'asc');
+    return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')
+    ->withPivot('quantity', 'name', 'id')
+    ->orderBy('model', 'asc');
   }
 
   public function tests() {
@@ -136,67 +159,106 @@ class System extends Model
   }
 
   public function compPanel() {
-    $result = $this->components()->where('component_category_id', '=', 1)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 1)
+    ->get();
+    
     return $result;
   }
 
   public function compModularPanel() {
-    $result = $this->components()->where('component_category_id', '=', 14)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 14)
+    ->get();
+
     return $result;
   }
 
   public function compControlEquipment() {
-    $result = $this->components()->where('component_category_id', '=', 2)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 2)
+    ->get();
+
     return $result;
   }
 
   public function compAirSamplingDetection() {
-    $result = $this->components()->where('component_category_id', '=', 13)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 13)
+    ->get();
+
     return $result;
   }
 
   public function compDetection() {
-    $result = $this->components()->where('component_category_id', '=', 3)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 3)
+    ->get();
+
     return $result;
   }
 
   public function compNotification() {
-    $result = $this->components()->where('component_category_id', '=', 4)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 4)
+    ->get();
+
     return $result;
   }
 
   public function compModules() {
-    $result = $this->components()->where('component_category_id', '=', 15)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 15)
+    ->get();
+
     return $result;
   }
 
   public function compMiscElectrical() {
-    $result = $this->components()->where('component_category_id', '=', 10)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 10)
+    ->get();
+
     return $result;
   }
 
   public function compMisc() {
-    $result = $this->components()->where('component_category_id', '=', 11)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 11)
+    ->get();
+
     return $result;
   }
 
   public function compAccessory() {
-    $result = $this->components()->where('component_category_id', '=', 6)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 6)
+    ->get();
+
     return $result;
   }
 
   public function compUncategorized() {
-    $result = $this->components()->where('component_category_id', '=', 12)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 12)
+    ->get();
+
     return $result;
   }
 
   public function compConsumable() {
-    $result = $this->components()->where('component_category_id', '=', 5)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 5)
+    ->get();
+
     return $result;
   }
 
   public function compTank() {
-    $result = $this->components()->where('component_category_id', '=', 7)->get();
+    $result = $this->components()
+    ->where('component_category_id', '=', 7)
+    ->get();
+
     return $result;
   }
 
