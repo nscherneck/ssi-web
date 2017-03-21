@@ -12,6 +12,7 @@ class Photo extends Model
 
   use LogsActivity;
 
+  protected $dates = ['updated_at', 'created_at'];
   protected $fillable = ['caption', 'photoable_id', 'photoable_type', 'path', 'file_name', 'ext', 'added_by', 'updated_by'];
 
   protected static $logAttributes = ['caption'];
