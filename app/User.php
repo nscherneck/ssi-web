@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -10,58 +9,52 @@ class User extends Authenticatable
 {
     use Notifiable;
     use CausesActivity;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password', 'last_login',
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+        'first_name', 
+        'last_name', 
+        'email', 
+        'password', 
+        'last_login',
+        ];    
     protected $hidden = [
-        'password', 'remember_token',
-    ];
-
-    public function customers() // technician who completed test
+        'password', 
+        'remember_token',
+        ];
+    
+    public function customers()
     {
-      return $this->hasMany('App\Test');
+        return $this->hasMany('App\Test');
     }
-
-    public function sites() // technician who completed test
+    
+    public function sites()
     {
-      return $this->hasMany('App\Test');
+        return $this->hasMany('App\Test');
     }
-
-    public function systems() // technician who completed test
+    
+    public function systems()
     {
-      return $this->hasMany('App\Test');
+        return $this->hasMany('App\Test');
     }
-
-    public function tests() // technician who completed test
+    
+    public function tests()
     {
-      return $this->hasMany('App\Test');
+        return $this->hasMany('App\Test');
     }
-
-    public function deficiencies() // technician who completed test
+    
+    public function deficiencies()
     {
-      return $this->hasMany('App\Deficiency');
+        return $this->hasMany('App\Deficiency');
     }
-
-    public function manufacturers() // technician who completed test
+    
+    public function manufacturers()
     {
-      return $this->hasMany('App\Manufacturer');
+        return $this->hasMany('App\Manufacturer');
     }
-
+    
     public function getFullNameAttribute()
     {
-      return $this->first_name . ' ' . $this->last_name;
+        return $this->first_name . ' ' . $this->last_name;
     }
 
 }

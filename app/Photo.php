@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use App\System;
@@ -10,50 +9,48 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Photo extends Model
 {
 
-  use LogsActivity;
+    use LogsActivity;
 
-  protected $dates = [
-    'updated_at', 
-    'created_at'
+    protected $dates = [
+        'updated_at', 
+        'created_at'
     ];
 
-  protected $fillable = [
-    'caption', 
-    'photoable_id', 
-    'photoable_type', 
-    'path', 
-    'file_name', 
-    'ext', 
-    'added_by', 
-    'updated_by'
+    protected $fillable = [
+        'caption', 
+        'photoable_id', 
+        'photoable_type', 
+        'path', 
+        'file_name', 
+        'ext', 
+        'added_by', 
+        'updated_by'
     ];
 
-  protected static $logAttributes = [
-    'caption'
+    protected static $logAttributes = [
+        'caption'
     ];
 
-  public function photoable()
-  {
-    return $this->morphTo();
-  }
+    public function photoable()
+    {
+        return $this->morphTo();
+    }
 
- // user who uploaded
-  public function addedBy()
-  {
-    return $this->belongsTo('App\User', 'added_by');
-  }
+    public function addedBy()
+    {
+        return $this->belongsTo('App\User', 'added_by');
+    }
 
-  public function getSystem($id)
-  {
-    $system = System::find($id);
-    return $system;
-  }
+    public function getSystem($id)
+    {
+        $system = System::find($id);
+        return $system;
+    }
 
-  public function getSize()
-  {
-    $result = round(Storage::size($this->path . "/" . $this->file_name . "." . $this->ext) / 1000000, 2) . " Mb";
-    return $result;
-  }
-
+    public function getSize()
+    {
+        $result = round(Storage::size($this->path . "/" . $this->file_name . "." . $this->ext) / 1000000, 2) . " Mb";
+        return $result;
+    }
 
 }
