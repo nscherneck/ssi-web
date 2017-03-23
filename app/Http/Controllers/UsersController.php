@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Auth;
@@ -17,40 +16,38 @@ class UsersController extends Controller
     {
         $user = Auth::user();
         $activityItems = Activity::causedBy($user)
-                    ->with(['subject'])
-                    ->orderBy('created_at', 'desc')
-                    ->take(20)
-                    ->get();
-                    // return $activityItems;
-    	return view('user.profile', compact('activityItems'));
-    }
+            ->with(['subject'])
+            ->orderBy('created_at', 'desc')
+            ->take(20)
+            ->get();
 
+        return view('user.profile', compact('activityItems'));
+    }
+    
     public function changePasswordView()
     {
-    	return view('user.change_password');
+        return view('user.change_password');
     }
-
+    
     public function changePassword(Request $request)
-    {
+    {    
+        $user = Auth::user();    
+        $validation = Validator::make($request->all(), [    
+            'password' => 'hash:' . $user->password,
+            'new_password' => 'required|different:password|confirmed'
+            ]);
+        
+        if ($validation->fails()) {
+            return redirect()->back()->withErrors($validation->errors());
+        }
+        
+        $user->password = Hash::make($request->input('new_password'));
 
-	  $user = Auth::user();
+        $user->save();
+        
+        flash('Success!', 'Password changed.');
 
-	  $validation = Validator::make($request->all(), [
-
-	    // Here's how our new validation rule is used.
-	    'password' => 'hash:' . $user->password,
-	    'new_password' => 'required|different:password|confirmed'
-	  ]);
-
-	  if ($validation->fails()) {
-	    return redirect()->back()->withErrors($validation->errors());
-	  }
-
-	  $user->password = Hash::make($request->input('new_password'));
-	  $user->save();
-
-      flash('Success!', 'Password changed.');
-      return redirect()->route('profile');
-
+        return redirect()->route('profile');        
     }
+    
 }
