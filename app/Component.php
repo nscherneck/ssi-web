@@ -24,4 +24,14 @@ class Component extends Model
       return $this->morphMany('App\Document', 'documentable');
     }
 
+    public function getFormattedDescriptionAttribute() 
+    {
+        if (strlen($this->description) > 110) {
+            $shortenedDescriptionString = substr($this->description, 0, 110) . '...';
+            return $shortenedDescriptionString;
+        } 
+
+        return $this->description;
+    }
+
 }

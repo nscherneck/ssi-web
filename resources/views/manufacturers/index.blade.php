@@ -34,10 +34,26 @@
           <tbody>
             @foreach($manufacturers as $manufacturer)
               <tr>
-              <td width="25%"><small><a href="/manufacturers/{{ $manufacturer->id }}">{{ $manufacturer->name }}</a></small></td>
-              <td width="25%"><small><a href="{{ $manufacturer->web }}" target="blank">{{ $manufacturer->web }}</small></td>
-              <td width="25%"><small><a href="{{ $manufacturer->distributor_login }}" target="blank">{{ $manufacturer->distributor_login }}</small></td>
-              <td width="25%"><small>{{ $manufacturer->components->count() }}</small></td>
+
+              <td width="25%">
+              <small><a href="/manufacturer/{{ $manufacturer->id }}">
+              {{ $manufacturer->name }}</a></small>
+              </td>
+
+              <td width="25%">
+              <small><a href="{{ $manufacturer->web }}" target="blank">
+              {{ $manufacturer->web }}</a></small>
+              </td>
+
+              <td width="25%">
+              <small><a href="{{ $manufacturer->distributor_login }}" target="blank">
+              {{ $manufacturer->distributor_login }}</a></small>
+              </td>
+
+              <td width="25%">
+              <small>{{ $manufacturer->components->count() }}</small>
+              </td>
+              
             </tr>
             @endforeach
           </tbody>
