@@ -80,7 +80,7 @@ class Site extends Model
         return $systems_quantity;
     }
 
-    public function get_travel_data($lat, $lon) 
+    public function getTravelData($lat, $lon) 
     {
         $fife_lat = '47.239556';
         $fife_lon = '-122.387691';
@@ -108,6 +108,12 @@ class Site extends Model
         $travel_data = [$pdx_distance, $pdx_duration, $fife_distance, $fife_duration];
 
         return $travel_data;
+    }
+
+    public function getFormattedForIndexCreatedAtAttribute()
+    {
+        return $this->created_at->setTimezone('America/Los_Angeles')
+            ->format('D, F j');
     }
 
 }

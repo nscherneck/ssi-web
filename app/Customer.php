@@ -47,12 +47,6 @@ class Customer extends Model
         return $this->belongsTo('App\State');
     }
 
-    public function count_sites($id) 
-    {
-        $site_quantity = DB::table('sites')->where('customer_id', $id)->count();
-        return $site_quantity;
-    }
-
     public function systems() 
     {
         return $this->hasManyThrough('App\System', 'App\Site');
@@ -66,6 +60,18 @@ class Customer extends Model
     public function updatedBy() // technician who completed test
     {
         return $this->belongsTo('App\User', 'updated_by');
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->setTimezone('America/Los_Angeles')
+            ->format('F j, Y, g:i a');
+    }
+
+    public function getFormattedUpdatedAtAttribute()
+    {
+        return $this->updated_at->setTimezone('America/Los_Angeles')
+            ->format('F j, Y, g:i a');
     }
 
 }

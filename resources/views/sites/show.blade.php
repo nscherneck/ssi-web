@@ -17,7 +17,6 @@
     <li>{{ $site->name }}</li>
   </ol>
 
-
 <!--          LEFT SIDE CONTENT         -->
 
   <div class="row">
@@ -50,12 +49,12 @@
       <div class="panel panel-primary">
         <div class="panel-body">
           <p><small>
-            <strong>Added:</strong> {{ $site->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Added By:</strong> {{ $site->addedBy->first_name }} {{ $site->addedBy->last_name }}<br>
+            <strong>Added:</strong> {{ $site->formatted_created_at }}<br>
+            <strong>Added By:</strong> {{ $site->addedBy->full_name }}<br>
             @if($site->updated_by)
             <hr>
-            <strong>Edited:</strong> {{ $site->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Edited By:</strong> {{ $site->updatedBy->first_name }} {{ $site->updatedBy->last_name }}<br>
+            <strong>Edited:</strong> {{ $site->formatted_updated_at }}<br>
+            <strong>Edited By:</strong> {{ $site->updatedBy->full_name }}<br>
             @endif
           </small></p>
         </div>
@@ -63,17 +62,12 @@
 
       @if ($site->notes)
       <div class="panel panel-primary">
-        <div class="panel-body">
-          <p>
-              <p><small>
-                <strong>Notes: </strong>
-              </small></p>
-
-              <p><small>
-                {{ $site->notes }}
-              </small></p>
-          </p>
-        </div>
+      <div class="panel-heading">Notes</div>
+      <div class="panel-body">   
+        <small>
+        {!! nl2br(e($site->notes)) !!}
+        </small>
+      </div>
       </div>
       @endif
 
@@ -92,7 +86,6 @@
 
     <div class="col-md-9">
 
-
     <script> var myLatLng = {lat: {{ $site->lat }}, lng: {{ $site->lon }}}; </script>
 
     @include('partials.sites_map')
@@ -104,7 +97,7 @@
       <div class="col-lg-6 text-center">
 
         @php
-        $travel_data = $site->get_travel_data($site->lat, $site->lon);
+        $travel_data = $site->getTravelData($site->lat, $site->lon);
         echo "<small><p>Travel from<strong> Fife Office: </strong>" . $travel_data[2] . " <strong>(" . $travel_data[3] . ")</strong></p></small>";
         @endphp
         <br>
@@ -114,7 +107,7 @@
       <div class="col-lg-6 text-center">
 
         @php
-        $travel_data = $site->get_travel_data($site->lat, $site->lon);
+        $travel_data = $site->getTravelData($site->lat, $site->lon);
         echo "<small><p>Travel from<strong> Portland Office: </strong>" . $travel_data[0] . " <strong>(" . $travel_data[1] . ")</strong></p></small>";
         @endphp
         <br>

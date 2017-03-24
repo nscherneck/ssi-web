@@ -80,9 +80,9 @@
     <div class="panel panel-primary">
     <div class="panel-heading">Notes</div>
     <div class="panel-body">
-      <p><small>
-        {{ $system->notes }}
-      </small></p>
+      <small>
+      {!! nl2br(e($system->notes)) !!}
+      </small>
     </div>
     </div>
     @endif

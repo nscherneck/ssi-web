@@ -22,11 +22,6 @@
       </div>
     </div>
 
-
-    <div class="titleBar" style="margin-top: 0;">
-        <p>Sites Index</p>
-    </div>
-
     <div class="table-responsive">
 
       <table class="table table-hover table-condensed">
@@ -47,14 +42,39 @@
         <tbody>
           @foreach($sites as $site)
             <tr>
-            <td><small>{{ $site->created_at->setTimezone('America/Los_Angeles')->format('D, F j') }}</small></td>
-            <td><small><a href="/customer/{{ $site->customer_id }}">{{ $site->customer->name }}</a></small></td>
-            <td><small><a href="/site/{{ $site->id }}">{{ $site->name }}</a></small></td>
-            <td><small>{{ $site->address1 }}</small></td>
-            <td><small>{{ $site->city }}</small></td>
-            <td><small>{{ $site->state->abbreviated }}</small></td>
-            <td><small>{{ $site->zip }}</small></td>
-            <td><small>{{ count($site->systems) }}</small></td>
+
+            <td><small>
+            {{ $site->formatted_for_index_created_at }}
+            </small></td>
+
+            <td><small>
+            <a href="/customer/{{ $site->customer_id }}">{{ $site->customer->name }}</a>
+            </small></td>
+
+            <td><small>
+            <a href="/site/{{ $site->id }}">{{ $site->name }}</a>
+            </small></td>
+
+            <td><small>
+            {{ $site->address1 }}
+            </small></td>
+
+            <td><small>
+            {{ $site->city }}
+            </small></td>
+
+            <td><small>
+            {{ $site->state->abbreviated }}
+            </small></td>
+
+            <td><small>
+            {{ $site->zip }}
+            </small></td>
+
+            <td><small>
+            {{ count($site->systems) }}
+            </small></td>
+
           </tr>
           @endforeach
         </tbody>
