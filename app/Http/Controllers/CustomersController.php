@@ -20,7 +20,7 @@ class CustomersController extends Controller
     
     public function index()
     {
-        $customers = Customer::orderBy('name')->get();
+        $customers = Customer::orderBy('name')->get();        
         return view('customers.index', compact('customers'));
     }
     

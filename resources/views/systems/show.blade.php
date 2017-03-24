@@ -13,7 +13,8 @@
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
-    <li><a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a></li>
+    <li><a href="/customer/{{ $system->site->customer->id }}">
+    {{ $system->site->customer->name }}</a></li>
     <li><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></li>
     <li>{{ $system->name }}</li>
   </ol>
@@ -60,16 +61,15 @@
     @endif
 
     <div class="panel panel-primary">
-      <div class="panel-heading">System Info</div>
       <div class="panel-body">
         <p>
           <small>
-            <strong>Added:</strong> {{ $system->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Added By:</strong> {{ $system->addedBy->first_name }} {{ $system->addedBy->last_name }}<br>
+            <strong>Added:</strong> {{ $system->formatted_created_at }}<br>
+            <strong>Added By:</strong> {{ $system->addedBy->full_name }}<br>
             @if ($system->updated_by)
             <hr>
-            <strong>Edited:</strong> {{ $system->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Edited By:</strong> {{ $system->updatedBy->first_name }} {{ $system->updatedBy->last_name }}<br>
+            <strong>Edited:</strong> {{ $system->formatted_updated_at }}<br>
+            <strong>Edited By:</strong> {{ $system->updatedBy->full_name }}<br>
             @endif
           </small>
         </p>
@@ -78,17 +78,12 @@
 
     @if ($system->notes)
     <div class="panel panel-primary">
-      <div class="panel-body">
-        <p>
-            <p><small>
-              <strong>Notes: </strong>
-            </small></p>
-
-            <p><small>
-              {{ $system->notes }}
-            </small></p>
-        </p>
-      </div>
+    <div class="panel-heading">Notes</div>
+    <div class="panel-body">
+      <p><small>
+        {{ $system->notes }}
+      </small></p>
+    </div>
     </div>
     @endif
 

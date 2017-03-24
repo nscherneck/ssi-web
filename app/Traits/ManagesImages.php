@@ -55,9 +55,6 @@ trait ManagesImages
 
     }
 
-
-
-
     // NEW IMAGES
 
     private function getUploadedFile()
@@ -132,13 +129,12 @@ trait ManagesImages
     private function setFileName($system)
     {
 
-      // $this->imageName = $model->file_name;
-      // $this->extension = $model->extension;
       date_default_timezone_set('America/Los_Angeles');
       $this->imageName = strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->site->customer->name))) . '_';
       $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->site->name))) . '_';
       $this->imageName .= strtolower(str_replace(' ', '_', preg_replace('/[^a-zA-Z0-9 ]/', '', $system->name))) . '_';
       $this->imageName .= date('Ymd_Gis');
+      date_default_timezone_set('UTC');
 
     }
 
@@ -146,14 +142,10 @@ trait ManagesImages
     private function setImageProperties()
     {
 
-        foreach ($this->imageDefaults as $propertyName => $propertyValue){
-
-          if ( property_exists( $this , $propertyName) ){
-
+        foreach ($this->imageDefaults as $propertyName => $propertyValue) {
+          if (property_exists($this, $propertyName)) {
               $this->$propertyName = $propertyValue;
-
           }
-
         }
 
     }

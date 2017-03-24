@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\ManagesImages;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\File;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Auth;
-
-use App\Http\Requests;
-use App\Customer;
-use App\Site;
-use App\System;
-use App\Photo;
 use DB;
+use App\Site;
+use App\Photo;
+use App\System;
+use App\Customer;
+use App\Http\Requests;
+use Illuminate\Http\File;
+use Illuminate\Http\Request;
+use App\Traits\ManagesImages;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class PhotosController extends Controller
 {

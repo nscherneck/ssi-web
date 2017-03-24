@@ -8,7 +8,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Photo extends Model
 {
-
+    
     use LogsActivity;
 
     protected $dates = [
