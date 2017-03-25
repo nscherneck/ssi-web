@@ -71,6 +71,18 @@ class Site extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+    public function getFormattedUpdatedAtAttribute()
+    {
+        return $this->updated_at->setTimezone('America/Los_Angeles')
+            ->format('F j, Y, g:i a');
+    }
+
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->setTimezone('America/Los_Angeles')
+            ->format('F j, Y, g:i a');
+    }
+
     public function count_systems($id) 
     {
         $systems_quantity = DB::table('systems')
