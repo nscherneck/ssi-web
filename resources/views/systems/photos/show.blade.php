@@ -46,8 +46,8 @@
         <hr>
 
         <p><small>{{ $photo->caption }}</small><br>
-        <small><strong>Added By: </strong>{{ $photo->addedBy->first_name }} {{ $photo->addedBy->last_name }}<br>
-        <strong>Added: </strong>{{ $photo->created_at->format('l, F j - g:i A') }}<br>
+        <small><strong>Added By: </strong>{{ $photo->addedBy->full_name }}<br>
+        <strong>Added: </strong>{{ $photo->formatted_created_at }}<br>
         <strong>Size: </strong>{{ $photo_size }}Mb<br></p>
 
       </div>
