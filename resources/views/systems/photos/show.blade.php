@@ -48,7 +48,7 @@
         <p><small>{{ $photo->caption }}</small><br>
         <small><strong>Added By: </strong>{{ $photo->addedBy->full_name }}<br>
         <strong>Added: </strong>{{ $photo->formatted_created_at }}<br>
-        <strong>Size: </strong>{{ $photo_size }}Mb<br></p>
+        <strong>File Size: </strong>{{ $photo_size }}Mb<br></p>
 
       </div>
 

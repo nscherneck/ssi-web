@@ -53,4 +53,10 @@ class Photo extends Model
         return $result;
     }
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->setTimezone('America/Los_Angeles')
+            ->format('F j, Y, g:i a');
+    }
+
 }
