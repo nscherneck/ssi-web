@@ -473,7 +473,6 @@
 
       @if ($system->compTank()->count() > 0)
 
-      <br>
       <h5>Agent Tanks</h5>
 
     <div class="table-responsive">
