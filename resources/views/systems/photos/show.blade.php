@@ -21,7 +21,6 @@
 
   <div class="container">
     <br>
-    <h3>PHOTO</h3>
     <div class="text-center" id="systemPhotoLarge">
       <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/{{ $photo->file_name }}.{{ $photo->ext }}" width="678px" height="auto"><br><br>
 
