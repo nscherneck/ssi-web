@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Mail\WeeklyUpdate;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
