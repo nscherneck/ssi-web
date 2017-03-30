@@ -572,7 +572,7 @@
 
     </div> <!-- END OF COL-6 -->
 
-    <div class="col-lg-6 no-gutter-right">
+    <div class="col-lg-6">
 
       <div class="panel panel-info">
       <div class="panel-heading">System Documents</div>
