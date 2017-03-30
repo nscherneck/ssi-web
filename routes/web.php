@@ -1,5 +1,6 @@
 <?php
 
+use App\Customer;
 use App\Mail\WeeklyUpdate;
 
 // BASE NAV ROUTES
@@ -96,8 +97,11 @@ Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotate
 
 // MAIL ROUTES
 Route::get('/sendweekly', function () {
-  Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
-  return view('customers.index');
+    Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
+
+    flash('Success!', 'Mail sent.');    
+
+    return redirect()->route('home');
 });
 
 Auth::routes();

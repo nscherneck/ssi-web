@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->call(function() {
+            Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
+        })->hourly();
     }
 
     /**

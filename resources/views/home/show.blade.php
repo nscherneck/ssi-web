@@ -8,6 +8,8 @@
 
 <div class="container-fluid">
 
+  @include('partials.flash')
+  
   <div class="text-center">
   <h3>Welcome to SSI-Extranet.</h3>
   </div>
