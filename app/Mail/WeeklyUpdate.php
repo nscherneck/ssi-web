@@ -28,7 +28,10 @@ class WeeklyUpdate extends Mailable
 
     public function build()
     {
- 
+        $address = 'nathan@suppression.com';
+        $name = 'Nathan Scherneck';
+        $subject = 'Weekly Update from SSI-Extranet';
+    
         return $this->view('email.weeklyupdate')    
             ->from($address, $name)    
             ->subject($subject);
