@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
@@ -24,7 +23,7 @@ class WeeklyUpdate extends Mailable
 
     public function __construct()
     {
-        
+
     }
 
     public function build()
