@@ -95,15 +95,6 @@ Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
 Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
 Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
 
-// MAIL ROUTES
-Route::get('/sendweekly', function () {
-    Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
-
-    flash('Success!', 'Mail sent.');    
-
-    return redirect()->route('home');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

@@ -8,7 +8,7 @@
 
     <div class="container-fluid text-center">
 
-    @if($systemduefortest->count() > 0)
+    @if($systemsduefortest->count() > 0)
       <h3>Systems Due for Testing</h3>
 
       <table cellpadding="5">
@@ -18,7 +18,7 @@
           <th>Site</th>
           <th>System</th>
         </tr>
-        @foreach($systemduefortest as $system)
+        @foreach($systemsduefortest as $system)
         <tr>
           <td>{{ $system->formatted_next_test_date }}</td>
           <td>{{ $system->site->customer->name }}</td>
