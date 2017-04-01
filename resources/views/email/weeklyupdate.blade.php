@@ -20,7 +20,7 @@
         </tr>
         @foreach($systemsduefortest as $system)
         <tr>
-          <td>{{ $system->formatted_next_test_date }}</td>
+          <td>-</td>
           <td>{{ $system->site->customer->name }}</td>
           <td>{{ $system->site->name }}</td>
           <td>{{ $system->name }}</td>
@@ -41,7 +41,7 @@
         </tr>
         @foreach($newcustomers as $customer)
         <tr>
-          <td>{{ $customer->formatted_created_at }}</td>
+          <td>-</td>
           <td>{{ $customer->name }}</td>
         </tr>
         @endforeach
@@ -61,7 +61,7 @@
         </tr>
         @foreach($newsites as $site)
         <tr>
-          <td>{{ $site->formatted_created_at }}</td>
+          <td>-</td>
           <td>{{ $site->customer->name }}</td>
           <td>{{ $site->name }}</td>
         </tr>
@@ -83,7 +83,7 @@
         </tr>
         @foreach($newsystems as $system)
         <tr>
-          <td>{{ $system->formatted_created_at }}</td>
+          <td>-</td>
           <td>{{ $system->customer->name }}</td>
           <td>{{ $system->site->name }}</td>
           <td>{{ $system->name }}</td>
@@ -109,7 +109,7 @@
       </tr>
       @foreach($newtests as $test)
       <tr>
-        <td>{{ $test->test_date->format('F d, Y') }}</td>
+        <td>-</td>
         <td>{{ $test->technician->first_name }}</td>
         <td>{{ $test->system->site->customer->name }}</td>
         <td>{{ $test->system->site->name }}</td>
