@@ -22,6 +22,11 @@ class WeeklyUpdate extends Mailable
     public $systems_added;
     public $reports_added;
 
+    public function __construct()
+    {
+        
+    }
+
     public function build()
     {
         $address = 'nathan@suppression.com';
@@ -64,10 +69,11 @@ class WeeklyUpdate extends Mailable
             'newsites', 
             'newsystems', 
             'newtests', 
-            'systemsduefortest')
-        )    
-        ->from($address, $name)    
-        ->subject($subject);
+            'systemsduefortest'
+                )
+            )    
+            ->from($address, $name)    
+            ->subject($subject);
     }
 
 }

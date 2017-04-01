@@ -8,7 +8,7 @@
 
     <div class="container-fluid text-center">
 
-    @if($systemsduefortest->count() > 0)
+    @if ($systemsduefortest->count() > 0)
       <h3>Systems Due for Testing</h3>
 
       <table cellpadding="5">
@@ -31,7 +31,7 @@
 
     <hr>
 
-    @if($newcustomers->count() > 0)
+    @if ($newcustomers->count() > 0)
       <h3>Customers Added Last Week</h3>
 
       <table cellpadding="5">
@@ -50,7 +50,7 @@
 
     <hr>
 
-    @if($newsites->count() > 0)
+    @if ($newsites->count() > 0)
       <h3>Sites Added Last Week</h3>
 
       <table cellpadding="5">
@@ -71,7 +71,7 @@
 
     <hr>
 
-    @if($newsystems->count() > 0)
+    @if ($newsystems->count() > 0)
       <h3>Systems Added Last Week</h3>
 
       <table cellpadding="5">
@@ -94,7 +94,7 @@
 
     <hr>
 
-    @if($newtests->count() > 0)
+    @if ($newtests->count() > 0)
     <h3>Tests Completed Last Week</h3>
 
     <table cellpadding="5">
