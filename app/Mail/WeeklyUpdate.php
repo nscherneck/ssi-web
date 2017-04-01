@@ -63,14 +63,7 @@ class WeeklyUpdate extends Mailable
             ->whereBetween('next_test_date', [$start_date_testing, $end_date_testing])    
             ->get();    
     
-        return $this->view('email.weeklyupdate', compact(
-            'newcustomers', 
-            'newsites', 
-            'newsystems', 
-            'newtests', 
-            'systemsduefortest'
-                )
-            )    
+        return $this->view('email.weeklyupdate')    
             ->from($address, $name)    
             ->subject($subject);
     }
