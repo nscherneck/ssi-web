@@ -2,79 +2,126 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Weekly Update</title>
+    <title>Weekly Update from SSI-Extranet</title>
   </head>
   <body>
 
     <div class="container-fluid text-center">
 
-      <h4>Systems Due for Testing</h4>
+    @if($systemduefortest->count() > 0)
+      <h3>Systems Due for Testing</h3>
 
-      <ul>
-        @foreach($systemduefortest as $system)
-          <li>{{ $system->next_test_date->format('F Y') }} | {{ $system->site->customer->name }} - {{ $system->site->name }} - {{ $system->name }}</li>
-        @endforeach
-      </ul>
-
-      @if($newcustomers->count() > 0)
-      <h4>Customers Added Last Week</h4>
-
-      <ul>
-        @foreach($newcustomers as $customer)
-          <li>{{ $customer->created_at->format('F d, Y') }} | {{ $customer->name }}</li>
-        @endforeach
-      </ul>
-      @endif
-
-      @if($newsites->count() > 0)
-      <h4>Sites Added Last Week</h4>
-
-      <ul>
-        @foreach($newsites as $site)
-          <li>{{ $site->created_at->format('F d, Y') }} | {{ $site->customer->name }} - {{ $site->name }}</li>
-        @endforeach
-      </ul>
-      @endif
-
-      @if($newsystems->count() > 0)
-      <h4>Systems Added Last Week</h4>
-
-      <ul>
-        @foreach($newsystems as $system)
-          <li>{{ $system->created_at->format('F d, Y') }} | {{ $system->site->customer->name }} - {{ $system->site->name }} - {{ $system->name }}</li>
-        @endforeach
-      </ul>
-      @endif
-
-      @if($newtests->count() > 0)
-      <h4>Tests Completed Last Week</h4>
-
-      <table cellpadding="10">
+      <table cellpadding="5">
         <tr>
-          <th>Test Date</th>
-          <th>Technician</th>
+          <th>Due</th>
           <th>Customer</th>
           <th>Site</th>
           <th>System</th>
-          <th>Test Type</th>
-          <th>Result</th>
         </tr>
-        @foreach($newtests as $test)
+        @foreach($systemduefortest as $system)
         <tr>
-          <td>{{ $test->test_date->format('F d, Y') }}</td>
-          <td>{{ $test->technician->first_name }}</td>
-          <td>{{ $test->system->site->customer->name }}</td>
-          <td>{{ $test->system->site->name }}</td>
-          <td>{{ $test->system->name }}</td>
-          <td>{{ $test->test_type->name }}</td>
-          <td>{{ $test->test_result->name }}</td>
+          <td>{{ $system->formatted_next_test_date }}</td>
+          <td>{{ $system->site->customer->name }}</td>
+          <td>{{ $system->site->name }}</td>
+          <td>{{ $system->name }}</td>
         </tr>
         @endforeach
       </table>
-      @endif
+    @endif    
+
+    <hr>
+
+    @if($newcustomers->count() > 0)
+      <h3>Customers Added Last Week</h3>
+
+      <table cellpadding="5">
+        <tr>
+          <th>Created</th>
+          <th>Customer</th>
+        </tr>
+        @foreach($newcustomers as $customer)
+        <tr>
+          <td>{{ $customer->formatted_created_at }}</td>
+          <td>{{ $customer->name }}</td>
+        </tr>
+        @endforeach
+      </table>
+    @endif
+
+    <hr>
+
+    @if($newsites->count() > 0)
+      <h3>Sites Added Last Week</h3>
+
+      <table cellpadding="5">
+        <tr>
+          <th>Created</th>
+          <th>Customer</th>
+          <th>Site</th>
+        </tr>
+        @foreach($newsites as $site)
+        <tr>
+          <td>{{ $site->formatted_created_at }}</td>
+          <td>{{ $site->customer->name }}</td>
+          <td>{{ $site->name }}</td>
+        </tr>
+        @endforeach
+      </table>
+    @endif
+
+    <hr>
+
+    @if($newsystems->count() > 0)
+      <h3>Systems Added Last Week</h3>
+
+      <table cellpadding="5">
+        <tr>
+          <th>Created</th>
+          <th>Customer</th>
+          <th>Site</th>
+          <th>System</th>
+        </tr>
+        @foreach($newsystems as $system)
+        <tr>
+          <td>{{ $system->formatted_created_at }}</td>
+          <td>{{ $system->customer->name }}</td>
+          <td>{{ $system->site->name }}</td>
+          <td>{{ $system->name }}</td>
+        </tr>
+        @endforeach
+      </table>
+    @endif
+
+    <hr>
+
+    @if($newtests->count() > 0)
+    <h3>Tests Completed Last Week</h3>
+
+    <table cellpadding="5">
+      <tr>
+        <th>Test Date</th>
+        <th>Technician</th>
+        <th>Customer</th>
+        <th>Site</th>
+        <th>System</th>
+        <th>Test Type</th>
+        <th>Result</th>
+      </tr>
+      @foreach($newtests as $test)
+      <tr>
+        <td>{{ $test->test_date->format('F d, Y') }}</td>
+        <td>{{ $test->technician->first_name }}</td>
+        <td>{{ $test->system->site->customer->name }}</td>
+        <td>{{ $test->system->site->name }}</td>
+        <td>{{ $test->system->name }}</td>
+        <td>{{ $test->test_type->name }}</td>
+        <td>{{ $test->test_result->name }}</td>
+      </tr>
+      @endforeach
+    </table>
+    @endif
 
     </div>
-
 
   </body>
 </html>

@@ -72,6 +72,12 @@ class System extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+    public function getFormattedNextTestDateAttribute()
+    {
+        return $this->next_test_date->setTimezone('America/Los_Angeles')
+            ->format('F Y');
+    }
+
     public function getFormattedUpdatedAtAttribute()
     {
         return $this->updated_at->setTimezone('America/Los_Angeles')
