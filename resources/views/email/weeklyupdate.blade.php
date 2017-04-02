@@ -20,16 +20,17 @@
         </tr>
         @foreach ($systemsduefortest as $system)
         <tr>
-          <td>-</td>
+          <td>{{ $system->formatted_next_test_date }}</td>
           <td>{{ $system->site->customer->name }}</td>
           <td>{{ $system->site->name }}</td>
           <td>{{ $system->name }}</td>
         </tr>
         @endforeach
       </table>
-    @endif    
 
     <hr>
+
+    @endif    
 
     @if ($newcustomers->count() > 0)
       <h3>Customers Added Last Week</h3>
@@ -41,14 +42,15 @@
         </tr>
         @foreach ($newcustomers as $customer)
         <tr>
-          <td>-</td>
+          <td>{{ $customer->formatted_created_at }}</td>
           <td>{{ $customer->name }}</td>
         </tr>
         @endforeach
       </table>
-    @endif
 
     <hr>
+
+    @endif
 
     @if ($newsites->count() > 0)
       <h3>Sites Added Last Week</h3>
@@ -61,15 +63,16 @@
         </tr>
         @foreach ($newsites as $site)
         <tr>
-          <td>-</td>
+          <td>{{ $site->formatted_created_at }}</td>
           <td>{{ $site->customer->name }}</td>
           <td>{{ $site->name }}</td>
         </tr>
         @endforeach
       </table>
-    @endif
 
     <hr>
+
+    @endif
 
     @if ($newsystems->count() > 0)
       <h3>Systems Added Last Week</h3>
@@ -83,16 +86,17 @@
         </tr>
         @foreach ($newsystems as $system)
         <tr>
-          <td>-</td>
+          <td>{{ $system->formatted_created_at }}</td>
           <td>{{ $system->site->customer->name }}</td>
           <td>{{ $system->site->name }}</td>
           <td>{{ $system->name }}</td>
         </tr>
         @endforeach
       </table>
-    @endif
 
     <hr>
+
+    @endif
 
     @if ($newtests->count() > 0)
     <h3>Tests Completed Last Week</h3>
@@ -109,7 +113,7 @@
       </tr>
       @foreach ($newtests as $test)
       <tr>
-        <td>-</td>
+        <td>{{ $test->formatted_test_date }}</td>
         <td>{{ $test->technician->first_name }}</td>
         <td>{{ $test->system->site->customer->name }}</td>
         <td>{{ $test->system->site->name }}</td>
