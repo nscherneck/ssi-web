@@ -27,7 +27,10 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function() {
             Mail::to('nathan.scherneck@gmail.com')->send(new WeeklyUpdate);
-        })->everyFiveMinutes();
+        })->weekly()
+            ->mondays()
+            ->timezone('America/Los_Angeles')
+            ->at('6:00');
     }
 
     /**
