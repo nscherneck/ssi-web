@@ -84,7 +84,7 @@
         @foreach ($newsystems as $system)
         <tr>
           <td>-</td>
-          <td>{{ $system->customer->name }}</td>
+          <td>{{ $system->site->customer->name }}</td>
           <td>{{ $system->site->name }}</td>
           <td>{{ $system->name }}</td>
         </tr>
