@@ -126,7 +126,7 @@
         </thead>
         <tbody>
 
-          @foreach($system->getPanelComponent() as $panel)
+          @foreach($system->getComponent(1) as $panel)
             <tr>
               <td width="5%"><small>
               {{ $panel->pivot->quantity }}
@@ -173,7 +173,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getModularPanelComponent() as $modularpanel)
+          @foreach($system->getComponent(14) as $modularpanel)
             <tr>
               <td width="5%"><small>
               {{ $modularpanel->pivot->quantity }}
@@ -218,7 +218,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getControlEquipmentComponent() as $controlequipment)
+          @foreach($system->getComponent(2) as $controlequipment)
             <tr>
               <td width="5%"><small>
               {{ $controlequipment->pivot->quantity }}
@@ -263,7 +263,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getAirSamplingDetectionComponent() as $airsamplingdetection)
+          @foreach($system->getComponent(13) as $airsamplingdetection)
             <tr>
               <td width="5%"><small>
               {{ $airsamplingdetection->pivot->quantity }}
@@ -308,7 +308,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getDetectionComponent() as $detection)
+          @foreach($system->getComponent(3) as $detection)
             <tr>
               <td width="5%"><small>
               {{ $detection->pivot->quantity }}
@@ -353,7 +353,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getNotificationComponent() as $notification)
+          @foreach($system->getComponent(4) as $notification)
             <tr>
               <td><small>
               {{ $notification->pivot->quantity }}
@@ -398,7 +398,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getModuleComponent() as $module)
+          @foreach($system->getComponent(15) as $module)
             <tr>
               <td><small>
               {{ $module->pivot->quantity }}
@@ -443,7 +443,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getMiscellaneousElectricalComponent() as $miscelectrical)
+          @foreach($system->getComponent(10) as $miscelectrical)
             <tr>
               <td><small>
               {{ $miscelectrical->pivot->quantity }}
@@ -488,7 +488,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getMiscellaneousComponent() as $miscellaneous)
+          @foreach($system->getComponent(11) as $miscellaneous)
             <tr>
               <td><small>
               {{ $miscellaneous->pivot->quantity }}
@@ -533,7 +533,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getAccessoryComponent() as $accessory)
+          @foreach($system->getComponent(6) as $accessory)
             <tr>
               <td><small>
               {{ $accessory->pivot->quantity }}
@@ -578,7 +578,7 @@
             </tr>
           @endforeach
 
-          @foreach($system->getUncategorizedComponent() as $uncategorized)
+          @foreach($system->getComponent(12) as $uncategorized)
             <tr>
               <td><small>
               {{ $uncategorized->pivot->quantity }}
@@ -628,7 +628,7 @@
 
     </div>
 
-      @if ($system->getRenewableComponent()->count() > 0)
+      @if ($system->getComponent(5)->count() > 0)
 
       <h5>Renewable Components</h5>
 
@@ -649,7 +649,7 @@
         </thead>
       <tbody>
 
-        @foreach($system->getRenewableComponent() as $renewable)
+        @foreach($system->getComponent(5) as $renewable)
           <tr>
             <td width="5%"><small>
             {{ $renewable->pivot->quantity }}
@@ -701,7 +701,7 @@
 
   @endif
 
-      @if ($system->getAgentTankComponent()->count() > 0)
+      @if ($system->getComponent(7)->count() > 0)
 
       <h5>Agent Tanks</h5>
 
@@ -722,7 +722,7 @@
         </thead>
       <tbody>
 
-      @foreach($system->getAgentTankComponent() as $tank)
+      @foreach($system->getComponent(7) as $tank)
         <tr>
           <td width="5%"><small>
           {{ $tank->pivot->quantity }}

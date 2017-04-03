@@ -112,14 +112,26 @@
         <tbody>
           @foreach($systemduefortest as $system)
             <tr>
-            <td>{{ $system->next_test_date->format('F') }}</td>
+
             <td>
-              <a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a>  -
-                <a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a>  -
-                  <a href="/system/{{ $system->id }}">{{ $system->name }}</a>
+            {{ $system->next_test_date->format('F') }}
             </td>
+
+            <td>
+              <a href="/customer/{{ $system->site->customer->id }}">
+              {{ $system->site->customer->name }}
+              </a>  -
+              <a href="/site/{{ $system->site->id }}">
+              {{ $system->site->name }}</a>  -
+              <a href="/system/{{ $system->id }}">
+              {{ $system->name }}
+              </a>
+            </td>
+
             <td>{{ $system->system_type->type }}</td>
+
             <td>{{ $system->components()->count() }}</td>
+            
           </tr>
           @endforeach
         </tbody>
@@ -151,21 +163,40 @@
       </thead>
       <tbody>
         @foreach($tests as $test)
-          <tr
-          <?php echo ($test->test_result->name == 'Pass with Deficiencies') ? "class=\"warning\"" : ""; ?>
-          <?php echo ($test->test_result->name == 'Fail with Deficiencies') ? "class=\"danger\"" : ""; ?>
-          >
-          <td><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('D, F j') }}</a></td>
-          <td>{{ $test->reports->count() }}</td>
-          <td>{{ $test->technician->first_name }}</a></td>
+        <tr {!! $test->getTestResultsRowColor() !!}>
+
           <td>
-            <a href="/customer/{{ $test->system->site->customer->id }}">{{ $test->system->site->customer->name }}</a>  -
-              <a href="/site/{{ $test->system->site->id }}">{{ $test->system->site->name }}</a>  -
-                <a href="/system/{{ $test->system->id }}">{{ $test->system->name }}</a>
+          <a href="/tests/{{ $test->id }}">
+          {{ $test->test_date->format('D, F j') }}
+          </a>
           </td>
+
+          <td>
+          {{ $test->reports->count() }}
+          </td>
+
+          <td>
+          {{ $test->technician->first_name }}
+          </td>
+
+          <td>
+            <a href="/customer/{{ $test->system->site->customer->id }}">
+            {{ $test->system->site->customer->name }}
+            </a>  -
+            <a href="/site/{{ $test->system->site->id }}">
+            {{ $test->system->site->name }}
+            </a>  -
+            <a href="/system/{{ $test->system->id }}">
+            {{ $test->system->name }}
+            </a>
+          </td>
+
           <td>{{ $test->system->system_type->type }}</td>
+
           <td>{{ $test->system->components()->count() }}</td>
+
           <td>{{ $test->test_type->name }}</td>
+
           <td>{{ $test->test_result->name }}</td>
 
         </tr>
@@ -195,12 +226,29 @@
       <tbody>
         @foreach($recentsystems as $system)
           <tr>
+
             <td>{{ $system->created_at->format('D, F j') }}</td>
-            <td><a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a></td>
-            <td><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></td>
-            <td><a href="/system/{{ $system->id }}">{{ $system->name }}</a></td>
+            <td><a href="/customer/{{ $system->site->customer->id }}">
+            {{ $system->site->customer->name }}
+            </a>
+            </td>
+
+            <td>
+            <a href="/site/{{ $system->site->id }}">
+            {{ $system->site->name }}
+            </a>
+            </td>
+
+            <td>
+            <a href="/system/{{ $system->id }}">
+            {{ $system->name }}
+            </a>
+            </td>
+
             <td>{{ $system->system_type->type }}</td>
+
             <td>{{ $system->components()->count() }}</td>
+
           </tr>
         @endforeach
       </tbody>

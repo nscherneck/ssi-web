@@ -95,4 +95,13 @@ class Test extends Model
         return $this->test_date->format('F j, Y');
     }
 
+    public function getTestResultsRowColor()
+    {
+        if ($this->test_result_id == 2) {
+            return "class=\"warning\"";
+        } elseif ($this->test_result_id == 3) {
+            return "class=\"danger\"";
+        }
+    }
+
 }
