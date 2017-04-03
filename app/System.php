@@ -112,4 +112,10 @@ class System extends Model
         return $result;
     }
 
+    public function setNextTestDate($testDate)
+    {
+        $this->next_test_date = $testDate->addMonths($this->system_type->test_interval)->format('Y-m-d');
+        $this->save();
+      }
+
 }

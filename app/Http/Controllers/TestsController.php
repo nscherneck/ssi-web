@@ -56,8 +56,7 @@ class TestsController extends Controller
 
         $test->save();
         
-        $system->next_test_date = $this->setNextTestDate($system, $test->test_date);
-        $system->update();
+        $system->setNextTestDate($test->test_date);
         
         flash('Success!', 'Test created.');
         
@@ -88,6 +87,8 @@ class TestsController extends Controller
         $test->test_result_id = $request->test_result_id;
         $test->updated_by = Auth::id();
         $test->update();
+
+        $test->system->setNextTestDate($test->test_date);        
         
         flash('Success!', 'Test updated.', 'success');
 
@@ -99,14 +100,14 @@ class TestsController extends Controller
         $system = System::find($test->system_id);
         $test->delete();
         
-        $system_test_count = $system
-            ->tests()
+        $system_test_count = $system->tests()
             ->count();
 
         if($system_test_count >= 1) {
-            $last_test = $system->tests()->orderBy('test_date', 'desc')->first();
-            $system->next_test_date = $this->setNextTestDate($system, $last_test->test_date);
-            $system->update();
+            $lastTest = $system->tests()
+                ->orderBy('test_date', 'desc')
+                ->first();
+            $system->setNextTestDate($lastTest->test_date);
         } else {
             $system->next_test_date = null;
             $system->update();
@@ -124,48 +125,6 @@ class TestsController extends Controller
             ->get();
         
         return view('tests.search_results', compact('tests'));
-    }
-    
-    public function setNextTestDate($system, $date)
-    {
-        switch ($system->system_type_id) {
-            case 1: // fire alarm
-            return $date->addYear(1)->format('Y-m-d');
-            case 7: // fire sprinkler (wet)
-            return $date->addYear(1)->format('Y-m-d');
-            case 8: // fire sprinkler (dry)
-            return $date->addYear(1)->format('Y-m-d');
-            case 9: // fire sprinkler (preaction)
-            return $date->addYear(1)->format('Y-m-d');
-            case 10: // fire sprinkler (deluge)
-            return $date->addYear(1)->format('Y-m-d');
-            case 11: // fire sprinkler (foam)
-            return $date->addYear(1)->format('Y-m-d');
-            case 12: // fire extinguishers
-            return $date->addYear(1)->format('Y-m-d');
-            case 15: // smoke detection (aspirating)
-            return $date->addYear(1)->format('Y-m-d');
-            case 16: // fire suppression (high-expansion foam)
-            return $date->addYear(1)->format('Y-m-d');
-            case 17: // fire suppression (water mist)
-            return $date->addYear(1)->format('Y-m-d');
-            case 18: // backflow preventer
-            return $date->addYear(1)->format('Y-m-d');
-            case 2: // fire suppression (clean agent)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 3: // fire suppression (inert gas)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 4: // fire suppression (dry chem)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 5: // fire suppression (wet chem)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 6: // fire suppression (aerosol)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 13: // fire suppression (low-pressure co2)
-            return $date->addMonths(6)->format('Y-m-d');
-            case 14: // fire suppression (high-pressure co2)
-            return $date->addMonths(6)->format('Y-m-d');
-        }    
     }
 
 }

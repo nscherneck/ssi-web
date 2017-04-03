@@ -163,7 +163,7 @@
       </thead>
       <tbody>
         @foreach($tests as $test)
-        <tr {!! $test->getTestResultsRowColor() !!}>
+        <tr {!! $test->setServiceViewRowColor() !!}>
 
           <td>
           <a href="/tests/{{ $test->id }}">
