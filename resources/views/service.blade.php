@@ -119,7 +119,7 @@
                   <a href="/system/{{ $system->id }}">{{ $system->name }}</a>
             </td>
             <td>{{ $system->system_type->type }}</td>
-            <td>{{ $system->count_components() }}</td>
+            <td>{{ $system->components()->count() }}</td>
           </tr>
           @endforeach
         </tbody>
@@ -164,7 +164,7 @@
                 <a href="/system/{{ $test->system->id }}">{{ $test->system->name }}</a>
           </td>
           <td>{{ $test->system->system_type->type }}</td>
-          <td>{{ $test->system->count_components() }}</td>
+          <td>{{ $test->system->components()->count() }}</td>
           <td>{{ $test->test_type->name }}</td>
           <td>{{ $test->test_result->name }}</td>
 
@@ -200,7 +200,7 @@
             <td><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></td>
             <td><a href="/system/{{ $system->id }}">{{ $system->name }}</a></td>
             <td>{{ $system->system_type->type }}</td>
-            <td>{{ $system->count_components() }}</td>
+            <td>{{ $system->components()->count() }}</td>
           </tr>
         @endforeach
       </tbody>

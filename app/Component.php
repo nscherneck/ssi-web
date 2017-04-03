@@ -34,4 +34,13 @@ class Component extends Model
         return $this->description;
     }
 
+    public function getFormattedDiscontinuedAttribute()
+    {
+        if ($this->discontinued == 1) {
+            return "Yes";
+        } else {
+            return "No";
+        }
+    }
+
 }

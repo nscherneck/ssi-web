@@ -104,7 +104,7 @@
 <div class="col-md-9">
 
   <div class="titleBar" style="margin-top: 0">
-    <p>Components ({{ $system->count_components() }})</p>
+    <p>Components ({{ $system->components()->count() }})</p>
   </div>
 
     <h5>Detection & Controls</h5>
@@ -126,21 +126,42 @@
         </thead>
         <tbody>
 
-          @foreach($system->compPanel() as $panel)
+          @foreach($system->getPanelComponent() as $panel)
             <tr>
-              <td width="5%"><small>{{ $panel->pivot->quantity }}</small></td>
-              <td width="15%"><small>{{ $panel->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturer/{{ $panel->manufacturer->id }}">{{ $panel->manufacturer->name }}</a></small></td>
-              <td width="10%"><small><a href="/component/{{ $panel->id }}">{{ $panel->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($panel->description) > 125)
-                  @php echo substr($panel->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $panel->description }}
-                @endif
+              <td width="5%"><small>
+              {{ $panel->pivot->quantity }}
               </small></td>
-              <td width="15%"><small>{{ $panel->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($panel->discontinued === 1) Yes @else No @endif</small></td>
+
+              <td width="15%"><small>
+              {{ $panel->pivot->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/manufacturer/{{ $panel->manufacturer->id }}">
+              {{ $panel->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/component/{{ $panel->id }}">
+              {{ $panel->model }}
+              </a>
+              </small></td>
+
+              <td width="30%">
+              <small>
+                {{ $panel->formatted_description }}
+              </small>
+              </td>
+
+              <td width="15%">
+              <small>{{ $panel->component_category->name }}</small>
+              </td>
+
+              <td width="10%">
+              <small>{{ $panel->formatted_discontinued }}</small>
+              </td>
+
               <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
@@ -152,21 +173,40 @@
             </tr>
           @endforeach
 
-          @foreach($system->compModularPanel() as $modularpanel)
+          @foreach($system->getModularPanelComponent() as $modularpanel)
             <tr>
-              <td width="5%"><small>{{ $modularpanel->pivot->quantity }}</small></td>
-              <td width="15%"><small>{{ $modularpanel->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturer/{{ $modularpanel->manufacturer->id }}">{{ $modularpanel->manufacturer->name }}</a></small></td>
-              <td width="10%"><small><a href="/component/{{ $modularpanel->id }}">{{ $modularpanel->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($modularpanel->description) > 125)
-                  @php echo substr($modularpanel->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $modularpanel->description }}
-                @endif
+              <td width="5%"><small>
+              {{ $modularpanel->pivot->quantity }}
               </small></td>
-              <td width="15%"><small>{{ $modularpanel->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($modularpanel->discontinued === 1) Yes @else No @endif</small></td>
+
+              <td width="15%"><small>
+              {{ $modularpanel->pivot->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/manufacturer/{{ $modularpanel->manufacturer->id }}">
+              {{ $modularpanel->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/component/{{ $modularpanel->id }}">
+              {{ $modularpanel->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $panel->formatted_description }}
+              </small></td>
+
+              <td width="15%">
+              <small>{{ $modularpanel->component_category->name }}</small>
+              </td>
+
+              <td width="10%">
+              <small>{{ $modularpanel->formatted_discontinued }}</small>
+              </td>
+
               <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $modularpanel->pivot->id }}/detach" method="post" accept-charset="UTF-8">
@@ -178,21 +218,40 @@
             </tr>
           @endforeach
 
-          @foreach($system->compControlEquipment() as $controlequipment)
+          @foreach($system->getControlEquipmentComponent() as $controlequipment)
             <tr>
-              <td width="5%"><small>{{ $controlequipment->pivot->quantity }}</small></td>
-              <td width="15%"><small>{{ $controlequipment->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturer/{{ $controlequipment->manufacturer->id }}">{{ $controlequipment->manufacturer->name }}</a></small></td>
-              <td width="10%"><small><a href="/component/{{ $controlequipment->id }}">{{ $controlequipment->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($controlequipment->description) > 125)
-                  @php echo substr($controlequipment->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $controlequipment->description }}
-                @endif
+              <td width="5%"><small>
+              {{ $controlequipment->pivot->quantity }}
               </small></td>
-              <td width="15%"><small>{{ $controlequipment->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($controlequipment->discontinued === 1) Yes @else No @endif</small></td>
+
+              <td width="15%"><small>
+              {{ $controlequipment->pivot->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/manufacturer/{{ $controlequipment->manufacturer->id }}">
+              {{ $controlequipment->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/component/{{ $controlequipment->id }}">
+              {{ $controlequipment->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $controlequipment->formatted_description }}
+              </small></td>
+
+              <td width="15%"><small>
+              {{ $controlequipment->component_category->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              {{ $controlequipment->formatted_discontinued }}
+              </small></td>
+
               <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $controlequipment->pivot->id }}/detach" method="post" accept-charset="UTF-8">
@@ -204,21 +263,40 @@
             </tr>
           @endforeach
 
-          @foreach($system->compAirSamplingDetection() as $airsamplingdetection)
+          @foreach($system->getAirSamplingDetectionComponent() as $airsamplingdetection)
             <tr>
-              <td width="5%"><small>{{ $airsamplingdetection->pivot->quantity }}</small></td>
-              <td width="15%"><small>{{ $airsamplingdetection->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturer/{{ $airsamplingdetection->manufacturer->id }}">{{ $airsamplingdetection->manufacturer->name }}</a></small></td>
-              <td width="10%"><small><a href="/component/{{ $airsamplingdetection->id }}">{{ $airsamplingdetection->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($airsamplingdetection->description) > 125)
-                  @php echo substr($airsamplingdetection->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $airsamplingdetection->description }}
-                @endif
+              <td width="5%"><small>
+              {{ $airsamplingdetection->pivot->quantity }}
               </small></td>
-              <td width="15%"><small>{{ $airsamplingdetection->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($airsamplingdetection->discontinued === 1) Yes @else No @endif</small></td>
+
+              <td width="15%"><small>
+              {{ $airsamplingdetection->pivot->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/manufacturer/{{ $airsamplingdetection->manufacturer->id }}">
+              {{ $airsamplingdetection->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/component/{{ $airsamplingdetection->id }}">
+              {{ $airsamplingdetection->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $airsamplingdetection->formatted_description }}
+              </small></td>
+
+              <td width="15%"><small>
+              {{ $airsamplingdetection->component_category->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              {{ $airsamplingdetection->formatted_discontinued }}
+              </small></td>
+
               <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $airsamplingdetection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
@@ -230,21 +308,40 @@
             </tr>
           @endforeach
 
-          @foreach($system->compDetection() as $detection)
+          @foreach($system->getDetectionComponent() as $detection)
             <tr>
-              <td width="5%"><small>{{ $detection->pivot->quantity }}</small></td>
-              <td width="15%"><small>{{ $detection->pivot->name }}</small></td>
-              <td width="10%"><small><a href="/manufacturer/{{ $detection->manufacturer->id }}">{{ $detection->manufacturer->name }}</a></small></td>
-              <td width="10%"><small><a href="/component/{{ $detection->id }}">{{ $detection->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($detection->description) > 125)
-                  @php echo substr($detection->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $detection->description }}
-                @endif
+              <td width="5%"><small>
+              {{ $detection->pivot->quantity }}
               </small></td>
-              <td width="15%"><small>{{ $detection->component_category->name }}</small></td>
-              <td width="10%"><small>@if ($detection->discontinued === 1) Yes @else No @endif</small></td>
+
+              <td width="15%"><small>
+              {{ $detection->pivot->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/manufacturer/{{ $detection->manufacturer->id }}">
+              {{ $detection->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td width="10%"><small>
+              <a href="/component/{{ $detection->id }}">
+              {{ $detection->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $detection->formatted_description }}
+              </small></td>
+
+              <td width="15%"><small>
+              {{ $detection->component_category->name }}
+              </small></td>
+
+              <td width="10%"><small>
+              {{ $detection->formatted_discontinued }}
+              </small></td>
+
               <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" method="post" accept-charset="UTF-8">
@@ -256,22 +353,41 @@
             </tr>
           @endforeach
 
-          @foreach($system->compNotification() as $notification)
+          @foreach($system->getNotificationComponent() as $notification)
             <tr>
-              <td><small>{{ $notification->pivot->quantity }}</small></td>
-              <td><small>{{ $notification->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $notification->manufacturer->id }}">{{ $notification->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $notification->id }}">{{ $notification->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($notification->description) > 125)
-                  @php echo substr($notification->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $notification->description }}
-                @endif
+              <td><small>
+              {{ $notification->pivot->quantity }}
               </small></td>
-              <td><small>{{ $notification->component_category->name }}</small></td>
-              <td><small>@if ($notification->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+
+              <td><small>
+              {{ $notification->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $notification->manufacturer->id }}">
+              {{ $notification->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $notification->id }}">
+              {{ $notification->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $notification->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $notification->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $notification->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -282,24 +398,43 @@
             </tr>
           @endforeach
 
-          @foreach($system->compModules() as $modules)
+          @foreach($system->getModuleComponent() as $module)
             <tr>
-              <td><small>{{ $modules->pivot->quantity }}</small></td>
-              <td><small>{{ $modules->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $modules->manufacturer->id }}">{{ $modules->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $modules->id }}">{{ $modules->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($modules->description) > 125)
-                  @php echo substr($modules->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $modules->description }}
-                @endif
+              <td><small>
+              {{ $module->pivot->quantity }}
               </small></td>
-              <td><small>{{ $modules->component_category->name }}</small></td>
-              <td><small>@if ($modules->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
 
-                <form action="/system/{{ $system->id }}/component/{{ $modules->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              <td><small>
+              {{ $module->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $module->manufacturer->id }}">
+              {{ $module->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $module->id }}">
+              {{ $module->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $module->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $module->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $module->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
+
+                <form action="/system/{{ $system->id }}/component/{{ $module->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
                 </form>
@@ -308,22 +443,41 @@
             </tr>
           @endforeach
 
-          @foreach($system->compMiscElectrical() as $miscelectrical)
+          @foreach($system->getMiscellaneousElectricalComponent() as $miscelectrical)
             <tr>
-              <td><small>{{ $miscelectrical->pivot->quantity }}</small></td>
-              <td><small>{{ $miscelectrical->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $miscelectrical->manufacturer->id }}">{{ $miscelectrical->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $miscelectrical->id }}">{{ $miscelectrical->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($miscelectrical->description) > 125)
-                  @php echo substr($miscelectrical->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $miscelectrical->description }}
-                @endif
+              <td><small>
+              {{ $miscelectrical->pivot->quantity }}
               </small></td>
-              <td><small>{{ $miscelectrical->component_category->name }}</small></td>
-              <td><small>@if ($miscelectrical->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+
+              <td><small>
+              {{ $miscelectrical->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $miscelectrical->manufacturer->id }}">
+              {{ $miscelectrical->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $miscelectrical->id }}">
+              {{ $miscelectrical->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $miscelectrical->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $miscelectrical->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $miscelectrical->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $miscelectrical->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -334,24 +488,43 @@
             </tr>
           @endforeach
 
-          @foreach($system->compMisc() as $misc)
+          @foreach($system->getMiscellaneousComponent() as $miscellaneous)
             <tr>
-              <td><small>{{ $misc->pivot->quantity }}</small></td>
-              <td><small>{{ $misc->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $misc->manufacturer->id }}">{{ $misc->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $misc->id }}">{{ $misc->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($misc->description) > 125)
-                  @php echo substr($misc->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $misc->description }}
-                @endif
+              <td><small>
+              {{ $miscellaneous->pivot->quantity }}
               </small></td>
-              <td><small>{{ $misc->component_category->name }}</small></td>
-              <td><small>@if ($misc->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
 
-                <form action="/system/{{ $system->id }}/component/{{ $misc->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              <td><small>
+              {{ $miscellaneous->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $miscellaneous->manufacturer->id }}">
+              {{ $miscellaneous->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $miscellaneous->id }}">
+              {{ $miscellaneous->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $miscellaneous->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $miscellaneous->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $miscellaneous->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
+
+                <form action="/system/{{ $system->id }}/component/{{ $miscellaneous->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
                 </form>
@@ -360,22 +533,41 @@
             </tr>
           @endforeach
 
-          @foreach($system->compAccessory() as $accessory)
+          @foreach($system->getAccessoryComponent() as $accessory)
             <tr>
-              <td><small>{{ $accessory->pivot->quantity }}</small></td>
-              <td><small>{{ $accessory->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $accessory->manufacturer->id }}">{{ $accessory->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $accessory->id }}">{{ $accessory->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($accessory->description) > 125)
-                  @php echo substr($accessory->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $accessory->description }}
-                @endif
+              <td><small>
+              {{ $accessory->pivot->quantity }}
               </small></td>
-              <td><small>{{ $accessory->component_category->name }}</small></td>
-              <td><small>@if ($accessory->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+
+              <td><small>
+              {{ $accessory->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $accessory->manufacturer->id }}">
+              {{ $accessory->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $accessory->id }}">
+              {{ $accessory->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $accessory->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $accessory->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $accessory->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -386,22 +578,41 @@
             </tr>
           @endforeach
 
-          @foreach($system->compUncategorized() as $uncategorized)
+          @foreach($system->getUncategorizedComponent() as $uncategorized)
             <tr>
-              <td><small>{{ $uncategorized->pivot->quantity }}</small></td>
-              <td><small>{{ $uncategorized->pivot->name }}</small></td>
-              <td><small><a href="/manufacturer/{{ $uncategorized->manufacturer->id }}">{{ $uncategorized->manufacturer->name }}</a></small></td>
-              <td><small><a href="/component/{{ $uncategorized->id }}">{{ $uncategorized->model }}</a></small></td>
-              <td width="30%"><small>
-                @if(strlen($uncategorized->description) > 125)
-                  @php echo substr($uncategorized->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $uncategorized->description }}
-                @endif
+              <td><small>
+              {{ $uncategorized->pivot->quantity }}
               </small></td>
-              <td><small>{{ $uncategorized->component_category->name }}</small></td>
-              <td><small>@if ($uncategorized->discontinued === 1) Yes @else No @endif</small></td>
-              <td>
+
+              <td><small>
+              {{ $uncategorized->pivot->name }}
+              </small></td>
+
+              <td><small>
+              <a href="/manufacturer/{{ $uncategorized->manufacturer->id }}">
+              {{ $uncategorized->manufacturer->name }}
+              </a>
+              </small></td>
+
+              <td><small>
+              <a href="/component/{{ $uncategorized->id }}">
+              {{ $uncategorized->model }}
+              </a>
+              </small></td>
+
+              <td width="30%"><small>
+              {{ $uncategorized->formatted_description }}
+              </small></td>
+
+              <td><small>
+              {{ $uncategorized->component_category->name }}
+              </small></td>
+
+              <td><small>
+              {{ $uncategorized->formatted_discontinued }}
+              </small></td>
+
+              <td width="5%">
 
                 <form action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                   {{ csrf_field() }}
@@ -417,7 +628,7 @@
 
     </div>
 
-      @if ($system->compConsumable()->count() > 0)
+      @if ($system->getRenewableComponent()->count() > 0)
 
       <h5>Renewable Components</h5>
 
@@ -438,24 +649,43 @@
         </thead>
       <tbody>
 
-        @foreach($system->compConsumable() as $consumable)
+        @foreach($system->getRenewableComponent() as $renewable)
           <tr>
-            <td width="5%"><small>{{ $consumable->pivot->quantity }}</small></td>
-            <td width="15%"><small>{{ $consumable->pivot->name }}</small></td>
-            <td width="10%"><small><a href="/manufacturer/{{ $consumable->manufacturer->id }}">{{ $consumable->manufacturer->name }}</a></small></td>
-            <td width="10%"><small><a href="/component/{{ $consumable->id }}">{{ $consumable->model }}</a></small></td>
-            <td width="30%"><small>
-              @if(strlen($consumable->description) > 125)
-                @php echo substr($consumable->description, 0, 125) . '. . .' @endphp
-              @else
-                {{ $consumable->description }}
-              @endif
+            <td width="5%"><small>
+            {{ $renewable->pivot->quantity }}
             </small></td>
-            <td width="15%"><small>{{ $consumable->component_category->name }}</small></td>
-            <td width="10%"><small>@if ($consumable->discontinued === 1) Yes @else No @endif</small></td>
+
+            <td width="15%"><small>
+            {{ $renewable->pivot->name }}
+            </small></td>
+
+            <td width="10%"><small>
+            <a href="/manufacturer/{{ $renewable->manufacturer->id }}">
+            {{ $renewable->manufacturer->name }}
+            </a>
+            </small></td>
+
+            <td width="10%"><small>
+            <a href="/component/{{ $renewable->id }}">
+            {{ $renewable->model }}
+            </a>
+            </small></td>
+
+            <td width="30%"><small>
+            {{ $renewable->formatted_description }}
+            </small></td>
+
+            <td width="15%"><small>
+            {{ $renewable->component_category->name }}
+            </small></td>
+
+            <td width="10%"><small>
+            {{ $renewable->formatted_discontinued }}
+            </small></td>
+
             <td width="5%">
 
-              <form action="/system/{{ $system->id }}/component/{{ $consumable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              <form action="/system/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach" method="post" accept-charset="UTF-8">
                 {{ csrf_field() }}
                 <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
               </form>
@@ -471,7 +701,7 @@
 
   @endif
 
-      @if ($system->compTank()->count() > 0)
+      @if ($system->getAgentTankComponent()->count() > 0)
 
       <h5>Agent Tanks</h5>
 
@@ -492,31 +722,50 @@
         </thead>
       <tbody>
 
-        @foreach($system->compTank() as $tank)
-          <tr>
-            <td width="5%"><small>{{ $tank->pivot->quantity }}</small></td>
-            <td width="15%"><small>{{ $tank->pivot->name }}</small></td>
-            <td width="10%"><small><a href="/manufacturer/{{ $tank->manufacturer->id }}">{{ $tank->manufacturer->name }}</a></small></td>
-            <td width="10%"><small><a href="/component/{{ $tank->id }}">{{ $tank->model }}</a></small></td>
-            <td width="30%"><small>
-              @if(strlen($tank->description) > 125)
-                @php echo substr($tank->description, 0, 125) . '. . .' @endphp
-              @else
-                {{ $tank->description }}
-              @endif
-            </small></td>
-            <td width="15%"><small>{{ $tank->component_category->name }}</small></td>
-            <td width="10%"><small>@if ($tank->discontinued === 1) Yes @else No @endif</small></td>
-            <td width="5%">
+      @foreach($system->getAgentTankComponent() as $tank)
+        <tr>
+          <td width="5%"><small>
+          {{ $tank->pivot->quantity }}
+          </small></td>
 
-              <form action="/system/{{ $system->id }}/component/{{ $tank->pivot->id }}/detach" method="post" accept-charset="UTF-8">
-                {{ csrf_field() }}
-                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
-              </form>
+          <td width="15%"><small>
+          {{ $tank->pivot->name }}
+          </small></td>
 
-            </td>
-          </tr>
-        @endforeach
+          <td width="10%"><small>
+          <a href="/manufacturer/{{ $tank->manufacturer->id }}">
+          {{ $tank->manufacturer->name }}
+          </a>
+          </small></td>
+
+          <td width="10%"><small>
+          <a href="/component/{{ $tank->id }}">
+          {{ $tank->model }}
+          </a>
+          </small></td>
+
+          <td width="30%"><small>
+          {{ $tank->formatted_description }}
+          </small></td>
+
+          <td width="15%"><small>
+          {{ $tank->component_category->name }}
+          </small></td>
+
+          <td width="10%"><small>
+          {{ $tank->formatted_discontinued }}
+          </small></td>
+
+          <td width="5%">
+
+            <form action="/system/{{ $system->id }}/component/{{ $tank->pivot->id }}/detach" method="post" accept-charset="UTF-8">
+              {{ csrf_field() }}
+              <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-trash-o"></i></button>
+            </form>
+
+          </td>
+        </tr>
+      @endforeach
 
       </tbody>
     </table>
@@ -535,7 +784,7 @@
     <div class="col-lg-6 no-gutter-right">
 
       <div class="panel panel-info">
-        <div class="panel-heading">Tests & Inspections ({{ count($system->tests) }})</div>
+        <div class="panel-heading">Tests & Inspections ({{ $system->tests()->count() }})</div>
 
           <table class="table table-condensed">
             <thead>

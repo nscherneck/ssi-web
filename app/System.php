@@ -90,7 +90,7 @@ class System extends Model
             ->format('F j, Y, g:i a');
     }
 
-    public function get_latest_test() 
+    public function getMostRecentTest() 
     {
         $test_count = $this->tests()->count();
         if($test_count >= 1) {
@@ -173,132 +173,119 @@ class System extends Model
         }
     }
 
-    public function count_components() 
-    {
-        $result = $this->components()->sum('quantity');
-        return $result;
-    }
-
-    public function count_tests() 
-    {
-        $result = $this->tests()
-        ->sum();
-        return $result;
-    }
-
-    public function compPanel() 
+    public function getPanelComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 1)
-        ->get();
+            ->where('component_category_id', '=', 1)
+            ->get();
         
         return $result;
     }
 
-    public function compModularPanel() 
+    public function getModularPanelComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 14)
-        ->get();
+            ->where('component_category_id', '=', 14)
+            ->get();
         
         return $result;
     }
 
-    public function compControlEquipment() 
+    public function getControlEquipmentComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 2)
-        ->get();
+            ->where('component_category_id', '=', 2)
+            ->get();
         
         return $result;
     }
 
-    public function compAirSamplingDetection() 
+    public function getAirSamplingDetectionComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 13)
-        ->get();
+            ->where('component_category_id', '=', 13)
+            ->get();
         
         return $result;
     }
 
-    public function compDetection() 
+    public function getDetectionComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 3)
-        ->get();
+            ->where('component_category_id', '=', 3)
+            ->get();
         
         return $result;
     }
 
-    public function compNotification() 
+    public function getNotificationComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 4)
-        ->get();
+            ->where('component_category_id', '=', 4)
+            ->get();
         
         return $result;
     }
 
-    public function compModules() 
+    public function getModuleComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 15)
-        ->get();
+            ->where('component_category_id', '=', 15)
+            ->get();
         
         return $result;
     }
     
-    public function compMiscElectrical() 
+    public function getMiscellaneousElectricalComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 10)
-        ->get();
+            ->where('component_category_id', '=', 10)
+            ->get();
         
         return $result;
     }
     
-    public function compMisc() 
+    public function getMiscellaneousComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 11)
-        ->get();
+            ->where('component_category_id', '=', 11)
+            ->get();
         
         return $result;
     }
     
-    public function compAccessory() 
+    public function getAccessoryComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 6)
-        ->get();
+            ->where('component_category_id', '=', 6)
+            ->get();
         
         return $result;
     }
     
-    public function compUncategorized() 
+    public function getUncategorizedComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 12)
-        ->get();
+            ->where('component_category_id', '=', 12)
+            ->get();
         
         return $result;
     }
     
-    public function compConsumable() 
+    public function getRenewableComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 5)
-        ->get();
+            ->where('component_category_id', '=', 5)
+            ->get();
         
         return $result;
     }
     
-    public function compTank() 
+    public function getAgentTankComponent() 
     {
         $result = $this->components()
-        ->where('component_category_id', '=', 7)
-        ->get();
+            ->where('component_category_id', '=', 7)
+            ->get();
         
         return $result;
     }

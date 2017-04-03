@@ -138,8 +138,8 @@
                 <tr>
                   <td><small><a href="/system/{{ $system->id }}">{{ $system->name }}</a></small></td>
                   <td><small>{{ $system->system_type->type }}</small></td>
-                  <td><small>{{ $system->count_components() }}</small></td>
-                  <td><small>{{ $system->get_latest_test() }}</small></td>
+                  <td><small>{{ $system->components()->count() }}</small></td>
+                  <td><small>{{ $system->getMostRecentTest() }}</small></td>
                 </tr>
                 @endforeach
               </tbody>

@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Weekly Update from SSI-Extranet</title>
+    <title>Monday Update from SSI-Extranet</title>
   </head>
   <body>
 
     <div class="container-fluid text-center">
 
-    @if ($systemsduefortest->count() > 0)
+      @if ($systemsduefortest->count() > 0)
       <h3>Systems Due for Testing</h3>
 
       <table cellpadding="5">
