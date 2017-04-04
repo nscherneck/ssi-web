@@ -4,12 +4,14 @@
 
 @section('content')
 
+@include('partials.nav')
+
 <div class="container">
 
   @include('partials.flash')
 
   <div class="text-center">
-    <h3>Manufacturers</h3>
+    <h3>Manufacturers Index</h3>
   </div>
 
   <div class="row">
