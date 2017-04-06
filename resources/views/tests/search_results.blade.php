@@ -18,7 +18,7 @@
 <div class="container-fluid">
 
   <div class="titleBar" style="margin-top: 0">
-      <p>Tests Search Results</p>
+      <p>Tests Search Results ({{ $tests->count() }})</p>
   </div>
 
   <div class="table-responsive">
@@ -39,7 +39,7 @@
       <tbody>
         @foreach($tests as $test)
               <tr {!! $test->setServiceViewRowColor() !!}>
-              
+
                 <td>
                   <a href="/tests/{{ $test->id }}">
                   {{ $test->formatted_test_date }}
