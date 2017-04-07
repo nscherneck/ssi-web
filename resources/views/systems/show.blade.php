@@ -200,7 +200,7 @@
               </small></td>
 
               <td width="30%"><small>
-              {{ $panel->formatted_description }}
+              {{ $modularpanel->formatted_description }}
               </small></td>
 
               <td width="15%">
