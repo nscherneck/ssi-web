@@ -107,6 +107,8 @@ class SystemsController extends Controller
         $system->next_test_date = null;
         $system->save();
 
+        flash('Success!', 'Next test date removed.', 'success');
+
         return redirect()->route('system_show', ['id' => $system->id]);
     }
     
