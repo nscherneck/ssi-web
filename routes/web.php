@@ -46,7 +46,8 @@ Route::get('system/{system}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
-Route::put('system/{system}/next_test_date', 'SystemsController@updateNextTestDate');
+Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
+Route::put('system/{system}/nullify_next_test_date', 'SystemsController@nullifyNextTestDate');
 
 // MANUFACTURER AND COMPONENT ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');

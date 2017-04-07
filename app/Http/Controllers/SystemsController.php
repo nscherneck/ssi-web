@@ -101,6 +101,14 @@ class SystemsController extends Controller
 
         return redirect()->route('system_show', ['id' => $system->id]);
     }
+
+    public function nullifyNextTestDate(System $system)
+    {
+        $system->next_test_date = null;
+        $system->save();
+
+        return redirect()->route('system_show', ['id' => $system->id]);
+    }
     
     public function destroy(System $system)
     {

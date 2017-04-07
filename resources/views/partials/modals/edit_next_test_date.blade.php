@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body text-center">
 
-        <form action="/system/{{ $system->id }}/next_test_date" method="POST">
+        <form action="/system/{{ $system->id }}/update_next_test_date" method="POST">
 
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           <input type="hidden" name="_method" value="put">

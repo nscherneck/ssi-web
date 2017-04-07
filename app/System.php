@@ -43,8 +43,8 @@ class System extends Model
     public function components() 
     {
         return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')
-        ->withPivot('quantity', 'name', 'id')
-        ->orderBy('model', 'asc');
+            ->withPivot('quantity', 'name', 'id')
+            ->orderBy('model', 'asc');
     }
 
     public function tests() 
@@ -116,6 +116,6 @@ class System extends Model
     {
         $this->next_test_date = $testDate->addMonths($this->system_type->test_interval)->format('Y-m-d');
         $this->save();
-      }
+    }
 
 }

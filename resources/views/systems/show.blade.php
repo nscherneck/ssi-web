@@ -52,10 +52,14 @@
 
           <hr>
 
-          <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
+      <div class="text-center">
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateNextTestDateModal">
             <i class="fa fa-cog"></i></button>
-
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#nullifyNextTestDateModal">
+            <i class="fa fa-trash-o"></i></button>
         </p>
+      </div>
+
       </div>
     </div>
     @endif
@@ -930,6 +934,7 @@
 
 @if ($system->next_test_date)
   @include('partials.modals.edit_next_test_date')
+  @include('partials.modals.nullify_next_test_date')
 @endif
 
 @include('partials.modals.edit_system')
