@@ -118,4 +118,14 @@ class System extends Model
         $this->save();
     }
 
+    public function sumComponents()
+    {
+        $sumOfComponents = DB::table('components_systems')
+            ->where('system_id', $this->id)
+            ->pluck('quantity')
+            ->sum();
+
+        return $sumOfComponents;
+    }
+
 }
