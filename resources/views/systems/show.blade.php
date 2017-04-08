@@ -108,7 +108,7 @@
 <div class="col-md-9">
 
   <div class="titleBar" style="margin-top: 0">
-    <p>Components ({{ $system->components->count() }})</p>
+    <p>Components ({{ $system->count(components()) }})</p>
   </div>
 
     <h5>Detection & Controls</h5>
