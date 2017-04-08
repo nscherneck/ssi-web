@@ -130,7 +130,7 @@
 
             <td>{{ $system->system_type->type }}</td>
 
-            <td>{{ $system->components()->count() }}</td>
+            <td>{{ $system->sumComponents() }}</td>
             
           </tr>
           @endforeach
@@ -193,7 +193,7 @@
 
           <td>{{ $test->system->system_type->type }}</td>
 
-          <td>{{ $test->system->components()->count() }}</td>
+          <td>{{ $test->system->sumComponents() }}</td>
 
           <td>{{ $test->test_type->name }}</td>
 
@@ -247,7 +247,7 @@
 
             <td>{{ $system->system_type->type }}</td>
 
-            <td>{{ $system->components()->count() }}</td>
+            <td>{{ $system->sumComponents() }}</td>
 
           </tr>
         @endforeach
