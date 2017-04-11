@@ -69,9 +69,9 @@
           <thead>
             <tr>
               <th><small>File</small></th>
-              <th><small>Descrip</small></th>
-              <th><small></small></th>
-              <th><small></small></th>
+              <th></th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
 
@@ -81,10 +81,11 @@
               @foreach($test->reports as $report)
                 <tr>
 
-                <td width="70%"><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank"><small>
-                <i class="fa fa-file-text-o" aria-hidden="true"></i> Report
+                <td width="50%">
+                <a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i> <small>Report</small>
                 </a>
-                </small></td>
+                </td>
 
                 <td><small>
                 {{ $report->description }}
