@@ -70,7 +70,6 @@
             <tr>
               <th><small>File</small></th>
               <th><small>Descrip</small></th>
-              <th><small>Added By</small></th>
               <th><small></small></th>
               <th><small></small></th>
             </tr>
@@ -81,9 +80,15 @@
             <tbody>
               @foreach($test->reports as $report)
                 <tr>
-                <td width="70%"><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank">Report</a></small></td>
-                <td><small>{{ $report->description }}</small></td>
-                <td><small>{{ $report->addedBy->first_name }}</small></td>
+
+                <td width="70%"><small><a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank"><small>
+                <i class="fa fa-file-text-o" aria-hidden="true"></i> Report
+                </a>
+                </small></td>
+
+                <td><small>
+                {{ $report->description }}
+                </small></td>
                 <td>
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
                     <i class="fa fa-cog"></i></button>

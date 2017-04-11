@@ -16,20 +16,25 @@
             @foreach($test->testnotes as $testnote)
 
               <tr>
-                <td width="70%"><small>{{ $testnote->note }}</small></td>
-                <td><small>{{ $testnote->addedBy->first_name }}</small></td>
-                <td>
 
+                <td width="70%"><small>
+                {!! nl2br(e($testnote->note)) !!}
+                </small></td>
+
+                <td><small>
+                {{ $testnote->addedBy->first_name }}
+                </small></td>
+
+                <td>
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
                   <i class="fa fa-cog"></i></button>
-
                 </td>
-                <td>
 
+                <td>
                   <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
                   <i class="fa fa-trash-o"></i></button>
-
                 </td>
+
               </tr>
 
               @include('partials.modals.edit_note')
