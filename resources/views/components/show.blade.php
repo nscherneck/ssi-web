@@ -46,7 +46,7 @@
 
           <p>
             <small>
-              {{ $component->description }}
+              {!! nl2br(e($component->description)) !!}
             </small>
           </p>
 
