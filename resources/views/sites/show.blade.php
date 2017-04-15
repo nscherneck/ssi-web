@@ -41,6 +41,8 @@
               @endif
 
               {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}
+              <hr>
+              {!! $site->getGoogleMapsHyperlink('Google Map') !!}
             </small>
           </p>
         </div>
