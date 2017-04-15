@@ -141,7 +141,7 @@
                   </small></td>
 
                   <td><small>
-                  {{ $site->getGoogleMapsHyperlink(Google Map) }}
+                  {{ $site->getGoogleMapsHyperlink('Google Map') }}
                   </small></td>
 
                 </tr>
