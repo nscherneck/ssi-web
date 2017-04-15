@@ -45,7 +45,7 @@
             {{ $customer->address3 }}<br>
             @endif
             {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
-            <a href="http://{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
+            <a href="{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
           </small>
         </p>
       </div>
@@ -55,12 +55,12 @@
       <div class="panel-body">
         <p>
           <small>
-            <strong>Added:</strong> {{ $customer->created_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Added By:</strong> {{ $customer->addedBy->first_name }} {{ $customer->addedBy->last_name }}<br>
-            @if($customer->updated_by)
+            <strong>Added:</strong> {{ $customer->formatted_created_at }}<br>
+            <strong>Added By:</strong> {{ $customer->addedBy->full_name }}<br>
+            @if ($customer->updated_by)
             <hr>
-            <strong>Edited:</strong> {{ $customer->updated_at->setTimezone('America/Los_Angeles')->format('F j, Y, g:i a') }}<br>
-            <strong>Edited By:</strong> {{ $customer->updatedBy->first_name }} {{ $customer->updatedBy->last_name }}<br>
+            <strong>Edited:</strong> {{ $customer->formatted_updated_at }}<br>
+            <strong>Edited By:</strong> {{ $customer->updatedBy->full_name }}<br>
             @endif
           </small>
         </p>
@@ -121,11 +121,29 @@
               <tbody>
                 @foreach($customer->sites as $site)
                   <tr>
-                  <td><small><a href="/site/{{ $site->id }}/">{{ $site->name }}</a></small></td>
-                  <td><small>{{ $site->address1 }}</small></td>
-                  <td><small>{{ $site->city }}</small></td>
-                  <td><small>{{ $site->state->abbreviated }}</small></td>
-                  <td><small><a href="https://www.google.com/maps/place//@<?= $site->lat ?>,{{ $site->lon }},18z" target="blank">Map</a></small></td>
+
+                  <td><small>
+                  <a href="/site/{{ $site->id }}/">
+                  {{ $site->name }}
+                  </a>
+                  </small></td>
+
+                  <td><small>
+                  {{ $site->address1 }}
+                  </small></td>
+
+                  <td><small>
+                  {{ $site->city }}
+                  </small></td>
+
+                  <td><small>
+                  {{ $site->state->abbreviated }}
+                  </small></td>
+
+                  <td><small>
+                  {{ $site->getGoogleMapsHyperlink(Google Map) }}
+                  </small></td>
+
                 </tr>
                 @endforeach
               </tbody>
