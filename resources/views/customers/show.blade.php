@@ -69,17 +69,12 @@
 
     @if ($customer->notes)
     <div class="panel panel-primary">
-      <div class="panel-body">
-        <p>
-            <p><small>
-              <strong>Notes: </strong>
-            </small></p>
-
-            <p><small>
-              {{ $customer->notes }}
-            </small></p>
-        </p>
-      </div>
+    <div class="panel-heading">Notes</div>
+    <div class="panel-body">
+      <small>
+      {!! nl2br(e($customer->notes)) !!}
+      </small>
+    </div>
     </div>
     @endif
 
