@@ -54,11 +54,6 @@ class PagesController extends Controller
         return view('customer');
     }
     
-    public function sales()
-    {
-        return view('sales');
-    }
-    
     public function engineering()
     {
         return view('engineering');
