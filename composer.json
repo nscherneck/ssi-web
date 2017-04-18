@@ -6,20 +6,20 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravelcollective/html": "5.3.*",
+        "laravel/framework": "5.4.*",
         "nesbot/carbon": "^1.21",
         "league/flysystem-aws-s3-v3": "^1.0",
         "filp/whoops": "^2.1",
         "intervention/image": "^2.3",
         "codecourse/notify": "^1.1",
         "spatie/laravel-activitylog": "^1.12",
-        "aws/aws-sdk-php": "~3.0"
+        "aws/aws-sdk-php": "~3.0",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit": "~5.7",
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*"
     },
