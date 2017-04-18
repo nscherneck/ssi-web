@@ -8,7 +8,7 @@ Route::get('/', 'PagesController@home')->name('home');
 Route::get('customer', 'PagesController@customer')->name('customer');
 Route::get('sales', 'PagesController@sales')->name('sales');
 Route::get('engineering', 'PagesController@engineering')->name('engineering');
-Route::get('installation', 'PagesController@installation')->name('installation');
+Route::get('jobs', 'PagesController@jobs')->name('jobs');
 Route::get('service', 'PagesController@service')->name('service');
 Route::get('servicemetrics', 'PagesController@serviceMetrics')->name('servicemetrics');
 Route::get('docs', 'PagesController@docs')->name('docs');

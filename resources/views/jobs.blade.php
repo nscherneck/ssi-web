@@ -7,7 +7,7 @@
 @include('partials.nav')
 
 <div class="container-fluid">
-  <h3>Installation Page</h3>
+  <h3>Jobs Home</h3>
 </div>
 
 @stop

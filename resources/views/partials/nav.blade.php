@@ -15,14 +15,147 @@
             <li><a href="{{ url('/login') }}">Login</a></li>
             <li><a href="{{ url('/register') }}">Register</a></li>
         @else
-            <li><a href="{{ url('home') }}">Home</a></li>
-            <li><a href="{{ url('installation') }}">Jobs</a></li>
-            <li><a href="{{ url('service') }}">Service</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Jobs <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="/jobs">
+                            Jobs Home
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            Jobs Metrics
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            New Job
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Service <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="/service">
+                            Service Home
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            Service Metrics
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            New Work Order
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Customer Data <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="#">
+                            Customer Lookup
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            Site Lookup
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            System Lookup
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Component Data <span class="caret"></span>
+                </a>
+
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="#">
+                            Manufacturer Lookup
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            Component Lookup
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            New Manufacturer
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>                    
+                    <li>
+                        <a href="#">
+                            New Component
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="{{ url('#') }}">Contacts</a></li>
             <li><a href="{{ url('docs') }}">Resources</a></li>
             <li><a href="{{ url('admin') }}">Admin</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
+                    {{ Auth::user()->full_name }} <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
@@ -31,7 +164,7 @@
                             Profile
                         </a>
 
-                        <form id="profile-form" action="" method="POST" style="display: none;">
+                        <form id="profile-form" action="" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
                     </li>

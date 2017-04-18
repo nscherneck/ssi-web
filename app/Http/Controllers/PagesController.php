@@ -59,9 +59,9 @@ class PagesController extends Controller
         return view('engineering');
     }
     
-    public function installation()
+    public function jobs()
     {
-        return view('installation');
+        return view('jobs');
     }
     
     public function service()
