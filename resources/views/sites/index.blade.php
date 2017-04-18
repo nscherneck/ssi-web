@@ -4,14 +4,9 @@
 
 @section('content')
 
-  <div class="container-fluid">
+  <div class="container-fluid" style="margin-top: 15px">
 
     @include('partials.nav')
-
-    <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin: 10px 0; text-decoration: none;">
-      <a href="/customers" style="text-decoration: none;" type="button" class="btn btn-default">Customers Index</a>
-      <a href="/sites" style="text-decoration: none;" type="button" class="btn btn-default">Sites Index</a>
-    </div>
 
     <div class="panel panel-info">
       <div class="panel-heading"><i class="fa fa-map-marker" aria-hidden="true"></i> All Sites ({{ $sites->count() }})</div>

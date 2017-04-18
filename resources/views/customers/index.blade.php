@@ -4,21 +4,16 @@
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid" style="margin-top: 15px">
 
   @include('partials.nav')
-
-  <div class="btn-group btn-group-sm" role="group" aria-label="..." style="margin: 10px 0; text-decoration: none;">
-    <a href="/customers" style="text-decoration: none;" type="button" class="btn btn-default">Customers Index</a>
-    <a href="/sites" style="text-decoration: none;" type="button" class="btn btn-default">Sites Index</a>
-  </div>
 
 </div>
 
 <div class="container">
 
   <div class="titleBar" style="margin-top: 0">
-      <p>Customers Index</p>
+      <p>Customers</p>
   </div>
 
   <table class="table table-condensed">

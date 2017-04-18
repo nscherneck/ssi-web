@@ -85,7 +85,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="#">
+                        <a href="/customers">
                             Customer Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
@@ -93,7 +93,7 @@
                         </form>
                     </li>                    
                     <li>
-                        <a href="#">
+                        <a href="/sites">
                             Site Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
