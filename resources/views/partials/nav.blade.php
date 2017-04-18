@@ -117,7 +117,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="#">
+                        <a href="/manufacturers">
                             Manufacturer Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
