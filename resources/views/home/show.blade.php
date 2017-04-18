@@ -11,7 +11,7 @@
   @include('partials.flash')
   
   <div class="text-center">
-  <h3>Welcome to SSI-Extranet.</h3>
+  <h3>SSI-Extranet Home</h3>
   </div>
 
   <div class="row">
