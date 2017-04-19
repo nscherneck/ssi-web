@@ -4,7 +4,7 @@
 
 @section('content')
 
-  <div class="container-fluid" style="margin-top: 15px">
+  <div class="container" style="margin-top: 15px">
 
     @include('partials.nav')
 
@@ -23,7 +23,6 @@
 
         <thead>
           <tr>
-            <th><small>Created</small></th>
             <th><small>Customer</small></th>
             <th><small>Site</small></th>
             <th><small>Address</small></th>
@@ -37,10 +36,6 @@
         <tbody>
           @foreach($sites as $site)
             <tr>
-
-            <td><small>
-            {{ $site->formatted_for_index_created_at }}
-            </small></td>
 
             <td><small>
             <a href="/customer/{{ $site->customer_id }}">{{ $site->customer->name }}</a>
