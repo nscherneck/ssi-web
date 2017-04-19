@@ -35,15 +35,15 @@ class Kernel extends ConsoleKernel
         if (env('APP_ENV') == 'production') {
             $schedule->command('backup:clean')->daily()
                 ->timezone('America/Los_Angeles')
-                ->at('09:00');
+                ->at('01:00');
 
             $schedule->command('backup:run')->daily()
                 ->timezone('America/Los_Angeles')
-                ->at('10:00');
+                ->at('10:45');
 
             $schedule->command('backup:monitor')->daily()
                 ->timezone('America/Los_Angeles')
-                ->at('11:00');
+                ->at('03:00');
         }
 
     }
