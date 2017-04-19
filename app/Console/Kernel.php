@@ -31,6 +31,12 @@ class Kernel extends ConsoleKernel
             ->mondays()
             ->timezone('America/Los_Angeles')
             ->at('6:00');
+
+        $schedule->command('backup:clean')->daily()->at('01:00');
+
+        $schedule->command('backup:run')->daily()->at('02:00');
+
+        $schedule->command('backup:monitor')->daily()->at('03:00');
     }
 
     /**

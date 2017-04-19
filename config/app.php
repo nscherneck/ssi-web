@@ -171,6 +171,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Application Service Providers...
