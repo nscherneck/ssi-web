@@ -8,7 +8,7 @@ return [
          * The name of this application. You can use this name to monitor
          * the backups.
          */
-        'name' => env('APP_URL'),
+        'name' => env('APP_NAME'),
 
         'source' => [
 
@@ -51,7 +51,7 @@ return [
             /*
              * The filename prefix used for the backup zip file.
              */
-            'filename_prefix' => 'app_backup',
+            'filename_prefix' => 'app_backup_',
 
             /*
              * The disk names on which the backups will be stored.
@@ -107,7 +107,7 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => env('APP_URL'),
+            'name' => env('APP_NAME'),
             'disks' => ['local'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
