@@ -69,6 +69,7 @@ return [
               'use_single_transaction',
               'timeout' => 60 * 5,
             ],
+        ],
 
         'pgsql' => [
             'driver' => 'pgsql',
