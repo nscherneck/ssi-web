@@ -20,7 +20,7 @@ class SitesController extends Controller
     }
     
     public function index(Request $request)
-    {    
+    {
         $sites = Site::orderBy('customer_id', 'desc')->get();
 
         return view('sites.index', compact('sites'));
