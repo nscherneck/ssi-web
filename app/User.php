@@ -16,10 +16,15 @@ class User extends Authenticatable
         'email', 
         'password', 
         'last_login',
-        ];    
+        ];  
+
     protected $hidden = [
         'password', 
         'remember_token',
+        ];
+
+    protected $dates = [
+        'last_login'
         ];
     
     public function customers()
@@ -55,6 +60,12 @@ class User extends Authenticatable
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getFormattedLastLoginAttribute()
+    {
+        return $this->last_login
+            ->format('F j, Y - g:ia');
     }
 
 }
