@@ -9,6 +9,6 @@
 
     function formatActivityModelName($description, $subject)
     {
-        $formatted = $description . '_' . strtolower(str_replace('App\\', '', $subject)); 
+        $formatted = str_replace(' ', '', $description) . '_' . strtolower(str_replace('App\\', '', $subject)); 
         return $formatted;
     }

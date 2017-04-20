@@ -30,5 +30,10 @@ class LogSuccessfulLogin
         $user = $event->user;
         $user->last_login = Carbon::now()->timezone('America/Los_Angeles')->toDateTimeString();
         $user->save();
+
+        activity()
+            ->causedBy($user)
+            ->performedOn($user)
+            ->log('logged in');
     }
 }
