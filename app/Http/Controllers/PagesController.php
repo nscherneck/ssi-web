@@ -64,7 +64,7 @@ class PagesController extends Controller
         return view('jobs');
     }
     
-    public function service()
+    public function serviceHome()
     {
         $customers = Customer::orderBy('name')->get();
         $tests = Test::orderBy('test_date', 'desc')
@@ -72,65 +72,61 @@ class PagesController extends Controller
             ->get();
 
         // systems due for test
-        $start_date_raw = Carbon::now('America/Los_Angeles')->startOfMonth();
-        $start_date = $start_date_raw
+        $startDateRaw = Carbon::now('America/Los_Angeles')->startOfMonth();
+        $startDate = $startDateRaw
             ->subMonth()
             ->toDateString();
-        $end_date = $start_date_raw->addMonthsNoOverflow(3)
+        $endDate = $startDateRaw->addMonthsNoOverflow(3)
             ->endOfMonth()
             ->toDateString();
         
         // metrics
         $systemduefortest = System::orderBy('next_test_date', 'asc')
             ->where('next_test_date', '!=', NULL)
-            ->whereBetween('next_test_date', [$start_date, $end_date])
+            ->whereBetween('next_test_date', [$startDate, $endDate])
             ->get();
         
-        // total systems donut chart
-        $quantityTotal = System::count();
+        return view('service.home', compact(
+            'customers', 'tests', 'systemduefortest')
+            );
+    }    
+
+    public function serviceMetrics()
+    {
         
-        $quantitySystemType = [];
-        for($a = 1; $a <= 18; $a++) {
-            $quantitySystemType[] = System::where('system_type_id', $a)->count();
+        // total systems donut chart
+        $totalSystemsCount = System::count();
+        
+        $systemsCountByType = [];
+        for ($a = 1; $a <= 18; $a++) {
+            $systemsCountByType[] = System::where('system_type_id', $a)->count();
         }
         
         // tests by month, trailing 12 bar chart
         $testsTotalTrailingTwelve = [];
         for($b = 0; $b <= 11; $b++){
-            $start_now = Carbon::now('America/Los_Angeles');
-            $end_now = Carbon::now('America/Los_Angeles');
             
-            $start_date = $start_now->subMonthsNoOverflow($b)
+            $startDate = Carbon::now('America/Los_Angeles')->subMonthsNoOverflow($b)
                 ->startOfMonth()
                 ->toDateString();
             
-            if($b === 0) {
-                $end_date = $end_now
-                    ->endOfMonth()
+            if ($b === 0) {
+                $endDate = Carbon::now('America/Los_Angeles')->endOfMonth()
                     ->toDateString();
             } else {
-                $end_date = $end_now
-                    ->subMonthsNoOverflow($b)
+                $endDate = Carbon::now('America/Los_Angeles')->subMonthsNoOverflow($b)
                     ->endOfMonth()
                     ->toDateString();
             }
             
             $testsTotalTrailingTwelve[] = Test::orderBy('test_date', 'desc')
-                ->whereBetween('test_date', [$start_date, $end_date])
+                ->whereBetween('test_date', [$startDate, $endDate])
                 ->count();
         }
-        
-        $recentsystems = System::orderBy('created_at', 'desc')
-            ->take(15)
-            ->get();
-        
-        return view('service', compact(
-            'customers',
-            'tests',
-            'systemduefortest',
-            'recentsystems',
-            'quantityTotal',
-            'quantitySystemType',
+
+        return view('service.metrics', compact(
+            'totalSystemsCount',
+            'systemsCountByType',
             'testsTotalTrailingTwelve'
             )
         );

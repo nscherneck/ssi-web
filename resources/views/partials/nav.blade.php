@@ -53,7 +53,7 @@
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                        <a href="/service">
+                        <a href="/service/home">
                             Service Home
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
@@ -61,7 +61,7 @@
                         </form>
                     </li>                    
                     <li>
-                        <a href="#">
+                        <a href="/service/metrics">
                             Service Metrics
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
