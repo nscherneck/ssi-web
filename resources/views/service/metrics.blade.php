@@ -6,6 +6,10 @@
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
 
+  <style type="text/css">
+     body { background: #5F98B9 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+  </style>
+
 @stop
 
 @section('content')
@@ -20,7 +24,7 @@
 
     <div class="col-lg-6 no-gutter-right">
 
-      <div class="panel panel-default panel-info">
+      <div class="panel panel-default">
 
         <div class="panel-heading">
           <i class="fa fa-bar-chart" aria-hidden="true"></i> Tests per Month
@@ -38,7 +42,7 @@
 
     <div class="col-lg-6 no-gutter-right">
 
-      <div class="panel panel-default panel-info">
+      <div class="panel panel-default">
 
         <div class="panel-heading">
           <i class="fa fa-bar-chart" aria-hidden="true"></i> 

@@ -42,7 +42,7 @@ function rainbow(numberOfSteps, stepNumber) {
           ],
           hoverBackgroundColor: [
             @foreach ($systemTypes as $systemType)
-              "#D9EDF7",
+              "#F5F5F5",
             @endforeach
           ]
       }]
