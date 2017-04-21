@@ -2,72 +2,69 @@
 
 @section('title', 'SSI-Extranet | Manufacturer')
 
+@section('head')
+
+<style type="text/css">
+   body { background: #5F98B9 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+</style>
+
+@stop
+
 @section('content')
 
 @include('partials.nav')
 
-<div class="container">
+<div class="container-fluid">
 
   @include('partials.flash')
 
-  <div class="text-center">
-    <h3>Manufacturers Index</h3>
-  </div>
-
   <div class="row">
 
-    <div class="col-md-12">
+    <div class="col-lg-4 col-lg-offset-4">
+      
+        <div class="panel panel-default" style="margin-top: 15px">
 
-      <div class="titleBar">
-          <p>Manufacturers ({{ $manufacturers->count() }})</p>
-      </div>
-
-      <div class="table-responsive">
-
-        <table class="table table-condensed">
-          <thead>
-            <tr>
-              <th><small>Manufacturer</small></th>
-              <th><small>Website</small></th>
-              <th><small>Distributor Website</small></th>
-              <th><small>Components</small></th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($manufacturers as $manufacturer)
-              <tr>
-
-              <td width="25%">
-              <small><a href="/manufacturer/{{ $manufacturer->id }}">
-              {{ $manufacturer->name }}</a></small>
-              </td>
-
-              <td width="25%">
-              <small><a href="{{ $manufacturer->web }}" target="blank">
-              {{ $manufacturer->web }}</a></small>
-              </td>
-
-              <td width="25%">
-              <small><a href="{{ $manufacturer->distributor_login }}" target="blank">
-              {{ $manufacturer->distributor_login }}</a></small>
-              </td>
-
-              <td width="25%">
-              <small>{{ $manufacturer->components->count() }}</small>
-              </td>
-              
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-
-      </div>
-
-
+    <div class="panel-heading text-center">
+      Manufacturers
     </div>
 
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th><small>Manufacturer</small></th>
+          <th class="text-center"><small>Components</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach($manufacturers as $manufacturer)
+          <tr>
+
+            <td width="70%">
+            <small>
+            <a href="/manufacturer/{{ $manufacturer->id }}">
+            {{ $manufacturer->name }}
+            </a>
+            </small>
+            </td>
+
+            <td width="30%" class="text-center">
+            <small>
+            {{ $manufacturer->components->count() }}
+            </small>
+            </td>
+      
+          </tr>
+        @endforeach
+      </tbody>
+    </table>
+
+  </div> <!-- END OF PANEL -->
+    </div>
+    
   </div>
 
-</div>
+
+
+</div> <!-- END OF CONTAINER -->
 
 @stop

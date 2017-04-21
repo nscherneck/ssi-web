@@ -97,7 +97,7 @@ class PagesController extends Controller
         
         // tests by month, trailing 12 bar chart
         $testsTotalTrailingTwelve = [];
-        for($b = 0; $b <= 11; $b++){
+        for ($b = 0; $b <= 11; $b++) {
             
             $startDate = Carbon::now('America/Los_Angeles')->subMonthsNoOverflow($b)
                 ->startOfMonth()
