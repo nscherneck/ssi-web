@@ -108,7 +108,7 @@ return [
     'monitorBackups' => [
         [
             'name' => env('APP_BACKUP_NAME'),
-            'disks' => ['local'],
+            'disks' => ['s3'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
         ],
