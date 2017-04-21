@@ -37,7 +37,7 @@
       </thead>
       <tbody>
 
-        @foreach($systemduefortest as $system)
+        @foreach ($systemduefortest as $system)
          <tr>
 
           <td>
@@ -85,7 +85,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach($tests as $test)
+        @foreach ($tests as $test)
         <tr {!! $test->setServiceViewRowColor() !!}>
 
           <td>

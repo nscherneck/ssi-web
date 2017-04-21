@@ -10,6 +10,7 @@ use App\Customer;
 use App\Document;
 use App\Component;
 use Carbon\Carbon;
+use App\System_type;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -94,14 +95,6 @@ class PagesController extends Controller
     public function serviceMetrics()
     {
         
-        // total systems donut chart
-        $totalSystemsCount = System::count();
-        
-        $systemsCountByType = [];
-        for ($a = 1; $a <= 18; $a++) {
-            $systemsCountByType[] = System::where('system_type_id', $a)->count();
-        }
-        
         // tests by month, trailing 12 bar chart
         $testsTotalTrailingTwelve = [];
         for($b = 0; $b <= 11; $b++){
@@ -124,10 +117,14 @@ class PagesController extends Controller
                 ->count();
         }
 
+        $systemTypes = System_type::with('systems')->get();
+
+        $systems = System::get();
+
         return view('service.metrics', compact(
-            'totalSystemsCount',
-            'systemsCountByType',
-            'testsTotalTrailingTwelve'
+            'testsTotalTrailingTwelve',
+            'systemTypes',
+            'systems'
             )
         );
     }
