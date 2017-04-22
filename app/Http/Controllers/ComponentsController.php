@@ -39,7 +39,7 @@ class ComponentsController extends Controller
         );    
     }    
     
-    public function create(Request $request) 
+    public function store(Request $request) 
     {
     
         $this->validate($request, [
@@ -57,12 +57,14 @@ class ComponentsController extends Controller
         $component->discontinued = $request->discontinued;
         
         $component->save();
-        
+
+        flash('Success!', 'Component created.', 'success');
+
         return redirect()->route('admin');
     
     }
     
-    public function create_page() 
+    public function create()
     {
         $manufacturers = DB::table('manufacturers')
             ->orderBy('name', 'asc')
@@ -74,7 +76,7 @@ class ComponentsController extends Controller
         return view('components.create', compact('manufacturers', 'component_categories'));
     }
     
-    public function update_component_form(Request $request) 
+    public function getModelForAttachComponentModal(Request $request) 
     {
         // ajax call for model form select
         $manufacturer = Manufacturer::find($request->manufacturer_id);

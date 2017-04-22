@@ -54,13 +54,13 @@ Route::post('manufacturers', 'ManufacturersController@store');
 Route::get('manufacturers', 'ManufacturersController@index');
 Route::get('manufacturer/{manufacturer}', 'ManufacturersController@show')->name('manufacturer_show');
 Route::put('manufacturers/{manufacturer}', 'ManufacturersController@update');
-Route::get('createcomponent', 'ComponentsController@create_page');
-Route::post('createcomponent', 'ComponentsController@create');
+
+Route::get('component/create', 'ComponentsController@create');
+Route::post('component/store', 'ComponentsController@store');
 Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
-Route::get('system/{system}/addcomponent', 'ComponentsController@add');
-Route::post('update_component_form', 'ComponentsController@update_component_form');
+Route::post('update_component_form', 'ComponentsController@getModelForAttachComponentModal');
 Route::put('component/{component}', 'ComponentsController@update');
-Route::post('system/{system}/attachcomponent', 'ComponentsController@attach');
+Route::post('system/{system}/component/attach', 'ComponentsController@attach');
 Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detach');
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
 

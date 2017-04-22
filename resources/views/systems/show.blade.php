@@ -872,7 +872,7 @@
                 <a href="/system/photo/{{ $photo->id }}/">
                 <img src="https://s3-us-west-2.amazonaws.com/ssiwebstorage/customer-data/system_photos/thumbnails/thumb-{{ $photo->file_name }}.{{ $photo->ext }}" width="178px" height="auto"></a><br><br>
                 <p><small><strong>{{ $photo->caption }}</strong><br>
-                {{ $photo->getSize() }}</small></p>
+                {{ $photo->getFilesize() }}</small></p>
               </div>
 
             @endforeach

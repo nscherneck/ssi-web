@@ -24,9 +24,8 @@
 
   <h5>Components</h5>
   <ul>
-    <li><a href="#" data-toggle="modal" data-target="#addManufacturerModal">Add a Manufacturer</a></li>
-    <li><a href="/manufacturers">Manufacturer Index</a></li>
-    <li><a href="/createcomponent">Add a Component</a></li>
+    <li><a href="#" data-toggle="modal" data-target="#addManufacturerModal">New Manufacturer</a></li>
+    <li><a href="component/create">New Component</a></li>
   </ul>
 
   <h5>Tests</h5>

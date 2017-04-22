@@ -13,7 +13,7 @@
       <br>
       <h4>Create a New Component</h4>
 
-        <form action="/createcomponent" method="POST">
+        <form action="/component/store" method="POST">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="form-group">
 

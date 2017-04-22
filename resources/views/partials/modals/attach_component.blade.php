@@ -5,14 +5,12 @@ function fetch_select(val)
 
  $.ajax({
  type: 'post',
- url: '/update_component_form',
+ url: "/update_component_form",
  data: {
   manufacturer_id:val
  },
  dataType: "json",
-// success: function (data) {
-//     console.log(data);
-// }
+
  success: function (data) {
 
   var select_model = document.getElementById("model");
@@ -44,15 +42,6 @@ function fetch_select(val)
 
 }
 
-  // $(document).ready(function() {
-  //      $(':input[type="submit"]').prop('disabled', true);
-  //      $('#quantity').keyup(function() {
-  //         if($(this).val() != '') {
-  //            $(':input[type="submit"]').prop('disabled', false);
-  //         }
-  //      });
-  //  });
-
 </script>
 
 
@@ -68,7 +57,7 @@ function fetch_select(val)
       </div>
       <div class="modal-body">
 
-        <form action="/system/{{ $system->id }}/attachcomponent" method="POST">
+        <form action="/system/{{ $system->id }}/component/attach" method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
@@ -95,11 +84,8 @@ function fetch_select(val)
               var select_model = document.getElementById("model");
               var obj_index = select_model.options[select_model.selectedIndex].dataset.parent;
               console.log(descriptions[obj_index]);
-              // var desc_content_area = document.getElementById("description");
-              // desc_content_area.innerHTML(data[obj_index].description);
               var description_content = document.getElementById("description");
               description_content.innerHTML = descriptions[obj_index];
-              // $("#description").text(descriptions[obj_index]);
 
             });
           </script>
