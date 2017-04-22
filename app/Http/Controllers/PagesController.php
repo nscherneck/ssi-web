@@ -117,7 +117,7 @@ class PagesController extends Controller
                 ->count();
         }
 
-        $systemTypes = System_type::with('systems')->get();
+        $systemTypes = System_type::orderBy('type')->with('systems')->get();
 
         $systems = System::get();
 
