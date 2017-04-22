@@ -172,6 +172,7 @@ return [
         Spatie\Activitylog\ActivitylogServiceProvider::class,
         Laravel\Tinker\TinkerServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,8 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
-        'Html' => Collective\Html\HtmlFacade::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Sentry' => Sentry\SentryLaravel\SentryFacade::class,
 
     ],
 
