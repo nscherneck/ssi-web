@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'SSI-Extranet | Customers Index')
+@section('title', 'SSI-Extranet | Systems Lookup')
 
 @section('content')
 
