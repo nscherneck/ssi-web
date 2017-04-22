@@ -42,6 +42,7 @@ Route::get('site/{site}/photo/create', 'PhotosController@createSitePhoto');
 // SYSTEM ROUTES
 Route::post('site/{site}/create', 'SystemsController@store');
 Route::put('system/{system}/update', 'SystemsController@update');
+Route::get('systems', 'SystemsController@index')->name('system_index');
 Route::get('system/{system}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
 Route::get('createsystemtype', 'SystemTypesController@create');

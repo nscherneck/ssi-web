@@ -101,7 +101,7 @@
                         </form>
                     </li>                    
                     <li>
-                        <a href="#">
+                        <a href="/systems">
                             System Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">

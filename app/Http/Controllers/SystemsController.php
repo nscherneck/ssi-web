@@ -20,6 +20,12 @@ class SystemsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function index()
+    {
+        $systems = System::orderBy('site_id')->get();
+        return view('systems.index', compact('systems'));
+    }
     
     public function show(System $system)
     {

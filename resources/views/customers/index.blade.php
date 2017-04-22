@@ -13,7 +13,7 @@
 <div class="container">
 
   <div class="titleBar" style="margin-top: 0">
-      <p>Customers</p>
+      <p>Customers ({{ $customers->count() }})</p>
   </div>
 
   <table class="table table-condensed">
