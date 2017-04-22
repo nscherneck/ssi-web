@@ -27,10 +27,12 @@ class LogSuccessfulLogin
      */
     public function handle(Login $event)
     {
+        // update the user's last_login field in the database
         $user = $event->user;
         $user->last_login = Carbon::now()->timezone('America/Los_Angeles')->toDateTimeString();
         $user->save();
 
+        // add the login to the activity log
         activity()
             ->causedBy($user)
             ->performedOn($user)

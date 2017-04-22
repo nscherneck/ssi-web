@@ -62,10 +62,9 @@ class PhotosController extends Controller
     public function showSystemPhoto(Photo $photo)
     {
         $photo = Photo::find($photo->id);
-        $photo_size = round(Storage::size($photo->path . "/" . $photo->file_name . "." . $photo->ext) / 1000000, 2);
         $system = System::find($photo->photoable_id);
 
-        return view('systems.photos.show', compact('system', 'photo', 'photo_size'));
+        return view('systems.photos.show', compact('system', 'photo'));
     }
 
     public function update(Request $request, Photo $photo)

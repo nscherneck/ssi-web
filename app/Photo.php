@@ -47,7 +47,7 @@ class Photo extends Model
         return $system;
     }
 
-    public function getSize()
+    public function getFilesize()
     {
         $result = round(Storage::size($this->path . "/" . $this->file_name . "." . $this->ext) / 1000000, 2) . " Mb";
         return $result;

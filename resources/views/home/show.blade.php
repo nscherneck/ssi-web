@@ -9,21 +9,19 @@
 <div class="container-fluid">
 
   @include('partials.flash')
-  
-  <div class="text-center">
-  <h3>SSI-Extranet Home</h3>
-  </div>
 
-  <div class="row">
+  <div class="row" style="margin-top: 15px">
+
     <div class="col-lg-8 no-gutter-right">
 
-      <h4>Recent Activity</h4>
+      <h5>Recent Activity</h5>
+
       @include('home.activity_feed.feed')
 
-
-
       <div class="titleBar" style="margin-top: 0">
-        <p><i class="fa fa-file-text-o" aria-hidden="true"></i> Recently Added Components</p>
+        <p>
+          <i class="fa fa-file-text-o" aria-hidden="true"></i> Recently Added Components
+        </p>
       </div>
 
       <div class="table-responsive">
@@ -41,6 +39,7 @@
           <tbody>
             @foreach($recentcomponents as $component)
             <tr>
+
               <td>
                 <small>
                   <a href="/manufacturer/{{ $component->manufacturer_id }}">
@@ -48,25 +47,31 @@
                   </a>
                 </small>
               </td>
+
               <td>
                 <small>
                   <a href="/component/{{ $component->id }}">
                     {{ $component->model }}
                   </a>
                 </small>
-              </td>   
-              <td><small>
-                @if(strlen($component->description) > 125)
-                  @php echo substr($component->description, 0, 125) . '. . .' @endphp
-                @else
-                  {{ $component->description }}
-                @endif
-              </small></td>           
+              </td>
+
+              <td>
+                <small>
+                  @if (strlen($component->description) > 125)
+                    {{ $component->formatted_description }}
+                  @else
+                    {{ $component->description }}
+                  @endif
+                </small>
+              </td> 
+
               <td>
                 <small>
                     {{ $component->component_category->name }}
                 </small>
               </td>
+
             </tr>
             @endforeach
           </tbody>
@@ -83,9 +88,9 @@
         <p><i class="fa fa-camera" aria-hidden="true"></i> Recent Photos</p>
       </div>
 
-      @if($recentphotos->count() > 0)
+      @if ($recentphotos->count() > 0)
 
-      @foreach($recentphotos as $photo)
+      @foreach ($recentphotos as $photo)
         <div class="recentSystemPhoto">
 
           <div class="recentSystemPhotoThumb">
@@ -101,22 +106,25 @@
               <strong>
                 <a href="/customer/{{ $photo->photoable->site->customer->id }}">
                   {{ $photo->photoable->site->customer->name }}
-                </a></strong> /
+                </a>
+              </strong> /
 
               <strong>
                 <a href="/site/{{ $photo->photoable->site->id }}">
                   {{ $photo->photoable->site->name }}
-                </a></strong> /
+                </a>
+              </strong> /
 
               <strong>
                 <a href="/system/{{ $photo->photoable->id }}">
                   {{ $photo->photoable->name }}
-                </a></strong>
+                </a>
+              </strong>
 
                 <br>
               <strong>Added By: </strong>{{ $photo->addedBy->first_name }}<br>
               <strong>Added: </strong>{{ $photo->created_at->diffForHumans() }}<br>
-              <strong>Size: </strong>{{ $photo->getSize() }}<br>
+              <strong>Size: </strong>{{ $photo->getFilesize() }}<br>
             </p>
           </div>
 
