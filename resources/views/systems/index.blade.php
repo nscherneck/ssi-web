@@ -23,6 +23,7 @@
             <th><small>Site</small></th>
             <th><small>System</small></th>
             <th><small>Type</small></th>
+            <th><small>Next Test Date</small></th>
             <th><small>Components</small></th>
           </tr>
         </thead>
@@ -48,6 +49,10 @@
             </small></td>
 
             <td><small>
+            {{ $system->formatted_next_test_date }}
+            </small></td>
+
+            <td class="text-center"><small>
             {{ $system->sumComponents() }}
             </small></td>
 

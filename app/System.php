@@ -74,6 +74,10 @@ class System extends Model
 
     public function getFormattedNextTestDateAttribute()
     {
+        if (is_null($this->next_test_date)) {
+            return '';
+        }
+        
         return $this->next_test_date->setTimezone('America/Los_Angeles')
             ->format('F Y');
     }
