@@ -46,7 +46,7 @@
 
         <div class="panel-heading">
           <i class="fa fa-bar-chart" aria-hidden="true"></i> 
-          Total Systems by Type ({{ $systems->count() }})
+          Systems by Type ({{ $systems->count() }})
         </div>
 
         <div class="panel-body">

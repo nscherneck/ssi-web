@@ -53,6 +53,7 @@ function rainbow(numberOfSteps, stepNumber) {
     data: donutdata,
     options: {
         responsive: true,
+        rotation: 20
       }
   });
 
