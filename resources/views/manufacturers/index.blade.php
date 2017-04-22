@@ -28,7 +28,7 @@
       Manufacturers
     </div>
 
-    <table class="table table-condensed">
+    <table class="table">
       <thead>
         <tr>
           <th><small>Manufacturer</small></th>

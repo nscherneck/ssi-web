@@ -97,7 +97,7 @@ class SitesController extends Controller
     
     public function destroy(Site $site)
     {    
-        if(count($site->systems) > 0) {
+        if (count($site->systems) > 0) {
             flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
             return redirect()->route('site_show', ['id' => $site->id]);
         } else {
