@@ -16,7 +16,7 @@
         "aws/aws-sdk-php": "~3.0",
         "laravel/tinker": "^1.0",
         "spatie/laravel-backup": "^4.12",
-        "sentry/sentry-laravel": "^0.7.0",
+        "sentry/sentry-laravel": "^0.7.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
