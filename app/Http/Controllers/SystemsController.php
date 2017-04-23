@@ -23,7 +23,7 @@ class SystemsController extends Controller
 
     public function index()
     {
-        $systems = System::orderBy('site_id')->get();
+        $systems = System::orderBy('site_id')->with('site.customer')->get();
         return view('systems.index', compact('systems'));
     }
     
