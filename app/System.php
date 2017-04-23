@@ -77,7 +77,7 @@ class System extends Model
         if (is_null($this->next_test_date)) {
             return '';
         }
-        
+
         return $this->next_test_date->setTimezone('America/Los_Angeles')
             ->format('F Y');
     }
@@ -96,12 +96,15 @@ class System extends Model
 
     public function getMostRecentTest() 
     {
-        $test_count = $this->tests()->count();
-        if($test_count >= 1) {
+        $test_count = $this->tests()
+            ->count();
+
+        if ($test_count >= 1) {
             $result = $this->tests()
-            ->orderBy('test_date', 'desc')
-            ->first();
-            return $result->test_date->format('F d, Y');
+                ->orderBy('test_date', 'desc')
+                ->first();
+            return $result->test_date
+                ->format('M j, Y');
         } else {
             return "";
         }

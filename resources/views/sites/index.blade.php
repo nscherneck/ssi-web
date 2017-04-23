@@ -61,7 +61,7 @@
             {{ $site->zip }}
             </small></td>
 
-            <td><small>
+            <td class="text-center"><small>
             {{ count($site->systems) }}
             </small></td>
 
