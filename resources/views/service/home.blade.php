@@ -37,7 +37,7 @@
       </thead>
       <tbody>
 
-        @foreach ($systemduefortest as $system)
+        @foreach ($systemsDueForTest as $system)
          <tr>
 
           <td>

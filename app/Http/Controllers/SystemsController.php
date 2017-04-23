@@ -23,7 +23,10 @@ class SystemsController extends Controller
 
     public function index()
     {
+        \Debugbar::startMeasure('query time', 'The execution time of systems query');
         $systems = System::orderBy('site_id')->with('site.customer')->get();
+        \Debugbar::stopMeasure('query time');
+
         return view('systems.index', compact('systems'));
     }
     

@@ -24,14 +24,14 @@
 
       // Multiple Markers
       var markers = [
-          @foreach($systemduefortest as $system)
+          @foreach($systemsDueForTest as $system)
             ['{{ $system->site->customer->name }} | {{ $system->site->name }}', {{ $system->site->lat }}, {{ $system->site->lon }}],
           @endforeach
       ];
 
       // Info Window Content
       var infoWindowContent = [
-          @foreach($systemduefortest as $system)
+          @foreach($systemsDueForTest as $system)
             ['<div class="info_content">' +
             '<h5><a href="/customer/{{ $system->site->customer->id }}" target="blank">{{ $system->site->customer->name }}</a> | <a href="/site/{{ $system->site->id }}" target="blank">{{ $system->site->name }}</a></h5>' +
             '<p><small><strong>' +

@@ -68,12 +68,15 @@ class PagesController extends Controller
     public function serviceHome()
     {
         $customers = Customer::orderBy('name')->get();
+
         $tests = Test::orderBy('test_date', 'desc')
+            ->with('system.site.customer')
             ->take(100)
             ->get();
 
         // systems due for test
         $startDateRaw = Carbon::now('America/Los_Angeles')->startOfMonth();
+
         $startDate = $startDateRaw
             ->subMonth()
             ->toDateString();
@@ -81,14 +84,14 @@ class PagesController extends Controller
             ->endOfMonth()
             ->toDateString();
         
-        // metrics
-        $systemduefortest = System::orderBy('next_test_date', 'asc')
+        $systemsDueForTest = System::orderBy('next_test_date', 'asc')
+            ->with('site.customer')
             ->where('next_test_date', '!=', NULL)
             ->whereBetween('next_test_date', [$startDate, $endDate])
             ->get();
         
         return view('service.home', compact(
-            'customers', 'tests', 'systemduefortest')
+            'customers', 'tests', 'systemsDueForTest')
             );
     }    
 
