@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if ($this->app->environment() !== 'production') {
+        if ($this->app->environment() == 'staging') {
             // Providers
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
 
