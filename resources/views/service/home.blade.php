@@ -167,7 +167,7 @@
         <div class="col-lg-4">
           <small>System Type:</small> 
           <select name="system_type_id" class="form-control">
-          <option value="0">Select Result</option>
+          <option value="0">Select System Type</option>
             @foreach ($systemTypes as $type)
             <option value="{{ $type->id }}">{{ $type->type }}</option>
             @endforeach
