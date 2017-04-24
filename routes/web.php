@@ -18,8 +18,6 @@ Route::get('fleet', 'PagesController@fleet')->name('fleet');
 Route::get('team', 'PagesController@team')->name('team');
 Route::get('admin', 'PagesController@admin')->name('admin');
 
-Route::get('update/record/test/{test}', 'TestsController@tempTestUpdate');
-
 // USER ROUTES
 Route::get('profile', 'UsersController@profile')->name('profile');
 Route::get('changepassword', 'UsersController@changePasswordView')->name('change_password');
