@@ -141,6 +141,14 @@ class TestsController extends Controller
             });        
         }
 
+        if ($request->has_reports == 1) {
+            $query->has('reports');        
+        }
+
+        if ($request->has_reports == 2) {
+            $query->doesntHave('reports');        
+        }
+
         $tests = $query->get();           
         
         return view('tests.search_results', compact('tests'));

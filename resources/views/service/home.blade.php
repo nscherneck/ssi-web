@@ -191,6 +191,12 @@
         </div>
 
         <div class="col-lg-3">
+          <small>Has Reports:</small> 
+          <select name="has_reports" class="form-control">
+          <option value="">Select</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+          </select>           
         </div>        
 
         <div class="col-lg-3">
