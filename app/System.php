@@ -135,4 +135,10 @@ class System extends Model
         return $sumOfComponents;
     }
 
+
+    public function scopeIsTestedBySSI($query)
+    {
+        return $query->where('ssi_test_acct', 1);
+    }      
+
 }

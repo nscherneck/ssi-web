@@ -23,7 +23,8 @@ class SystemsController extends Controller
 
     public function index(Request $request)
     {
-        $systems = System::orderBy('next_test_date')
+        $systems = System::isTestedBySSI()
+            ->orderBy('next_test_date')
             ->with('site.customer')
             ->paginate(25);
 
