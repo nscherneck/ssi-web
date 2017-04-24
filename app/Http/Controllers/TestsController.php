@@ -18,6 +18,16 @@ class TestsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function tempTestUpdate(Test $test)
+    {
+        $test = Test::findOrFail($test->id);
+        $test->site_id = $test->system->site->id;
+        $test->customer_id = $test->system->site->customer->id;
+        $test->save();
+
+        return 'Great success, you updated a test for ' . $test->system->site->customer->name;
+    }
     
     public function index(TestFilters $filters)
     {

@@ -1,6 +1,8 @@
 <?php
 
 use App\Customer;
+use App\System;
+use App\Test;
 use App\Mail\WeeklyUpdate;
 
 // BASE NAV ROUTES
@@ -15,6 +17,8 @@ Route::get('docs', 'PagesController@docs')->name('docs');
 Route::get('fleet', 'PagesController@fleet')->name('fleet');
 Route::get('team', 'PagesController@team')->name('team');
 Route::get('admin', 'PagesController@admin')->name('admin');
+
+Route::get('update/record/test/{test}', 'TestsController@tempTestUpdate');
 
 // USER ROUTES
 Route::get('profile', 'UsersController@profile')->name('profile');

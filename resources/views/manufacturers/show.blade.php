@@ -123,8 +123,8 @@
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th><small><a href="/manufacturer/{{ $manufacturer->id }}?sort=model">Model</small></th>
-              <th><small>Description</a></small></th>
+              <th><small><a href="/manufacturer/{{ $manufacturer->id }}?sort=model">Model</a></small></th>
+              <th><small>Description</small></th>
               <th><small><a href="/manufacturer/{{ $manufacturer->id }}?sort=component_category_id">Category</a></small></th>
             </tr>
           </thead>

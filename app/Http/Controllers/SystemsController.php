@@ -21,9 +21,11 @@ class SystemsController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $systems = System::orderBy('site_id')->with('site.customer')->get();
+        $systems = System::orderBy('next_test_date')
+            ->with('site.customer')
+            ->paginate(25);
 
         return view('systems.index', compact('systems'));
     }

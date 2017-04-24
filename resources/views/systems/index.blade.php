@@ -13,7 +13,7 @@
 <div class="container">
 
   <div class="titleBar" style="margin-top: 0">
-      <p>Systems ({{ $systems->count() }})</p>
+      <p>Systems ({{ $systems->total() }})</p>
   </div>
   
   <div class="table-responsive">
@@ -69,6 +69,11 @@
 
     </table>
   </div> <!-- END OF RESPONSIVE TABLE -->
+
+  <div class="text-center">
+    {{ $systems->links() }}
+  </div>
+
 
 </div> <!-- END OF CONTAINER -->
 

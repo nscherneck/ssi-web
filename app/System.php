@@ -23,8 +23,8 @@ class System extends Model
         'ssi_install', 
         'ssi_test_acct', 
         'next_test_date', 
-        'notes', 
-        'added_by', 
+        'notes',
+        'added_by',
         'updated_by', 
         'updated_at'
         ];

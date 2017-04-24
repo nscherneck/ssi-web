@@ -12,6 +12,7 @@
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" href="{{{ asset('images/favicon-32x32.png') }}}">
     <link rel="stylesheet" href="{{ elixir('css/all.css') }}">
     <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
 

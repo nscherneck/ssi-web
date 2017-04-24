@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (env('APP_ENV') == 'staging') {
+        if (env('APP_ENV') == 'staging' || 'local') {
             // Providers
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
 
