@@ -142,31 +142,62 @@
       <form action="/tests/search" method="POST">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-      <small>Customer:</small> 
-      <select name="customer_id" class="form-control">
-      <option value="0">Select Customer</option>
-        @foreach ($customers as $customer)
-        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-        @endforeach
-      </select>
+      <div class="row">
+        
+        <div class="col-lg-4">
+          <small>Customer:</small> 
+          <select name="customer_id" class="form-control">
+          <option value="0">Select Customer</option>
+            @foreach ($customers as $customer)
+            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+            @endforeach
+          </select>          
+        </div>  
+
+        <div class="col-lg-4">
+          <small>Test Result:</small> 
+          <select name="test_result_id" class="form-control">
+          <option value="0">Select Result</option>
+            @foreach ($testResults as $result)
+            <option value="{{ $result->id }}">{{ $result->name }}</option>
+            @endforeach
+          </select>          
+        </div>      
+
+        <div class="col-lg-4">
+          <small>System Type:</small> 
+          <select name="system_type_id" class="form-control">
+          <option value="0">Select Result</option>
+            @foreach ($systemTypes as $type)
+            <option value="{{ $type->id }}">{{ $type->type }}</option>
+            @endforeach
+          </select>          
+        </div>   
+
+      </div> <!-- END OF ROW -->
 
       <br>
 
       <div class="row">
 
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <small>Start Date:</small> 
-          <input type="date" name="start_date" value="" class="form-control" required>
+          <input type="date" name="start_date" value="" class="form-control">
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-3">
           <small>End Date:</small> 
-          <input type="date" name="end_date" value="" class="form-control" required>
+          <input type="date" name="end_date" value="" class="form-control">
+        </div>
+
+        <div class="col-lg-3">
+        </div>        
+
+        <div class="col-lg-3">
         </div>
 
       </div> <!-- END OF ROW -->
 
-      <br>
 
       <button type="submit" class="btn btn-primary pull-right">Search</button>
       </form>

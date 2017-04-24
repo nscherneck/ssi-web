@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Site;
 use App\Test;
+use App\Test_result;
 use App\Photo;
 use App\System;
 use App\Customer;
@@ -69,6 +70,10 @@ class PagesController extends Controller
     {
         $customers = Customer::orderBy('name')->get();
 
+        $testResults = Test_result::orderBy('name')->get();
+
+        $systemTypes = System_type::orderBy('type')->get();
+
         $tests = Test::orderBy('test_date', 'desc')
             ->with('system.site.customer')
             ->take(100)
@@ -91,7 +96,7 @@ class PagesController extends Controller
             ->get();
         
         return view('service.home', compact(
-            'customers', 'tests', 'systemsDueForTest')
+            'customers', 'testResults', 'systemTypes', 'tests', 'systemsDueForTest')
             );
     }    
 

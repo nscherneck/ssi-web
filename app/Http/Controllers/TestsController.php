@@ -120,11 +120,28 @@ class TestsController extends Controller
     
     public function search(Request $request)
     {    
-        $tests = Test::orderBy('test_date', 'desc')
-            ->whereBetween('test_date', [$request->start_date, $request->end_date])
-            ->where('customer_id', $request->customer_id)
-            ->with(['test_result', 'test_type', 'system.site.customer'])
-            ->get();
+        $query = Test::orderBy('test_date', 'desc')
+            ->with(['test_result', 'test_type', 'system.site.customer']);
+        
+        if ($request->customer_id) {
+            $query->where('customer_id', $request->customer_id);           
+        }
+
+        if ($request->start_date || $request->end_date) {
+            $query->whereBetween('test_date', [$request->start_date, $request->end_date]);           
+        }
+
+        if ($request->test_result_id) {
+            $query->where('test_result_id', $request->test_result_id);           
+        }
+
+        if ($request->system_type_id) {
+            $query->whereHas('system', function ($subQuery) use ($request) {
+                $subQuery->where('system_type_id', '=', $request->system_type_id);   
+            });        
+        }
+
+        $tests = $query->get();           
         
         return view('tests.search_results', compact('tests'));
     }
