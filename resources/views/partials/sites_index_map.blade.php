@@ -37,9 +37,9 @@
             '<p><small><strong>' +
             @foreach($site->systems as $system)
                 '&nbsp;<a href="/system/{{ $system->id }}" target="blank">{{ $system->name }}</a><br>' +
-                @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Due: {{ $system->next_test_date->format('F Y') }}<br>' + @endif
+                @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Due: {{ $system->formatted_next_test_date }}<br>' + @endif
                 @foreach($system->tests as $test)
-                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="/tests/{{ $test->id }}" target="blank">{{ $test->test_date->format('F d, Y') }} | {{ $test->test_type->name }}</a><br>' +
+                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="/tests/{{ $test->id }}" target="blank">{{ $test->formatted_test_date }} | {{ $test->test_type->name }}</a><br>' +
                 @endforeach
             @endforeach
             '</small></p><br>' +

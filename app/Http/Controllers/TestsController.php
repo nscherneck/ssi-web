@@ -122,6 +122,8 @@ class TestsController extends Controller
     {    
         $tests = Test::orderBy('test_date', 'desc')
             ->whereBetween('test_date', [$request->start_date, $request->end_date])
+            ->where('customer_id', $request->customer_id)
+            ->with(['test_result', 'test_type', 'system.site.customer'])
             ->get();
         
         return view('tests.search_results', compact('tests'));

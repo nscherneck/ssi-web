@@ -21,7 +21,10 @@ class SitesController extends Controller
     
     public function index(Request $request)
     {
-        $sites = Site::orderBy('customer_id', 'desc')->with('customer')->get();
+        $sites = Site::withCount('systems')
+            ->with(['customer', 'systems.tests'])
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('sites.index', compact('sites'));
     }

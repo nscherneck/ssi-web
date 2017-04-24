@@ -62,7 +62,7 @@
             </small></td>
 
             <td class="text-center"><small>
-            {{ $site->systems->count() }}
+            {{ $site->systems_count }}
             </small></td>
 
           </tr>

@@ -132,7 +132,7 @@
   <div class="panel panel-default panel-info">
 
     <div class="panel-heading">
-    <i class="fa fa-search" aria-hidden="true"></i> Search Tests by Customer
+    <i class="fa fa-search" aria-hidden="true"></i> Filter Tests
     </div>
 
     <div class="panel-body">
