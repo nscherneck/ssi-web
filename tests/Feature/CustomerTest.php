@@ -15,9 +15,10 @@ class ExampleTest extends TestCase
     /** @test */
     public function a_user_can_browse_customers()
     {
+    	$user = factory('App\User')->create();
         $customer = factory('App\Customer')->create();
 
-        $response = $this->get('/customers');
+        $response = $this->actingAs($user)->get('/customers');
 
         $response->assertSee($customer->name);
     }
