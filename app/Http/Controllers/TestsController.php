@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use App\Site;
 use App\Test;
+use App\Test_result;
+use App\System_type;
 use App\System;
 use App\Customer;
 use App\TestFilters;
@@ -52,6 +54,8 @@ class TestsController extends Controller
         $test->test_type_id = $request->test_type_id;
         $test->test_result_id = $request->test_result_id;
         $test->system_id = $system->id;
+        $test->customer_id = $system->site->customer->id;
+        $test->site_id = $system->site->id;      
         $test->added_by = Auth::id();
 
         $test->save();
@@ -119,16 +123,21 @@ class TestsController extends Controller
     }
     
     public function search(Request $request)
-    {    
-        $query = Test::orderBy('test_date', 'desc')
-            ->with(['test_result', 'test_type', 'system.site.customer']);
+    {
+        // for test search filter
+        $customers = Customer::orderBy('name')->get();
+        $testResults = Test_result::orderBy('name')->get();
+        $systemTypes = System_type::orderBy('type')->get();
+
+        // return search results
+        $query = Test::query();
         
         if ($request->customer_id) {
             $query->where('customer_id', $request->customer_id);           
         }
 
         if ($request->start_date || $request->end_date) {
-            $query->whereBetween('test_date', [$request->start_date, $request->end_date]);           
+            $query->whereBetween('test_date', [$request->start_date, $request->end_date]);         
         }
 
         if ($request->test_result_id) {
@@ -149,9 +158,12 @@ class TestsController extends Controller
             $query->doesntHave('reports');        
         }
 
-        $tests = $query->get();           
+        $tests = $query->orderBy('test_date', 'desc')
+            ->with('system.site.customer', 'test_type', 'test_result')
+            ->get();           
         
-        return view('tests.search_results', compact('tests'));
+        return view('tests.search_results', compact(
+            'customers', 'testResults', 'systemTypes', 'tests'));
     }
 
 }
