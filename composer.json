@@ -24,7 +24,8 @@
         "symfony/css-selector": "3.1.*",
         "symfony/dom-crawler": "3.1.*",
         "filp/whoops": "^2.1",  
-        "barryvdh/laravel-debugbar": "^2.3"  
+        "barryvdh/laravel-debugbar": "^2.3",
+        "laravel/dusk": "^1.1"
     },
     "autoload": {
         "classmap": [
@@ -40,7 +41,10 @@
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php"
-        ]
+        ],
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-root-package-install": [
