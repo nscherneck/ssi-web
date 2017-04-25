@@ -75,7 +75,7 @@ class PagesController extends Controller
         $systemTypes = System_type::orderBy('type')->get();
 
         $tests = Test::orderBy('test_date', 'desc')
-            ->with('system.site.customer')
+            ->with('system.site.customer', 'test_type', 'test_result')
             ->take(100)
             ->get();
 
@@ -90,7 +90,7 @@ class PagesController extends Controller
             ->toDateString();
         
         $systemsDueForTest = System::orderBy('next_test_date', 'asc')
-            ->with('site.customer')
+            ->with('site.customer', 'system_type')
             ->where('next_test_date', '!=', NULL)
             ->whereBetween('next_test_date', [$startDate, $endDate])
             ->get();

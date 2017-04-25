@@ -22,7 +22,7 @@ class SitesController extends Controller
     public function index(Request $request)
     {
         $sites = Site::withCount('systems')
-            ->with(['customer', 'systems.tests'])
+            ->with(['customer', 'systems.tests', 'state'])
             ->orderBy('id', 'desc')
             ->get();
 

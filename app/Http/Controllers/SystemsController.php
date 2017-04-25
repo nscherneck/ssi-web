@@ -25,7 +25,7 @@ class SystemsController extends Controller
     {
         $systems = System::isTestedBySSI()
             ->orderBy('next_test_date')
-            ->with('site.customer')
+            ->with('site.customer', 'system_type')
             ->paginate(25);
 
         return view('systems.index', compact('systems'));
