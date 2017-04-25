@@ -30,6 +30,9 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment('local')) {
             // Providers
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
+            $this->app->register('Laravel\Dusk\DuskServiceProvider');
+            $this->app->register(\Way\Generators\GeneratorsServiceProvider::class);
+            $this->app->register(\Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class);            
 
             // Aliases
             $this->app->alias('Debugbar', 'Barryvdh\Debugbar\Facade');

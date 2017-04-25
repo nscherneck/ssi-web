@@ -55,7 +55,7 @@ class TestsController extends Controller
         $test->test_result_id = $request->test_result_id;
         $test->system_id = $system->id;
         $test->customer_id = $system->site->customer->id;
-        $test->site_id = $system->site->id;      
+        $test->site_id = $system->site->id;
         $test->added_by = Auth::id();
 
         $test->save();
