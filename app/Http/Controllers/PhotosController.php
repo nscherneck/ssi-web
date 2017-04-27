@@ -29,9 +29,7 @@ class PhotosController extends Controller
     
     public function storeSystemPhoto(Request $request, System $system)
     {    
-        $this->validate($request, [
-            'image' => 'required|mimes:jpg,jpeg,png,bmp'
-            ]);
+
         
         // set the name of the file
         $this->setFileName($system);
