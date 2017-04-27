@@ -44,7 +44,7 @@
             @if ($customer->address3)
             {{ $customer->address3 }}<br>
             @endif
-            {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip}}<br>
+            {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip }}<br>
             <a href="{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
           </small>
         </p>

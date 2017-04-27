@@ -26,13 +26,43 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+
+$factory->define(App\State::class, function (Faker\Generator $faker) {
+    return [
+        'state' => $faker->state,
+        'abbreviated' => $faker->stateAbbr,
+    ];
+});
+
 $factory->define(App\Customer::class, function ($faker) {
   return [
     'name' => $faker->company,
-    'address1' => $faker->address,
+    'address1' => $faker->streetAddress,
     'city' => $faker->city,
-    'state_id' => $faker->numberBetween($min = 1, $max = 51),
+    'state_id' => function () {
+      return factory('App\State')->create()->id;
+    },
     'zip' => $faker->postcode,
+    'added_by' => function () {
+      return factory('App\User')->create()->id;
+    }
+  ];
+});
+
+$factory->define(App\Site::class, function ($faker) {
+  return [
+    'customer_id' => function () {
+      return factory('App\Customer')->create()->id;
+    },
+    'name' => $faker->company,
+    'address1' => $faker->streetAddress,
+    'city' => $faker->city,
+    'state_id' => function () {
+      return factory('App\State')->create()->id;
+    },
+    'zip' => $faker->postcode,
+    'lat' => $faker->latitude($min = 42.100000, $max = 48.9000000),
+    'lon' => $faker->longitude($min = -112.440000, $max = -122.110000),
     'added_by' => function () {
       return factory('App\User')->create()->id;
     }
