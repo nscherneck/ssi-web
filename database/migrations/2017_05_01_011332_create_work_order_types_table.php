@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateStatesTable extends Migration {
+class CreateWorkOrderTypesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateStatesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('states', function(Blueprint $table)
+		Schema::create('work_order_types', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('state', 20)->nullable();
-			$table->string('abbreviated', 2)->nullable();
+			$table->string('name', 50);
+			$table->timestamps();
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateStatesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('states');
+		Schema::drop('work_order_types');
 	}
 
 }

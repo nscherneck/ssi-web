@@ -75,7 +75,7 @@ class PagesController extends Controller
         $systemTypes = System_type::orderBy('type')->get();
 
         $tests = Test::orderBy('test_date', 'desc')
-            ->with('system.site.customer', 'test_type', 'test_result')
+            ->with('system.site.customer')
             ->take(100)
             ->get();
 

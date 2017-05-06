@@ -21,10 +21,9 @@ class ViewCustomersTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_browse_customers()
+    public function a_user_can_browse_all_customers()
     {
-        $this->signIn()
-            ->post('/customers', $this->customer->toArray());
+        $this->signIn();
 
         $this->get('/customers')
             ->assertSee($this->customer->name);

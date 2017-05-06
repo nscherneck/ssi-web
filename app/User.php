@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Manufacturer');
     }
     
+    public function workOrder()
+    {
+        return $this->hasMany('App\WorkOrder');
+    }
+    
     public function getFullNameAttribute()
     {
         return $this->first_name . ' ' . $this->last_name;

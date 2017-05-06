@@ -25,16 +25,15 @@ Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
 Route::get('customers', 'CustomersController@index')->name('customers');
-Route::get('customer/{customer}', 'CustomersController@show')->name('customer_show');
 Route::get('customers/create', 'CustomersController@create');
 Route::post('customers', 'CustomersController@store');
+Route::get('customer/{customer}', 'CustomersController@show')->name('customer_show');
 Route::put('customer/{customer}/update', 'CustomersController@update');
 Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
 // SITE ROUTES
 Route::get('/sites', 'SitesController@index')->name('sites');
 Route::post('customer/{customer}/site/create', 'SitesController@create');
-Route::get('customer/{customer}/addsite', 'SitesController@add');
 Route::get('site/{site}', 'SitesController@show')->name('site_show');
 Route::get('/site/{site}/edit', 'SitesController@edit');
 Route::put('site/{site}/update', 'SitesController@update');
@@ -67,6 +66,13 @@ Route::post('system/{system}/component/attach', 'ComponentsController@attach');
 Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detach');
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
 
+// WORK ORDER ROUTES
+Route::get('workorders', 'WorkOrdersController@index');
+Route::get('workorders/create', 'WorkOrdersController@create');
+Route::post('workorders', 'WorkOrdersController@store');
+Route::get('workorders/{workOrder}', 'WorkOrdersController@show');
+Route::get('workorders/edit/{workOrder}', 'WorkOrdersController@edit');
+
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');
 Route::get('tests', 'TestsController@index')->name('tests');
@@ -98,6 +104,10 @@ Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
 
 Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
 Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
+
+// AJAX ROUTES
+Route::post('get_sites', 'WorkOrdersController@getSites');
+
 
 Auth::routes();
 

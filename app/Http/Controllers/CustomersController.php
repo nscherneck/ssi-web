@@ -38,14 +38,19 @@ class CustomersController extends Controller
     
     public function store(Request $request)
     {
-    
         $this->validate($request, [
             'name' => 'required|unique:customers|string|max:255',
             'address1' => 'required|string|max:255',
+            'address2' => 'nullable',
+            'address3' => 'nullable',
             'city' => 'required|string|max:255',
             'state_id' => 'required|string|max:10',
             'zip' => 'required|string|max:20',
-            'email' => 'email'
+            'phone' => 'nullable',
+            'fax' => 'nullable',
+            'web' => 'nullable',
+            'email' => 'nullable|email',
+            'notes' => 'nullable'
             ]);
         
         $customer = new Customer;

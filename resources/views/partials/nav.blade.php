@@ -99,9 +99,17 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
+                    </li>                      
+                    <li>
+                        <a href="/workorders">
+                            Work Order Queue
+                        </a>
+                        <form id="profile-form" method="GET" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>                    
                     <li>
-                        <a href="#">
+                        <a href="/workorders/create">
                             New Work Order
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">

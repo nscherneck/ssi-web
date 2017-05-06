@@ -36,7 +36,7 @@
         <tr>
 
           <td><small>
-          <a href="/customer/{{ $system->site->customer_id }}">{{ $system->site->customer->name }}</a>
+          <a href="/customer/{{ $system->customer->id }}">{{ $system->customer->name }}</a>
           </small></td>
 
           <td><small>

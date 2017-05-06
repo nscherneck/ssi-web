@@ -24,12 +24,34 @@
 
     <title> @yield('title') </title>
 
+    <style>
+
+        body {
+            padding-bottom: 100px;
+            padding-top: 50px;
+        }
+        .level {
+            display: flex; 
+            align-items: center; 
+        }
+        .flex {
+            flex: 1;
+        }
+        .doc-content {
+            margin: 10px;
+        }
+        hr.doc {
+            margin-bottom: 5px;
+        }
+
+    </style>
+
 
 @yield('head')
 
   </head>
 
-  <body style="padding-top: 50px;">
+  <body>
 
 @yield('content')
 

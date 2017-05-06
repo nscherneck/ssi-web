@@ -56,7 +56,7 @@
 
           <td>{{ $system->system_type->type }}</td>
 
-          <td>{{ $system->sumComponents() }}</td>
+          <td>{{ $system->components_quantity }}</td>
             
           </tr>
         @endforeach

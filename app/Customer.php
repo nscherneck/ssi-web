@@ -10,6 +10,8 @@ class Customer extends Model
 
     use LogsActivity;
 
+    protected $with = ['state'];
+
     protected $dates = [
         'created_at', 
         'updated_at'
@@ -36,6 +38,19 @@ class Customer extends Model
     protected static $logAttributes = [
         'notes'
         ];
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope('siteCount', function ($builder) {
+            $builder->withCount('sites');
+        });
+
+        static::addGlobalScope('systemsCount', function ($builder) {
+            $builder->withCount('systems');
+        });
+    }
 
     public function sites() 
     {

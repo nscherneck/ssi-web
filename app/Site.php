@@ -11,6 +11,8 @@ class Site extends Model
   
     use LogsActivity;
 
+    protected $with = ['state', 'customer'];
+
     protected $dates = [
         'created_at', 
         'updated_at'

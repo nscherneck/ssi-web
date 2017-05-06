@@ -10,12 +10,15 @@ class System extends Model
 
     use LogsActivity;
 
+    protected $with = ['site', 'tests', 'system_type', 'components'];
+
     protected $dates = [
         'install_date', 
         'next_test_date', 
         'created_at', 
         'updated_at'
         ];
+
     protected $fillable = [
         'system_type_id', 
         'name', 
@@ -28,9 +31,11 @@ class System extends Model
         'updated_by', 
         'updated_at'
         ];
+
     protected $casts = [
         'is_active' => 'boolean',
         ];
+
     protected static $logAttributes = [
         'notes'
         ];
@@ -72,6 +77,11 @@ class System extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+    public function getCustomerAttribute()
+    {
+        return $this->site->customer;
+    }
+
     public function getFormattedNextTestDateAttribute()
     {
         if (is_null($this->next_test_date)) {
@@ -96,18 +106,15 @@ class System extends Model
 
     public function getMostRecentTest() 
     {
-        $test_count = $this->tests()
-            ->count();
+        $test_count = $this->tests->count();
 
-        if ($test_count >= 1) {
-            $result = $this->tests()
+        if ($test_count == 0) return '';
+
+        $result = $this->tests()
                 ->orderBy('test_date', 'desc')
                 ->first();
-            return $result->test_date
+        return $result->test_date
                 ->format('M j, Y');
-        } else {
-            return "";
-        }
     }
 
     public function getComponent($component_category_id) 
@@ -121,24 +128,28 @@ class System extends Model
 
     public function setNextTestDate($testDate)
     {
-        $this->next_test_date = $testDate->addMonths($this->system_type->test_interval)->format('Y-m-d');
+        $this->next_test_date = $testDate->addMonths($this->system_type->test_interval)
+            ->format('Y-m-d');
         $this->save();
     }
 
     public function sumComponents()
     {
-        $sumOfComponents = DB::table('components_systems')
-            ->where('system_id', $this->id)
-            ->pluck('quantity')
-            ->sum();
-
-        return $sumOfComponents;
+        return $this->components()->sum('components_systems.quantity');
     }
-
 
     public function scopeIsTestedBySSI($query)
     {
         return $query->where('ssi_test_acct', 1);
-    }      
+    }
+
+    public function getComponentsQuantity()
+    {
+        $a = $this->components();
+        $a1 = $a->selectRaw($a->getForeignKey() . ', sum(quantity)')
+                ->groupBy($a->getForeignKey());
+
+        return $a1;        
+    }
 
 }

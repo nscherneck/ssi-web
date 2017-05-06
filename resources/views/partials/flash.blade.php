@@ -1,5 +1,4 @@
 @if (session()->has('flash_message'))
-  <!-- <div class="Alert Alert--{{ ucwords(session('flash_message_level')) }}"> -->
   <div class="alert alert-dismissible alert-{{ strtolower(session('flash_message_level')) }} text-center" role="alert" style="margin-top:20px; margin-bottom:0;">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">
       &times;</span></button>

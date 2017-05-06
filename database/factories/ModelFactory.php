@@ -3,6 +3,8 @@
 use App\Site;
 use App\System;
 use App\Customer;
+use Carbon\Carbon;
+use App\WorkOrderNumber;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,4 +69,50 @@ $factory->define(App\Site::class, function ($faker) {
       return factory('App\User')->create()->id;
     }
   ];
+});
+
+$factory->define(App\WorkOrder::class, function ($faker) {
+  return [
+    'site_id' => function () {
+      return factory('App\Site')->create()->id;
+    },
+    'created_by' => function () {
+      return factory('App\User')->create()->id;
+    },
+    'assigned_to' => function () {
+      return factory('App\User')->create()->id;
+    },
+    'completed_by' => function () {
+      return factory('App\User')->create()->id;
+    },
+    'status_id' => function () {
+      return factory('App\WorkOrderStatus')->create()->id;
+    },
+    'type_id' => function () {
+      return factory('App\WorkOrderType')->create()->id;
+    },
+    'work_order_billing_status_id' => function () {
+      return factory('App\WorkOrderBillingStatus')->create()->id;
+    },
+    'point_of_contact' => $faker->firstName . ' ' . $faker->lastName . ', ' . $faker->phoneNumber,
+    'customer_purchase_order' => $faker->randomNumber(4) . '-' . $faker->randomNumber(5),
+    'title' => $faker->sentence,
+    'scope_of_work' => $faker->paragraph,
+    'resolution' => $faker->paragraph,
+    'charges' => $faker->sentence,
+    'closed_date' => $faker->date($format = 'Y-m-d', $max = 'now'),
+    'created_at_pst' => Carbon::now('America/Los_Angeles')
+  ];
+});
+
+$factory->define(App\WorkOrderStatus::class, function ($faker) {
+  return ['status' => $faker->word];
+});
+
+$factory->define(App\WorkOrderBillingStatus::class, function ($faker) {
+  return ['status' => $faker->word];
+});
+
+$factory->define(App\WorkOrderType::class, function ($faker) {
+  return ['name' => $faker->word];
 });

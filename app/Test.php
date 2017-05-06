@@ -11,6 +11,8 @@ class Test extends Model
 {
 
     use LogsActivity;
+
+    protected $with = ['test_type', 'test_result'];
     
     protected $dates = [
         'test_date', 
