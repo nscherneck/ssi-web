@@ -68,7 +68,7 @@ class WorkOrdersController extends Controller
 
     public function update(Request $request, WorkOrder $workOrder)
     {
-        //
+        $workOrder->update($request->all());
     }
 
     public function destroy(WorkOrder $workOrder)

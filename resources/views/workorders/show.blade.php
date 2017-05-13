@@ -6,7 +6,7 @@
 
 @include('partials.nav')
 
-<div class="container">
+<div class="container" id="app">
 
   @include('partials.flash')
 
@@ -20,116 +20,147 @@
 
     <div class="col-lg-8 col-lg-offset-2">
 
-	    <div class="panel panel-default">
-	      <div class="panel-heading text-center">
+    <workorder :attributes="{{ $workOrder }}" inline-template v-cloak>
 
-		      <div class="row">
+		<div>
+			<div class="panel panel-primary">
+			  <div class="panel-heading text-center">
 
-		      	<div class="col-lg-4 text-left">
-			      	<i class="fa fa-circle" aria-hidden="true"></i>
-		      	</div>
+	      		Work Order | <strong>{{ $workOrder->work_order_number }}</strong>
+			
+			  </div>
+			
+			  <div class="panel-body" style="padding-top: 0px">
 
-		      	<div class="col-lg-4 text-center">
-		      		Work Order | <strong>{{ $workOrder->work_order_number }}</strong>
+				<div class="row" style="background-color: #F8F8F8">
 
-		      	</div>
-		      	
-		      	<div class="col-lg-4">
-		      		
-		      	</div>
+					  <div class="row">
+					  	<div class="col-lg-4 text-center pt-05 pb-05">
+					  		<strong class="text-primary">Customer</strong>
+					  	</div>
+					  	<div class="col-lg-4 text-center pt-05 pb-05">
+					  		<strong class="text-primary">Site</strong>
+					  	</div>
+					  	<div class="col-lg-4 text-center pt-05 pb-05">
+					  		<strong class="text-primary">Created</strong>
+					  	</div>
+					  </div>
+
+				</div>
+			
+		      <div class="row pb-1">
+
+
+			      <div class="col-lg-4 text-center mt-1">
+
+					<a href="/customer/{{ $workOrder->site->customer->id }}" target="blank">
+					{{ $workOrder->site->customer->name }} 
+					</a>
+
+			      </div>
+
+			      <div class="col-lg-4 text-center mt-1">
+
+			      	<a href="/site/{{ $workOrder->site->id }}" target="blank">
+			      	{{ $workOrder->site->name }}
+			      	</a>
+			      	<br>
+			      	{{ $workOrder->site->address1 }}
+			      	<br>
+			      	{{ $workOrder->site->city }}, {{ $workOrder->site->state->abbreviated }} {{ $workOrder->site->zip }}
+			      	<br><br>
+			      	{!! $workOrder->site->getGoogleMapsHyperlink('Google Map') !!}
+
+			      </div>
+
+			      <div class="col-lg-4 text-center mt-1">
+
+			      	{{ $workOrder->created_at->timezone('America/Los_Angeles')->format('l, F j, Y - g:ha') }}
+
+			      </div>
+
+			
+		      </div>
+
+		      <div class="row" style="background-color: #F8F8F8">
+
+		      	  <div class="row">
+		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
+		      	  		<strong class="text-primary">Assigned To</strong>
+		      	  	</div>
+		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
+		      	  		<strong class="text-primary">Status</strong>
+		      	  	</div>
+		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
+		      	  		<strong class="text-primary">Billing</strong>
+		      	  	</div>
+		      	  </div>
 
 		      </div>
-	      </div>
+			
+			      <div class="row pt-1">
+			      	<div class="col-lg-4 text-center mb-1">
+			      		{{ $workOrder->assignedTechnician->full_name }}
+			      	</div>
+			      	<div class="col-lg-4 text-center mb-1">
+				      	{{ $workOrder->status->status }}
+			      	</div>
+			      	<div class="col-lg-4 text-center mb-1">
+			      		{{ $workOrder->billingStatus->status }}
+			      	</div>
+			      </div>
 
-	      <div class="panel-body">
+			      <div class="row" style="background-color: #F8F8F8">
+	      	  		<div class="text-center pt-05 pb-05">
+	      	  			<strong class="text-primary">Task</strong>
+	      	  		</div>
+			      </div>
 
-		      <div class="row">
+			      <div class="pt-1 pb-1" v-if="editing">
+			      	<div class="form-group">
+			      		<input type="text" class="form-control" v-model="title">
+			      	</div>
+			      </div>
 
-			      <div class="col-lg-6 text-center">
-				      <strong>Customer - </strong>
-				      <a href="/customer/{{ $workOrder->site->customer->id }}">
-				      {{ $workOrder->site->customer->name }} 
-				      </a>
-				      <br>
-				      <strong>Site - </strong>
-				      <a href="/site/{{ $workOrder->site->id }}">
-				      {{ $workOrder->site->name }}
-				      </a>
-		          </div>
+			      <div class="doc-content pt-1 pb-1" v-else v-text="title">
+			          {{ $workOrder->title }}
+			      </div>
 
-			      <div class="col-lg-6 text-center">
-				      {{ $workOrder->site->address1 }} 
-				      <br>
-				      {{ $workOrder->site->city }}, {{ $workOrder->site->state->abbreviated }} {{ $workOrder->site->zip }}
-				      <br>
-				      {!! $workOrder->site->getGoogleMapsHyperlink('Google Map') !!}
-		          </div>
+			      <div class="row" style="background-color: #F8F8F8">
+	      	  		<div class="text-center pt-05 pb-05">
+	      	  			<strong class="text-primary">Scope of Work</strong>
+	      	  		</div>
+			      </div>
 
-	          </div>
+					<div class="pt-1 pb-1" v-if="editing">
+						<div class="form-group">
+							<textarea class="form-control" v-model="scope_of_work" style="resize: none;"></textarea>
+						</div>
+					</div>
 
-	          <hr>
 
-	          <div class="row">
+			      <div class="doc-content pt-1 pb-1" v-else v-text="scope_of_work">
+			          {!! nl2br(e($workOrder->scope_of_work)) !!}
+			      </div>
+						
+			  </div>
+			</div>
+			
+			<div class="text-center" v-if="editing">
 
-	          	<div class="col-lg-6 text-center">
-	          		<strong>Assigned To - </strong>{{ $workOrder->assignedTechnician->full_name }}
-	          	</div>
+				<div class="flex">
+					<button class="btn btn-sm btn-primary pr-05" @click="update">Save</button>
+					<button class="btn btn-sm btn-default" @click="editing = false">Cancel</button>
+				</div>
 
-	          	<div class="col-lg-6 text-center">
-	          		<strong>Created - </strong>
-	          		{{ $workOrder->created_at->timezone('America/Los_Angeles')->format('l, F j, Y - g:ha') }}
-	          		<br>
-	          		<strong>By - </strong>
-	          		{{ $workOrder->createdBy->full_name }}
-	          		<br>
-	          	</div>
-	          	
-	          </div>
-	          <hr>
-	          <div class="row">
+			</div>
+			<div class="text-center" v-else>
+				<button class="btn btn-sm btn-primary" @click="editing = true">Edit Work Order</button>
+			</div>
 
-	          	<div class="col-lg-6 text-center">
-	          		<strong>Status - </strong>
-	          		{{ $workOrder->status->status }}
-	          	</div>
+		</div>
 
-	          	<div class="col-lg-6 text-center">
-	          		<strong>Billing - </strong>
-	          		{{ $workOrder->billingStatus->status }}
-	          		<br>
-	          	</div>
-
-	          </div>
-
-	          <hr class="doc">
-	          <div class="level">
-	          	<span class="flex">
-	          		<i>Task</i>
-	          	</span>
-	          </div>
-	          <div class="doc-content text-center">
-		          {{ $workOrder->title }}
-	          </div>
-
-	          <hr class="doc">
-	          <div class="level">
-	          	<span class="flex">
-	          		<i>Scope of Work</i>
-	          	</span>
-	          </div>
-	          <div class="doc-content text-center">
-		          {!! nl2br(e($workOrder->scope_of_work)) !!}
-	          </div>
-	          <hr>
-
-	      </div>
-	    </div>
-
-        <div class="text-center">
-            <small>
-        	<a href="#">Edit Work Order</a> | <a href="#">Close Work Order</a>
-        	</small>
-        </div>
+    </workorder>
 
     </div>
 </div>

@@ -107,7 +107,7 @@
       <div class="col-lg-8 no-gutter-right">
 
         <div class="panel panel-info">
-          <div class="panel-heading">Sites ({{ $customer->sites->count() }})</div>
+          <div class="panel-heading">Sites ({{ $customer->sites_count }})</div>
             <table class="table table-condensed">
               <thead>
                 <tr>

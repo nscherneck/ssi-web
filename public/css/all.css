@@ -7034,26 +7034,6 @@ button.close {
 
  /* session alerts */
 
-.Alert {
-  padding: 10px;
-  width: 100%;
-}
-
-.Alert--Info {
-  background: gray;
-  color: white;
-}
-
-.Alert--Success {
-  background: green;
-  color: white;
-}
-
-.Alert--Error {
-  background: red;
-  color: white;
-}
-
  /* photos */
 
 #systemPhoto {
@@ -7109,9 +7089,13 @@ button.close {
 }
 
 @media (min-width: 800px) {
-  
+
   .no-gutter-right {
       padding-right:0;
+  }
+
+  .no-margin-top{
+    margin-top: 0;
   }
 
 }

@@ -71,7 +71,7 @@ Route::get('workorders', 'WorkOrdersController@index');
 Route::get('workorders/create', 'WorkOrdersController@create');
 Route::post('workorders', 'WorkOrdersController@store');
 Route::get('workorders/{workOrder}', 'WorkOrdersController@show');
-Route::get('workorders/edit/{workOrder}', 'WorkOrdersController@edit');
+Route::patch('workorders/{workOrder}', 'WorkOrdersController@update');
 
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');
