@@ -15,9 +15,9 @@
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
-    <li><a href="/customer/{{ $test->system->site->customer->id }}">{{ $test->system->site->customer->name }}</a></li>
-    <li><a href="/site/{{ $test->system->site->id }}">{{ $test->system->site->name }}</a></li>
-    <li><a href="/system/{{ $test->system->id }}">{{ $test->system->name }}</a></li>
+    <li><a href="{{ $test->system->site->customer->path() }}">{{ $test->system->site->customer->name }}</a></li>
+    <li><a href="{{ $test->system->site->path() }}">{{ $test->system->site->name }}</a></li>
+    <li><a href="{{ $test->system->path() }}">{{ $test->system->name }}</a></li>
     <li>{{ $test->test_type->name }} - {{ $test->test_date->format('F d, Y') }}</li>
   </ol>
 

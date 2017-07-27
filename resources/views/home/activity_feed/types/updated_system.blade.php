@@ -11,9 +11,9 @@ updated
 	a system that has since been deleted
 @else
 	<a href="/customer/{{ $event->subject->site->customer->id }}">{{ $event->subject->site->customer->name }}</a>
-	 / 
+	 {{ env('ENTITY_SEPARATOR') }} 
 	<a href="/site/{{ $event->subject->site->id }}">{{ $event->subject->site->name }}</a>
-	 / 
+	 {{ env('ENTITY_SEPARATOR') }} 
 	<a href="/system/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
 @endif
 </small>

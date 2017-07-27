@@ -13,9 +13,8 @@
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
-    <li><a href="/customer/{{ $system->site->customer->id }}">
-    {{ $system->site->customer->name }}</a></li>
-    <li><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></li>
+    <li><a href="{{ $system->site->customer->path() }}">{{ $system->site->customer->name }}</a></li>
+    <li><a href="{{ $system->site->path() }}">{{ $system->site->name }}</a></li>
     <li>{{ $system->name }}</li>
   </ol>
 
@@ -803,7 +802,7 @@
             <tbody>
               @foreach($system->tests as $test)
                 <tr>
-                <td><small><a href="/tests/{{ $test->id }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
+                <td><small><a href="{{ $test->path() }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
                 <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
                 <td><small>{{ $test->test_type->name }}</small></td>
                 <td><small>{{ $test->test_result->name }}</small></td>

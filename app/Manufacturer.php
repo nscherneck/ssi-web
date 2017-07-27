@@ -26,6 +26,11 @@ class Manufacturer extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+    public function path()
+    {
+        return '/manufacturer/' . $this->id;
+    }
+
     public function getFormattedUpdatedAtAttribute()
     {
         return $this->updated_at->setTimezone('America/Los_Angeles')

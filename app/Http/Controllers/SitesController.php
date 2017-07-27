@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Customer;
 use App\Site;
 use App\System;
+use App\System_type;
 use App\State;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -32,7 +33,7 @@ class SitesController extends Controller
     public function show(Site $site)
     {
         $states = State::all();
-        $system_types = DB::table('system_types')->get();
+        $system_types = System_type::orderBy('type')->get();
 
         return view('sites.show', compact('site', 'system_types', 'states'));
     }

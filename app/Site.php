@@ -63,6 +63,11 @@ class Site extends Model
         return $this->morphMany('App\Photo', 'photoable');
     }
 
+    public function path()
+    {
+        return '/site/' . $this->id;
+    }
+
     public function addedBy()
     {
         return $this->belongsTo('App\User', 'added_by');

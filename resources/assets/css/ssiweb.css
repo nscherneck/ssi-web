@@ -120,3 +120,16 @@
   }
 
 }
+
+.right-justify {
+  padding: 20px 15px 10px 15px;
+}
+
+@media (min-width: 1170px) {
+
+  .right-justify {
+    text-align: right;
+    padding: 15px 15px;
+  }
+
+}

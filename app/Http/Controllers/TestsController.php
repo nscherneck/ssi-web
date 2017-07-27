@@ -64,7 +64,7 @@ class TestsController extends Controller
         
         flash('Success!', 'Test created.');
         
-        return redirect()->route('system_show', ['id' => $system->id]);
+        return redirect()->route('test_show', ['id' => $test->id]);
     }
     
     
@@ -104,10 +104,9 @@ class TestsController extends Controller
         $system = System::find($test->system_id);
         $test->delete();
         
-        $system_test_count = $system->tests()
-            ->count();
+        $systemTestCount = $system->tests()->count();
 
-        if($system_test_count >= 1) {
+        if($systemTestCount >= 1) {
             $lastTest = $system->tests()
                 ->orderBy('test_date', 'desc')
                 ->first();

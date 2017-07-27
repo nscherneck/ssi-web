@@ -81,6 +81,11 @@ class Test extends Model
     {
         return $this->hasMany('App\Testnote');
     }
+
+    public function path()
+    {
+        return '/tests/' . $this->id;
+    }
     
     public function scopeOfRange($query, $start_date, $end_date)
     {

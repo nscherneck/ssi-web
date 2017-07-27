@@ -77,6 +77,11 @@ class System extends Model
         return $this->belongsTo('App\User', 'updated_by');
     }
 
+    public function path()
+    {
+        return '/system/' . $this->id;
+    }
+
     public function getCustomerAttribute()
     {
         return $this->site->customer;
@@ -135,7 +140,9 @@ class System extends Model
 
     public function sumComponents()
     {
-        return $this->components()->sum('components_systems.quantity');
+        return DB::table('components_systems')->where('system_id', $this->id)
+            ->pluck('quantity')
+            ->sum();
     }
 
     public function scopeIsTestedBySSI($query)

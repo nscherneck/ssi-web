@@ -11,5 +11,8 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js').version();
-   // .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .styles([
+   		'resources/assets/css/bootstrap.min.css',
+   		'resources/assets/css/ssiweb.css'
+   		], 'public/css/bundle.css').version();

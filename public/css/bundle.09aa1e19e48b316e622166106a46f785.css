@@ -7100,4 +7100,11 @@ button.close {
 
 }
 
-/*# sourceMappingURL=all.css.map */
+@media (min-width: 1170px) {
+
+  .right-justify {
+    text-align: right;
+    padding: 20px;
+  }
+
+}

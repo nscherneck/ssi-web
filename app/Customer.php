@@ -67,6 +67,11 @@ class Customer extends Model
         return $this->hasManyThrough('App\System', 'App\Site');
     }
 
+    public function path()
+    {
+        return '/customer/' . $this->id;
+    }
+
     public function addedBy() // technician who completed test
     {
         return $this->belongsTo('App\User', 'added_by');

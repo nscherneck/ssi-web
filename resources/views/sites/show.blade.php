@@ -13,7 +13,7 @@
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
-    <li><a href="/customer/{{ $site->customer->id }}">{{ $site->customer->name }}</a></li>
+    <li><a href="{{ $site->customer->path() }}">{{ $site->customer->name }}</a></li>
     <li>{{ $site->name }}</li>
   </ol>
 
@@ -124,7 +124,7 @@
       <div class="col-lg-6 no-gutter-right">
 
         <div class="panel panel-info">
-          <div class="panel-heading">Systems ({{ $site->systems->count() }})</div>
+          <div class="panel-heading">Systems ({{ $site->systems()->count() }})</div>
 
             <table class="table table-condensed">
               <thead>

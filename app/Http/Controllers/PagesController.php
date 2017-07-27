@@ -29,24 +29,11 @@ class PagesController extends Controller
     {
         $activityItems = Activity::with(['causer', 'subject'])
             ->orderBy('created_at', 'desc')
-            ->take(20)
+            ->take(100)
             ->get();  
-        $recentphotos = Photo::orderBy('created_at', 'desc')
-            ->take(10)
-            ->get();
-        $recentcomponentdocs = Document::orderBy('created_at', 'desc')
-            ->where('documentable_type', 'App\Component')
-            ->take(25)
-            ->get();        
-        $recentcomponents = Component::orderBy('created_at', 'desc')
-            ->take(25)
-            ->get();
         
         return view('home.show', compact(
-            'activityItems', 
-            'recentphotos', 
-            'recentcomponentdocs', 
-            'recentcomponents'
+            'activityItems'
             )
         );
     }
