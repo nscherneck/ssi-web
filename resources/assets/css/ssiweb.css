@@ -53,6 +53,42 @@
   color: white;
 }
 
+/* system component tables */
+.component-table-column-quantity {
+  width: 5%;
+  text-align: center;
+}
+
+.component-table-column-name {
+  width: 15%;
+  text-align: left;
+}
+
+.component-table-column-manufacturer {
+  width: 10%;
+  text-align: left;
+}
+
+.component-table-column-model {
+  width: 10%;
+  text-align: left;
+}
+
+.component-table-column-description {
+  width: 40%;
+  text-align: left;
+}
+
+.component-table-column-category {
+  width: 15%;
+  text-align: left;
+}
+
+.component-table-column-detach {
+  width: 5%;
+  text-align: right;
+}
+
  /* session alerts */
 
  /* photos */
