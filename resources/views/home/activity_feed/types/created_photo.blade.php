@@ -32,7 +32,7 @@
 	</div>
 	<div class="col-lg-4 right-justify">
 		<a href="/system/photo/{{ $event->subject->id }}">
-			<img src="{{ env('AWS_SYSTEM_PHOTO_URL') }}{{ $event->subject->file_name }}.{{ $event->subject->ext }}" 
+			<img src="{{ env('SYSTEM_PHOTO_THUMB_URL') }}{{ $event->subject->file_name }}.{{ $event->subject->ext }}" 
 			alt="{{ $event->subject->caption }}" 
 			width="150" 
 			height="auto"

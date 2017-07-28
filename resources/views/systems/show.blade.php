@@ -208,25 +208,18 @@
       <div class="panel panel-info">
         <div class="panel-heading">System Photos ({{ count($system->photos) }})</div>
         <div class="panel-body text-center">
+          
+          @if ($photos->count() > 0)
 
-          @if($photos->count() > 0)
-
-            @foreach($photos as $photo)
-
-              <div id="systemPhoto">
+            @foreach ($photos as $photo)
+              <div id="system-photo">
                 <a href="/system/photo/{{ $photo->id }}/">
-                  <img 
-                    src="{{ env('AWS_SYSTEM_PHOTO_URL') }}{{ $photo->file_name }}.{{ $photo->ext }}" 
-                    width="178px" 
-                    height="auto"
-                  >
+                  <img src="{{ env('SYSTEM_PHOTO_THUMB_URL') }}{{ $photo->file_name }}.{{ $photo->ext }}">
                 </a>
-                <br><br>
+                <br>
                 <p>
                   <small>
-                    <strong>
-                      {{ $photo->caption }}
-                    </strong>
+                    {{ $photo->caption }}
                     <br>
                     {{ $photo->getFilesize() }}
                   </small>
@@ -241,7 +234,12 @@
 
         <div class="panel-footer text-left">
 
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSystemPhotoModal">
+          <button 
+            type="button" 
+            class="btn btn-default btn-xs" 
+            data-toggle="modal" 
+            data-target="#addSystemPhotoModal"
+          >
             <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
 
