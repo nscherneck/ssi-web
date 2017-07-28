@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'SSI-Web') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{ mix('css/bundle.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -79,6 +79,6 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
