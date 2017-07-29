@@ -10,8 +10,8 @@ updated
 @if($event->subject == null)
 	a site that has since been deleted
 @else
-	<a href="/customer/{{ $event->subject->customer->id }}">{{ $event->subject->customer->name }}</a>
-	 / 
-	<a href="/site/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
+	<a href="{{ $event->subject->customer->path() }}">{{ $event->subject->customer->name }}</a>
+	 {{ env('ENTITY_SEPARATOR') }} 
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

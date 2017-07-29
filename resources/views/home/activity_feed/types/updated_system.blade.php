@@ -10,10 +10,10 @@ updated
 @if($event->subject == null)
 	a system that has since been deleted
 @else
-	<a href="/customer/{{ $event->subject->site->customer->id }}">{{ $event->subject->site->customer->name }}</a>
+	<a href="{{ $event->subject->site->customer->path() }}">{{ $event->subject->site->customer->name }}</a>
 	 {{ env('ENTITY_SEPARATOR') }} 
-	<a href="/site/{{ $event->subject->site->id }}">{{ $event->subject->site->name }}</a>
+	<a href="{{ $event->subject->site->path() }}">{{ $event->subject->site->name }}</a>
 	 {{ env('ENTITY_SEPARATOR') }} 
-	<a href="/system/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

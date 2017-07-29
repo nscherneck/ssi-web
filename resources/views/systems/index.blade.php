@@ -35,33 +35,53 @@
       @foreach($systems as $system)
         <tr>
 
-          <td><small>
-          <a href="/customer/{{ $system->customer->id }}">{{ $system->customer->name }}</a>
-          </small></td>
+          <td>
+            <small>
+              <a href="{{ $system->customer->path() }}">
+                {{ $system->customer->name }}
+              </a>
+            </small>
+          </td>
 
-          <td><small>
-          <a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a>
-          </small></td>
+          <td>
+            <small>
+              <a href="{{ $system->site->path() }}">
+                {{ $system->site->name }}
+              </a>
+            </small>
+          </td>
 
-          <td><small>
-          <a href="/system/{{ $system->id }}">{{ $system->name }}</a>
-          </small></td>
+          <td>
+            <small>
+              <a href="{{ $system->path() }}">
+                {{ $system->name }}
+              </a>
+            </small>
+          </td>
 
-          <td><small>
-          {{ $system->system_type->type }}
-          </small></td>
+          <td>
+            <small>
+              {{ $system->system_type->type }}
+            </small>
+          </td>
 
-          <td><small>
-          {{ $system->getMostRecentTest() }}
-          </small></td>
+          <td>
+            <small>
+              {{ $system->getMostRecentTest() }}
+            </small>
+          </td>
 
-          <td><small>
-          {{ $system->formatted_next_test_date }}
-          </small></td>
+          <td>
+            <small>
+              {{ $system->formatted_next_test_date }}
+            </small>
+          </td>
 
-          <td class="text-center"><small>
-          {{ $system->sumComponents() }}
-          </small></td>
+          <td class="text-center">
+            <small>
+              {{ $system->sumComponents() }}
+            </small>
+          </td>
 
         </tr>
       @endforeach

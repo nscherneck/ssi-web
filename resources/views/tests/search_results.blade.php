@@ -123,7 +123,7 @@
               <tr {!! $test->setServiceViewRowColor() !!}>
 
                 <td>
-                  <a href="/tests/{{ $test->id }}">
+                  <a href="{{ $test->path() }}">
                   {{ $test->formatted_test_date }}
                   </a>
                 </td>
@@ -133,15 +133,17 @@
                 <td>{{ $test->technician->first_name }}</a></td>
 
                 <td>
-                  <a href="/customer/{{ $test->system->site->customer->id }}">
-                  {{ $test->system->site->customer->name }}
-                  </a>  -
-                    <a href="/site/{{ $test->system->site->id }}">
+                  <a href="{{ $test->system->site->customer->path() }}">
+                    {{ $test->system->site->customer->name }}
+                  </a>
+                    {{ env('ENTITY_SEPARATOR') }} 
+                  <a href="{{ $test->system->site->path() }}">
                     {{ $test->system->site->name }}
-                    </a>  -
-                      <a href="/system/{{ $test->system->id }}">
-                      {{ $test->system->name }}
-                      </a>
+                  </a>
+                    {{ env('ENTITY_SEPARATOR') }} 
+                  <a href="{{ $test->system->path() }}">
+                    {{ $test->system->name }}
+                  </a>
                 </td>
 
                 <td>{{ $test->system->system_type->type }}</td>

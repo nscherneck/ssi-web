@@ -5,6 +5,6 @@ deleted
 @if($event->subject == null)
 	a site
 @else
-	<a href="/site/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

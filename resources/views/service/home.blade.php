@@ -44,13 +44,16 @@
           {{ $system->next_test_date->format('F') }}
           </td>
           <td>
-            <a href="/customer/{{ $system->site->customer->id }}">
-            {{ $system->site->customer->name }}
-            </a>  -
-            <a href="/site/{{ $system->site->id }}">
-            {{ $system->site->name }}</a>  -
-            <a href="/system/{{ $system->id }}">
-            {{ $system->name }}
+            <a href="{{ $system->site->customer->path() }}">
+              {{ $system->site->customer->name }}
+            </a>  
+              {{ env('ENTITY_SEPARATOR') }} 
+            <a href="{{ $system->site->path() }}">
+              {{ $system->site->name }}
+            </a>
+              {{ env('ENTITY_SEPARATOR') }} 
+            <a href="{{ $system->path() }}">
+              {{ $system->name }}
             </a>
           </td>
 
@@ -103,13 +106,15 @@
           </td>
 
           <td>
-            <a href="/customer/{{ $test->system->site->customer->id }}">
+            <a href="{{ $test->system->site->customer->path() }}">
             {{ $test->system->site->customer->name }}
-            </a>  -
-            <a href="/site/{{ $test->system->site->id }}">
+            </a>
+              {{ env('ENTITY_SEPARATOR') }} 
+            <a href="{{ $test->system->site->path() }}">
             {{ $test->system->site->name }}
-            </a>  -
-            <a href="/system/{{ $test->system->id }}">
+            </a>
+              {{ env('ENTITY_SEPARATOR') }} 
+            <a href="{{ $test->system->path() }}">
             {{ $test->system->name }}
             </a>
           </td>

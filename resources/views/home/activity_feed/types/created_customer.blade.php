@@ -9,6 +9,6 @@ created
 @if($event->subject == null)
   a customer that has since been deleted
 @else
-	<a href="/customer/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

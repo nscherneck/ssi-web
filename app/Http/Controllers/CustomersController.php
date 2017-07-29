@@ -24,11 +24,10 @@ class CustomersController extends Controller
         return view('customers.index', compact('customers'));
     }
     
-    public function show(Customer $customer)
+    public function show($slug)
     {
+        $customer = Customer::where('slug', $slug)->firstOrFail();
         $states = State::all();
-        $customer->slug = str_slug($customer->name, '-');
-        $customer->save();
         return view('customers.show', compact('customer', 'states'));
     }
     
@@ -82,7 +81,7 @@ class CustomersController extends Controller
     {
     
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|unique:customers|string|max:255',
             'address1' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state_id' => 'required',
@@ -109,7 +108,7 @@ class CustomersController extends Controller
         
         flash('Success!', 'Customer updated.', 'success');
 
-        return redirect()->route('customer_show', ['id' => $customer->id]);
+        return redirect()->route('customer_show', ['slug' => $customer->slug]);
     }
     
     public function destroy(Customer $customer)

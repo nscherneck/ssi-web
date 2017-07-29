@@ -37,33 +37,51 @@
           @foreach($sites as $site)
             <tr>
 
-            <td><small>
-            <a href="/customer/{{ $site->customer_id }}">{{ $site->customer->name }}</a>
-            </small></td>
+              <td>
+                <small>
+                  <a href="{{ $site->customer->path() }}">
+                    {{ $site->customer->name }}
+                  </a>
+                </small>
+              </td>
 
-            <td><small>
-            <a href="/site/{{ $site->id }}">{{ $site->name }}</a>
-            </small></td>
+              <td>
+                <small>
+                  <a href="{{ $site->path() }}">
+                    {{ $site->name }}
+                  </a>
+                </small>
+              </td>
 
-            <td><small>
-            {{ $site->address1 }}
-            </small></td>
+              <td>
+                <small>
+                  {{ $site->address1 }}
+                </small>
+              </td>
 
-            <td><small>
-            {{ $site->city }}
-            </small></td>
+              <td>
+                <small>
+                  {{ $site->city }}
+                </small>
+              </td>
 
-            <td><small>
-            {{ $site->state->abbreviated }}
-            </small></td>
+              <td>
+                <small>
+                  {{ $site->state->abbreviated }}
+                </small>
+              </td>
 
-            <td><small>
-            {{ $site->zip }}
-            </small></td>
+              <td>
+                <small>
+                  {{ $site->zip }}
+                </small>
+              </td>
 
-            <td class="text-center"><small>
-            {{ $site->systems_count }}
-            </small></td>
+              <td class="text-center">
+                <small>
+                  {{ $site->systems_count }}
+                </small>
+              </td>
 
           </tr>
           @endforeach
