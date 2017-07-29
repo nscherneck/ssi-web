@@ -21,7 +21,8 @@ class System extends Model
 
     protected $fillable = [
         'system_type_id', 
-        'name', 
+        'name',
+        'slug',
         'install_date', 
         'ssi_install', 
         'ssi_test_acct', 
