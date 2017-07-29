@@ -66,7 +66,7 @@ class Site extends Model
 
     public function path()
     {
-        return '/site/' . $this->id;
+        return '/sites/' . $this->slug;
     }
 
     public function addedBy()

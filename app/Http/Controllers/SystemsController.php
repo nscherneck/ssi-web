@@ -30,8 +30,9 @@ class SystemsController extends Controller
         return view('systems.index', compact('systems'));
     }
     
-    public function show(System $system)
+    public function show($slug)
     {
+        $system = System::where('slug', $slug)->firstOrFail();
         $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
         $test_types = DB::table('test_types')->orderBy('name')->get();
         $test_results = DB::table('test_results')->orderBy('name')->get();
@@ -39,12 +40,6 @@ class SystemsController extends Controller
         $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
         $system_types = DB::table('system_types')->orderBy('type')->get();
         $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();
-
-        $systems = System::all();
-        $systems->each(function($singleSystem) {
-            $singleSystem->slug = str_slug($singleSystem->name, '-');
-            $singleSystem->save();
-        });
 
         return view('systems.show', compact(
             'now', 
@@ -61,9 +56,17 @@ class SystemsController extends Controller
 
     public function store(Request $request, Site $site)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:systems|string|max:255',
+            'system_type_id' => 'required',
+            'ssi_install' => 'required',
+            'ssi_test_acct' => 'required',
+            ]);
+        
         $system = new System;
         $system->site_id = $site->id;
         $system->name = $request->name;
+        $system->slug = str_slug($system->name, '-');
         $system->system_type_id = $request->type;
         $system->install_date = $request->install_date;
         $system->ssi_install = $request->ssi_install;
@@ -75,12 +78,20 @@ class SystemsController extends Controller
         
         flash('Success!', 'System created.');
 
-        return redirect()->route('site_show', ['id' => $site->id]);
+        return redirect()->route('system_show', ['slug' => $system->slug]);
     }
     
     public function update(Request $request, System $system)
     {
+        $this->validate($request, [
+            'name' => 'required|unique:systems|string|max:255',
+            'system_type_id' => 'required',
+            'ssi_install' => 'required',
+            'ssi_test_acct' => 'required',
+            ]);
+
         $system->name = $request->name;
+        $system->slug = str_slug($system->name, '-');
         $system->system_type_id = $request->type;
         $system->install_date = $request->install_date;
         $system->ssi_install = $request->ssi_install;
@@ -92,7 +103,7 @@ class SystemsController extends Controller
         
         flash('Success!', 'System updated.', 'Success');
 
-        return redirect()->route('system_show', ['id' => $system->id]);
+        return redirect()->route('system_show', ['slug' => $system->slug]);
     }
     
     public function updateNextTestDate(Request $request, System $system) 
@@ -118,18 +129,16 @@ class SystemsController extends Controller
     
     public function destroy(System $system)
     {
-        if(count($system->tests) > 0) {
+        if (count($system->tests) > 0) {
             flash('Nope!', 'Cannot delete system, it has one or more tests', 'warning');
-            return redirect()->route('system_show', ['id' => $system->id]);
-        } else {
-            $site = Site::find($system->site_id);
-
-            $system->delete();
-            
-            flash('Success!', 'System deleted.', 'danger');
-            
-            return redirect()->route('site_show', ['id' => $site->id]);
+            return redirect()->route('system_show', ['slug' => $system->slug]);
         }
+
+        $site = Site::find($system->site_id);
+        $system->delete();
+        flash('Success!', 'System deleted.', 'danger');
+        return redirect()->route('site_show', ['slug' => $site->slug]);
+
     }
 
 }

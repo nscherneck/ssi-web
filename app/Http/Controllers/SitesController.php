@@ -30,24 +30,29 @@ class SitesController extends Controller
         return view('sites.index', compact('sites'));
     }
     
-    public function show(Site $site)
+    public function show($slug)
     {
+        $site = Site::where('slug', $slug)->firstOrFail();
         $states = State::all();
         $system_types = System_type::orderBy('type')->get();
-        $sites = Site::all();
-        $sites->each(function($singleSite) {
-            $singleSite->slug = str_slug($singleSite->name, '-');
-            $singleSite->save();
-        });
 
         return view('sites.show', compact('site', 'system_types', 'states'));
     }
     
-    public function create(Request $request, Customer $customer)
-    {    
+    public function store(Request $request, Customer $customer)
+    {
+        $this->validate($request, [
+            'name' => 'required|unique:sites|string|max:255',
+            'address1' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'state_id' => 'required',
+            'zip' => 'required|string|max:20',
+            ]);
+
         $site = new Site;
         $site->customer_id = $customer->id;
         $site->name = $request->name;
+        $site->slug = str_slug($site->name, '-');
         $site->address1 = $request->address1;
         $site->address2 = $request->address2;
         $site->city = $request->city;
@@ -64,7 +69,7 @@ class SitesController extends Controller
         
         flash('Success!', 'Site created.');
 
-        return redirect()->route('customer_show', ['id' => $customer->id]);
+        return redirect()->route('customer_show', ['slug' => $customer->slug]);
     }
     
     public function edit(Site $site)
@@ -77,7 +82,7 @@ class SitesController extends Controller
     public function update(Request $request, Site $site)
     {    
         $this->validate($request, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|unique:sites|string|max:255',
             'address1' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state_id' => 'required',
@@ -85,6 +90,7 @@ class SitesController extends Controller
             ]);
         
         $site->name = $request->name;
+        $site->slug = str_slug($site->name, '-');
         $site->address1 = $request->address1;
         $site->address2 = $request->address2;
         $site->city = $request->city;
@@ -101,22 +107,20 @@ class SitesController extends Controller
         
         flash('Success!', 'Site updated.', 'success');
 
-        return redirect()->route('site_show', ['id' => $site->id]);
+        return redirect()->route('site_show', ['slug' => $site->slug]);
     }
     
     public function destroy(Site $site)
     {    
         if (count($site->systems) > 0) {
             flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
-            return redirect()->route('site_show', ['id' => $site->id]);
-        } else {
-            $customer = Customer::find($site->customer_id);
-            $site->delete();
-
-            flash('Success!', 'Site deleted.', 'danger');
-
-            return redirect()->route('customer_show', ['id' => $customer->id]);
+            return redirect()->route('site_show', ['slug' => $site->slug]);
         }
+
+        $customer = Customer::find($site->customer_id);
+        $site->delete();
+        flash('Success!', 'Site deleted.', 'danger');
+        return redirect()->route('customer_show', ['slug' => $customer->slug]);
     }
 
 }

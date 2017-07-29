@@ -80,7 +80,7 @@ class System extends Model
 
     public function path()
     {
-        return '/system/' . $this->id;
+        return '/systems/' . $this->slug;
     }
 
     public function getCustomerAttribute()

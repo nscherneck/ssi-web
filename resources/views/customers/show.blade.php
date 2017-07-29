@@ -39,10 +39,10 @@
           <small>
             {{ $customer->address1 }}<br>
             @if ($customer->address2)
-            {{ $customer->address2 }}<br>
+              {{ $customer->address2 }}<br>
             @endif
             @if ($customer->address3)
-            {{ $customer->address3 }}<br>
+              {{ $customer->address3 }}<br>
             @endif
             {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip }}<br>
             <a href="{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
@@ -123,7 +123,7 @@
                   <tr>
 
                   <td><small>
-                  <a href="/site/{{ $site->id }}/">
+                  <a href="{{ $site->path() }}/">
                   {{ $site->name }}
                   </a>
                   </small></td>

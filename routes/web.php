@@ -33,8 +33,8 @@ Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
 // SITE ROUTES
 Route::get('/sites', 'SitesController@index')->name('sites');
-Route::post('customer/{customer}/site/create', 'SitesController@create');
-Route::get('site/{site}', 'SitesController@show')->name('site_show');
+Route::post('customers/{customer}/site/create', 'SitesController@store');
+Route::get('sites/{slug}', 'SitesController@show')->name('site_show');
 Route::get('/site/{site}/edit', 'SitesController@edit');
 Route::put('site/{site}/update', 'SitesController@update');
 Route::delete('site/{site}/delete', 'SitesController@destroy');
@@ -42,9 +42,9 @@ Route::get('site/{site}/photo/create', 'PhotosController@createSitePhoto');
 
 // SYSTEM ROUTES
 Route::post('site/{site}/create', 'SystemsController@store');
-Route::put('system/{system}/update', 'SystemsController@update');
+Route::put('systems/{system}/update', 'SystemsController@update');
 Route::get('systems', 'SystemsController@index')->name('system_index');
-Route::get('system/{system}', 'SystemsController@show')->name('system_show');
+Route::get('systems/{slug}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
@@ -67,11 +67,11 @@ Route::post('system/{system}/component/{id}/detach', 'ComponentsController@detac
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
 
 // WORK ORDER ROUTES
-Route::get('workorders', 'WorkOrdersController@index');
-Route::get('workorders/create', 'WorkOrdersController@create');
-Route::post('workorders', 'WorkOrdersController@store');
-Route::get('workorders/{workOrder}', 'WorkOrdersController@show');
-Route::patch('workorders/{workOrder}', 'WorkOrdersController@update');
+// Route::get('workorders', 'WorkOrdersController@index');
+// Route::get('workorders/create', 'WorkOrdersController@create');
+// Route::post('workorders', 'WorkOrdersController@store');
+// Route::get('workorders/{workOrder}', 'WorkOrdersController@show');
+// Route::patch('workorders/{workOrder}', 'WorkOrdersController@update');
 
 // TEST ROUTES
 Route::get('tests/{test}', 'TestsController@show')->name('test_show');

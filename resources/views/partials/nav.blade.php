@@ -101,7 +101,7 @@
                         </form>
                     </li>                      
                     <li>
-                        <a href="/workorders">
+                        <a href="#">
                             Work Order Queue
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
@@ -109,7 +109,7 @@
                         </form>
                     </li>                    
                     <li>
-                        <a href="/workorders/create">
+                        <a href="#">
                             New Work Order
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
