@@ -18,7 +18,8 @@ class Site extends Model
         'updated_at'
         ];
     protected $fillable =  [
-        'name', 
+        'name',
+        'slug',
         'address1', 
         'address2', 
         'city', 

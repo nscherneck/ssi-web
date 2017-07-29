@@ -34,6 +34,11 @@ class SitesController extends Controller
     {
         $states = State::all();
         $system_types = System_type::orderBy('type')->get();
+        $sites = Site::all();
+        $sites->each(function($singleSite) {
+            $singleSite->slug = str_slug($singleSite->name, '-');
+            $singleSite->save();
+        });
 
         return view('sites.show', compact('site', 'system_types', 'states'));
     }
