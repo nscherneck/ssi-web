@@ -5,6 +5,6 @@ deleted
 @if($event->subject == null)
 	a system
 @else
-	<a href="/system/{{ $event->subject->id }}">{{ $event->subject->name }}</a>
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

@@ -5,7 +5,7 @@ deleted
 @if($event->subject == null)
 	a test
 @else
-	<a href="/tests/{{ $event->subject->id }}">{{ $event->subject->test_type->name }} - 
+	<a href="{{ $event->subject->path() }}">{{ $event->subject->test_type->name }} - 
 {{ $event->subject->formatted_test_date }}</a>
 @endif
 </small>

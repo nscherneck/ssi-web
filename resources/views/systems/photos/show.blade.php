@@ -13,9 +13,9 @@
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
-    <li><a href="/customer/{{ $system->site->customer->id }}">{{ $system->site->customer->name }}</a></li>
-    <li><a href="/site/{{ $system->site->id }}">{{ $system->site->name }}</a></li>
-    <li><a href="/system/{{ $system->id }}">{{ $system->name }}</a></li>
+    <li><a href="{{ $system->site->customer->path() }}">{{ $system->site->customer->name }}</a></li>
+    <li><a href="{{ $system->site->path() }}">{{ $system->site->name }}</a></li>
+    <li><a href="{{ $system->path() }}">{{ $system->name }}</a></li>
     <li>Photo</li>
   </ol>
 
