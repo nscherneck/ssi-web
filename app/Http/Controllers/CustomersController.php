@@ -27,6 +27,8 @@ class CustomersController extends Controller
     public function show(Customer $customer)
     {
         $states = State::all();
+        $customer->slug = str_slug($customer->name, '-');
+        $customer->save();
         return view('customers.show', compact('customer', 'states'));
     }
     
@@ -55,6 +57,7 @@ class CustomersController extends Controller
         
         $customer = new Customer;
         $customer->name = $request->name;
+        $customer->slug = str_slug($customer->name, '-');
         $customer->address1 = $request->address1;
         $customer->address2 = $request->address2;
         $customer->address3 = $request->address3;
@@ -88,6 +91,7 @@ class CustomersController extends Controller
             ]);
         
         $customer->name = $request->name;
+        $customer->slug = str_slug($customer->name, '-');
         $customer->address1 = $request->address1;
         $customer->address2 = $request->address2;
         $customer->address3 = $request->address3;

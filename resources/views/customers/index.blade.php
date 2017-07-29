@@ -27,7 +27,7 @@
     <tbody>
       @foreach($customers as $customer)
         <tr>
-        <td><small><a href="customer/{{ $customer->id }}">{{ $customer->name }}</a></small></td>
+        <td><small><a href="{{ $customer->path() }}">{{ $customer->name }}</a></small></td>
         <td><small>{{ $customer->sites_count }}</small></td>
         <td><small>{{ $customer->systems_count }}</small></td>
       </tr>
