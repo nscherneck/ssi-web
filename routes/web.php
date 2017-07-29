@@ -27,7 +27,7 @@ Route::post('changepassword', 'UsersController@changePassword');
 Route::get('customers', 'CustomersController@index')->name('customers');
 Route::get('customers/create', 'CustomersController@create');
 Route::post('customers', 'CustomersController@store');
-Route::get('customer/{slug}', 'CustomersController@show')->name('customer_show');
+Route::get('customers/{slug}', 'CustomersController@show')->name('customer_show');
 Route::put('customer/{customer}/update', 'CustomersController@update');
 Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
