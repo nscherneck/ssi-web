@@ -69,7 +69,7 @@ class SitesController extends Controller
         
         flash('Success!', 'Site created.');
 
-        return redirect()->route('customer_show', ['slug' => $customer->slug]);
+        return redirect()->route('site_show', ['slug' => $site->slug]);
     }
     
     public function edit(Site $site)

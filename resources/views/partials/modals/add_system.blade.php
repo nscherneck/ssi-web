@@ -17,7 +17,7 @@
         <div class="form-group">
 
           <input type="text" name="name" value="" class="form-control" placeholder="System Name" required><br>
-          <select name="type" class="form-control" required>
+          <select name="system_type_id" class="form-control" required>
               <option value="0" disabled selected>Select System Type</option>
             @foreach ($system_types as $system_type)
               <option value="{{ $system_type->id }}">{{ $system_type->type }}</option>

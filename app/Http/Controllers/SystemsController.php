@@ -67,7 +67,7 @@ class SystemsController extends Controller
         $system->site_id = $site->id;
         $system->name = $request->name;
         $system->slug = str_slug($system->name, '-');
-        $system->system_type_id = $request->type;
+        $system->system_type_id = $request->system_type_id;
         $system->install_date = $request->install_date;
         $system->ssi_install = $request->ssi_install;
         $system->ssi_test_acct = $request->ssi_test_acct;
@@ -92,7 +92,7 @@ class SystemsController extends Controller
 
         $system->name = $request->name;
         $system->slug = str_slug($system->name, '-');
-        $system->system_type_id = $request->type;
+        $system->system_type_id = $request->system_type_id;
         $system->install_date = $request->install_date;
         $system->ssi_install = $request->ssi_install;
         $system->ssi_test_acct = $request->ssi_test_acct;

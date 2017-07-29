@@ -74,7 +74,7 @@ class CustomersController extends Controller
         
         flash('Success!', 'Customer created.');
 
-        return redirect()->route('admin');
+        return redirect()->route('customer_show', ['slug' => $customer->slug]);
     }
     
     public function update(Request $request, Customer $customer)
@@ -113,16 +113,14 @@ class CustomersController extends Controller
     
     public function destroy(Customer $customer)
     {
-    
-        if(count($customer->sites) > 0) {
+        if (count($customer->sites) > 0) {
             flash('Nope!', 'Cannot delete customer, it has one or more sites.', 'warning');
-            return redirect()->route('customer_show', ['id' => $customer->id]);
-        } else {
-            $customer->delete();
-            flash('Success!', 'Customer deleted.', 'danger');
-            return redirect()->route('admin');
+            return redirect()->route('customer_show', ['slug' => $customer->slug]);
         }
-        
+
+        $customer->delete();
+        flash('Success!', 'Customer deleted.', 'danger');
+        return redirect()->route('customers');
     }
 
 }
