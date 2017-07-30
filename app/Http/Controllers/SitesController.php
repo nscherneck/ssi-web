@@ -30,9 +30,8 @@ class SitesController extends Controller
         return view('sites.index', compact('sites'));
     }
     
-    public function show($slug)
+    public function show(Site $site)
     {
-        $site = Site::where('slug', $slug)->firstOrFail();
         $states = State::all();
         $system_types = System_type::orderBy('type')->get();
 

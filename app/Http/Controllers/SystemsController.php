@@ -30,9 +30,8 @@ class SystemsController extends Controller
         return view('systems.index', compact('systems'));
     }
     
-    public function show($slug)
+    public function show(System $system)
     {
-        $system = System::where('slug', $slug)->firstOrFail();
         $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
         $test_types = DB::table('test_types')->orderBy('name')->get();
         $test_results = DB::table('test_results')->orderBy('name')->get();

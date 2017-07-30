@@ -24,9 +24,8 @@ class CustomersController extends Controller
         return view('customers.index', compact('customers'));
     }
     
-    public function show($slug)
+    public function show(Customer $customer)
     {
-        $customer = Customer::where('slug', $slug)->firstOrFail();
         $states = State::all();
         return view('customers.show', compact('customer', 'states'));
     }

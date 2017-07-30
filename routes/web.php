@@ -25,16 +25,16 @@ Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
 Route::get('customers', 'CustomersController@index')->name('customers');
+Route::get('customers/{customer}/{slug}', 'CustomersController@show')->name('customer_show');
 Route::get('customers/create', 'CustomersController@create');
 Route::post('customers', 'CustomersController@store');
-Route::get('customers/{slug}', 'CustomersController@show')->name('customer_show');
 Route::put('customer/{customer}/update', 'CustomersController@update');
 Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
 // SITE ROUTES
 Route::get('/sites', 'SitesController@index')->name('sites');
+Route::get('sites/{site}/{slug}', 'SitesController@show')->name('site_show');
 Route::post('customers/{customer}/site/create', 'SitesController@store');
-Route::get('sites/{slug}', 'SitesController@show')->name('site_show');
 Route::get('/site/{site}/edit', 'SitesController@edit');
 Route::put('site/{site}/update', 'SitesController@update');
 Route::delete('site/{site}/delete', 'SitesController@destroy');
@@ -42,9 +42,9 @@ Route::get('site/{site}/photo/create', 'PhotosController@createSitePhoto');
 
 // SYSTEM ROUTES
 Route::post('site/{site}/create', 'SystemsController@store');
+Route::get('systems/{system}/{slug}', 'SystemsController@show')->name('system_show');
 Route::put('systems/{system}/update', 'SystemsController@update');
 Route::get('systems', 'SystemsController@index')->name('system_index');
-Route::get('systems/{slug}', 'SystemsController@show')->name('system_show');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
