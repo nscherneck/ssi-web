@@ -4,13 +4,14 @@
 
 @section('content')
 
-<div class="container-fluid" style="margin-top: 15px">
 
   @include('partials.nav')
 
-</div>
 
 <div class="container">
+
+  @include('partials.flash')
+  <br>
 
   <div class="titleBar" style="margin-top: 0">
       <p>Customers ({{ $customers->count() }})</p>
