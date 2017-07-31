@@ -15,8 +15,8 @@ class SiteTest extends TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		$this->customer = create('App\Customer');
-		$this->site = create('App\Site', ['customer_id' => $this->customer->id]);
+		$this->site = create('App\Site');
+        $this->system = create('App\System', ['site_id' => $this->site->id]);
 	}
 
     /** @test */
@@ -26,8 +26,15 @@ class SiteTest extends TestCase
     }
 
     /** @test */
+    public function it_has_a_system()
+    {
+        $this->assertEquals(1, $this->site->systems->count());
+    }
+    
+    /** @test */
     public function it_is_assigned_to_a_branch_office()
     {
         $this->assertInstanceOf(BranchOffice::class, $this->site->branchOffice);
     }
+
 }

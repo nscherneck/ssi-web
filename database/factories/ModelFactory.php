@@ -87,6 +87,21 @@ $factory->define(App\BranchOffice::class, function ($faker) {
   ];
 });
 
+$factory->define(App\System::class, function ($faker) {
+  return [
+    'name' => $faker->company . ' System',
+    'site_id' => function () {
+      return factory('App\Site')->create()->id;
+    },
+    'system_type_id' => 1,
+    'install_date' => '2000-01-01',
+    'ssi_install' => 0,
+    'ssi_test_acct' => 0,
+    'next_test_date' => Carbon::now('America/Los_Angeles')->addYear()->toDateString(),
+    'is_active' => 1,
+  ];
+});
+
 $factory->define(App\WorkOrder::class, function ($faker) {
   return [
     'site_id' => function () {
