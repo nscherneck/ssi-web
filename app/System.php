@@ -38,7 +38,8 @@ class System extends Model
         ];
 
     protected static $logAttributes = [
-        'notes'
+        'notes',
+        'next_test_date'
         ];
 
     public function site() 

@@ -3,11 +3,11 @@
 {{ $event->causer->first_name }} 
 updated 
 
-@if($event->properties['attributes']['notes'] != $event->properties['old']['notes'])
+@if ($event->properties['attributes']['notes'] != $event->properties['old']['notes'])
 	the <strong>notes</strong> for 
 @endif
 
-@if($event->subject == null)
+@if ($event->subject == null)
 	a system that has since been deleted
 @else
 	<a href="{{ $event->subject->site->customer->path() }}">{{ $event->subject->site->customer->name }}</a>
