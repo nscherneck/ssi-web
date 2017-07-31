@@ -1,9 +1,9 @@
 <!-- add Customer Modal -->
-<div class="modal fade" id="addCustomerModal" role="dialog">
+<div class="modal fade" id="addCustomerModal" role="dialog" tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content" tabindex="-1">
+    <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title">Add Customer</h5>

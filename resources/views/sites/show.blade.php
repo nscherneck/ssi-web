@@ -43,6 +43,8 @@
               {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}
               <hr>
               {!! $site->getGoogleMapsHyperlink('Google Map') !!}
+              <hr>
+              <strong>Servicing Office:</strong> {{ $site->branchOffice->name }}
             </small>
           </p>
         </div>

@@ -36,7 +36,7 @@ Route::get('/sites', 'SitesController@index')->name('sites');
 Route::get('sites/{site}/{slug}', 'SitesController@show')->name('site_show');
 Route::post('customers/{customer}/site/create', 'SitesController@store');
 Route::get('/site/{site}/edit', 'SitesController@edit');
-Route::put('site/{site}/update', 'SitesController@update');
+Route::put('sites/{site}/update', 'SitesController@update');
 Route::delete('site/{site}/delete', 'SitesController@destroy');
 Route::get('site/{site}/photo/create', 'PhotosController@createSitePhoto');
 

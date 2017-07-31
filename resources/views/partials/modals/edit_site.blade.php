@@ -1,5 +1,5 @@
 <!-- edit Deficiency Modal -->
-<div class="modal fade" id="updateSiteModal" role="dialog">
+<div class="modal fade" id="updateSiteModal" role="dialog" tabindex='-1'>
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
 
-        <form action="/site/{{ $site->id }}/update" method="POST">
+        <form action="/sites/{{ $site->id }}/update" method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="put">
@@ -22,12 +22,18 @@
           Address: <input type="text" name="address2" value="{{ $site->address2 }}" class="form-control"><br>
           City: <input type="text" name="city" value="{{ $site->city }}" class="form-control"><br>
           State:  <select name="state_id" class="form-control">
-              <option value="{{ $site->state->id }}">{{ $site->state->state }}</option>
+              <option value="{{ $site->state_id }}" selected>{{ $site->state->state }}</option>
             @foreach($states as $state)
               <option value="{{ $state->id }}">{{ $state->state }}</option>
             @endforeach
           </select><br>
           Zip Code: <input type="text" name="zip" value="{{ $site->zip }}" class="form-control"><br>
+          Serviced From:  <select required name="branch_office_id" class="form-control">
+            <option value="{{ $site->branch_office_id }}" selected>{{ $site->branchOffice->name }}</option>
+            @foreach($branchOffices as $branch)
+              <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+            @endforeach
+          </select><br>
           Latitude: <input type="text" id="lat" name="lat" value="{{ $site->lat }}" class="form-control"><br>
           Longitude: <input type="text" id="lon" name="lon" value="{{ $site->lon }}" class="form-control"><br>
           Phone: <input type="text" name="phone" value="{{ $site->phone }}" class="form-control"><br>

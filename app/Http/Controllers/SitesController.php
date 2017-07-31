@@ -1,16 +1,17 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
-use App\Http\Requests;
+use App\BranchOffice;
 use App\Customer;
+use App\Http\Requests;
 use App\Site;
+use App\State;
 use App\System;
 use App\System_type;
-use App\State;
+use DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class SitesController extends Controller
 {
@@ -33,9 +34,10 @@ class SitesController extends Controller
     public function show(Site $site)
     {
         $states = State::all();
+        $branchOffices = BranchOffice::all();
         $system_types = System_type::orderBy('type')->get();
 
-        return view('sites.show', compact('site', 'system_types', 'states'));
+        return view('sites.show', compact('site', 'system_types', 'states', 'branchOffices'));
     }
     
     public function store(Request $request, Customer $customer)
@@ -46,6 +48,7 @@ class SitesController extends Controller
             'city' => 'required|string|max:255',
             'state_id' => 'required',
             'zip' => 'required|string|max:20',
+            'branch_office_id' => 'required'
             ]);
 
         $site = new Site;
@@ -57,6 +60,7 @@ class SitesController extends Controller
         $site->city = $request->city;
         $site->state_id = $request->state_id;
         $site->zip = $request->zip;
+        $site->branch_office_id = $request->branch_office_id;
         $site->lat = $request->lat;
         $site->lon = $request->lon;
         $site->phone = $request->phone;
@@ -81,11 +85,12 @@ class SitesController extends Controller
     public function update(Request $request, Site $site)
     {    
         $this->validate($request, [
-            'name' => 'required|unique:sites|string|max:255',
+            'name' => 'required|string|max:255',
             'address1' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state_id' => 'required',
             'zip' => 'required|string|max:20',
+            'branch_office_id' => 'required',
             ]);
         
         $site->name = $request->name;
@@ -95,6 +100,7 @@ class SitesController extends Controller
         $site->city = $request->city;
         $site->state_id = $request->state_id;
         $site->zip = $request->zip;
+        $site->branch_office_id = $request->branch_office_id;
         $site->lat = $request->lat;
         $site->lon = $request->lon;
         $site->phone = $request->phone;

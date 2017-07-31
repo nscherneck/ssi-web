@@ -24,7 +24,8 @@ class Site extends Model
         'address2', 
         'city', 
         'state_id', 
-        'zip', 
+        'zip',
+        'branch_office_id',
         'lat', 
         'lon', 
         'phone', 
@@ -57,6 +58,11 @@ class Site extends Model
     public function state()
     {
         return $this->belongsTo('App\State');
+    }
+
+    public function branchOffice()
+    {
+        return $this->belongsTo('App\BranchOffice');
     }
 
     public function photos() 

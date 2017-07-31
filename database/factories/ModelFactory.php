@@ -65,9 +65,25 @@ $factory->define(App\Site::class, function ($faker) {
     'zip' => $faker->postcode,
     'lat' => $faker->latitude($min = 42.100000, $max = 48.9000000),
     'lon' => $faker->longitude($min = -112.440000, $max = -122.110000),
+    'branch_office_id' => function () {
+      return factory('App\BranchOffice')->create()->id;
+    },
     'added_by' => function () {
       return factory('App\User')->create()->id;
     }
+  ];
+});
+
+$factory->define(App\BranchOffice::class, function ($faker) {
+  return [
+    'name' => $faker->company,
+    'address1' => $faker->streetAddress,
+    'address1' => $faker->streetAddress,
+    'city' => $faker->city,
+    'state_id' => function () {
+      return factory('App\State')->create()->id;
+    },
+    'zip' => $faker->postcode,
   ];
 });
 

@@ -1,11 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
-use App\Site;
+use App\BranchOffice;
 use App\Customer;
-use App\State;
 use App\Http\Requests;
+use App\Site;
+use App\State;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -27,7 +28,8 @@ class CustomersController extends Controller
     public function show(Customer $customer)
     {
         $states = State::all();
-        return view('customers.show', compact('customer', 'states'));
+        $branchOffices = BranchOffice::all();
+        return view('customers.show', compact('customer', 'states', 'branchOffices'));
     }
     
     public function create()
