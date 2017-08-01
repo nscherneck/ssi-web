@@ -12,7 +12,7 @@ created a work order
 	{{ $event->subject->site->customer->name }}
 	</a>
 	</strong>
-	{{ env('ENTITY_SEPARATOR') }}  
+	{{ config('constants.SEPARATOR') }}  
 	<strong>
 	<a href="{{ $event->subject->site->path() }}">
 	{{ $event->subject->site->name }}

@@ -11,7 +11,7 @@ updated
 	a site that has since been deleted
 @else
 	<a href="{{ $event->subject->customer->path() }}">{{ $event->subject->customer->name }}</a>
-	 {{ env('ENTITY_SEPARATOR') }} 
+	 {{ config('constants.SEPARATOR') }} 
 	<a href="{{ $event->subject->path() }}">{{ $event->subject->name }}</a>
 @endif
 </small>

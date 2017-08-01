@@ -47,11 +47,11 @@
             <a href="{{ $system->site->customer->path() }}">
               {{ $system->site->customer->name }}
             </a>  
-              {{ env('ENTITY_SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }} 
             <a href="{{ $system->site->path() }}">
               {{ $system->site->name }}
             </a>
-              {{ env('ENTITY_SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }} 
             <a href="{{ $system->path() }}">
               {{ $system->name }}
             </a>
@@ -109,11 +109,11 @@
             <a href="{{ $test->system->site->customer->path() }}">
             {{ $test->system->site->customer->name }}
             </a>
-              {{ env('ENTITY_SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }} 
             <a href="{{ $test->system->site->path() }}">
             {{ $test->system->site->name }}
             </a>
-              {{ env('ENTITY_SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }} 
             <a href="{{ $test->system->path() }}">
             {{ $test->system->name }}
             </a>

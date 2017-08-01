@@ -11,7 +11,7 @@ updated
 		{{ $event->subject->photoable->site->customer->name }}
 	</a>
 
-	{{ env('ENTITY_SEPARATOR') }}  
+	{{ config('constants.SEPARATOR') }} 
 
 	<a href="{{ $event->subject->photoable->site->path() }}">
 		{{ $event->subject->photoable->site->name }}

@@ -14,13 +14,13 @@
 					{{ $event->subject->photoable->site->customer->name }}
 					</a>
 				</strong> 
-				{{ env('ENTITY_SEPARATOR') }}
+				{{ config('constants.SEPARATOR') }}
 				<strong>
 					<a href="{{ $event->subject->photoable->site->path() }}">
 					{{ $event->subject->photoable->site->name }}
 					</a>
 				</strong> 
-				{{ env('ENTITY_SEPARATOR') }}
+				{{ config('constants.SEPARATOR') }}
 				<strong>
 					<a href="{{ $event->subject->photoable->path() }}">
 					{{ $event->subject->photoable->name }}
@@ -32,7 +32,7 @@
 	</div>
 	<div class="col-lg-4 right-justify">
 		<a href="/system/photo/{{ $event->subject->id }}">
-			<img src="{{ env('SYSTEM_PHOTO_THUMB_URL') }}{{ $event->subject->file_name }}.{{ $event->subject->ext }}" 
+			<img src="{{ config('constants.PHOTO.thumbnail-url') }}{{ $event->subject->file_name }}.{{ $event->subject->ext }}" 
 			alt="{{ $event->subject->caption }}" 
 			width="150" 
 			height="auto"

@@ -22,7 +22,7 @@
   <div class="text-center">
     
     <img 
-      src="{{ env('SYSTEM_PHOTO_URL') }}{{ $photo->file_name }}.{{ $photo->ext }}" 
+      src="{{ config('constants.PHOTO.url') }}{{ $photo->file_name }}.{{ $photo->ext }}" 
       width="100%" 
       height="auto"
     >
