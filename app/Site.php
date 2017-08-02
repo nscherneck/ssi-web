@@ -136,15 +136,6 @@ class Site extends Model
         return $travel_data;
     }
 
-    public function getGoogleMapsHyperlink($hyperlinkText)
-    {
-        return <<<HTML
-            <a href="https://www.google.com/maps/place//@{$this->lat},{$this->lon},18z" target="blank">
-            {$hyperlinkText}
-            </a>
-HTML;
-    }
-
     public function getFormattedForIndexCreatedAtAttribute()
     {
         return $this->created_at->setTimezone('America/Los_Angeles')

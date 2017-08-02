@@ -41,10 +41,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot

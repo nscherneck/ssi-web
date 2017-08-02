@@ -23,7 +23,7 @@
                 <ul class="dropdown-menu" role="menu">
                     <li>
                         <a href="/customers">
-                            Customer Lookup
+                            @include('partials.icons.customer-icon') &nbsp; Customer Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
@@ -31,7 +31,7 @@
                     </li>                    
                     <li>
                         <a href="/sites">
-                            Site Lookup
+                            @include('partials.icons.site-icon') &nbsp; Site Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
@@ -39,7 +39,7 @@
                     </li>                    
                     <li>
                         <a href="/systems">
-                            System Lookup
+                            @include('partials.icons.system-icon') &nbsp; System Lookup
                         </a>
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}

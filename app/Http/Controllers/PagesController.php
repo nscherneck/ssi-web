@@ -30,12 +30,9 @@ class PagesController extends Controller
         $activityItems = Activity::with(['causer', 'subject'])
             ->orderBy('created_at', 'desc')
             ->take(100)
-            ->get();  
-        
-        return view('home.show', compact(
-            'activityItems'
-            )
-        );
+            ->get();
+
+        return view('home.show', compact('activityItems'));
     }
     
     public function customer()

@@ -6977,6 +6977,10 @@ button.close {
 
 /*# sourceMappingURL=bootstrap.min.css.map */
 
+body {
+    padding-bottom: 100px;
+    padding-top: 50px;
+}
 /* misc */
 
 .buttonBar {
@@ -7021,7 +7025,7 @@ button.close {
   padding: 5px;
   border: 0;
   border-radius: 8px;
-  background: #5DADE2;
+  background: #D9EDF7;
   text-align: center;
 }
 
@@ -7029,7 +7033,7 @@ button.close {
   margin: 0;
   padding: 0;
   display: inline;
-  color: white;
+  color: #31708F;
 }
 
 /* system component tables */
@@ -7138,4 +7142,13 @@ button.close {
     padding: 15px 15px;
   }
 
+}
+
+/*
+* Heading icons
+ */
+
+.page-heading .fa {
+  font-size: 2em;
+  margin: 10px;
 }

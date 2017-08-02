@@ -3,9 +3,6 @@
 @section('title', 'SSI-Extranet | Customer Record')
 
 @section('head')
-
-<!-- <script src="{{ URL::asset('css/customers_map.css') }}"></script> -->
-
 @stop
 
 @section('content')
@@ -17,6 +14,7 @@
   @include('partials.flash')
   
   <br>
+
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
     <li>{{ $customer->name }}</li>
@@ -29,11 +27,16 @@
   <div class="col-lg-3 no-gutter-right">
 
     <div class="panel panel-primary text-center">
-      <div class="panel-heading"><h4>{{ $customer->name }}</h4></div>
+      <div class="panel-heading page-heading">
+        @include('partials.icons.customer-icon')
+        <h4>{{ $customer->name }}</h4>
+      </div>
     </div>
 
     <div class="panel panel-primary">
-      <div class="panel-heading">Customer Info</div>
+      <div class="panel-heading">
+        @include('partials.icons.info-icon') Customer Info
+      </div>
       <div class="panel-body">
         <p>
           <small>
@@ -69,7 +72,9 @@
 
     @if ($customer->notes)
     <div class="panel panel-primary">
-    <div class="panel-heading">Notes</div>
+    <div class="panel-heading">
+      @include('partials.icons.notes-icon') Notes
+    </div>
     <div class="panel-body">
       <small>
       {!! nl2br(e($customer->notes)) !!}
@@ -79,10 +84,18 @@
     @endif
 
   <div class="text-center">
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateCustomerModal">
-      <i class="fa fa-cog"></i></button>
-    <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteCustomerModal">
-      <i class="fa fa-trash"></i></button>
+    <button type="button" 
+      class="btn btn-default btn-xs" 
+      data-toggle="modal" 
+      data-target="#updateCustomerModal">
+      @include('partials.icons.edit-icon')
+    </button>
+    <button type="button" 
+      class="btn btn-default btn-xs" 
+      data-toggle="modal" 
+      data-target="#deleteCustomerModal">
+      @include('partials.icons.delete-icon')
+    </button>
     <br><br>
   </div>
 
@@ -92,155 +105,81 @@
 
   <div class="col-lg-9">
 
-    <div class="row">
+    @include('partials.customers_map')
 
-      <div class="col-lg-12">
-
-        @include('partials.customers_map')
-
+    <div class="panel panel-info"> <!-- START SITES PANEL -->
+      <div class="panel-heading">
+        @include('partials.icons.site-icon') Sites ({{ $customer->sites_count }})
       </div>
+        <table class="table table-condensed">
+          <thead>
+            <tr>
+              <th><small>Site Name</small></th>
+              <th><small>Address</small></th>
+              <th><small>City</small></th>
+              <th><small>State</small></th>
+              <th><small>Map</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($customer->sites as $site)
+              <tr>
 
-      </div>
+              <td><small>
+              <a href="{{ $site->path() }}/">
+              {{ $site->name }}
+              </a>
+              </small></td>
 
-    <div class="row">
+              <td><small>
+              {{ $site->address1 }}
+              </small></td>
 
-      <div class="col-lg-8 no-gutter-right">
+              <td><small>
+              {{ $site->city }}
+              </small></td>
 
-        <div class="panel panel-info">
-          <div class="panel-heading">Sites ({{ $customer->sites_count }})</div>
-            <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <th><small>Site Name</small></th>
-                  <th><small>Address</small></th>
-                  <th><small>City</small></th>
-                  <th><small>State</small></th>
-                  <th><small>Map</small></th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($customer->sites as $site)
-                  <tr>
+              <td><small>
+              {{ $site->state->abbreviated }}
+              </small></td>
 
-                  <td><small>
-                  <a href="{{ $site->path() }}/">
-                  {{ $site->name }}
-                  </a>
-                  </small></td>
-
-                  <td><small>
-                  {{ $site->address1 }}
-                  </small></td>
-
-                  <td><small>
-                  {{ $site->city }}
-                  </small></td>
-
-                  <td><small>
-                  {{ $site->state->abbreviated }}
-                  </small></td>
-
-                  <td><small>
-                  {!! $site->getGoogleMapsHyperlink('Google Map') !!}
-                  </small></td>
-
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-
-            <div class="panel-footer">
-
-              <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addSiteModal">
-                <i class="fa fa-plus"></i></button>
-              <br>
-
-            </div>
-
-        </div>
-
-      </div>
-
-      <div class="col-lg-4">
-
-        <div class="panel panel-info">
-          <div class="panel-heading">Documents (0)</div>
-            <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <th><small>File</small></th>
-                  <th><small></small></th>
-                  <th><small></small></th>
-                </tr>
-              </thead>
-              <tbody>
-{{--               @foreach($documents as $document)
-                <tr>
-                <td width="90%"><small>
-                  <a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
-                  {{ $document->file_name }}.{{ $document->ext }}
-                  </a>
+              <td>
+                <small>
+                  @component('sites.partials.google-map-link')
+                    @slot('latitude')
+                      {{ $site->lat }}
+                    @endslot
+                    @slot('longitude')
+                      {{ $site->lon }}
+                    @endslot
+                  @endcomponent
                 </small>
-                </td>
-                <td width="5%">
-                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#">
-                    <i class="fa fa-cog"></i></button>
-                </td>
-                <td width="5%">
-                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
-                    <i class="fa fa-trash"></i></button>
-                </td>
-                </tr>
-                @endforeach --}}
-              </tbody>
-            </table>
+              </td>
 
-          <div class="panel-footer">
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
 
-            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerDocumentModal">
-              <i class="fa fa-plus"></i></button>
-            <br>
+        <div class="panel-footer">
 
-          </div>
+          <button type="button" 
+            class="btn btn-default btn-xs" 
+            data-toggle="modal" 
+            data-target="#addSiteModal">
+            @include('partials.icons.add-icon')
+          </button>
+          <br>
 
         </div>
 
-        <div class="panel panel-info">
-          <div class="panel-heading">Comments (0)</div>
-            <table class="table table-condensed">
-              <thead>
-                <tr>
-                  <th><small>Comment</small></th>
-                  <th><small>By</small></th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
+    </div> <!-- END SITES PANEL -->
 
-          <div class="panel-footer">
+  </div> <!-- END COL-9 -->
 
-            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addCustomerCommentDocumentModal">
-              <i class="fa fa-plus"></i></button>
+  </div> <!-- END ROW -->
 
-          </div>
-
-        </div>
-
-
-
-      </div>
-
-  </div>
-
-
-
-
-
-  </div>
-
-  </div>
-</div>
+  </div> <!-- END CONTAINER -->
 
 @include('partials.modals.edit_customer')
 @include('partials.modals.delete_customer')

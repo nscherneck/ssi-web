@@ -41,10 +41,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -78,10 +79,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $modularPanel->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -115,10 +117,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $controlEquipment->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -152,10 +155,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $airSamplingDetection->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -189,10 +193,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -226,10 +231,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -263,10 +269,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $module->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -300,10 +307,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $miscellaneousElectrical->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -337,10 +345,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $miscellaneous->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -374,10 +383,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot
@@ -411,10 +421,11 @@
               @slot('detach')
                 <form 
                   action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach" 
-                  method="post" accept-charset="UTF-8">
+                  method="post" 
+                  accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
-                    <i class="fa fa-trash-o"></i>
+                    @include('partials.icons.delete-icon')
                   </button>
                 </form>
               @endslot

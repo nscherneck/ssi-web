@@ -25,61 +25,12 @@
 
     <style>
 
-        body {
-            padding-bottom: 100px;
-            padding-top: 50px;
-        }
         .level {
             display: flex; 
             align-items: center; 
         }
         .flex {
             flex: 1;
-        }
-        .doc-content {
-            margin: 10px;
-        }
-        .ml-1 {
-            margin-left: 1em;
-        }
-        .mr-1 {
-            margin-right: 1em;
-        }
-        .mt-1 {
-            margin-top: 1em;
-        }
-        .mb-1 {
-            margin-bottom: 1em;
-        }
-        .pl-1 {
-            margin-left: 1em;
-        }
-        .pr-1 {
-            margin-right: 1em;
-        }
-        .pt-1 {
-            margin-top: 1em;
-        }
-        .pb-1 {
-            margin-bottom: 1em;
-        }
-        .pl-05 {
-            margin-left: 0.5em;
-        }
-        .pr-05 {
-            margin-right: 0.5em;
-        }
-        .pt-05 {
-            margin-top: 0.5em;
-        }
-        .pb-05 {
-            margin-bottom: 0.5em;
-        }
-        hr.doc {
-            margin-bottom: 5px;
-        }
-        [v-cloak] { 
-            display: none; 
         }
 
     </style>
@@ -91,10 +42,13 @@
 
   <body>
 
-@yield('content')
+    @yield('content')
+{{--     <div id="app">
+        <flash message="{{ session('flash') }}"></flash>
+    </div> --}}
 
-<script src="{{ mix('js/app.js') }}"></script>
-
+    <script src="{{ mix('js/app.js') }}"></script>
+      
   </body>
 
 </html>
