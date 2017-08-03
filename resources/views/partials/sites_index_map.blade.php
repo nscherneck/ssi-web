@@ -33,16 +33,17 @@
       var infoWindowContent = [
           @foreach($sites as $site)
             ['<div class="info_content">' +
-            '<h5><a href="{{ $site->customer->path() }}" target="blank">{{ $site->customer->name }}</a> | <a href="{{ $site->path() }}" target="blank">{{ $site->name }}</a></h5>' +
+            '<h5><a href="{{ $site->customer->path() }}" target="blank">@include('partials.icons.customer-icon') {{ $site->customer->name }}</a> {{ config('constants.SEPARATOR') }} <a href="{{ $site->path() }}" target="blank">@include('partials.icons.site-icon') {{ $site->name }}</a></h5>' +
             '<p><small><strong>' +
             @foreach($site->systems as $system)
-                '&nbsp;<a href="{{ $system->path() }}" target="blank">{{ $system->name }}</a><br>' +
-                @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Due: {{ $system->formatted_next_test_date }}<br>' + @endif
+                '<a href="{{ $system->path() }}" target="blank">@include('partials.icons.system-icon') {{ $system->name }}</a><br>' +
+                @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Next Test Due By: {{ $system->formatted_next_test_date }}<br>' + @endif
                 @foreach($system->tests as $test)
-                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">{{ $test->formatted_test_date }} | {{ $test->test_type->name }}</a><br>' +
+                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">@include('partials.icons.test-icon') {{ $test->formatted_test_date }} {{ config('constants.SEPARATOR') }} {{ $test->test_type->name }}</a><br>' +
                 @endforeach
+                '<br>' +
             @endforeach
-            '</small></p><br>' +
+            '</small></p>' +
             '</div>'],
           @endforeach
       ];
