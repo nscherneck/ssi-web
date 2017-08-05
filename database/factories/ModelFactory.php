@@ -1,10 +1,13 @@
 <?php
 
+use App\Component;
+use App\Component_category;
+use App\Customer;
+use App\Manufacturer;
 use App\Site;
 use App\System;
-use App\Customer;
-use Carbon\Carbon;
 use App\WorkOrderNumber;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +104,34 @@ $factory->define(App\System::class, function ($faker) {
     'is_active' => 1,
   ];
 });
+
+$factory->define(App\Component::class, function ($faker) {
+  return [
+    'manufacturer_id' => function () {
+      return factory('App\Manufacturer')->create()->id;
+    },
+    'component_category_id' => function () {
+      return factory('App\Component_category')->create()->id;
+    },
+    'model' => $faker->word . $faker->randomNumber(6),
+    'description' => $faker->sentence(50),
+    'discontinued' => 0,
+  ];
+});
+
+$factory->define(App\Manufacturer::class, function ($faker) {
+  return [
+    'name' => $faker->word,
+  ];
+});
+
+$factory->define(App\Component_category::class, function ($faker) {
+  return [
+    'name' => $faker->word,
+  ];
+});
+
+// WORK ORDERS
 
 $factory->define(App\WorkOrder::class, function ($faker) {
   return [

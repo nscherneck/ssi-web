@@ -56,7 +56,7 @@ class SystemsController extends Controller
     public function store(Request $request, Site $site)
     {
         $this->validate($request, [
-            'name' => 'required|unique:systems|string|max:255',
+            'name' => 'required|string|max:255',
             'system_type_id' => 'required',
             'ssi_install' => 'required',
             'ssi_test_acct' => 'required',

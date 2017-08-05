@@ -201,12 +201,14 @@
             <li><a href="{{ url('admin') }}">Admin</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    @include('partials.icons.user-icon')
                     {{ Auth::user()->full_name }} <span class="caret"></span>
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
                     <li>
                         <a href="/profile">
+                            @include('partials.icons.user-icon')
                             Profile
                         </a>
 
@@ -218,6 +220,7 @@
                         <a href="{{ url('/logout') }}"
                             onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
+                            @include('partials.icons.logout-icon')
                             Logout
                         </a>
 

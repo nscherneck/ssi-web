@@ -1,20 +1,21 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
-use App\Site;
-use App\Test;
-use App\Test_result;
-use App\Photo;
-use App\System;
+use App\Component;
 use App\Customer;
 use App\Document;
-use App\Component;
-use Carbon\Carbon;
-use App\System_type;
 use App\Http\Requests;
+use App\Photo;
+use App\Site;
+use App\System;
+use App\System_type;
+use App\Test;
+use App\Test_result;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Models\Activity;
 
 class PagesController extends Controller
@@ -47,7 +48,14 @@ class PagesController extends Controller
     
     public function jobs()
     {
-        return view('jobs');
+        if (Cache::has('customers')) {
+            $customers = Cache::get('customers');
+            return 'Shit worked';
+        }
+        Cache::forever('customers', Customer::whereBetween('id', [1, 10])->get());
+        $customers = Cache::get('customers');
+        return $customers;
+        // return view('jobs');
     }
     
     public function serviceHome()

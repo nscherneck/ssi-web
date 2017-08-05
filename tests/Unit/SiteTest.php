@@ -20,7 +20,7 @@ class SiteTest extends TestCase
 	}
 
     /** @test */
-    public function it_has_a_customer()
+    public function it_belongs_to_a_customer()
     {
         $this->assertInstanceOf(Customer::class, $this->site->customer);
     }

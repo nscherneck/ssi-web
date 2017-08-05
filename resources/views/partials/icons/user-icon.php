@@ -1,0 +1,1 @@
+<i class="fa fa-user-circle fa-fw" aria-hidden="true"></i>

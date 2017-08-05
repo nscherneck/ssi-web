@@ -84,6 +84,22 @@ class System extends Model
         return '/systems/' . $this->id . '/' . $this->slug;
     }
 
+    public function attachComponent($component, $quantity, $name)
+    {
+        $this->components()
+            ->attach($component, [
+              'quantity' => $quantity, 
+              'name' => $name
+              ]);   
+    }
+
+    public function detachComponent($componentId)
+    {
+        DB::table('components_systems')
+            ->where('id', $componentId)
+            ->delete();
+    }
+
     public function getCustomerAttribute()
     {
         return $this->site->customer;

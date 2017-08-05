@@ -43,9 +43,9 @@ class ComponentsController extends Controller
     {
     
         $this->validate($request, [
-            //  'manufacturer_id' => 'required',
-            //  'model' => 'required|unique:components|max:150',
-            //  'component_category_id' => 'required',
+            'manufacturer_id' => 'required',
+            'model' => 'required|unique:components|max:150',
+            'component_category_id' => 'required',
             'description' => 'required'
             ]);
     
@@ -88,22 +88,17 @@ class ComponentsController extends Controller
     }
     
     public function attach(Request $request, System $system) 
-    {    
-        $system->components()->attach($request->component_id, [
-          'quantity' => $request->quantity, 
-          'name' => $request->name
-          ]);        
+    {
+        $system->attachComponent($request->component_id, $request->quantity, $request->name);     
         
         flash('Success!', 'Component attached.');
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);    
     }
     
-    public function detach(System $system, $id)
+    public function detach(System $system, $componentId)
     {
-        DB::table('components_systems')
-            ->where('id', $id)
-            ->delete();
+        $system->detachComponent($componentId);
         
         flash('Success!', 'Component removed.', 'success');
 
