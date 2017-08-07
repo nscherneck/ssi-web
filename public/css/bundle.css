@@ -7152,3 +7152,13 @@ body {
   font-size: 2em;
   margin: 10px;
 }
+
+/*
+* Modal icons
+ */
+
+ .modal-icon .fa {
+   font-size: 4em;
+   color: #D9534F;
+   margin: 10px;
+ }

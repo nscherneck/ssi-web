@@ -118,7 +118,7 @@ class TestsController extends Controller
         
         flash('Success!', 'Test deleted.', 'danger');
 
-        return redirect()->route('system_show', ['id' => $system->id]);
+        return redirect()->route('system_show', ['id' => $system->id, 'slug' => $system->slug]);
     }
     
     public function search(Request $request)

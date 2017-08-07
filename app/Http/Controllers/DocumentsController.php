@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Input;
 
 class DocumentsController extends Controller
 {
-
     use ManagesReports;
     
     public function __construct()
@@ -29,24 +28,8 @@ class DocumentsController extends Controller
         $this->middleware('auth');
     }
     
-    public function storeCustomerDocument(Request $request, Customer $customer)
-    {
-    //
-    }
-    
-    public function storeSiteDocument(Request $request, Site $site)
-    {
-    //
-    }
-    
-    public function storeSystemDocument(Request $request, System $system)
-    {
-    //
-    }
-    
     public function storeTestReport(Request $request, Test $test)
     {
-    
         $this->getUploadedFile();    
         $this->setFileAttributes($test);    
         $this->saveFile();

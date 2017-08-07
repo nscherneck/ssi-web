@@ -16,7 +16,7 @@ class CreateDeficienciesTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('test_id')->unsigned()->nullable();
-			$table->string('description')->nullable();
+			$table->text('description', 65535)->nullable();
 			$table->integer('added_by')->unsigned()->nullable()->index('deficiencies_added_by_foreign');
 			$table->timestamps();
 		});

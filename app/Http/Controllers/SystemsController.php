@@ -1,14 +1,15 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
-use App\Http\Requests;
+use App\BranchOffice;
 use App\Customer;
+use App\Http\Requests;
+use App\Photo;
 use App\Site;
 use App\System;
 use App\Test;
-use App\Photo;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -134,10 +135,10 @@ class SystemsController extends Controller
         }
 
         $site = Site::find($system->site_id);
+        $system->components()->detach();
         $system->delete();
         flash('Success!', 'System deleted.', 'danger');
         return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
-
     }
 
 }

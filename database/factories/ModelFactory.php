@@ -6,6 +6,7 @@ use App\Customer;
 use App\Manufacturer;
 use App\Site;
 use App\System;
+use App\System_type;
 use App\WorkOrderNumber;
 use Carbon\Carbon;
 
@@ -42,6 +43,9 @@ $factory->define(App\State::class, function (Faker\Generator $faker) {
 $factory->define(App\Customer::class, function ($faker) {
   return [
     'name' => $faker->company,
+    'slug' => function (array $post) {
+      return str_slug($post['name'], '-');
+    },
     'address1' => $faker->streetAddress,
     'city' => $faker->city,
     'state_id' => function () {
@@ -60,6 +64,9 @@ $factory->define(App\Site::class, function ($faker) {
       return factory('App\Customer')->create()->id;
     },
     'name' => $faker->company,
+    'slug' => function (array $post) {
+      return str_slug($post['name'], '-');
+    },
     'address1' => $faker->streetAddress,
     'city' => $faker->city,
     'state_id' => function () {
@@ -93,15 +100,27 @@ $factory->define(App\BranchOffice::class, function ($faker) {
 $factory->define(App\System::class, function ($faker) {
   return [
     'name' => $faker->company . ' System',
+    'slug' => function (array $post) {
+      return str_slug($post['name'], '-');
+    },
     'site_id' => function () {
       return factory('App\Site')->create()->id;
     },
-    'system_type_id' => 1,
+    'system_type_id' => function () {
+      return factory('App\System_type')->create()->id;
+    },
     'install_date' => '2000-01-01',
     'ssi_install' => 0,
     'ssi_test_acct' => 0,
     'next_test_date' => Carbon::now('America/Los_Angeles')->addYear()->toDateString(),
     'is_active' => 1,
+  ];
+});
+
+$factory->define(App\System_type::class, function ($faker) {
+  return [
+    'type' => $faker->word,
+    'test_interval' => 12,
   ];
 });
 

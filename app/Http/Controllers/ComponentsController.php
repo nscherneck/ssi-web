@@ -96,9 +96,9 @@ class ComponentsController extends Controller
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);    
     }
     
-    public function detach(System $system, $componentId)
+    public function detach(System $system, $attachedComponentPivotId)
     {
-        $system->detachComponent($componentId);
+        $system->detachComponent($attachedComponentPivotId);
         
         flash('Success!', 'Component removed.', 'success');
 
@@ -108,8 +108,8 @@ class ComponentsController extends Controller
     public function show(Component $component)
     {
         $documents = Document::orderBy('file_name', 'desc')
-            ->where('documentable_id', '=', $component->id)
-            ->where('documentable_type', '=', 'App\Component')
+            ->where('documentable_id', $component->id)
+            ->where('documentable_type', 'App\Component')
             ->get();
         $component_categories = DB::table('component_category')
             ->orderBy('name', 'asc')
@@ -133,6 +133,22 @@ class ComponentsController extends Controller
         flash('Success!', 'Component updated.', 'success');
 
         return redirect()->route('component_show', ['id' => $component->id]);    
+    }
+
+
+    public function destroy(Component $component)
+    {
+        DB::table('components_systems')
+            ->where('component_id', $component->id)
+            ->delete();
+        // DOCUMENT DELETION IS NOT COMPLETE, NEED TO ALSO DELETE FILE FROM STORAGE..
+        Document::where('documentable_id', $component->id)
+            ->where('documentable_type', 'App\Component')
+            ->delete();
+        $manufacturer = $component->manufacturer;
+        $component->delete();
+        flash('Success!', 'Component deleted.', 'danger');
+        return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);  
     }
 
 }

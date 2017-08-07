@@ -16,8 +16,9 @@ class CreateSystemsTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->integer('site_id')->index('FK_systems_sites');
-			$table->boolean('system_type_id')->index('FK_systems_system_types');
+			$table->integer('system_type_id')->index('FK_systems_system_types');
 			$table->string('name', 100)->nullable();
+			$table->string('slug')->nullable();
 			$table->date('install_date')->nullable();
 			$table->boolean('ssi_install')->default(0);
 			$table->boolean('ssi_test_acct')->default(0);

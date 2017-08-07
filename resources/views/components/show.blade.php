@@ -65,7 +65,11 @@
         <div class="panel-footer">
 
           <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateComponentModal">
-            <i class="fa fa-cog"></i></button>
+            @include('partials.icons.edit-icon')
+          </button>
+          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteComponentModal">
+            @include('partials.icons.delete-icon')
+          </button>
 
         </div>
       </div>
@@ -188,6 +192,7 @@
 </div>
 
 @include('partials.modals.edit_component')
+@include('partials.modals.delete_component')
 @include('partials.modals.add_component_document')
 
 @stop

@@ -63,7 +63,8 @@ Route::get('component/{component}', 'ComponentsController@show')->name('componen
 Route::post('update_component_form', 'ComponentsController@getModelForAttachComponentModal');
 Route::put('component/{component}', 'ComponentsController@update');
 Route::post('system/{system}/component/attach', 'ComponentsController@attach');
-Route::post('system/{system}/component/{componentId}/detach', 'ComponentsController@detach');
+Route::post('system/{system}/component/{attachedComponentPivotId}/detach', 'ComponentsController@detach');
+Route::delete('components/{component}', 'ComponentsController@destroy');
 Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
 
 // WORK ORDER ROUTES

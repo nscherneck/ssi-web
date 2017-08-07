@@ -106,34 +106,35 @@ class Site extends Model
         return $systems_quantity;
     }
 
-    public function getTravelData($lat, $lon) 
+    public function distanceCalculator($originLatitude, $originLongitude)
     {
-        $fife_lat = '47.239556';
-        $fife_lon = '-122.387691';
-        $fife_api_url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $fife_lat . "," . $fife_lon . "&destinations=" . $lat . "," . $lon . "&mode=car&language=en-EN&units=imperial";
-        $pdx_lat = '45.579030';
-        $pdx_lon = '-122.635391';
-        $pdx_api_url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" . $pdx_lat . "," . $pdx_lon . "&destinations=" . $lat . "," . $lon . "&mode=car&language=en-EN&units=imperial";
+        $mode = 'car';
+        $language = 'en-EN';
+        $units = 'imperial';
+        $distanceApiCall = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={$originLatitude},{$originLongitude}&destinations={$this->lat},{$this->lon}&mode={$mode}&language={$language}&units={$units}";
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $pdx_api_url);
+        curl_setopt($ch, CURLOPT_URL, $distanceApiCall);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $pdx_data_decoded = json_decode(curl_exec($ch), true);
+        $returnedJson = json_decode(curl_exec($ch), true);
+        $distanceInMeters = $returnedJson['rows'][0]['elements'][0]['distance']['value'];
+        $distanceInMiles = $distanceInMeters / 1609.344;
+        return number_format($distanceInMiles, 1);
+    }
 
-        $pdx_distance = $pdx_data_decoded['rows'][0]['elements'][0]['distance']['text'];
-        $pdx_duration = $pdx_data_decoded['rows'][0]['elements'][0]['duration']['text'];
+    public function durationCalculator($originLatitude, $originLongitude)
+    {
+        $mode = 'car';
+        $language = 'en-EN';
+        $units = 'imperial';
+        $distanceApiCall = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={$originLatitude},{$originLongitude}&destinations={$this->lat},{$this->lon}&mode={$mode}&language={$language}&units={$units}";
 
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $fife_api_url);
+        curl_setopt($ch, CURLOPT_URL, $distanceApiCall);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $fife_data_decoded = json_decode(curl_exec($ch), true);
-
-        $fife_distance = $fife_data_decoded['rows'][0]['elements'][0]['distance']['text'];
-        $fife_duration = $fife_data_decoded['rows'][0]['elements'][0]['duration']['text'];
-
-        $travel_data = [$pdx_distance, $pdx_duration, $fife_distance, $fife_duration];
-
-        return $travel_data;
+        $returnedJson = json_decode(curl_exec($ch), true);
+        $duration = $returnedJson['rows'][0]['elements'][0]['duration']['text'];
+        return $duration;
     }
 
     public function getFormattedForIndexCreatedAtAttribute()

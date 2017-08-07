@@ -14,7 +14,7 @@ class System extends Model
 
     protected $dates = [
         'install_date', 
-        'next_test_date', 
+        'next_test_date',
         'created_at', 
         'updated_at'
         ];
@@ -93,10 +93,10 @@ class System extends Model
               ]);   
     }
 
-    public function detachComponent($componentId)
+    public function detachComponent($attachedComponentPivotId)
     {
         DB::table('components_systems')
-            ->where('id', $componentId)
+            ->where('id', $attachedComponentPivotId)
             ->delete();
     }
 

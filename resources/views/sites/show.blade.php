@@ -47,15 +47,6 @@
 
               {{ $site->city }}, {{ $site->state->state }}  {{ $site->zip}}
               <hr>
-              @component('sites.partials.google-map-link')
-                @slot('latitude')
-                  {{ $site->lat }}
-                @endslot
-                @slot('longitude')
-                  {{ $site->lon }}
-                @endslot
-              @endcomponent
-              <hr>
               <strong>Servicing Office:</strong> {{ $site->branchOffice->name }}
             </small>
           </p>
@@ -76,14 +67,27 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><small></small></td>
-                <td><small></small></td>
-                <td><small></small></td>
-              </tr>
+              @foreach ($branchOffices as $branchOffice)
+                <tr>
+                  <td><small>{{ $branchOffice->name }}</small></td>
+                  <td><small>{{ $site->distanceCalculator($branchOffice->latitude, $branchOffice->longitude) }} miles</small></td>
+                  <td><small>{{ $site->durationCalculator($branchOffice->latitude, $branchOffice->longitude) }}</small></td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
-
+        <div class="panel-footer">
+          <small>
+            @component('sites.partials.google-map-link')
+              @slot('latitude')
+                {{ $site->lat }}
+              @endslot
+              @slot('longitude')
+                {{ $site->lon }}
+              @endslot
+            @endcomponent
+          </small>
+        </div>
       </div> <!-- END OF PANEL -->
 
       <div class="panel panel-primary">
@@ -142,88 +146,64 @@
 
     <br>
 
-    <div class="row">
-
-      <div class="col-lg-6 text-center">
-
-        @php
-        $travel_data = $site->getTravelData($site->lat, $site->lon);
-        echo "<small><p>Travel from<strong> Fife Office: </strong>" . $travel_data[2] . " <strong>(" . $travel_data[3] . ")</strong></p></small>";
-        @endphp
-        <br>
-
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        @include('partials.icons.system-icon') Systems ({{ $site->systems()->count() }})
       </div>
-
-      <div class="col-lg-6 text-center">
-
-        @php
-        $travel_data = $site->getTravelData($site->lat, $site->lon);
-        echo "<small><p>Travel from<strong> Portland Office: </strong>" . $travel_data[0] . " <strong>(" . $travel_data[1] . ")</strong></p></small>";
-        @endphp
-        <br>
-
-      </div>
-
-    </div>
-
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          @include('partials.icons.system-icon') Systems ({{ $site->systems()->count() }})
-        </div>
-
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th><small>Name</small></th>
-                <th><small>Type</small></th>
-                <th><small>Components</small></th>
-                <th><small>Last Test</small></th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach($site->systems as $system)
-              <tr>
-                <td><small><a href="{{ $system->path() }}">{{ $system->name }}</a></small></td>
-                <td><small>{{ $system->system_type->type }}</small></td>
-                <td><small>{{ $system->sumComponents() }}</small></td>
-                <td><small>{{ $system->getMostRecentTest() }}</small></td>
-              </tr>
-              @endforeach
-            </tbody>
-          </table>
-
-        <div class="panel-footer">
-
-          <button type="button" 
-            class="btn btn-default btn-xs" 
-            data-toggle="modal" 
-            data-target="#addSystemModal">
-            @include('partials.icons.add-icon')
-          </button>
-
-        </div>
-
-      </div> <!-- END OF PANEL -->
-
-      <div class="panel panel-info">
-      <div class="panel-heading">Jobs (0)</div>
 
         <table class="table table-condensed">
           <thead>
             <tr>
-              <th><small>Job #</small></th>
               <th><small>Name</small></th>
-              <th><small>Scope of Work</small></th>
-              <th><small>Stage</small></th>
+              <th><small>Type</small></th>
+              <th><small>Components</small></th>
+              <th><small>Last Test</small></th>
             </tr>
           </thead>
           <tbody>
+            @foreach($site->systems as $system)
+            <tr>
+              <td><small><a href="{{ $system->path() }}">{{ $system->name }}</a></small></td>
+              <td><small>{{ $system->system_type->type }}</small></td>
+              <td><small>{{ $system->sumComponents() }}</small></td>
+              <td><small>{{ $system->getMostRecentTest() }}</small></td>
+            </tr>
+            @endforeach
           </tbody>
         </table>
 
-      <div class="panel-body"></div>
+      <div class="panel-footer">
 
-      </div> <!-- END OF PANEL -->
+        <button type="button" 
+          class="btn btn-default btn-xs" 
+          data-toggle="modal" 
+          data-target="#addSystemModal">
+          @include('partials.icons.add-icon')
+        </button>
+
+      </div>
+
+    </div> <!-- END OF PANEL -->
+
+    <div class="panel panel-info">
+    <div class="panel-heading">Jobs (0)</div>
+
+      <table class="table table-condensed">
+        <thead>
+          <tr>
+            <th><small>Job #</small></th>
+            <th><small>Name</small></th>
+            <th><small>Scope of Work</small></th>
+            <th><small>Stage</small></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    <div class="panel-body"></div>
+
+    </div> <!-- END OF PANEL -->
 
     </div> <!-- END OF COL-9 -->
 

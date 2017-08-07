@@ -140,22 +140,6 @@
                             {{ csrf_field() }}
                         </form>
                     </li>                    
-                    <li>
-                        <a href="#">
-                            New Manufacturer
-                        </a>
-                        <form id="profile-form" method="GET" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>                    
-                    <li>
-                        <a href="#">
-                            New Component
-                        </a>
-                        <form id="profile-form" method="GET" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
                 </ul>
             </li>
             <li class="dropdown">

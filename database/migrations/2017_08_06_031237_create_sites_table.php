@@ -18,6 +18,7 @@ class CreateSitesTable extends Migration {
 			$table->integer('customer_id')->index('FK_sites_customers');
 			$table->integer('branch_office_id')->unsigned()->nullable()->index('FK_sites_branch_offices');
 			$table->string('name', 150)->nullable();
+			$table->string('slug')->nullable();
 			$table->string('address1', 150)->nullable();
 			$table->string('address2', 150)->nullable();
 			$table->string('address3', 150)->nullable();

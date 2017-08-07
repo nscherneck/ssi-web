@@ -14,7 +14,7 @@ class CreateSystemTypesTable extends Migration {
 	{
 		Schema::create('system_types', function(Blueprint $table)
 		{
-			$table->boolean('id')->primary();
+			$table->integer('id', true);
 			$table->string('type', 150);
 			$table->boolean('test_interval')->nullable();
 			$table->timestamps();

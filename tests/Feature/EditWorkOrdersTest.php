@@ -11,7 +11,6 @@ class EditWorkOrdersTest extends TestCase
 
 	use DatabaseMigrations;
 
-    /** @test */
     public function a_user_can_edit_a_work_order()
     {
     	$this->signIn();

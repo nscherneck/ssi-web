@@ -12,7 +12,6 @@ class CreateWorkOrdersTest extends TestCase
 
 	use DatabaseMigrations;
 
-    /** @test */
     public function guests_cannot_create_a_work_order()
     {
         $this->withExceptionHandling();
@@ -21,7 +20,6 @@ class CreateWorkOrdersTest extends TestCase
             ->assertRedirect('/login');
     }
 
-    /** @test */
     public function an_authenticated_user_can_create_a_work_order()
     {
         $this->signIn();
@@ -35,7 +33,6 @@ class CreateWorkOrdersTest extends TestCase
             ->assertSee($workOrder->scope_of_work);
     }
 
-    /** @test */
     public function a_work_order_requires_a_title()
     {
         $this->createWorkOrder(['title' => null])
@@ -54,7 +51,6 @@ class CreateWorkOrdersTest extends TestCase
     	return $this->post('/workorders', $workOrder->toArray());
     }
 
-    /** @test */
     public function an_authenticated_user_can_view_all_work_orders()
     {
     	$workOrder = create('App\WorkOrder');
