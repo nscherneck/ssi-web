@@ -1,38 +1,36 @@
 <?php
 namespace App;
 
-use DB;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Customer extends Model
 {
-
     use LogsActivity;
 
     protected $with = ['state'];
 
     protected $dates = [
-        'created_at', 
+        'created_at',
         'updated_at'
         ];
 
     protected $fillable = [
         'name',
         'slug',
-        'address1', 
-        'address2', 
-        'address3', 
-        'city', 
-        'state_id', 
-        'zip', 
-        'phone', 
-        'fax', 
-        'web', 
-        'email', 
-        'notes', 
-        'added_by', 
-        'updated_by', 
+        'address1',
+        'address2',
+        'address3',
+        'city',
+        'state_id',
+        'zip',
+        'phone',
+        'fax',
+        'web',
+        'email',
+        'notes',
+        'added_by',
+        'updated_by',
         'updated_at'
         ];
 
@@ -53,17 +51,17 @@ class Customer extends Model
         });
     }
 
-    public function sites() 
+    public function sites()
     {
         return $this->hasMany('App\Site')->orderBy('name', 'asc');
     }
 
-    public function state() 
+    public function state()
     {
         return $this->belongsTo('App\State');
     }
 
-    public function systems() 
+    public function systems()
     {
         return $this->hasManyThrough('App\System', 'App\Site');
     }
@@ -94,5 +92,4 @@ class Customer extends Model
         return $this->updated_at->setTimezone('America/Los_Angeles')
             ->format('F j, Y, g:i a');
     }
-
 }

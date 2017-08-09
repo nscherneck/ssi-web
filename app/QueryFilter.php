@@ -4,9 +4,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-abstract class QueryFilter 
+abstract class QueryFilter
 {
-
     protected $request;
     protected $builder;
 
@@ -30,12 +29,11 @@ abstract class QueryFilter
             }
         }
 
-    return $this->builder;
+        return $this->builder;
     }
 
     public function filters()
     {
         return $this->request->all();
     }
-
 }

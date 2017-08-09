@@ -5,8 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class State extends Model
 {
-
-    public $timestamps = false;    
+    public $timestamps = false;
 
     public function customers()
     {
@@ -22,5 +21,4 @@ class State extends Model
     {
         return $this->hasMany('App\Manufacturer');
     }
-    
 }

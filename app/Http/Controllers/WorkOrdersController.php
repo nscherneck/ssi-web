@@ -6,14 +6,11 @@ use App\Site;
 use App\User;
 use App\Customer;
 use App\WorkOrder;
-use Carbon\Carbon;
-use App\WorkOrderNumber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class WorkOrdersController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -31,7 +28,7 @@ class WorkOrdersController extends Controller
         $customers = Customer::orderBy('name')->get();
         $workOrderTypes = DB::table('work_order_types')->get();
         $technicians = User::orderBy('first_name')->get();
-        return view('workorders.create', compact('customers', 'workOrderTypes', 'technicians'));       
+        return view('workorders.create', compact('customers', 'workOrderTypes', 'technicians'));
     }
 
     public function store(Request $request)
@@ -40,7 +37,7 @@ class WorkOrdersController extends Controller
             'title' => 'required',
             'scope_of_work' => 'required'
             ]);
-        
+
         // see app/Observers/WorkOrderObserver@creating for additional fields
         $workOrder = WorkOrder::create([
             'type_id' => request('type_id'),
@@ -84,6 +81,6 @@ class WorkOrdersController extends Controller
             ->orderBy('name')
             ->get();
 
-        return $sites;        
+        return $sites;
     }
 }

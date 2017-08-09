@@ -1,11 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Component;
 use App\Customer;
-use App\Document;
-use App\Http\Requests;
-use App\Photo;
 use App\Site;
 use App\System;
 use App\System_type;
@@ -13,19 +9,17 @@ use App\Test;
 use App\Test_result;
 use Carbon\Carbon;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Spatie\Activitylog\Models\Activity;
 
 class PagesController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
+
     public function home()
     {
         $activityItems = Activity::with(['causer', 'subject'])
@@ -35,17 +29,17 @@ class PagesController extends Controller
 
         return view('home.show', compact('activityItems'));
     }
-    
+
     public function customer()
     {
         return view('customer');
     }
-    
+
     public function engineering()
     {
         return view('engineering');
     }
-    
+
     public function jobs()
     {
         if (Cache::has('customers')) {
@@ -57,7 +51,7 @@ class PagesController extends Controller
         return $customers;
         // return view('jobs');
     }
-    
+
     public function serviceHome()
     {
         $customers = Customer::orderBy('name')->get();
@@ -80,29 +74,35 @@ class PagesController extends Controller
         $endDate = $startDateRaw->addMonthsNoOverflow(3)
             ->endOfMonth()
             ->toDateString();
-        
+
         $systemsDueForTest = System::orderBy('next_test_date', 'asc')
             ->with('site.customer', 'system_type')
-            ->where('next_test_date', '!=', NULL)
+            ->where('next_test_date', '!=', null)
             ->whereBetween('next_test_date', [$startDate, $endDate])
             ->get();
-        
-        return view('service.home', compact(
-            'customers', 'testResults', 'systemTypes', 'tests', 'systemsDueForTest')
-            );
-    }    
+
+        return view(
+            'service.home',
+            compact(
+                'customers',
+                'testResults',
+                'systemTypes',
+                'tests',
+                'systemsDueForTest'
+            )
+        );
+    }
 
     public function serviceMetrics()
     {
-        
+
         // tests by month, trailing 12 bar chart
         $testsTotalTrailingTwelve = [];
         for ($b = 0; $b <= 11; $b++) {
-            
             $startDate = Carbon::now('America/Los_Angeles')->subMonthsNoOverflow($b)
                 ->startOfMonth()
                 ->toDateString();
-            
+
             if ($b === 0) {
                 $endDate = Carbon::now('America/Los_Angeles')->endOfMonth()
                     ->toDateString();
@@ -111,7 +111,7 @@ class PagesController extends Controller
                     ->endOfMonth()
                     ->toDateString();
             }
-            
+
             $testsTotalTrailingTwelve[] = Test::orderBy('test_date', 'desc')
                 ->whereBetween('test_date', [$startDate, $endDate])
                 ->count();
@@ -121,23 +121,24 @@ class PagesController extends Controller
 
         $systems = System::get();
 
-        return view('service.metrics', compact(
-            'testsTotalTrailingTwelve',
-            'systemTypes',
-            'systems'
+        return view(
+            'service.metrics',
+            compact(
+                'testsTotalTrailingTwelve',
+                'systemTypes',
+                'systems'
             )
         );
     }
-    
+
     public function docs()
     {
         return view('docs');
     }
-    
+
     public function admin()
     {
         $states = DB::table('states')->get();
         return view('admin', compact('states'));
     }
-
 }

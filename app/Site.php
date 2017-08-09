@@ -2,55 +2,53 @@
 namespace App;
 
 use DB;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Site extends Model
 {
-  
     use LogsActivity;
 
     protected $with = ['state', 'customer'];
 
     protected $dates = [
-        'created_at', 
+        'created_at',
         'updated_at'
         ];
     protected $fillable =  [
         'name',
         'slug',
-        'address1', 
-        'address2', 
-        'city', 
-        'state_id', 
+        'address1',
+        'address2',
+        'city',
+        'state_id',
         'zip',
         'branch_office_id',
-        'lat', 
-        'lon', 
-        'phone', 
-        'fax', 
-        'notes', 
-        'added_by', 
-        'updated_by', 
+        'lat',
+        'lon',
+        'phone',
+        'fax',
+        'notes',
+        'added_by',
+        'updated_by',
         'updated_at'
         ];
     protected static $logAttributes = [
         'notes'
         ];
 
-    public function customer() 
+    public function customer()
     {
         return $this->belongsTo('App\Customer');
     }
 
-    public function systems() 
+    public function systems()
     {
         return $this->hasMany('App\System')
         ->orderBy('name', 'asc');
     }
 
-    public function system_types() 
+    public function system_types()
     {
         return $this->hasManyThrough('App\System_type', 'App\System');
     }
@@ -65,7 +63,7 @@ class Site extends Model
         return $this->belongsTo('App\BranchOffice');
     }
 
-    public function photos() 
+    public function photos()
     {
         return $this->morphMany('App\Photo', 'photoable');
     }
@@ -97,7 +95,7 @@ class Site extends Model
             ->format('F j, Y, g:i a');
     }
 
-    public function count_systems($id) 
+    public function count_systems($id)
     {
         $systems_quantity = DB::table('systems')
         ->where('site_id', $id)
@@ -142,5 +140,4 @@ class Site extends Model
         return $this->created_at->setTimezone('America/Los_Angeles')
             ->format('D, F j');
     }
-
 }

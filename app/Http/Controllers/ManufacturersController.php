@@ -1,30 +1,27 @@
 <?php
 namespace App\Http\Controllers;
 
-use DB;
 use App\Manufacturer;
 use App\Component;
 use App\State;
-use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ManufacturersController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
         $manufacturers = Manufacturer::orderBy('name')->get();
         return view('manufacturers.index', compact('manufacturers'));
     }
-    
+
     public function store(Request $request)
-    {    
+    {
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'address1' => 'required|string|max:255',
@@ -33,7 +30,7 @@ class ManufacturersController extends Controller
             'zip' => 'required|string|max:20',
             'email' => 'email'
             ]);
-        
+
         $manufacturer = new Manufacturer;
         $manufacturer->name = $request->name;
         $manufacturer->address1 = $request->address1;
@@ -48,17 +45,17 @@ class ManufacturersController extends Controller
         $manufacturer->email = $request->email;
         $manufacturer->notes = $request->notes;
         $manufacturer->added_by = Auth::id();
-        
+
         $manufacturer->save();
-        
+
         flash('Success!', 'Manufacturer added.');
 
-        return redirect()->route('admin');    
+        return redirect()->route('admin');
     }
-    
+
     public function show(Request $request, Manufacturer $manufacturer)
     {
-        if($request->has('sort')) {
+        if ($request->has('sort')) {
             $components = Component::orderBy($request->sort)
                 ->where('manufacturer_id', $manufacturer->id)
                 ->get();
@@ -72,9 +69,9 @@ class ManufacturersController extends Controller
 
         return view('manufacturers.show', compact('manufacturer', 'components', 'states'));
     }
-    
+
     public function update(Request $request, Manufacturer $manufacturer)
-    {    
+    {
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'address1' => 'required|string|max:255',
@@ -83,7 +80,7 @@ class ManufacturersController extends Controller
             'zip' => 'required|string|max:20',
             'email' => 'email'
             ]);
-        
+
         $manufacturer->name = $request->name;
         $manufacturer->address1 = $request->address1;
         $manufacturer->address2 = $request->address2;
@@ -97,12 +94,11 @@ class ManufacturersController extends Controller
         $manufacturer->email = $request->email;
         $manufacturer->notes = $request->notes;
         $manufacturer->updated_by = Auth::id();
-        
+
         $manufacturer->save();
-        
+
         flash('Success!', 'Manufacturer updated', 'success');
 
-        return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);    
+        return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);
     }
-
 }

@@ -5,16 +5,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-
     protected $fillable = [
-    'path', 
-    'description', 
-    'documentable_id', 
-    'documentable_type', 
-    'added_by', 
-    'updated_by', 
-    'ext', 
-    'file_name'
+        'path',
+        'description',
+        'documentable_id',
+        'documentable_type',
+        'added_by',
+        'updated_by',
+        'ext',
+        'file_name'
     ];
 
     public function documentable()
@@ -31,5 +30,4 @@ class Document extends Model
     {
         return $this->belongsTo('App\User', 'updated_by');
     }
-
 }

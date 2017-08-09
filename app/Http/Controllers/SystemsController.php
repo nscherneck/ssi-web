@@ -1,9 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\BranchOffice;
-use App\Customer;
-use App\Http\Requests;
 use App\Photo;
 use App\Site;
 use App\System;
@@ -16,7 +13,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class SystemsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -30,7 +26,7 @@ class SystemsController extends Controller
 
         return view('systems.index', compact('systems'));
     }
-    
+
     public function show(System $system)
     {
         $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
@@ -41,15 +37,17 @@ class SystemsController extends Controller
         $system_types = DB::table('system_types')->orderBy('type')->get();
         $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();
 
-        return view('systems.show', compact(
-            'now', 
-            'system', 
-            'test_types', 
-            'test_results', 
-            'technicians', 
-            'manufacturers', 
-            'system_types', 
-            'photos'
+        return view(
+            'systems.show',
+            compact(
+                'now',
+                'system',
+                'test_types',
+                'test_results',
+                'technicians',
+                'manufacturers',
+                'system_types',
+                'photos'
             )
         );
     }
@@ -62,7 +60,7 @@ class SystemsController extends Controller
             'ssi_install' => 'required',
             'ssi_test_acct' => 'required',
             ]);
-        
+
         $system = new System;
         $system->site_id = $site->id;
         $system->name = $request->name;
@@ -73,14 +71,14 @@ class SystemsController extends Controller
         $system->ssi_test_acct = $request->ssi_test_acct;
         $system->notes = $request->notes;
         $system->added_by = Auth::id();
-        
+
         $system->save();
-        
+
         flash('Success!', 'System created.');
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
     }
-    
+
     public function update(Request $request, System $system)
     {
         $this->validate($request, [
@@ -98,20 +96,20 @@ class SystemsController extends Controller
         $system->ssi_test_acct = $request->ssi_test_acct;
         $system->notes = $request->notes;
         $system->updated_by = Auth::id();
-        
+
         $system->update();
-        
+
         flash('Success!', 'System updated.', 'Success');
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
     }
-    
-    public function updateNextTestDate(Request $request, System $system) 
+
+    public function updateNextTestDate(Request $request, System $system)
     {
         $system->next_test_date = $request->next_test_date;
 
         $system->save();
-        
+
         flash('Success!', 'Next test date updated.', 'success');
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
@@ -126,7 +124,7 @@ class SystemsController extends Controller
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
     }
-    
+
     public function destroy(System $system)
     {
         if (count($system->tests) > 0) {
@@ -140,5 +138,4 @@ class SystemsController extends Controller
         flash('Success!', 'System deleted.', 'danger');
         return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
     }
-
 }

@@ -9,13 +9,13 @@ class WorkOrder extends Model
 {
     use LogsActivity;
 
-	protected $guarded = [];
+    protected $guarded = [];
 
     protected $with = ['site', 'assignedTechnician'];
-	
+
     public function path()
     {
-    	return "/workorders/{$this->id}";
+        return "/workorders/{$this->id}";
     }
 
     public function site()
@@ -45,7 +45,7 @@ class WorkOrder extends Model
 
     public function type()
     {
-    	return $this->belongsTo('App\WorkOrderType');
+        return $this->belongsTo('App\WorkOrderType');
     }
 
     public function getFormattedCreatedAtAttribute()
@@ -53,5 +53,4 @@ class WorkOrder extends Model
         return $this->created_at->timezone('America/Los_Angeles')
             ->format('l, F j, Y - g:ha');
     }
-
 }

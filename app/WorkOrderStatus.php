@@ -10,6 +10,6 @@ class WorkOrderStatus extends Model
 
     public function workOrders()
     {
-    	return $this->hasMany('App\WorkOrder');
+        return $this->hasMany('App\WorkOrder');
     }
 }

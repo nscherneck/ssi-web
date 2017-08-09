@@ -5,8 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Manufacturer extends Model
 {
-
-    public function components() 
+    public function components()
     {
         return $this->hasMany('App\Component')->orderBy('model', 'asc');
     }
@@ -42,5 +41,4 @@ class Manufacturer extends Model
         return $this->created_at->setTimezone('America/Los_Angeles')
             ->format('F j, Y, g:i a');
     }
-
 }

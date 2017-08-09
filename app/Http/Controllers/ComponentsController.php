@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Customer;
 use App\Site;
 use App\System;
@@ -16,54 +15,54 @@ use Illuminate\Support\Facades\Redirect;
 
 class ComponentsController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
-    public function add(System $system) {
+
+    public function add(System $system)
+    {
         $site = Site::find($system->site_id);
         $customer = Customer::with('sites.systems.components')->find($site->customer_id);
         $manufacturers = DB::table('manufacturers')
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('components.add', compact(
-          'customer', 
-          'site', 
-          'system', 
-          'component', 
-          'manufacturers'
-          )
-        );    
-    }    
-    
-    public function store(Request $request) 
+        return view(
+            'components.add',
+            compact(
+                'customer',
+                'site',
+                'system',
+                'component',
+                'manufacturers'
+            )
+        );
+    }
+
+    public function store(Request $request)
     {
-    
         $this->validate($request, [
             'manufacturer_id' => 'required',
             'model' => 'required|unique:components|max:150',
             'component_category_id' => 'required',
             'description' => 'required'
             ]);
-    
+
         $component = new Component;
         $component->manufacturer_id = $request->manufacturer_id;
         $component->model = $request->model;
         $component->component_category_id = $request->component_category_id;
         $component->description = $request->description;
         $component->discontinued = $request->discontinued;
-        
+
         $component->save();
 
         flash('Success!', 'Component created.', 'success');
 
         return redirect()->route('admin');
-    
     }
-    
+
     public function create()
     {
         $manufacturers = DB::table('manufacturers')
@@ -75,8 +74,8 @@ class ComponentsController extends Controller
 
         return view('components.create', compact('manufacturers', 'component_categories'));
     }
-    
-    public function getModelForAttachComponentModal(Request $request) 
+
+    public function getModelForAttachComponentModal(Request $request)
     {
         // ajax call for model form select
         $manufacturer = Manufacturer::find($request->manufacturer_id);
@@ -86,25 +85,25 @@ class ComponentsController extends Controller
 
         return $components;
     }
-    
-    public function attach(Request $request, System $system) 
+
+    public function attach(Request $request, System $system)
     {
-        $system->attachComponent($request->component_id, $request->quantity, $request->name);     
-        
+        $system->attachComponent($request->component_id, $request->quantity, $request->name);
+
         flash('Success!', 'Component attached.');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);    
+        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
     }
-    
+
     public function detach(System $system, $attachedComponentPivotId)
     {
         $system->detachComponent($attachedComponentPivotId);
-        
+
         flash('Success!', 'Component removed.', 'success');
 
         return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
     }
-    
+
     public function show(Component $component)
     {
         $documents = Document::orderBy('file_name', 'desc')
@@ -114,14 +113,16 @@ class ComponentsController extends Controller
         $component_categories = DB::table('component_category')
             ->orderBy('name', 'asc')
             ->get();
-        return view('components.show', compact(
-          'component', 
-          'documents', 
-          'component_categories'
-          )
+        return view(
+            'components.show',
+            compact(
+                'component',
+                'documents',
+                'component_categories'
+            )
         );
     }
-    
+
     public function update(Request $request, Component $component)
     {
         $component->model = $request->model;
@@ -129,10 +130,10 @@ class ComponentsController extends Controller
         $component->component_category_id = $request->component_category_id;
         $component->discontinued = $request->discontinued;
         $component->save();
-        
+
         flash('Success!', 'Component updated.', 'success');
 
-        return redirect()->route('component_show', ['id' => $component->id]);    
+        return redirect()->route('component_show', ['id' => $component->id]);
     }
 
 
@@ -148,7 +149,6 @@ class ComponentsController extends Controller
         $manufacturer = $component->manufacturer;
         $component->delete();
         flash('Success!', 'Component deleted.', 'danger');
-        return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);  
+        return redirect()->route('manufacturer_show', ['id' => $manufacturer->id]);
     }
-
 }

@@ -3,42 +3,38 @@ namespace App\Http\Controllers;
 
 use App\BranchOffice;
 use App\Customer;
-use App\Http\Requests;
-use App\Site;
 use App\State;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redirect;
 
 class CustomersController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
-    
+
     public function index()
     {
-        $customers = Customer::orderBy('name')->get();        
+        $customers = Customer::orderBy('name')->get();
         return view('customers.index', compact('customers'));
     }
-    
+
     public function show(Customer $customer)
     {
         $states = State::all();
         $branchOffices = BranchOffice::all();
         return view('customers.show', compact('customer', 'states', 'branchOffices'));
     }
-    
+
     public function create()
     {
         $states = DB::table('states')->get();
         return view('customers.add', compact('states'));
     }
-    
+
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -55,7 +51,7 @@ class CustomersController extends Controller
             'email' => 'nullable|email',
             'notes' => 'nullable'
             ]);
-        
+
         $customer = new Customer;
         $customer->name = $request->name;
         $customer->slug = str_slug($customer->name, '-');
@@ -71,17 +67,16 @@ class CustomersController extends Controller
         $customer->email = $request->email;
         $customer->notes = $request->notes;
         $customer->added_by = Auth::id();
-        
+
         $customer->save();
-        
+
         flash('Success!', 'Customer created.');
 
         return redirect()->route('customer_show', ['customer' => $customer->id, 'slug' => $customer->slug]);
     }
-    
+
     public function update(Request $request, Customer $customer)
     {
-    
         $this->validate($request, [
             'name' => 'required|unique:customers|string|max:255',
             'address1' => 'required|string|max:255',
@@ -90,7 +85,7 @@ class CustomersController extends Controller
             'zip' => 'required|string|max:20',
             'email' => 'email'
             ]);
-        
+
         $customer->name = $request->name;
         $customer->slug = str_slug($customer->name, '-');
         $customer->address1 = $request->address1;
@@ -105,14 +100,14 @@ class CustomersController extends Controller
         $customer->email = $request->email;
         $customer->notes = $request->notes;
         $customer->updated_by = Auth::id();
-        
+
         $customer->update();
-        
+
         flash('Success!', 'Customer updated.', 'success');
 
         return redirect()->route('customer_show', ['customer' => $customer->id, 'slug' => $customer->slug]);
     }
-    
+
     public function destroy(Customer $customer)
     {
         if (count($customer->sites) > 0) {
@@ -124,5 +119,4 @@ class CustomersController extends Controller
         flash('Success!', 'Customer deleted.', 'danger');
         return redirect()->route('customers');
     }
-
 }

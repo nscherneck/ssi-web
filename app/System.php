@@ -7,29 +7,28 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class System extends Model
 {
-
     use LogsActivity;
 
     protected $with = ['site', 'tests', 'system_type', 'components'];
 
     protected $dates = [
-        'install_date', 
+        'install_date',
         'next_test_date',
-        'created_at', 
+        'created_at',
         'updated_at'
         ];
 
     protected $fillable = [
-        'system_type_id', 
+        'system_type_id',
         'name',
         'slug',
-        'install_date', 
-        'ssi_install', 
-        'ssi_test_acct', 
-        'next_test_date', 
+        'install_date',
+        'ssi_install',
+        'ssi_test_acct',
+        'next_test_date',
         'notes',
         'added_by',
-        'updated_by', 
+        'updated_by',
         'updated_at'
         ];
 
@@ -42,29 +41,29 @@ class System extends Model
         'next_test_date'
         ];
 
-    public function site() 
+    public function site()
     {
         return $this->belongsTo('App\Site');
     }
 
-    public function components() 
+    public function components()
     {
         return $this->belongsToMany('App\Component', 'components_systems', 'system_id', 'component_id')
             ->withPivot('quantity', 'name', 'id')
             ->orderBy('model', 'asc');
     }
 
-    public function tests() 
+    public function tests()
     {
         return $this->hasMany('App\Test')->orderBy('test_date', 'desc');
     }
 
-    public function system_type() 
+    public function system_type()
     {
         return $this->belongsTo('App\System_type');
     }
 
-    public function photos() 
+    public function photos()
     {
         return $this->morphMany('App\Photo', 'photoable');
     }
@@ -88,9 +87,9 @@ class System extends Model
     {
         $this->components()
             ->attach($component, [
-              'quantity' => $quantity, 
+              'quantity' => $quantity,
               'name' => $name
-              ]);   
+              ]);
     }
 
     public function detachComponent($attachedComponentPivotId)
@@ -127,11 +126,13 @@ class System extends Model
             ->format('F j, Y, g:i a');
     }
 
-    public function getMostRecentTest() 
+    public function getMostRecentTest()
     {
         $test_count = $this->tests->count();
 
-        if ($test_count == 0) return '';
+        if ($test_count == 0) {
+            return '';
+        }
 
         $result = $this->tests()
                 ->orderBy('test_date', 'desc')
@@ -140,12 +141,12 @@ class System extends Model
                 ->format('M j, Y');
     }
 
-    public function getComponent($component_category_id) 
+    public function getComponent($component_category_id)
     {
         $result = $this->components()
             ->where('component_category_id', '=', $component_category_id)
             ->get();
-        
+
         return $result;
     }
 
@@ -174,7 +175,6 @@ class System extends Model
         $a1 = $a->selectRaw($a->getForeignKey() . ', sum(quantity)')
                 ->groupBy($a->getForeignKey());
 
-        return $a1;        
+        return $a1;
     }
-
 }

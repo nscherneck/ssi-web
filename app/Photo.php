@@ -1,29 +1,27 @@
 <?php
 namespace App;
 
-use App\System;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Photo extends Model
 {
-    
     use LogsActivity;
 
     protected $dates = [
-        'updated_at', 
+        'updated_at',
         'created_at'
     ];
 
     protected $fillable = [
-        'caption', 
-        'photoable_id', 
-        'photoable_type', 
-        'path', 
-        'file_name', 
-        'ext', 
-        'added_by', 
+        'caption',
+        'photoable_id',
+        'photoable_type',
+        'path',
+        'file_name',
+        'ext',
+        'added_by',
         'updated_by'
     ];
 
@@ -58,5 +56,4 @@ class Photo extends Model
         return $this->created_at->setTimezone('America/Los_Angeles')
             ->format('F j, Y, g:i a');
     }
-
 }
