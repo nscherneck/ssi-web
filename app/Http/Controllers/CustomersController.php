@@ -22,19 +22,6 @@ class CustomersController extends Controller
         return view('customers.index', compact('customers'));
     }
 
-    public function show(Customer $customer)
-    {
-        $states = State::all();
-        $branchOffices = BranchOffice::all();
-        return view('customers.show', compact('customer', 'states', 'branchOffices'));
-    }
-
-    public function create()
-    {
-        $states = DB::table('states')->get();
-        return view('customers.add', compact('states'));
-    }
-
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -73,6 +60,13 @@ class CustomersController extends Controller
         flash('Success!', 'Customer created.');
 
         return redirect($customer->path());
+    }
+
+    public function show(Customer $customer)
+    {
+        $states = State::all();
+        $branchOffices = BranchOffice::all();
+        return view('customers.show', compact('customer', 'states', 'branchOffices'));
     }
 
     public function update(Request $request, Customer $customer)
@@ -117,6 +111,6 @@ class CustomersController extends Controller
 
         $customer->delete();
         flash('Success!', 'Customer deleted.', 'danger');
-        return redirect()->route('customers');
+        return redirect()->route('customers.index');
     }
 }

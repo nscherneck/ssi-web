@@ -21,7 +21,7 @@
           <span>Note: You won't be able to delete a Customer that contains Sites.</span>
         </p>
 
-          <form action="/customer/{{ $customer->id }}/delete" method="post" accept-charset="UTF-8">
+          <form action="/customers/{{ $customer->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 

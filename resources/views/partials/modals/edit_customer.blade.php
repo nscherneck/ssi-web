@@ -19,7 +19,7 @@
 
         <div class="form-group">
 
-          <form action="/customer/{{ $customer->id }}/update" method="POST">
+          <form action="/customers/{{ $customer->id }}" method="POST">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="_method" value="put">

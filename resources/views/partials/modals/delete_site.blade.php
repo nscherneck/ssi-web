@@ -21,7 +21,7 @@
           <span>Note: You won't be able to delete a Site that contains Systems.</span>
         </p>
 
-          <form action="/site/{{ $site->id }}/delete" method="post" accept-charset="UTF-8">
+          <form action="/sites/{{ $site->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 

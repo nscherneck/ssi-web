@@ -10,7 +10,7 @@
       </div>
       <div class="modal-body">
 
-        <form action="/customers/{{ $customer->id }}/site/create" method="POST">
+        <form action="/customers/{{ $customer->id }}/sites" method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

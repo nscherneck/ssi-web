@@ -21,7 +21,7 @@
           <span>Note: You won't be able to delete a System that contains Tests.</span>
         </p>
 
-          <form action="/system/{{ $system->id }}/delete" method="post" accept-charset="UTF-8">
+          <form action="/systems/{{ $system->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 
