@@ -42,9 +42,7 @@ class PhotosController extends Controller
         // save model
         $photo->save();
 
-        // get instance of file
         $file = $this->getUploadedFile();
-        // pass in the file and the model
         $this->saveImageFiles($file, $photo);
 
         flash('Success!', 'Photo added.');
@@ -72,9 +70,9 @@ class PhotosController extends Controller
 
     public function rotateLeft(System $system, Photo $photo)
     {
-        $this->rotateImage($system, $photo, 90);
-        $photo->file_name = $this->imageName;
+        $this->rotateImages($system, $photo, 90);
 
+        $photo->file_name = $this->imageName;
         $photo->save();
 
         return back();
@@ -82,9 +80,9 @@ class PhotosController extends Controller
 
     public function rotateRight(System $system, Photo $photo)
     {
-        $this->rotateImage($system, $photo, -90);
-        $photo->file_name = $this->imageName;
+        $this->rotateImages($system, $photo, -90);
 
+        $photo->file_name = $this->imageName;
         $photo->save();
 
         return back();

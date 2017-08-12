@@ -93,7 +93,7 @@ trait ManagesImages
     }
 
 
-    private function saveImageFiles(UploadedFile $file, $model)
+    private function saveImageFiles($file, $model)
     {
 
         $this->setImageFile($file);
@@ -141,13 +141,11 @@ trait ManagesImages
 
     private function setImageProperties()
     {
-
         foreach ($this->imageDefaults as $propertyName => $propertyValue) {
           if (property_exists($this, $propertyName)) {
               $this->$propertyName = $propertyValue;
           }
         }
-
     }
 
 
@@ -160,23 +158,47 @@ trait ManagesImages
 
     // IMAGE UPDATES
 
-    private function rotateImage($system, $photo, $degrees)
+    private function rotateImages($system, $photo, $degrees)
     {
-
       $this->setFileName($system);
+      $this->rotateFullSizeImage($photo, $degrees);
+      $this->rotateThumbnailImage($photo, $degrees);
+    }
 
-      $rawPhoto = Image::make(Storage::get($photo->path . '/' . $photo->file_name . '.' . $photo->ext));
-      $photoToSave = $rawPhoto->rotate($degrees)->stream();
-      Storage::delete($photo->path . '/' . $photo->file_name . '.' . $photo->ext);
-      Storage::put($photo->path . '/' . $this->imageName . '.' . $photo->ext, $photoToSave->__toString());
-      Storage::setVisibility($photo->path . '/' . $this->imageName . '.' . $photo->ext, 'public');
+    private function rotateFullSizeImage($photo, $degrees)
+    {
+        $fullFilePath = "{$photo->path}/{$photo->file_name}.{$photo->ext}";
+        $fullFilePathWithUpdatedFileName = "{$photo->path}/{$this->imageName}.{$photo->ext}";
+        $fileFromStorage = Storage::get($fullFilePath);
+        $imageInstance = Image::make($fileFromStorage);
+        $streamedImage = $imageInstance->rotate($degrees)->stream();
+        Storage::delete($fullFilePath);
+        Storage::put(
+            $fullFilePathWithUpdatedFileName,
+            $streamedImage->__toString()
+        );
+        Storage::setVisibility(
+            $fullFilePathWithUpdatedFileName,
+            'public'
+        );
+    }
 
-      $rawThumb = Image::make(Storage::get($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext));
-      $thumbToSave = $rawThumb->rotate($degrees)->resize($this->thumbWidth, $this->thumbHeight)->stream();
-      Storage::delete($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $photo->file_name . '.' . $photo->ext);
-      Storage::put($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $this->imageName . '.' . $photo->ext, $thumbToSave->__toString());
-      Storage::setVisibility($photo->path . '/' . 'thumbnails' . '/' . 'thumb-' . $this->imageName . '.' . $photo->ext, 'public');
-
+    private function rotateThumbnailImage($photo, $degrees)
+    {
+        $fullFilePath = "{$photo->path}/thumbnails/thumb-{$photo->file_name}.{$photo->ext}";
+        $fullFilePathWithUpdatedFileName = "{$photo->path}/thumbnails/thumb-{$this->imageName}.{$photo->ext}";
+        $fileFromStorage = Storage::get($fullFilePath);
+        $imageInstance = Image::make($fileFromStorage);
+        $streamedImage = $imageInstance->rotate($degrees)->stream();
+        Storage::delete($fullFilePath);
+        Storage::put(
+            $fullFilePathWithUpdatedFileName,
+            $streamedImage->__toString()
+        );
+        Storage::setVisibility(
+            $fullFilePathWithUpdatedFileName,
+            'public'
+        );
     }
 
 

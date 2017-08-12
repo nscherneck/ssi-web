@@ -100,7 +100,9 @@ Route::put('tests/document/{document}', 'Documents\TestDocumentsController@updat
 Route::delete('tests/document/{document}', 'Documents\TestDocumentsController@destroy');
 
 // PHOTO ROUTES
-Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');
+// Route::prefix('systems')->group(function () {
+//     Route::resource('photos', 'Photos\SystemPhotosController');
+// });
 Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
 Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto')->name('system_photo_show');;
 Route::put('system/photo/{photo}', 'PhotosController@update');
