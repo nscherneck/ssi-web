@@ -37,12 +37,6 @@ class ComponentDocumentsController extends \App\Http\Controllers\Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Component $component)
     {
         $folder = 'customer-data/component_documents';

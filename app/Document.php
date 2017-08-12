@@ -30,4 +30,9 @@ class Document extends Model
     {
         return $this->belongsTo('App\User', 'updated_by');
     }
+
+    public function getFullDocumentNameAttribute()
+    {
+        return $this->file_name . '.' . $this->ext;
+    }
 }

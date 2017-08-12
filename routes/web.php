@@ -50,6 +50,9 @@ Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
 Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
 Route::put('system/{system}/nullify_next_test_date', 'SystemsController@nullifyNextTestDate');
+Route::post('systems/{system}/document', 'Documents\SystemDocumentsController@store');
+Route::put('systems/document/{document}', 'Documents\SystemDocumentsController@update');
+Route::delete('systems/document/{document}', 'Documents\SystemDocumentsController@destroy');
 
 // MANUFACTURER AND COMPONENT ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');

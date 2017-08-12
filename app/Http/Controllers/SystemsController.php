@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Photo;
-use App\Site;
-use App\System;
-use App\Test;
-use Carbon\Carbon;
 use DB;
+use App\Site;
+use App\Test;
+use App\Photo;
+use App\System;
+use App\Document;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -36,6 +37,10 @@ class SystemsController extends Controller
         $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
         $system_types = DB::table('system_types')->orderBy('type')->get();
         $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();
+        $documents = Document::orderBy('file_name', 'desc')
+            ->where('documentable_id', $system->id)
+            ->where('documentable_type', 'App\System')
+            ->get();
 
         return view(
             'systems.show',
@@ -47,7 +52,8 @@ class SystemsController extends Controller
                 'technicians',
                 'manufacturers',
                 'system_types',
-                'photos'
+                'photos',
+                'documents'
             )
         );
     }

@@ -57,15 +57,15 @@
           <hr>
 
       <div class="text-center">
-          <button type="button" 
-            class="btn btn-default btn-xs" 
-            data-toggle="modal" 
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
             data-target="#updateNextTestDateModal">
             @include('partials.icons.edit-icon')
           </button>
-          <button type="button" 
-            class="btn btn-default btn-xs" 
-            data-toggle="modal" 
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
             data-target="#nullifyNextTestDateModal">
             @include('partials.icons.delete-icon')
           </button>
@@ -107,15 +107,15 @@
 
     <div class="text-center">
 
-      <button type="button" 
-        class="btn btn-default btn-xs" 
-        data-toggle="modal" 
+      <button type="button"
+        class="btn btn-default btn-xs"
+        data-toggle="modal"
         data-target="#updateSystemModal">
         @include('partials.icons.edit-icon')
       </button>
-      <button type="button" 
-        class="btn btn-default btn-xs" 
-        data-toggle="modal" 
+      <button type="button"
+        class="btn btn-default btn-xs"
+        data-toggle="modal"
         data-target="#deleteSystemModal">
         @include('partials.icons.delete-icon')
       </button>
@@ -146,9 +146,9 @@
         @include('systems.partials.components_tables.agent_tanks_table')
       @endif
 
-  <button type="button" 
-    class="btn btn-default btn-xs" 
-    data-toggle="modal" 
+  <button type="button"
+    class="btn btn-default btn-xs"
+    data-toggle="modal"
     data-target="#attachComponentModal">
     @include('partials.icons.add-icon')
   </button>
@@ -185,9 +185,9 @@
 
     <div class="panel-footer text-left">
 
-      <button type="button" 
-        class="btn btn-default btn-xs" 
-        data-toggle="modal" 
+      <button type="button"
+        class="btn btn-default btn-xs"
+        data-toggle="modal"
         data-target="#addTestModal">
         @include('partials.icons.add-icon')
       </button>
@@ -196,37 +196,7 @@
 
   </div> <!-- END OF PANEL -->
 
-  <div class="panel panel-info">
-  <div class="panel-heading">
-    @include('partials.icons.document-icon') System Documents
-  </div>
-
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th><small>Name</small></th>
-          <th><small>-</small></th>
-          <th><small>-</small></th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-
-  <div class="panel-body"></div>
-
-  <div class="panel-footer text-left">
-
-    <button type="button" 
-      class="btn btn-default btn-xs" 
-      data-toggle="modal" 
-      data-target="#addSystemDocumentModal">
-      @include('partials.icons.add-icon')
-    </button>
-
-  </div>
-
-  </div> <!-- END OF PANEL -->
+  @include('systems.partials.documents_panel')
 
   <!-- PHOTOS PANEL -->
 
@@ -235,7 +205,7 @@
           @include('partials.icons.photo-icon') System Photos ({{ count($system->photos) }})
         </div>
         <div class="panel-body text-center">
-          
+
           @if ($photos->count() > 0)
 
             @foreach ($photos as $photo)
@@ -261,10 +231,10 @@
 
         <div class="panel-footer text-left">
 
-          <button 
-            type="button" 
-            class="btn btn-default btn-xs" 
-            data-toggle="modal" 
+          <button
+            type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
             data-target="#addSystemPhotoModal">
             @include('partials.icons.add-icon')
           </button>
@@ -290,5 +260,6 @@
 @include('partials.modals.attach_component')
 @include('partials.modals.add_test')
 @include('partials.modals.add_system_photo')
+@include('partials.modals.add_system_document')
 
 @stop

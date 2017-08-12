@@ -61,66 +61,7 @@
 
   </div> <!--          END OF ROW         -->
 
-    <div class="panel panel-primary">
-      <div class="panel-heading">Reports</div>
-
-        <table class="table">
-
-          <thead>
-            <tr>
-              <th><small>File</small></th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-
-          @if(count($test->reports) > 0)
-
-            <tbody>
-              @foreach($test->reports as $report)
-                <tr>
-
-                <td width="50%">
-                @include('partials.icons.document-icon')
-                <a href="/tests/document/{{ $report->id }}/" target="_blank">
-                  <small>
-                    Report
-                  </small>
-                </a>
-                </td>
-
-                <td><small>
-                {{ $report->description }}
-                </small></td>
-                <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $report->id }}ReportModal">
-                    <i class="fa fa-cog"></i></button>
-                </td>
-                <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $report->id }}ReportModal">
-                    <i class="fa fa-trash-o"></i></button>
-                </td>
-              </tr>
-
-              @include('partials.modals.edit_test_document')
-              @include('partials.modals.delete_test_document')
-
-              @endforeach
-            </tbody>
-
-          @endif
-
-        </table>
-
-        <div class="panel-body">
-
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addReportModal">
-            <i class="fa fa-plus"></i></button>
-
-        </div>
-
-    </div>
+  @include('tests.partials.documents_panel')
 
   <div class="row">
 
