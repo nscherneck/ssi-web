@@ -155,7 +155,7 @@
 
   <hr>
 
-  <div class="panel panel-info">
+  <div id="tests" class="panel panel-info">
     <div class="panel-heading">
       @include('partials.icons.test-icon') Tests &amp; Inspections ({{ $system->tests()->count() }})
     </div>
@@ -200,7 +200,7 @@
 
   <!-- PHOTOS PANEL -->
 
-      <div class="panel panel-info">
+      <div id="photos" class="panel panel-info">
         <div class="panel-heading">
           @include('partials.icons.photo-icon') System Photos ({{ count($system->photos) }})
         </div>

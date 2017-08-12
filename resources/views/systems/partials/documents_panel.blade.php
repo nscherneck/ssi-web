@@ -1,4 +1,4 @@
-    <div class="panel panel-info">
+    <div id="documents" class="panel panel-info">
       <div class="panel-heading">Documents</div>
 
         <table class="table">
@@ -6,7 +6,7 @@
           <thead>
             <tr>
               <th><small>File</small></th>
-              <th></th>
+              <th><small>Description</small></th>
               <th></th>
               <th></th>
             </tr>

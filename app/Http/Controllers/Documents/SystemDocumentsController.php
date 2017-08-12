@@ -67,7 +67,7 @@ class SystemDocumentsController extends \App\Http\Controllers\Controller
 
         flash('Success!', 'Document description updated.', 'success');
 
-        return redirect($system->path());
+        return redirect($system->path() . '#documents');
     }
 
     public function destroy(Document $document)

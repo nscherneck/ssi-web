@@ -49,7 +49,7 @@ class PhotosController extends Controller
 
         flash('Success!', 'Photo added.');
 
-        return redirect($system->path());
+        return redirect($system->path() . '#photos');
     }
 
     public function showSystemPhoto(Photo $photo)
@@ -97,6 +97,6 @@ class PhotosController extends Controller
 
         flash('Success!', 'Photo deleted.', 'danger');
 
-        return redirect($system->path());
+        return redirect($system->path() . "#photos");
     }
 }

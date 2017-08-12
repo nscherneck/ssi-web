@@ -120,7 +120,7 @@ class TestsController extends Controller
 
         flash('Success!', 'Test deleted.', 'danger');
 
-        return redirect($system->path());
+        return redirect($system->path() . "#tests");
     }
 
     public function search(Request $request)
