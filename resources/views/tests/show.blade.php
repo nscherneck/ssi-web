@@ -82,8 +82,11 @@
                 <tr>
 
                 <td width="50%">
-                <a href="/test/{{ $test->id }}/report/{{ $report->id }}/" target="_blank">
-                <i class="fa fa-file-text-o" aria-hidden="true"></i> <small>Report</small>
+                @include('partials.icons.document-icon')
+                <a href="/tests/document/{{ $report->id }}/" target="_blank">
+                  <small>
+                    Report
+                  </small>
                 </a>
                 </td>
 
@@ -100,8 +103,8 @@
                 </td>
               </tr>
 
-              @include('partials.modals.edit_test_report')
-              @include('partials.modals.delete_test_report')
+              @include('partials.modals.edit_test_document')
+              @include('partials.modals.delete_test_document')
 
               @endforeach
             </tbody>
@@ -161,7 +164,7 @@
 
 @include('partials.modals.add_deficiency')
 @include('partials.modals.add_note')
-@include('partials.modals.add_test_report')
+@include('partials.modals.add_test_document')
 @include('partials.modals.edit_test')
 @include('partials.modals.delete_test')
 

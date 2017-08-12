@@ -4,19 +4,17 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CustomerTest extends TestCase
 {
+    use DatabaseMigrations;
 
-	use DatabaseMigrations;
-
-	public function setUp()
-	{
-		parent::setUp();
-		$this->customer = create('App\Customer');
-		$this->site = create('App\Site', ['customer_id' => $this->customer->id]);
-	}
+    public function setUp()
+    {
+        parent::setUp();
+        $this->customer = create('App\Customer');
+        $this->site = create('App\Site', ['customer_id' => $this->customer->id]);
+    }
 
     /** @test */
     public function it_has_sites()
@@ -27,7 +25,6 @@ class CustomerTest extends TestCase
     /** @test */
     public function it_was_added_by_a_user()
     {
-        $this->assertInstanceOf('App\User', $this->customer->addedBy);    	
+        $this->assertInstanceOf('App\User', $this->customer->addedBy);
     }
-
 }

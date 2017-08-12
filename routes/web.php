@@ -65,7 +65,9 @@ Route::put('component/{component}', 'ComponentsController@update');
 Route::post('system/{system}/component/attach', 'ComponentsController@attach');
 Route::post('system/{system}/component/{attachedComponentPivotId}/detach', 'ComponentsController@detach');
 Route::delete('components/{component}', 'ComponentsController@destroy');
-Route::post('component/{component}/document', 'DocumentsController@storeComponentDocument');
+Route::post('component/{component}/document', 'Documents\ComponentDocumentsController@store');
+Route::get('components/document/{document}', 'Documents\ComponentDocumentsController@show');
+Route::delete('components/document/{document}', 'Documents\ComponentDocumentsController@destroy');
 
 // WORK ORDER ROUTES
 // Route::get('workorders', 'WorkOrdersController@index');
@@ -91,10 +93,10 @@ Route::post('tests/{test}/testnotes/store', 'TestnotesController@store');
 Route::delete('tests/{test}/testnotes/{testnote}/delete', 'TestnotesController@destroy');
 Route::put('tests/{test}/testnotes/{testnote}/update', 'TestnotesController@update');
 
-Route::post('test/{test}/report/store', 'DocumentsController@storeTestReport');
-Route::get('test/{test}/report/{document}', 'DocumentsController@showReport');
-Route::delete('test/{test}/report/{document}', 'DocumentsController@destroyTestReport');
-Route::put('test/{test}/report/{document}', 'DocumentsController@updateTestReport');
+Route::post('tests/{test}/document', 'Documents\TestDocumentsController@store');
+Route::get('tests/document/{document}', 'Documents\TestDocumentsController@show');
+Route::put('tests/document/{document}', 'Documents\TestDocumentsController@update');
+Route::delete('tests/document/{document}', 'Documents\TestDocumentsController@destroy');
 
 // PHOTO ROUTES
 Route::get('system/{system}/photo/create', 'PhotosController@createSystemPhoto');

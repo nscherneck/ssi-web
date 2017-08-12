@@ -113,10 +113,10 @@ class TestsController extends Controller
                 ->orderBy('test_date', 'desc')
                 ->first();
             $system->setNextTestDate($lastTest->test_date);
-        } else {
-            $system->next_test_date = null;
-            $system->update();
         }
+
+        $system->next_test_date = null;
+        $system->update();
 
         flash('Success!', 'Test deleted.', 'danger');
 

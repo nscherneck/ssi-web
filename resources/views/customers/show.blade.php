@@ -12,7 +12,7 @@
 <div class="container-fluid">
 
   @include('partials.flash')
-  
+
   <br>
 
   <ol class="breadcrumb small">
@@ -84,15 +84,15 @@
     @endif
 
   <div class="text-center">
-    <button type="button" 
-      class="btn btn-default btn-xs" 
-      data-toggle="modal" 
+    <button type="button"
+      class="btn btn-default btn-xs"
+      data-toggle="modal"
       data-target="#updateCustomerModal">
       @include('partials.icons.edit-icon')
     </button>
-    <button type="button" 
-      class="btn btn-default btn-xs" 
-      data-toggle="modal" 
+    <button type="button"
+      class="btn btn-default btn-xs"
+      data-toggle="modal"
       data-target="#deleteCustomerModal">
       @include('partials.icons.delete-icon')
     </button>
@@ -163,9 +163,9 @@
 
         <div class="panel-footer">
 
-          <button type="button" 
-            class="btn btn-default btn-xs" 
-            data-toggle="modal" 
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
             data-target="#addSiteModal">
             @include('partials.icons.add-icon')
           </button>

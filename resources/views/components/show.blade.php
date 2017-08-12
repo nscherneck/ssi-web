@@ -112,7 +112,7 @@
                         </a>
                       </small>
                     </td>
-                    
+
                   </tr>
                 @endforeach
               </tbody>
@@ -141,17 +141,24 @@
               <tbody>
                 @foreach($documents as $document)
                 <tr>
-                <td width="90%"><small>
-                  <a href="https://s3-us-west-2.amazonaws.com/ssiwebstorage/{{ $document->path }}/{{ $document->file_name }}.{{ $document->ext }}" target="blank">
-                  {{ $document->file_name }}.{{ $document->ext }}
+                <td width="90%">
+                  <a href="/components/document/{{ $document->id }}/" target="_blank">
+                    <small>
+                      {{ $document->file_name }}.{{ $document->ext }}
+                    </small>
                   </a>
-                </small>
                 </td>
                 <td width="5%">
-                  <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemModal">
-                    <i class="fa fa-trash"></i></button>
+                  <button
+                    type="button"
+                    class="btn btn-default btn-xs"
+                    data-toggle="modal"
+                    data-target="#delete{{ $document->id }}ComponentDocumentModal">
+                      @include('partials.icons.delete-icon')
+                  </button>
                 </td>
                 </tr>
+                @include('partials.modals.delete_component_document')
                 @endforeach
               </tbody>
             </table>

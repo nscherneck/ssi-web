@@ -1,5 +1,9 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="delete{{ $report->id }}ReportModal" role="dialog">
+<!-- delete Component Document Modal -->
+<div
+  class="modal fade"
+  id="delete{{ $document->id }}ComponentDocumentModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -7,10 +11,10 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this report?
+          Delete this document?
         </p>
 
-          <form action="/test/{{ $test->id }}/report/{{ $report->id }}" method="post" accept-charset="UTF-8">
+          <form action="/components/document/{{ $document->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 

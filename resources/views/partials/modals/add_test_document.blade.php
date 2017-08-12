@@ -1,5 +1,9 @@
-<!-- add Test Report Modal -->
-<div class="modal fade" id="addReportModal" role="dialog">
+<!-- add Test Document Modal -->
+<div
+  class="modal fade"
+  id="addReportModal"
+  role="dialog"
+  tabindex="-1">
 
   <div class="modal-dialog">
 
@@ -9,7 +13,7 @@
       <div class="modal-header">
 
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title">Add Report</h5>
+        <h5 class="modal-title">Add Document</h5>
 
       </div>
 
@@ -17,7 +21,7 @@
 
         <div class="form-group">
 
-          <form action="/test/{{ $test->id }}/report/store" method="POST" enctype="multipart/form-data">
+          <form action="/tests/{{ $test->id }}/document" method="POST" enctype="multipart/form-data">
 
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
