@@ -89,7 +89,7 @@
 
           <div class="form-group row">
             <div class="col-sm-12">
-              <textarea name="notes" class="form-control" title="Notes" placeholder="Notes"></textarea><br>
+              <textarea name="notes" rows="5" class="form-control" title="Notes" placeholder="Notes"></textarea><br>
             </div>
           </div>
 

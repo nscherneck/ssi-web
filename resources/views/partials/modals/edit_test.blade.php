@@ -1,5 +1,9 @@
 <!-- edit Test Modal -->
-<div class="modal fade" id="updateTestModal" role="dialog">
+<div
+  class="modal fade"
+  id="updateTestModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

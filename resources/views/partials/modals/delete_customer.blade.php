@@ -1,10 +1,14 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="deleteCustomerModal" role="dialog">
+<!-- delete Customer Modal -->
+<div
+  class="modal fade"
+  id="deleteCustomerModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body text-center">
 
         <p>
           Delete this customer?

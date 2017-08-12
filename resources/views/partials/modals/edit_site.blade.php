@@ -38,7 +38,7 @@
           Longitude: <input type="text" id="lon" name="lon" value="{{ $site->lon }}" class="form-control"><br>
           Phone: <input type="text" name="phone" value="{{ $site->phone }}" class="form-control"><br>
           Fax: <input type="text" name="fax" value="{{ $site->fax }}" class="form-control"><br>
-          Notes: <textarea name="notes" class="form-control">{{ $site->notes }}</textarea><br>
+          Notes: <textarea name="notes" rows="5" class="form-control">{{ $site->notes }}</textarea><br>
 
           <br>
           <button type="submit" class="btn btn-default">Update</button>

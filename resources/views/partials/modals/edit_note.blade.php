@@ -1,5 +1,9 @@
-<!-- edit Deficiency Modal -->
-<div class="modal fade" id="update{{ $testnote->id }}TestnoteModal" role="dialog">
+<!-- edit Test Note Modal -->
+<div
+  class="modal fade"
+  id="update{{ $testnote->id }}TestnoteModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

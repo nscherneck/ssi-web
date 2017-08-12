@@ -37,7 +37,7 @@
           Longitude: <input required type="text" id="lon" name="lon" value="" placeholder="-125.0000" class="form-control"><br>
           Phone: <input type="text" name="phone" value="" placeholder="XXX-XXX-XXXX" class="form-control"><br>
           Fax: <input type="text" name="fax" value="" class="form-control"><br>
-          Notes: <textarea name="notes" class="form-control"></textarea><br>
+          Notes: <textarea name="notes" rows="5" class="form-control"></textarea><br>
 
 
           <br>

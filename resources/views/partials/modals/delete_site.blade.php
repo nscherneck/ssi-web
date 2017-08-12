@@ -1,10 +1,14 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="deleteSiteModal" role="dialog">
+<!-- delete Site Modal -->
+<div
+  class="modal fade"
+  id="deleteSiteModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body text-center">
 
         <p>
           Delete this site?

@@ -1,5 +1,9 @@
-<!-- edit Deficiency Modal -->
-<div class="modal fade" id="updateSystemModal" role="dialog">
+<!-- edit System Modal -->
+<div
+  class="modal fade"
+  id="updateSystemModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -37,7 +41,7 @@
               <option value="0">No</option>
             </select>
             <br>
-            <textarea name="notes" class="form-control" rows="4" placeholder="System Notes">{{ $system->notes }}</textarea>
+            <textarea name="notes" class="form-control" rows="5" placeholder="System Notes">{{ $system->notes }}</textarea>
 
           </div>
 

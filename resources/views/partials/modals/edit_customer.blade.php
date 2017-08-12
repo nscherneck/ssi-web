@@ -1,5 +1,9 @@
-<!-- edit Deficiency Modal -->
-<div class="modal fade" id="updateCustomerModal" role="dialog" tabindex="-1">
+<!-- edit Customer Modal -->
+<div
+  class="modal fade"
+  id="updateCustomerModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -32,12 +36,12 @@
                 <option value="{{ $state->id }}">{{ $state->state }}</option>
               @endforeach
             </select><br>
-            Zip:  <input  name="zip" type="text" value="{{ $customer->zip }}" class="form-control"><br>
-            Phone:  <input  name="phone" type="text" value="{{ $customer->phone }}" class="form-control"><br>
-            Fax:  <input  name="fax" type="text" value="{{ $customer->fax }}" class="form-control"><br>
-            Website:  <input  name="web" type="text" value="{{ $customer->web }}" class="form-control"><br>
-            Email:  <input  name="email" type="text" value="{{ $customer->email }}" class="form-control"><br>
-            Notes:  <textarea  name="notes" class="form-control">{{ $customer->notes }}</textarea><br>
+            Zip:  <input name="zip" type="text" value="{{ $customer->zip }}" class="form-control"><br>
+            Phone:  <input name="phone" type="text" value="{{ $customer->phone }}" class="form-control"><br>
+            Fax:  <input name="fax" type="text" value="{{ $customer->fax }}" class="form-control"><br>
+            Website:  <input name="web" type="text" value="{{ $customer->web }}" class="form-control"><br>
+            Email:  <input name="email" type="text" value="{{ $customer->email }}" class="form-control"><br>
+            Notes:  <textarea name="notes" rows="5" class="form-control">{{ $customer->notes }}</textarea><br>
 
             <button type="submit" class="btn btn-default">Update</button>
 

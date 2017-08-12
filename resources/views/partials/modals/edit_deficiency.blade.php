@@ -1,5 +1,9 @@
 <!-- edit Deficiency Modal -->
-<div class="modal fade" id="update{{ $deficiency->id }}DeficiencyModal" role="dialog">
+<div
+  class="modal fade"
+  id="update{{ $deficiency->id }}DeficiencyModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

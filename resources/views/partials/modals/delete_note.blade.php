@@ -1,10 +1,14 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="delete{{ $testnote->id }}TestnoteModal" role="dialog">
+<!-- delete Test Note Modal -->
+<div
+  class="modal fade"
+  id="delete{{ $testnote->id }}TestnoteModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body text-center">
 
         <p>
           Delete this note?
