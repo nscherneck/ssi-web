@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this document?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>You're really gonna miss this document!</span>
         </p>
 
           <form action="/components/document/{{ $document->id }}" method="post" accept-charset="UTF-8">

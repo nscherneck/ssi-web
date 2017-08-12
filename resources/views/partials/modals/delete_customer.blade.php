@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this customer?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>Note: You won't be able to delete a Customer that contains Sites.</span>
         </p>
 
           <form action="/customer/{{ $customer->id }}/delete" method="post" accept-charset="UTF-8">

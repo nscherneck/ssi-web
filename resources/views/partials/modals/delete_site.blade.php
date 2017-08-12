@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this site?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>Note: You won't be able to delete a Site that contains Systems.</span>
         </p>
 
           <form action="/site/{{ $site->id }}/delete" method="post" accept-charset="UTF-8">

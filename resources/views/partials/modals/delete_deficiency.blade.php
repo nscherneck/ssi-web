@@ -11,7 +11,12 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this deficiency?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+          </span>
         </p>
 
           <form action="/tests/{{ $test->id }}/deficiencies/{{ $deficiency->id }}/delete" method="post" accept-charset="UTF-8">

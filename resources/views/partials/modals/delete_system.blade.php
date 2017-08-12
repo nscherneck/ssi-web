@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this system?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>Note: You won't be able to delete a System that contains Tests.</span>
         </p>
 
           <form action="/system/{{ $system->id }}/delete" method="post" accept-charset="UTF-8">

@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Remove Next Test Due Date?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>This will remove the next test date for this system.</span>
         </p>
 
         <form action="/system/{{ $system->id }}/nullify_next_test_date" method="post" accept-charset="UTF-8">

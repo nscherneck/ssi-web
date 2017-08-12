@@ -11,7 +11,14 @@
       <div class="modal-body text-center">
 
         <p>
-          Delete this test?
+          <span>
+            <div class="modal-icon">
+              @include('partials.icons.caution-icon')
+            </div>
+            <h4>Are you sure?</h4>
+            <br>
+          </span>
+          <span>But you've worked so hard on this!</span>
         </p>
 
           <form action="/tests/{{ $test->id }}/delete" method="post" accept-charset="UTF-8">
