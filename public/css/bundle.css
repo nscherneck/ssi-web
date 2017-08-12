@@ -7072,6 +7072,27 @@ body {
   text-align: right;
 }
 
+/* document table */
+.document-table-column-document {
+  width: 45%;
+  text-align: left;
+}
+
+.document-table-column-description {
+  width: 45%;
+  text-align: left;
+}
+
+.document-table-column-edit {
+  width: 5%;
+  text-align: right;
+}
+
+.document-table-column-delete {
+  width: 5%;
+  text-align: right;
+}
+
  /* session alerts */
 
  /* photos */

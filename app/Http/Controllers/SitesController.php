@@ -68,7 +68,7 @@ class SitesController extends Controller
 
         flash('Success!', 'Site created.');
 
-        return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
+        return redirect($site->path());
     }
 
     public function edit(Site $site)
@@ -108,19 +108,19 @@ class SitesController extends Controller
 
         flash('Success!', 'Site updated.', 'success');
 
-        return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
+        return redirect($site->path());
     }
 
     public function destroy(Site $site)
     {
         if (count($site->systems) > 0) {
             flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
-            return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
+            return redirect($site->path());
         }
 
         $customer = Customer::find($site->customer_id);
         $site->delete();
         flash('Success!', 'Site deleted.', 'danger');
-        return redirect()->route('customer_show', ['customer' => $customer->id, 'slug' => $customer->slug]);
+        return redirect($customer->path());
     }
 }

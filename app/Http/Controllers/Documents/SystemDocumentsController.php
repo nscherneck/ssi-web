@@ -45,7 +45,7 @@ class SystemDocumentsController extends \App\Http\Controllers\Controller
 
         flash('Success!', 'Document added.');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     private function generateFileName()
@@ -53,9 +53,10 @@ class SystemDocumentsController extends \App\Http\Controllers\Controller
         return pathinfo($this->file->getClientOriginalName(), PATHINFO_FILENAME);
     }
 
-    public function show($id)
+    public function show(Document $document)
     {
-        //
+        $url = $this->getShortTermAccessToFileFromS3($document);
+        return response()->redirectTo($url);
     }
 
     public function update(Request $request, Document $document)
@@ -66,7 +67,7 @@ class SystemDocumentsController extends \App\Http\Controllers\Controller
 
         flash('Success!', 'Document description updated.', 'success');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function destroy(Document $document)
@@ -77,6 +78,6 @@ class SystemDocumentsController extends \App\Http\Controllers\Controller
 
         flash('Success!', 'Document deleted.', 'danger');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 }

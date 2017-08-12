@@ -142,7 +142,7 @@
                 @foreach($documents as $document)
                 <tr>
                 <td width="90%">
-                  <a href="/components/document/{{ $document->id }}/" target="_blank">
+                  <a href="/components/document/{{ $document->id }}" target="_blank">
                     <small>
                       {{ $document->file_name }}.{{ $document->ext }}
                     </small>

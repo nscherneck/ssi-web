@@ -30,8 +30,10 @@ trait ManagesDocuments
 
     public function saveFileToStorage()
     {
-        // save processed report file
-        Storage::putFileAs($this->destinationFolder, $this->file, $this->fileName . '.' . $this->extension);
+        Storage::putFileAs($this->destinationFolder,
+            $this->file,
+            $this->fileName . '.' . $this->extension
+        );
         // Storage::setVisibility($this->filePath, 'public');
     }
 

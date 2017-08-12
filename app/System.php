@@ -80,7 +80,7 @@ class System extends Model
 
     public function path()
     {
-        return '/systems/' . $this->id . '/' . $this->slug;
+        return '/systems/' . $this->id;
     }
 
     public function attachComponent($component, $quantity, $name)

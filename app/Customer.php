@@ -68,7 +68,7 @@ class Customer extends Model
 
     public function path()
     {
-        return '/customers/' . $this->id . '/' . $this->slug;
+        return '/customers/' . $this->id;
     }
 
     public function addedBy() // technician who completed test

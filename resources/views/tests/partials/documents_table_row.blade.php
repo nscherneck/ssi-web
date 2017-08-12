@@ -1,12 +1,12 @@
-<td width="50%">
+<td class="document-table-column-document">
  {{ $document }}
 </td>
-<td>
+<td class="document-table-column-description">
   {{ $description }}
 </td>
-<td>
+<td class="document-table-column-edit">
   {{ $editButton }}
 </td>
-<td>
+<td class="document-table-column-delete">
   {{ $deleteButton }}
 </td>

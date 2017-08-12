@@ -25,7 +25,7 @@ Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
 Route::get('customers', 'CustomersController@index')->name('customers');
-Route::get('customers/{customer}/{slug}', 'CustomersController@show')->name('customer_show');
+Route::get('customers/{customer}', 'CustomersController@show')->name('customer_show');
 Route::get('customers/create', 'CustomersController@create');
 Route::post('customers', 'CustomersController@store');
 Route::put('customer/{customer}/update', 'CustomersController@update');
@@ -33,7 +33,7 @@ Route::delete('customer/{customer}/delete', 'CustomersController@destroy');
 
 // SITE ROUTES
 Route::get('/sites', 'SitesController@index')->name('sites');
-Route::get('sites/{site}/{slug}', 'SitesController@show')->name('site_show');
+Route::get('sites/{site}', 'SitesController@show')->name('site_show');
 Route::post('customers/{customer}/site/create', 'SitesController@store');
 Route::get('/site/{site}/edit', 'SitesController@edit');
 Route::put('sites/{site}/update', 'SitesController@update');
@@ -42,17 +42,22 @@ Route::get('site/{site}/photo/create', 'PhotosController@createSitePhoto');
 
 // SYSTEM ROUTES
 Route::post('site/{site}/create', 'SystemsController@store');
-Route::get('systems/{system}/{slug}', 'SystemsController@show')->name('system_show');
-Route::put('systems/{system}/update', 'SystemsController@update');
+Route::get('systems/{system}', 'SystemsController@show')->name('system_show');
 Route::get('systems', 'SystemsController@index')->name('system_index');
+Route::put('systems/{system}/update', 'SystemsController@update');
 Route::delete('system/{system}/delete', 'SystemsController@destroy');
-Route::get('createsystemtype', 'SystemTypesController@create');
-Route::post('createsystemtype', 'SystemTypesController@store');
+
 Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
 Route::put('system/{system}/nullify_next_test_date', 'SystemsController@nullifyNextTestDate');
+
 Route::post('systems/{system}/document', 'Documents\SystemDocumentsController@store');
+Route::get('systems/document/{document}', 'Documents\SystemDocumentsController@show');
 Route::put('systems/document/{document}', 'Documents\SystemDocumentsController@update');
 Route::delete('systems/document/{document}', 'Documents\SystemDocumentsController@destroy');
+
+// SYSTEM TYPES ROUTES
+Route::get('createsystemtype', 'SystemTypesController@create');
+Route::post('createsystemtype', 'SystemTypesController@store');
 
 // MANUFACTURER AND COMPONENT ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');

@@ -92,7 +92,7 @@ class ComponentsController extends Controller
 
         flash('Success!', 'Component attached.');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function detach(System $system, $attachedComponentPivotId)
@@ -101,7 +101,7 @@ class ComponentsController extends Controller
 
         flash('Success!', 'Component removed.', 'success');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function show(Component $component)

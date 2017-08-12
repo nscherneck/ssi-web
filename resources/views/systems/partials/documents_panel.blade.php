@@ -18,7 +18,7 @@
                 @component('systems.partials.documents_table_row')
                   @slot('document')
                     @include('partials.icons.document-icon')
-                    <a href="/systems/document/{{ $document->id }}/" target="_blank">
+                    <a href="/systems/document/{{ $document->id }}" target="_blank">
                       <small>
                         {{ $document->fullDocumentName }}
                       </small>

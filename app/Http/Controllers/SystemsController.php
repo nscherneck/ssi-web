@@ -82,7 +82,7 @@ class SystemsController extends Controller
 
         flash('Success!', 'System created.');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function update(Request $request, System $system)
@@ -107,7 +107,7 @@ class SystemsController extends Controller
 
         flash('Success!', 'System updated.', 'Success');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function updateNextTestDate(Request $request, System $system)
@@ -118,7 +118,7 @@ class SystemsController extends Controller
 
         flash('Success!', 'Next test date updated.', 'success');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function nullifyNextTestDate(System $system)
@@ -128,20 +128,20 @@ class SystemsController extends Controller
 
         flash('Success!', 'Next test date removed.', 'success');
 
-        return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function destroy(System $system)
     {
         if (count($system->tests) > 0) {
             flash('Nope!', 'Cannot delete system, it has one or more tests', 'warning');
-            return redirect()->route('system_show', ['system' => $system->id, 'slug' => $system->slug]);
+            return redirect($system->path());
         }
 
         $site = Site::find($system->site_id);
         $system->components()->detach();
         $system->delete();
         flash('Success!', 'System deleted.', 'danger');
-        return redirect()->route('site_show', ['site' => $site->id, 'slug' => $site->slug]);
+        return redirect($site->path());
     }
 }

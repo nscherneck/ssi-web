@@ -120,7 +120,7 @@ class TestsController extends Controller
 
         flash('Success!', 'Test deleted.', 'danger');
 
-        return redirect()->route('system_show', ['id' => $system->id, 'slug' => $system->slug]);
+        return redirect($system->path());
     }
 
     public function search(Request $request)
