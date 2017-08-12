@@ -1,5 +1,9 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="deleteSystemPhotoModal" role="dialog">
+<!-- delete System Photo Modal -->
+<div
+  class="modal fade"
+  id="deleteSystemPhotoModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

@@ -1,5 +1,9 @@
-<!-- edit Deficiency Modal -->
-<div class="modal fade" id="updateSystemPhotoModal" role="dialog">
+<!-- edit System Photo Modal -->
+<div
+  class="modal fade"
+  id="updateSystemPhotoModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

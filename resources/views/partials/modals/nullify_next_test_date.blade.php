@@ -1,5 +1,9 @@
-<!-- add Deficiency Modal -->
-<div class="modal fade" id="nullifyNextTestDateModal" role="dialog">
+<!-- nullify Next Test Date Modal -->
+<div
+  class="modal fade"
+  id="nullifyNextTestDateModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
