@@ -39,6 +39,11 @@ class Photo extends Model
         return $this->belongsTo('App\User', 'added_by');
     }
 
+    public function pathToSystemPhoto()
+    {
+        return '/systems/photos' . '/' . $this->id;
+    }
+
     public function getSystem($id)
     {
         $system = System::find($id);

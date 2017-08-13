@@ -21,7 +21,7 @@
           <span>You're really gonna miss this photo!</span>
         </p>
 
-          <form action="/system/{{ $system->id }}/photo/{{ $photo->id }}" method="post" accept-charset="UTF-8">
+          <form action="/systems/photos/{{ $photo->id }}" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 

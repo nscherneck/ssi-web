@@ -210,7 +210,7 @@
 
             @foreach ($photos as $photo)
               <div id="system-photo">
-                <a href="/system/photo/{{ $photo->id }}/">
+                <a href="{{ $photo->pathToSystemPhoto() }}">
                   <img src="{{ config('constants.PHOTO.thumbnail-url') }}{{ $photo->file_name }}.{{ $photo->ext }}">
                 </a>
                 <br>

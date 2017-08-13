@@ -30,7 +30,7 @@ class PhotosController extends Controller
         $this->setFileName($system);
 
         $photo = new Photo([
-            'path'            => $this->destinationFolder,
+            'path'            => $this->destinationFullSizeImageFolder,
             'file_name'       => $this->imageName,
             'ext'             => $request->file('image')->getClientOriginalExtension(),
             'caption'         => $request->caption,

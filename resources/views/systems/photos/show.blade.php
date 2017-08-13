@@ -20,41 +20,45 @@
   </ol>
 
   <div class="text-center">
-    
-    <img 
-      src="{{ config('constants.PHOTO.url') }}{{ $photo->file_name }}.{{ $photo->ext }}" 
-      width="100%" 
+
+    <img
+      src="{{ config('constants.PHOTO.url') }}{{ $photo->file_name }}.{{ $photo->ext }}"
+      width="100%"
       height="auto"
     >
 
     <hr>
 
     <!-- BEGIN CONTROL BUTTONS -->
-    <form 
-      class="" 
-      action="/system/{{ $system->id }}/photo/{{ $photo->id }}/rotateleft" 
-      method="post" 
-      style="display: inline"
-    >
+    <form
+      class=""
+      action="/systems/photos/{{ $photo->id }}/rotateleft"
+      method="post"
+      style="display: inline">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="_method" value="put">
-      <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-left fa-md"></i></button>
+      <button type="submit" class="btn btn-default btn-xs">
+        @include('partials.icons.rotate-left-icon')
+      </button>
     </form>
 
     <button type="submit" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateSystemPhotoModal">
-      <i class="fa fa-cog fa-md"></i></button>
+      @include('partials.icons.edit-icon')
+    </button>
     <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteSystemPhotoModal">
-      <i class="fa fa-trash-o fa-md"></i></button>
+      @include('partials.icons.delete-icon')
+    </button>
 
-    <form 
-      class="" 
-      action="/system/{{ $system->id }}/photo/{{ $photo->id }}/rotateright" 
-      method="post" 
-      style="display: inline"
-    >
+    <form
+      class=""
+      action="/systems/photos/{{ $photo->id }}/rotateright"
+      method="post"
+      style="display: inline">
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <input type="hidden" name="_method" value="put">
-      <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-rotate-right fa-md"></i></button>
+      <button type="submit" class="btn btn-default btn-xs">
+        @include('partials.icons.rotate-right-icon')
+      </button>
     </form>
 
     <hr>

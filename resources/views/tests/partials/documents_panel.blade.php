@@ -1,5 +1,8 @@
     <div class="panel panel-primary">
-      <div class="panel-heading">Documents</div>
+      <div class="panel-heading">
+        @include('partials.icons.folder-icon')
+        Documents
+      </div>
 
         <table class="table">
 

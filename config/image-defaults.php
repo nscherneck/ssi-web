@@ -14,16 +14,13 @@ return [
     */
 
         'systemImage' => [
-
-            'destinationFolder'     => '/customer-data/system_photos',
-            'destinationThumbnail'  => '/customer-data/system_photos/thumbnails/',
-            'thumbPrefix'           => 'thumb-',
-            'imagePath'             => '/customer-data/system_photos/',
-            'thumbnailPath'         => '/customer-data/system_photos/thumbnails/thumb-',
-            'thumbHeight'           => 300,
-            'thumbWidth'            => 300,
-
+            'destinationFullSizeImageFolder'        => '/customer-data/system_photos',
+            'destinationThumbnailImageFolder'       => '/customer-data/system_photos/thumbnails/',
+            'fullSizeImagePath'                     => '/customer-data/system_photos/',
+            'thumbnailImagePath'                    => '/customer-data/system_photos/thumbnails/thumb-',
+            'thumbnailImagePrefix'                   => 'thumb-',
+            'thumbnailImageHeight'                  => 300,
+            'thumbnailImageWidth'                   => 300,
         ],
-
 
 ];

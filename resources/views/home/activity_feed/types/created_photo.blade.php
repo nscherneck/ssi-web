@@ -27,7 +27,7 @@
 				</strong>
 	</div>
 	<div class="col-lg-4 right-justify">
-		<a href="/system/photo/{{ $event->subject->id }}">
+		<a href="{{ $event->subject->pathToSystemPhoto() }}">
 			<img src="{{ config('constants.PHOTO.thumbnail-url') }}{{ $event->subject->file_name }}.{{ $event->subject->ext }}"
 			alt="{{ $event->subject->caption }}"
 			width="150"

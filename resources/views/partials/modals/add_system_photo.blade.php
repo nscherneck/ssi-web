@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body text-center">
 
-      <form action="/system/{{ $system->id }}/photo/create" method="POST" enctype="multipart/form-data">
+      <form action="/systems/{{ $system->id }}/photos" method="POST" enctype="multipart/form-data">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

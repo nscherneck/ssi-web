@@ -14,7 +14,7 @@
       </div>
       <div class="modal-body text-center">
 
-        <form action="/system/photo/{{ $photo->id }}" method="POST">
+        <form action="/systems/photos/{{ $photo->id }}" method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <input type="hidden" name="_method" value="put">

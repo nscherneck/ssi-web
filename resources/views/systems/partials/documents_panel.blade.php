@@ -1,5 +1,8 @@
     <div id="documents" class="panel panel-info">
-      <div class="panel-heading">Documents</div>
+      <div class="panel-heading">
+        @include('partials.icons.folder-icon')
+        Documents
+      </div>
 
         <table class="table">
 
@@ -18,6 +21,7 @@
                 @component('systems.partials.documents_table_row')
                   @slot('document')
                     @include('partials.icons.document-icon')
+                    &nbsp;
                     <a href="/systems/document/{{ $document->id }}" target="_blank">
                       <small>
                         {{ $document->fullDocumentName }}

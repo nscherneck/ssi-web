@@ -100,16 +100,14 @@ Route::put('tests/document/{document}', 'Documents\TestDocumentsController@updat
 Route::delete('tests/document/{document}', 'Documents\TestDocumentsController@destroy');
 
 // PHOTO ROUTES
-// Route::prefix('systems')->group(function () {
-//     Route::resource('photos', 'Photos\SystemPhotosController');
-// });
-Route::post('system/{system}/photo/create', 'PhotosController@storeSystemPhoto');
-Route::get('system/photo/{photo}', 'PhotosController@showSystemPhoto')->name('system_photo_show');;
-Route::put('system/photo/{photo}', 'PhotosController@update');
-Route::delete('system/{system}/photo/{photo}', 'PhotosController@destroy');
-
-Route::put('system/{system}/photo/{photo}/rotateleft', 'PhotosController@rotateLeft');
-Route::put('system/{system}/photo/{photo}/rotateright', 'PhotosController@rotateRight');
+Route::post('systems/{system}/photos', 'Photos\SystemPhotosController@store');
+Route::prefix('systems')->group(function () {
+    Route::resource('photos', 'Photos\SystemPhotosController', [
+        'except' => ['create', 'store', 'edit']
+    ]);
+});
+Route::put('systems/photos/{photo}/rotateleft', 'Photos\SystemPhotosController@rotateLeft');
+Route::put('systems/photos/{photo}/rotateright', 'Photos\SystemPhotosController@rotateRight');
 
 // AJAX ROUTES
 Route::post('get_sites', 'WorkOrdersController@getSites');
