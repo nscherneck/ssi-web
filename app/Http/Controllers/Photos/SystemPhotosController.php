@@ -137,7 +137,7 @@ class SystemPhotosController extends \App\Http\Controllers\Controller
     {
         $system = System::find($photo->photoable_id);
 
-        $this->rotateImages($system, $photo, 90);
+        $this->rotate($photo, 90);
 
         $photo->file_name = $this->imageName;
         $photo->save();
@@ -149,7 +149,8 @@ class SystemPhotosController extends \App\Http\Controllers\Controller
     {
         $system = System::find($photo->photoable_id);
 
-        $this->rotateImages($system, $photo, -90);
+        $this->setFileName($system); // populates $this->imageName with current timestamp
+        $this->rotate($photo, -90);
 
         $photo->file_name = $this->imageName;
         $photo->save();

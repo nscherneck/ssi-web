@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Storage;
 
 trait ManagesImages
 {
-
     public $destinationFullSizeImageFolder;
     public $destinationThumbnailImageFolder;
     public $fullSizeImagePath;
@@ -37,9 +36,9 @@ trait ManagesImages
     private function setImageProperties()
     {
         foreach ($this->imageDefaults as $propertyName => $propertyValue) {
-          if (property_exists($this, $propertyName)) {
-              $this->$propertyName = $propertyValue;
-          }
+            if (property_exists($this, $propertyName)) {
+                $this->$propertyName = $propertyValue;
+            }
         }
     }
 
@@ -74,22 +73,22 @@ trait ManagesImages
 
     private function getUploadedFile()
     {
-      return $file = Input::file('image');
+        return $file = Input::file('image');
     }
 
     private function makeImageAndThumbnail()
     {
-      $filePath = $this->file->getRealPath();
-      $fullSizeImageInstance = Image::make($filePath)->orientate();
-      $fullSizeImagePath = "{$this->destinationFullSizeImageFolder}/{$this->imageName}.{$this->extension}";
-      $thumbnailImageInstance = Image::make($filePath)->resize(
-          $this->thumbnailImageWidth,
-          $this->thumbnailImageHeight
-      )->orientate();
-      $thumbnailImagePath = "{$this->destinationThumbnailImageFolder}/{$this->thumbnailImagePrefix}{$this->imageName}.{$this->extension}";
+        $filePath = $this->file->getRealPath();
+        $fullSizeImageInstance = Image::make($filePath)->orientate();
+        $fullSizeImagePath = "{$this->destinationFullSizeImageFolder}/{$this->imageName}.{$this->extension}";
+        $thumbnailImageInstance = Image::make($filePath)->resize(
+            $this->thumbnailImageWidth,
+            $this->thumbnailImageHeight
+        )->orientate();
+        $thumbnailImagePath = "{$this->destinationThumbnailImageFolder}/{$this->thumbnailImagePrefix}{$this->imageName}.{$this->extension}";
 
-      $this->uploadFullSizeImage($fullSizeImageInstance, $fullSizeImagePath);
-      $this->uploadThumbnailImage($thumbnailImageInstance, $thumbnailImagePath);
+        $this->uploadFullSizeImage($fullSizeImageInstance, $fullSizeImagePath);
+        $this->uploadThumbnailImage($thumbnailImageInstance, $thumbnailImagePath);
     }
 
     private function uploadFullSizeImage(InterventionImage $image, $path)
@@ -105,7 +104,7 @@ trait ManagesImages
     private function newFileIsUploaded()
     {
         if (empty(Input::file('image'))) {
-          throw new Exception('Image upload was unsuccessful.');
+            throw new Exception('Image upload was unsuccessful.');
         }
         return true;
     }
@@ -113,10 +112,10 @@ trait ManagesImages
     private function saveImageFiles($model)
     {
         try {
-          $this->newFileIsUploaded();
+            $this->newFileIsUploaded();
         } catch (Exception $e) {
-          flash('Sorry!', 'Your image upload was unsuccessful.', 'warning');
-          return back();
+            flash('Sorry!', 'Your image upload was unsuccessful.', 'warning');
+            return back();
         }
         $file = $this->getUploadedFile();
         $this->setImageFile($file);
@@ -126,15 +125,15 @@ trait ManagesImages
 
     private function deleteExistingImages($photo)
     {
-      $fullSizeImagePath = "{$photo->path}/{$photo->file_name}.{$photo->ext}";
-      $this->deleteFromStorage($fullSizeImagePath);
-      $thumbnailImagePath = "{$photo->path}/thumbnails/{$this->thumbnailImagePrefix}{$photo->file_name}.{$photo->ext}";
-      $this->deleteFromStorage($thumbnailImagePath);
+        $fullSizeImagePath = "{$photo->path}/{$photo->file_name}.{$photo->ext}";
+        $this->deleteFromStorage($fullSizeImagePath);
+        $thumbnailImagePath = "{$photo->path}/thumbnails/{$this->thumbnailImagePrefix}{$photo->file_name}.{$photo->ext}";
+        $this->deleteFromStorage($thumbnailImagePath);
     }
 
     private function deleteFromStorage($path)
     {
-      Storage::delete($path);
+        Storage::delete($path);
     }
 
     private function getFromStorage($path)
@@ -156,28 +155,24 @@ trait ManagesImages
         );
     }
 
-    private function rotateImages($system, $photo, $degrees)
+    private function rotate($photo, $degrees)
     {
-      $this->setFileName($system);
-      $this->rotateFullSizeImage($photo, $degrees);
-      $this->rotateThumbnailImage($photo, $degrees);
+        // full size image
+        $fullSizeFilePath = "{$photo->path}/{$photo->file_name}.{$photo->ext}";
+        $fullSizeFilePathWithUpdatedFileName = "{$photo->path}/{$this->imageName}.{$photo->ext}";
+        $fullsizeRotatedImageInstance = $this->rotateImage($fullSizeFilePath, $degrees);
+        $this->uploadToStorage($fullsizeRotatedImageInstance, $fullSizeFilePathWithUpdatedFileName);
+        $this->deleteFromStorage($fullSizeFilePath); // delete old version
+        // thumbnail image
+        $thumbnailFilePath = "{$photo->path}/thumbnails/thumb-{$photo->file_name}.{$photo->ext}";
+        $thumbnailFilePathWithUpdatedFileName = "{$photo->path}/thumbnails/thumb-{$this->imageName}.{$photo->ext}";
+        $thumbnailRotatedImageInstance = $this->rotateImage($thumbnailFilePath, $degrees);
+        $this->uploadToStorage($thumbnailRotatedImageInstance, $thumbnailFilePathWithUpdatedFileName);
+        $this->deleteFromStorage($thumbnailFilePath); // delete old version
     }
 
-    private function rotateFullSizeImage($photo, $degrees)
+    private function rotateImage($path, $degrees)
     {
-        $fullFilePath = "{$photo->path}/{$photo->file_name}.{$photo->ext}";
-        $fullFilePathWithUpdatedFileName = "{$photo->path}/{$this->imageName}.{$photo->ext}";
-        $rotatedImageInstance = $this->getFromStorage($fullFilePath)->rotate($degrees);
-        $this->uploadToStorage($rotatedImageInstance, $fullFilePathWithUpdatedFileName);
-        $this->deleteFromStorage($fullFilePath);
-    }
-
-    private function rotateThumbnailImage($photo, $degrees)
-    {
-        $fullFilePath = "{$photo->path}/thumbnails/thumb-{$photo->file_name}.{$photo->ext}";
-        $fullFilePathWithUpdatedFileName = "{$photo->path}/thumbnails/thumb-{$this->imageName}.{$photo->ext}";
-        $rotatedImageInstance = $this->getFromStorage($fullFilePath)->rotate($degrees);
-        $this->uploadToStorage($rotatedImageInstance, $fullFilePathWithUpdatedFileName);
-        $this->deleteFromStorage($fullFilePath);
+        return $this->getFromStorage($path)->rotate($degrees); // converts to Intervention instance
     }
 }
