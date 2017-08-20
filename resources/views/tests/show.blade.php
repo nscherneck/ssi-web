@@ -18,13 +18,13 @@
     <li><a href="{{ $test->system->site->customer->path() }}">{{ $test->system->site->customer->name }}</a></li>
     <li><a href="{{ $test->system->site->path() }}">{{ $test->system->site->name }}</a></li>
     <li><a href="{{ $test->system->path() }}">{{ $test->system->name }}</a></li>
-    <li>{{ $test->test_type->name }} - {{ $test->test_date->format('F d, Y') }}</li>
+    <li>{{ $test->testType->name }} - {{ $test->test_date->format('F d, Y') }}</li>
   </ol>
 
   <!--          MAIN CONTENT         -->
 
   <div class="panel panel-primary text-center">
-    <div class="panel-heading"><h4>{{ $test->test_type->name }}</h4></div>
+    <div class="panel-heading"><h4>{{ $test->testType->name }}</h4></div>
   </div>
 
 
@@ -53,7 +53,7 @@
 
       <div class="panel panel-primary">
         <div class="panel-body text-center">
-          <h4>{{ $test->test_result->name }}</h4>
+          <h4>{{ $test->testResult->name }}</h4>
         </div>
       </div>
 
@@ -67,11 +67,11 @@
 
     <div class="col-lg-6">
 
-      @if($test->test_result->name == "Pass with Deficiencies")
+      @if($test->testResult->name == "Pass with Deficiencies")
 
         @include('tests.partials.deficiency_panel')
 
-      @elseif($test->test_result->name == "Fail with Deficiencies")
+      @elseif($test->testResult->name == "Fail with Deficiencies")
 
         @include('tests.partials.deficiency_panel')
 
@@ -81,15 +81,15 @@
 
     <div class="col-lg-6">
 
-      @if($test->test_result->name == "Pass with Notes")
+      @if($test->testResult->name == "Pass with Notes")
 
         @include('tests.partials.notes_panel')
 
-      @elseif($test->test_result->name == "Pass with Deficiencies")
+      @elseif($test->testResult->name == "Pass with Deficiencies")
 
         @include('tests.partials.notes_panel')
 
-      @elseif($test->test_result->name == "Fail with Deficiencies")
+      @elseif($test->testResult->name == "Fail with Deficiencies")
 
         @include('tests.partials.notes_panel')
 

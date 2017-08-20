@@ -36,12 +36,12 @@
                 {{ $panel->formatted_description }}
               @endslot
               @slot('category')
-                {{ $panel->component_category->name }}
+                {{ $panel->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $panel->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -74,12 +74,12 @@
                 {{ $modularPanel->formatted_description }}
               @endslot
               @slot('category')
-                {{ $modularPanel->component_category->name }}
+                {{ $modularPanel->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $modularPanel->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $modularPanel->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -112,12 +112,12 @@
                 {{ $controlEquipment->formatted_description }}
               @endslot
               @slot('category')
-                {{ $controlEquipment->component_category->name }}
+                {{ $controlEquipment->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $controlEquipment->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $controlEquipment->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -150,12 +150,12 @@
                 {{ $airSamplingDetection->formatted_description }}
               @endslot
               @slot('category')
-                {{ $airSamplingDetection->component_category->name }}
+                {{ $airSamplingDetection->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $airSamplingDetection->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $airSamplingDetection->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -188,12 +188,12 @@
                 {{ $detection->formatted_description }}
               @endslot
               @slot('category')
-                {{ $detection->component_category->name }}
+                {{ $detection->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $detection->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -226,12 +226,12 @@
                 {{ $notification->formatted_description }}
               @endslot
               @slot('category')
-                {{ $notification->component_category->name }}
+                {{ $notification->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $notification->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -264,12 +264,12 @@
                 {{ $module->formatted_description }}
               @endslot
               @slot('category')
-                {{ $module->component_category->name }}
+                {{ $module->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $module->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $module->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -302,12 +302,12 @@
                 {{ $miscellaneousElectrical->formatted_description }}
               @endslot
               @slot('category')
-                {{ $miscellaneousElectrical->component_category->name }}
+                {{ $miscellaneousElectrical->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $miscellaneousElectrical->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $miscellaneousElectrical->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -340,12 +340,12 @@
                 {{ $miscellaneous->formatted_description }}
               @endslot
               @slot('category')
-                {{ $miscellaneous->component_category->name }}
+                {{ $miscellaneous->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $miscellaneous->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $miscellaneous->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -378,12 +378,12 @@
                 {{ $accessory->formatted_description }}
               @endslot
               @slot('category')
-                {{ $accessory->component_category->name }}
+                {{ $accessory->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $accessory->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">
@@ -416,12 +416,12 @@
                 {{ $uncategorized->formatted_description }}
               @endslot
               @slot('category')
-                {{ $uncategorized->component_category->name }}
+                {{ $uncategorized->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $uncategorized->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">

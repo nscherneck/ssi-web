@@ -9,7 +9,7 @@
 <div class="container-fluid">
 
   @include('partials.flash')
-  
+
   <br>
   <ol class="breadcrumb small">
     <li><a href="/customers">Customers</a></li>
@@ -109,7 +109,7 @@
       <div class="panel-heading">
         @include('partials.icons.notes-icon') Notes
       </div>
-      <div class="panel-body">   
+      <div class="panel-body">
         <small>
         {!! nl2br(e($site->notes)) !!}
         </small>
@@ -118,15 +118,15 @@
       @endif
 
       <div class="text-center">
-        <button type="button" 
-          class="btn btn-default btn-xs" 
-          data-toggle="modal" 
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
           data-target="#updateSiteModal">
           @include('partials.icons.edit-icon')
         </button>
-        <button type="button" 
-          class="btn btn-default btn-xs" 
-          data-toggle="modal" 
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
           data-target="#deleteSiteModal">
           @include('partials.icons.delete-icon')
         </button>
@@ -164,7 +164,7 @@
             @foreach($site->systems as $system)
             <tr>
               <td><small><a href="{{ $system->path() }}">{{ $system->name }}</a></small></td>
-              <td><small>{{ $system->system_type->type }}</small></td>
+              <td><small>{{ $system->systemType->type }}</small></td>
               <td><small>{{ $system->sumComponents() }}</small></td>
               <td><small>{{ $system->getMostRecentTest() }}</small></td>
             </tr>
@@ -174,9 +174,9 @@
 
       <div class="panel-footer">
 
-        <button type="button" 
-          class="btn btn-default btn-xs" 
-          data-toggle="modal" 
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
           data-target="#addSystemModal">
           @include('partials.icons.add-icon')
         </button>

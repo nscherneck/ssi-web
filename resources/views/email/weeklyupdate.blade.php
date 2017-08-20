@@ -30,7 +30,7 @@
 
     <hr>
 
-    @endif    
+    @endif
 
     @if ($newcustomers->count() > 0)
       <h3>Customers Added Last Week</h3>
@@ -118,7 +118,7 @@
         <td>{{ $test->system->site->customer->name }}</td>
         <td>{{ $test->system->site->name }}</td>
         <td>{{ $test->system->name }}</td>
-        <td>{{ $test->test_type->name }}</td>
+        <td>{{ $test->testType->name }}</td>
         <td>{{ $test->test_result->name }}</td>
       </tr>
       @endforeach

@@ -39,7 +39,7 @@
                 '&nbsp;<a href="{{ $system->path() }}" target="blank">{{ $system->name }}</a><br>' +
                 @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Due: {{ $system->next_test_date->format('F Y') }}<br>' + @endif
                 @foreach($system->tests as $test)
-                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">{{ $test->test_date->format('F d, Y') }} | {{ $test->test_type->name }}</a><br>' +
+                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">{{ $test->test_date->format('F d, Y') }} | {{ $test->testType->name }}</a><br>' +
                 @endforeach
             @endforeach
             '</small></p><br>' +

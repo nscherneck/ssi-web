@@ -13,9 +13,9 @@ class Component extends Model
             ->withPivot('quantity', 'name', 'id');
     }
 
-    public function component_category()
+    public function componentCategory()
     {
-        return $this->belongsTo('App\Component_category');
+        return $this->belongsTo('App\ComponentCategory');
     }
 
     public function manufacturer()
@@ -34,16 +34,6 @@ class Component extends Model
             $shortenedDescriptionString = substr($this->description, 0, 110) . '...';
             return $shortenedDescriptionString;
         }
-
         return $this->description;
-    }
-
-    public function getFormattedDiscontinuedAttribute()
-    {
-        if ($this->discontinued == 1) {
-            return "Yes";
-        } else {
-            return "No";
-        }
     }
 }

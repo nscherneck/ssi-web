@@ -31,11 +31,11 @@ class SystemsController extends Controller
     public function show(System $system)
     {
         $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
-        $test_types = DB::table('test_types')->orderBy('name')->get();
-        $test_results = DB::table('test_results')->orderBy('name')->get();
+        $testTypes = DB::table('test_types')->orderBy('name')->get();
+        $testResults = DB::table('test_results')->orderBy('name')->get();
         $technicians = DB::table('users')->orderBy('first_name')->get();
         $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
-        $system_types = DB::table('system_types')->orderBy('type')->get();
+        $systemTypes = DB::table('system_types')->orderBy('type')->get();
         $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();
         $documents = Document::orderBy('file_name', 'desc')
             ->where('documentable_id', $system->id)
@@ -47,11 +47,11 @@ class SystemsController extends Controller
             compact(
                 'now',
                 'system',
-                'test_types',
-                'test_results',
+                'testTypes',
+                'testResults',
                 'technicians',
                 'manufacturers',
-                'system_types',
+                'systemTypes',
                 'photos',
                 'documents'
             )

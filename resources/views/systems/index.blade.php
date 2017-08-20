@@ -15,7 +15,7 @@
   <div class="titleBar" style="margin-top: 0">
       <p>Systems ({{ $systems->total() }})</p>
   </div>
-  
+
   <div class="table-responsive">
 
     <table class="table table-condensed">
@@ -61,7 +61,7 @@
 
           <td>
             <small>
-              {{ $system->system_type->type }}
+              {{ $system->systemType->type }}
             </small>
           </td>
 

@@ -3,7 +3,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Test_result extends Model
+class TestResult extends Model
 {
     public function tests()
     {

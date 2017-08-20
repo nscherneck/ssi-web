@@ -36,12 +36,12 @@
                 {{ $agentTank->formatted_description }}
               @endslot
               @slot('category')
-                {{ $agentTank->component_category->name }}
+                {{ $agentTank->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $agentTank->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $agentTank->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">

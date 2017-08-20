@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 use DB;
 use App\Site;
 use App\Test;
-use App\Test_result;
-use App\System_type;
+use App\TestResult;
+use App\SystemType;
 use App\System;
 use App\Customer;
 use App\TestFilters;
@@ -22,8 +22,8 @@ class TestsController extends Controller
     public function index(TestFilters $filters)
     {
         $technicians = DB::table('users')->get();
-        $test_results = DB::table('test_results')->get();
-        $test_types = DB::table('test_types')->get();
+        $testResults = DB::table('test_results')->get();
+        $testTypes = DB::table('test_types')->get();
         $tests = Test::filter($filters)
             ->orderBy('test_date', 'desc')
             ->get();
@@ -33,8 +33,8 @@ class TestsController extends Controller
             compact(
                 'tests',
                 'technicians',
-                'test_results',
-                'test_types'
+                'testResults',
+                'testTypes'
             )
         );
     }
@@ -70,16 +70,16 @@ class TestsController extends Controller
 
     public function show(Test $test)
     {
-        $test_types = DB::table('test_types')->get();
-        $test_results = DB::table('test_results')->get();
+        $testTypes = DB::table('test_types')->get();
+        $testResults = DB::table('test_results')->get();
         $technicians = DB::table('users')->get();
 
         return view(
             'tests.show',
             compact(
                 'test',
-                'test_types',
-                'test_results',
+                'testTypes',
+                'testResults',
                 'technicians'
             )
         );
@@ -127,8 +127,8 @@ class TestsController extends Controller
     {
         // for test search filter
         $customers = Customer::orderBy('name')->get();
-        $testResults = Test_result::orderBy('name')->get();
-        $systemTypes = System_type::orderBy('type')->get();
+        $testResults = TestResult::orderBy('name')->get();
+        $systemTypes = SystemType::orderBy('type')->get();
 
         // return search results
         $query = Test::query();
@@ -160,7 +160,7 @@ class TestsController extends Controller
         }
 
         $tests = $query->orderBy('test_date', 'desc')
-            ->with('system.site.customer', 'test_type', 'test_result')
+            ->with('system.site.customer', 'testType', 'testResult')
             ->get();
 
         return view('tests.search_results', compact(

@@ -38,7 +38,7 @@
       <div class="panel-body">
         <p>
           <small>
-            <strong>System Type:</strong> {{ $system->system_type->type }}<br>
+            <strong>System Type:</strong> {{ $system->systemType->type }}<br>
             <strong>Installation Date:</strong> {{ $system->install_date->format('F d, Y') }}<br>
             <hr>
             <strong>Installed by SSI:</strong>@if ($system->ssi_install == 1) Yes @else No @endif<br>
@@ -175,8 +175,8 @@
             <tr>
             <td><small><a href="{{ $test->path() }}">{{ $test->test_date->format('F d, Y') }}</a></small></td>
             <td><small>{{ $test->technician->first_name }} {{ $test->technician->last_name }}</small></td>
-            <td><small>{{ $test->test_type->name }}</small></td>
-            <td><small>{{ $test->test_result->name }}</small></td>
+            <td><small>{{ $test->testType->name }}</small></td>
+            <td><small>{{ $test->testResult->name }}</small></td>
             <td><small>{{ $test->addedBy->first_name }} {{ $test->addedBy->last_name }}</small></td>
           </tr>
           @endforeach

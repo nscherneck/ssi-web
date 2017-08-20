@@ -9,7 +9,7 @@ class System extends Model
 {
     use LogsActivity;
 
-    protected $with = ['site', 'tests', 'system_type', 'components'];
+    protected $with = ['site', 'tests', 'systemType', 'components'];
 
     protected $dates = [
         'install_date',
@@ -58,9 +58,9 @@ class System extends Model
         return $this->hasMany('App\Test')->orderBy('test_date', 'desc');
     }
 
-    public function system_type()
+    public function systemType()
     {
-        return $this->belongsTo('App\System_type');
+        return $this->belongsTo('App\systemType');
     }
 
     public function photos()
@@ -143,16 +143,12 @@ class System extends Model
 
     public function getComponent($component_category_id)
     {
-        $result = $this->components()
-            ->where('component_category_id', '=', $component_category_id)
-            ->get();
-
-        return $result;
+        return $this->components()->where('component_category_id', '=', $component_category_id)->get();
     }
 
     public function setNextTestDate($testDate)
     {
-        $this->next_test_date = $testDate->addMonths($this->system_type->test_interval)
+        $this->next_test_date = $testDate->addMonths($this->systemType->test_interval)
             ->format('Y-m-d');
         $this->save();
     }

@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 use App\Customer;
 use App\Site;
 use App\System;
-use App\System_type;
+use App\SystemType;
 use App\Test;
-use App\Test_result;
+use App\TestResult;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -56,9 +56,9 @@ class PagesController extends Controller
     {
         $customers = Customer::orderBy('name')->get();
 
-        $testResults = Test_result::orderBy('name')->get();
+        $testResults = TestResult::orderBy('name')->get();
 
-        $systemTypes = System_type::orderBy('type')->get();
+        $systemTypes = SystemType::orderBy('type')->get();
 
         $tests = Test::orderBy('test_date', 'desc')
             ->with('system.site.customer')
@@ -76,7 +76,7 @@ class PagesController extends Controller
             ->toDateString();
 
         $systemsDueForTest = System::orderBy('next_test_date', 'asc')
-            ->with('site.customer', 'system_type')
+            ->with('site.customer', 'systemType')
             ->where('next_test_date', '!=', null)
             ->whereBetween('next_test_date', [$startDate, $endDate])
             ->get();
@@ -117,7 +117,7 @@ class PagesController extends Controller
                 ->count();
         }
 
-        $systemTypes = System_type::orderBy('type')->with('systems')->get();
+        $systemTypes = SystemType::orderBy('type')->with('systems')->get();
 
         $systems = System::get();
 

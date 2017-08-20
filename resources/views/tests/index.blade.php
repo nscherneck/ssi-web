@@ -34,7 +34,7 @@
             <input type="checkbox" name="technician" value="{{ $technician->id }}">
             {{ $technician->first_name }}<br>
           @endforeach
-  
+
         <hr>
 
         <h4>Date Range (Test Date)</h4>
@@ -56,11 +56,11 @@
         <h4>Test Type</h4>
 
           <input type="checkbox" checked="checked"> All<br>
-          @foreach ($test_types as $type)
-            <input type="checkbox" name="test_type" value="{{ $type->id }}">
-            {{ $type->name }}<br>
+          @foreach ($testTypes as $testType)
+            <input type="checkbox" name="test_type" value="{{ $testType->id }}">
+            {{ $testType->name }}<br>
           @endforeach
-  
+
         <hr>
 
         <h4>Test Result</h4>
@@ -70,7 +70,7 @@
             <input type="checkbox" name="test_result" value="{{ $result->id }}">
             {{ $result->name }}<br>
           @endforeach
-  
+
         <hr>
 
     </div> <!-- END OF PANEL BODY -->
@@ -80,9 +80,9 @@
     </div> <!-- END OF FOOTER -->
 
     </form>
- 
+
     </div> <!-- END OF PANEL -->
-    
+
   </div> <!-- end of col-3 -->
 
   <div class="col-lg-9">
@@ -116,9 +116,9 @@
                 <a href="/site/{{ $test->system->site->id }}">{{ $test->system->site->name }}</a>  -
                   <a href="/system/{{ $test->system->id }}">{{ $test->system->name }}</a>
             </td>
-            <td>{{ $test->system->system_type->type }}</td>
+            <td>{{ $test->system->systemType->type }}</td>
             <td>{{ $test->system->count_components() }}</td>
-            <td>{{ $test->test_type->name }}</td>
+            <td>{{ $test->testType->name }}</td>
             <td>{{ $test->test_result->name }}</td>
 
           </tr>

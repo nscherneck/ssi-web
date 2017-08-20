@@ -19,8 +19,8 @@
           <input type="text" name="name" value="" class="form-control" placeholder="System Name" required><br>
           <select name="system_type_id" class="form-control" required>
               <option value="0" disabled selected>Select System Type</option>
-            @foreach ($system_types as $system_type)
-              <option value="{{ $system_type->id }}">{{ $system_type->type }}</option>
+            @foreach ($systemTypes as $systemType)
+              <option value="{{ $systemType->id }}">{{ $systemType->type }}</option>
             @endforeach
           </select><br>
           Installation Date: <input type="date" name="install_date" value="2000-01-01" class="form-control"><br>

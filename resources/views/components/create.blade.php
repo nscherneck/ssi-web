@@ -31,7 +31,7 @@
 
           Category: <select name="component_category_id" class="form-control" required>
               <option value="">Select Category</option>
-            @foreach ($component_categories as $category)
+            @foreach ($componentCategories as $category)
               <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
           </select><br>

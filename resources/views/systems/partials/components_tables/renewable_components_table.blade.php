@@ -36,12 +36,12 @@
                 {{ $renewable->formatted_description }}
               @endslot
               @slot('category')
-                {{ $renewable->component_category->name }}
+                {{ $renewable->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form 
-                  action="/system/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach" 
-                  method="post" 
+                <form
+                  action="/system/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach"
+                  method="post"
                   accept-charset="UTF-8">
                   {{ csrf_field() }}
                   <button type="submit" class="btn btn-default btn-xs">

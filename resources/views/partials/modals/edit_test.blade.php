@@ -31,16 +31,16 @@
           </select><br>
 
           Type: <select name="test_type_id" class="form-control">
-              <option value="{{ $test->test_type->id }}">{{ $test->test_type->name }}</option>
-            @foreach ($test_types as $test_type)
-              <option value="{{ $test_type->id }}">{{ $test_type->name }}</option>
+              <option value="{{ $test->testType->id }}">{{ $test->testType->name }}</option>
+            @foreach ($testTypes as $testType)
+              <option value="{{ $testType->id }}">{{ $testType->name }}</option>
             @endforeach
           </select><br>
 
           Result: <select name="test_result_id" class="form-control">
-              <option value="{{ $test->test_result->id }}">{{ $test->test_result->name }}</option>
-            @foreach ($test_results as $test_result)
-              <option value="{{ $test_result->id }}">{{ $test_result->name }}</option>
+              <option value="{{ $test->testResult->id }}">{{ $test->testResult->name }}</option>
+            @foreach ($testResults as $testResult)
+              <option value="{{ $testResult->id }}">{{ $testResult->name }}</option>
             @endforeach
           </select><br>
 

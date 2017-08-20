@@ -42,7 +42,7 @@
               <small>
                 @if ($manufacturer->address1){{ $manufacturer->address1 }}<br>@endif
                 @if ($manufacturer->address2){{ $manufacturer->address2 }}<br>@endif
-                @if ($manufacturer->city){{ $manufacturer->city }},@endif 
+                @if ($manufacturer->city){{ $manufacturer->city }},@endif
                 @if ($manufacturer->state_id){{ $manufacturer->state->abbreviated }}@endif @if($manufacturer->zip){{ $manufacturer->zip }}@endif
               </small>
               </p>
@@ -148,7 +148,7 @@
 
               <td width="25%">
               <small>
-                {{ $component->component_category->name }}
+                {{ $component->componentCategory->name }}
               </small>
               </td>
 

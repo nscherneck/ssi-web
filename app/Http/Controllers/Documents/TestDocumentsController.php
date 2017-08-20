@@ -55,7 +55,7 @@ class TestDocumentsController extends \App\Http\Controllers\Controller
         $fileName .= str_slug($test->system->site->customer->name, '_') . '_';
         $fileName .= str_slug($test->system->site->name, '_') . '_';
         $fileName .= str_slug($test->system->name, '_') . '_';
-        $fileName .= str_slug($test->test_type->name, '_') . '_';
+        $fileName .= str_slug($test->testType->name, '_') . '_';
         $fileName .= date('Ymd-Gis');
         return $fileName;
     }

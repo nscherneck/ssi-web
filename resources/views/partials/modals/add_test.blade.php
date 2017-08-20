@@ -38,8 +38,8 @@
             <div class="col-sm-10">
               <select name="test_type_id" class="form-control" required>
                   <option value="" disabled selected>Select</option>
-                @foreach ($test_types as $test_type)
-                  <option value="{{ $test_type->id }}">{{ $test_type->name }}</option>
+                @foreach ($testTypes as $testType)
+                  <option value="{{ $testType->id }}">{{ $testType->name }}</option>
                 @endforeach
               </select>
             </div>
@@ -50,8 +50,8 @@
             <div class="col-sm-10">
               <select name="test_result_id" class="form-control" required>
                   <option value="" disabled selected>Select</option>
-                @foreach ($test_results as $test_result)
-                  <option value="{{ $test_result->id }}">{{ $test_result->name }}</option>
+                @foreach ($testResults as $testResult)
+                  <option value="{{ $testResult->id }}">{{ $testResult->name }}</option>
                 @endforeach
               </select>
             </div>

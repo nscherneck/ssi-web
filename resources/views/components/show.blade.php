@@ -52,7 +52,7 @@
 
           <hr>
 
-          <p><strong>Category:</strong> {{ $component->component_category->name }}</p>
+          <p><strong>Category:</strong> {{ $component->componentCategory->name }}</p>
 
           <p>
             <small>

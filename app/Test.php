@@ -9,7 +9,7 @@ class Test extends Model
 {
     use LogsActivity;
 
-    protected $with = ['test_type', 'test_result'];
+    protected $with = ['testType', 'testResult'];
 
     protected $dates = [
         'test_date',
@@ -39,14 +39,14 @@ class Test extends Model
         return $this->belongsTo('App\System');
     }
 
-    public function test_result()
+    public function testResult()
     {
-        return $this->belongsTo('App\Test_result');
+        return $this->belongsTo('App\TestResult');
     }
 
-    public function test_type()
+    public function testType()
     {
-        return $this->belongsTo('App\Test_type');
+        return $this->belongsTo('App\TestType');
     }
 
     public function technician()
@@ -74,9 +74,9 @@ class Test extends Model
         return $this->hasMany('App\Deficiency');
     }
 
-    public function testnotes()
+    public function testNotes()
     {
-        return $this->hasMany('App\Testnote');
+        return $this->hasMany('App\TestNote');
     }
 
     public function path()

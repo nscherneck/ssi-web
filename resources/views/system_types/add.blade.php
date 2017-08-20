@@ -12,8 +12,8 @@
 
   <h4>Add System Type</h4>
   <ul>
-    @foreach($system_types as $system_type)
-      <li>{{ $system_type->type }}</li>
+    @foreach($systemTypes as $systemType)
+      <li>{{ $systemType->type }}</li>
       @endforeach
   </ul>
 

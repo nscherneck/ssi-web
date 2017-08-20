@@ -7,7 +7,7 @@ use App\System;
 use App\Component;
 use App\Document;
 use App\Manufacturer;
-use App\Component_category;
+use App\ComponentCategory;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,11 +68,11 @@ class ComponentsController extends Controller
         $manufacturers = DB::table('manufacturers')
             ->orderBy('name', 'asc')
             ->get();
-        $component_categories = DB::table('component_category')
+        $componentCategories = DB::table('component_category')
             ->orderBy('name', 'asc')
             ->get();
 
-        return view('components.create', compact('manufacturers', 'component_categories'));
+        return view('components.create', compact('manufacturers', 'componentCategories'));
     }
 
     public function getModelForAttachComponentModal(Request $request)
@@ -110,7 +110,7 @@ class ComponentsController extends Controller
             ->where('documentable_id', $component->id)
             ->where('documentable_type', 'App\Component')
             ->get();
-        $component_categories = DB::table('component_category')
+        $componentCategories = DB::table('component_category')
             ->orderBy('name', 'asc')
             ->get();
         return view(
@@ -118,7 +118,7 @@ class ComponentsController extends Controller
             compact(
                 'component',
                 'documents',
-                'component_categories'
+                'componentCategories'
             )
         );
     }

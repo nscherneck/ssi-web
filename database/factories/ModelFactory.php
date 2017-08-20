@@ -1,12 +1,12 @@
 <?php
 
 use App\Component;
-use App\Component_category;
+use App\ComponentCategory;
 use App\Customer;
 use App\Manufacturer;
 use App\Site;
 use App\System;
-use App\System_type;
+use App\SystemType;
 use App\WorkOrderNumber;
 use Carbon\Carbon;
 
@@ -107,7 +107,7 @@ $factory->define(App\System::class, function ($faker) {
       return factory('App\Site')->create()->id;
     },
     'system_type_id' => function () {
-      return factory('App\System_type')->create()->id;
+      return factory('App\SystemType')->create()->id;
     },
     'install_date' => '2000-01-01',
     'ssi_install' => 0,
@@ -117,7 +117,7 @@ $factory->define(App\System::class, function ($faker) {
   ];
 });
 
-$factory->define(App\System_type::class, function ($faker) {
+$factory->define(App\SystemType::class, function ($faker) {
   return [
     'type' => $faker->word,
     'test_interval' => 12,
@@ -130,7 +130,7 @@ $factory->define(App\Component::class, function ($faker) {
       return factory('App\Manufacturer')->create()->id;
     },
     'component_category_id' => function () {
-      return factory('App\Component_category')->create()->id;
+      return factory('App\ComponentCategory')->create()->id;
     },
     'model' => $faker->word . $faker->randomNumber(6),
     'description' => $faker->sentence(50),
@@ -144,7 +144,7 @@ $factory->define(App\Manufacturer::class, function ($faker) {
   ];
 });
 
-$factory->define(App\Component_category::class, function ($faker) {
+$factory->define(App\ComponentCategory::class, function ($faker) {
   return [
     'name' => $faker->word,
   ];

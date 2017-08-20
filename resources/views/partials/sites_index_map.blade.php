@@ -39,7 +39,7 @@
                 '<a href="{{ $system->path() }}" target="blank">@include('partials.icons.system-icon') {{ $system->name }}</a><br>' +
                 @if($system->next_test_date)'&nbsp;&nbsp;&nbsp;&nbsp;Next Test Due By: {{ $system->formatted_next_test_date }}<br>' + @endif
                 @foreach($system->tests as $test)
-                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">@include('partials.icons.test-icon') {{ $test->formatted_test_date }} {{ config('constants.SEPARATOR') }} {{ $test->test_type->name }}</a><br>' +
+                  '&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ $test->path() }}" target="blank">@include('partials.icons.test-icon') {{ $test->formatted_test_date }} {{ config('constants.SEPARATOR') }} {{ $test->testType->name }}</a><br>' +
                 @endforeach
                 '<br>' +
             @endforeach

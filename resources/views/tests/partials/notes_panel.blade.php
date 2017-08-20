@@ -13,25 +13,25 @@
 
           <tbody>
 
-            @foreach($test->testnotes as $testnote)
+            @foreach($test->testNotes as $testNote)
 
               <tr>
 
                 <td width="70%"><small>
-                {!! nl2br(e($testnote->note)) !!}
+                {!! nl2br(e($testNote->note)) !!}
                 </small></td>
 
                 <td><small>
-                {{ $testnote->addedBy->first_name }}
+                {{ $testNote->addedBy->first_name }}
                 </small></td>
 
                 <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testnote->id }}TestnoteModal">
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testNote->id }}testNoteModal">
                   <i class="fa fa-cog"></i></button>
                 </td>
 
                 <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testnote->id }}TestnoteModal">
+                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testNote->id }}testNoteModal">
                   <i class="fa fa-trash-o"></i></button>
                 </td>
 
@@ -48,7 +48,7 @@
 
     <div class="panel-body">
 
-      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestnoteModal">
+      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestNoteModal">
         <i class="fa fa-plus"></i></button>
 
     </div>

@@ -3,7 +3,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class System_type extends Model
+class SystemType extends Model
 {
     public function systems()
     {

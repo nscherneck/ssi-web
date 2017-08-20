@@ -18,6 +18,13 @@ Route::get('fleet', 'PagesController@fleet')->name('fleet');
 Route::get('team', 'PagesController@team')->name('team');
 Route::get('admin', 'PagesController@admin')->name('admin');
 
+Route::get('/tests/report/{test}', function (Test $test) {
+    $basePath = base_path();
+    $pdf = App::make('snappy.pdf.wrapper');
+    $pdf = PDF::loadView('tests.pdf.show', ['test' => $test, 'basePath' => $basePath]);
+    return $pdf->download('test-report.pdf');
+});
+
 // USER ROUTES
 Route::get('profile', 'UsersController@profile')->name('profile');
 Route::get('changepassword', 'UsersController@changePasswordView')->name('change_password');
@@ -90,9 +97,9 @@ Route::post('tests/{test}/deficiencies/store', 'DeficienciesController@store');
 Route::delete('tests/{test}/deficiencies/{deficiency}/delete', 'DeficienciesController@destroy');
 Route::put('tests/{test}/deficiencies/{deficiency}/update', 'DeficienciesController@update');
 
-Route::post('tests/{test}/testnotes/store', 'TestnotesController@store');
-Route::delete('tests/{test}/testnotes/{testnote}/delete', 'TestnotesController@destroy');
-Route::put('tests/{test}/testnotes/{testnote}/update', 'TestnotesController@update');
+Route::post('tests/{test}/testnotes/store', 'TestNotesController@store');
+Route::delete('tests/{test}/testnotes/{testNote}/delete', 'TestNotesController@destroy');
+Route::put('tests/{test}/testnotes/{testNote}/update', 'TestNotesController@update');
 
 Route::post('tests/{test}/document', 'Documents\TestDocumentsController@store');
 Route::get('tests/document/{document}', 'Documents\TestDocumentsController@show');

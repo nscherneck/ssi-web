@@ -48,9 +48,9 @@ class Site extends Model
         ->orderBy('name', 'asc');
     }
 
-    public function system_types()
+    public function systemTypes()
     {
-        return $this->hasManyThrough('App\System_type', 'App\System');
+        return $this->hasManyThrough('App\SystemType', 'App\System');
     }
 
     public function state()

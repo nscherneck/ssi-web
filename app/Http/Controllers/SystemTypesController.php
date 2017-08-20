@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use DB;
-use App\System_type;
+use App\SystemType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +15,11 @@ class SystemTypesController extends Controller
 
     public function create()
     {
-        $system_types = DB::table('system_types')
+        $systemTypes = DB::table('system_types')
             ->orderBy('type', 'asc')
             ->get();
 
-        return view('system_types.add', compact('system_types'));
+        return view('system_types.add', compact('systemTypes'));
     }
 
     public function store(Request $request)
@@ -28,10 +28,10 @@ class SystemTypesController extends Controller
             'type' => 'required|unique:system_types'
             ]);
 
-        $system_type = new System_type;
-        $system_type->type = $request->type;
+        $systemType = new SystemType;
+        $systemType->type = $request->type;
 
-        $system_type->save();
+        $systemType->save();
 
         return back();
     }

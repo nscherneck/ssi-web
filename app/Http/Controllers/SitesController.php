@@ -5,7 +5,7 @@ use App\BranchOffice;
 use App\Customer;
 use App\Site;
 use App\State;
-use App\System_type;
+use App\SystemType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -31,9 +31,9 @@ class SitesController extends Controller
     {
         $states = State::all();
         $branchOffices = BranchOffice::all();
-        $system_types = System_type::orderBy('type')->get();
+        $systemTypes = SystemType::orderBy('type')->get();
 
-        return view('sites.show', compact('site', 'system_types', 'states', 'branchOffices'));
+        return view('sites.show', compact('site', 'systemTypes', 'states', 'branchOffices'));
     }
 
     public function store(Request $request, Customer $customer)

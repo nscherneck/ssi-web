@@ -23,9 +23,9 @@
 
             Name: <input type="text" name="name" value="{{ $system->name }}" class="form-control"><br>
             Type: <select name="system_type_id" class="form-control">
-                <option value="{{ $system->system_type_id }}">{{ $system->system_type->type }}</option>
-              @foreach ($system_types as $system_type)
-                <option value="{{ $system_type->id }}">{{ $system_type->type }}</option>
+                <option value="{{ $system->system_type_id }}">{{ $system->systemType->type }}</option>
+              @foreach ($systemTypes as $systemType)
+                <option value="{{ $systemType->id }}">{{ $systemType->type }}</option>
               @endforeach
             </select><br>
             Installation Date: <input type="date" name="install_date" value="{{ $system->install_date->format('Y-m-d') }}" class="form-control"><br>

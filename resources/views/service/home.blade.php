@@ -46,21 +46,21 @@
           <td>
             <a href="{{ $system->site->customer->path() }}">
               {{ $system->site->customer->name }}
-            </a>  
-              {{ config('constants.SEPARATOR') }} 
+            </a>
+              {{ config('constants.SEPARATOR') }}
             <a href="{{ $system->site->path() }}">
               {{ $system->site->name }}
             </a>
-              {{ config('constants.SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }}
             <a href="{{ $system->path() }}">
               {{ $system->name }}
             </a>
           </td>
 
-          <td>{{ $system->system_type->type }}</td>
+          <td>{{ $system->systemType->type }}</td>
 
           <td>{{ $system->components_quantity }}</td>
-            
+
           </tr>
         @endforeach
       </tbody>
@@ -109,23 +109,23 @@
             <a href="{{ $test->system->site->customer->path() }}">
             {{ $test->system->site->customer->name }}
             </a>
-              {{ config('constants.SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }}
             <a href="{{ $test->system->site->path() }}">
             {{ $test->system->site->name }}
             </a>
-              {{ config('constants.SEPARATOR') }} 
+              {{ config('constants.SEPARATOR') }}
             <a href="{{ $test->system->path() }}">
             {{ $test->system->name }}
             </a>
           </td>
 
-          <td>{{ $test->system->system_type->type }}</td>
+          <td>{{ $test->system->systemType->type }}</td>
 
           <td>{{ $test->system->sumComponents() }}</td>
 
-          <td>{{ $test->test_type->name }}</td>
+          <td>{{ $test->testType->name }}</td>
 
-          <td>{{ $test->test_result->name }}</td>
+          <td>{{ $test->testResult->name }}</td>
 
         </tr>
         @endforeach
@@ -148,36 +148,36 @@
       <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
       <div class="row">
-        
+
         <div class="col-lg-4">
-          <small>Customer:</small> 
+          <small>Customer:</small>
           <select name="customer_id" class="form-control">
           <option value="0">Select Customer</option>
             @foreach ($customers as $customer)
             <option value="{{ $customer->id }}">{{ $customer->name }}</option>
             @endforeach
-          </select>          
-        </div>  
+          </select>
+        </div>
 
         <div class="col-lg-4">
-          <small>Test Result:</small> 
+          <small>Test Result:</small>
           <select name="test_result_id" class="form-control">
           <option value="0">Select Result</option>
             @foreach ($testResults as $result)
             <option value="{{ $result->id }}">{{ $result->name }}</option>
             @endforeach
-          </select>          
-        </div>      
+          </select>
+        </div>
 
         <div class="col-lg-4">
-          <small>System Type:</small> 
+          <small>System Type:</small>
           <select name="system_type_id" class="form-control">
           <option value="0">Select System Type</option>
             @foreach ($systemTypes as $type)
             <option value="{{ $type->id }}">{{ $type->type }}</option>
             @endforeach
-          </select>          
-        </div>   
+          </select>
+        </div>
 
       </div> <!-- END OF ROW -->
 
@@ -186,23 +186,23 @@
       <div class="row">
 
         <div class="col-lg-3">
-          <small>Start Date:</small> 
+          <small>Start Date:</small>
           <input type="date" name="start_date" value="" class="form-control">
         </div>
 
         <div class="col-lg-3">
-          <small>End Date:</small> 
+          <small>End Date:</small>
           <input type="date" name="end_date" value="" class="form-control">
         </div>
 
         <div class="col-lg-3">
-          <small>Has Reports:</small> 
+          <small>Has Reports:</small>
           <select name="has_reports" class="form-control">
           <option value="">Select</option>
             <option value="1">Yes</option>
             <option value="2">No</option>
-          </select>           
-        </div>        
+          </select>
+        </div>
 
         <div class="col-lg-3">
         </div>
