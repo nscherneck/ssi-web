@@ -60,7 +60,7 @@ class System extends Model
 
     public function systemType()
     {
-        return $this->belongsTo('App\systemType');
+        return $this->belongsTo('App\SystemType');
     }
 
     public function photos()
