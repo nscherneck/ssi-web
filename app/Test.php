@@ -69,9 +69,9 @@ class Test extends Model
         return $this->morphMany('App\Document', 'documentable');
     }
 
-    public function deficiencies()
+    public function testDeficiencies()
     {
-        return $this->hasMany('App\Deficiency');
+        return $this->hasMany('App\TestDeficiency');
     }
 
     public function testNotes()

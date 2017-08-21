@@ -1,4 +1,4 @@
-<!-- add Deficiency Modal -->
+<!-- add System Modal -->
 <div class="modal fade" id="addSystemModal" role="dialog">
   <div class="modal-dialog">
 

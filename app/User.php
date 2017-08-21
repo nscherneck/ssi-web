@@ -47,9 +47,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Test');
     }
 
-    public function deficiencies()
+    public function testDeficiencies()
     {
-        return $this->hasMany('App\Deficiency');
+        return $this->hasMany('App\TestDeficiency');
     }
 
     public function manufacturers()

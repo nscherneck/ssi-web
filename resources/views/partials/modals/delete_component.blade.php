@@ -1,4 +1,4 @@
-<!-- add Deficiency Modal -->
+<!-- delete Component Modal -->
 <div class="modal fade" id="deleteComponentModal" role="dialog">
   <div class="modal-dialog">
 

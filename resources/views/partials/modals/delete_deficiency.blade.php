@@ -1,7 +1,7 @@
 <!-- delete Deficiency Modal -->
 <div
   class="modal fade"
-  id="delete{{ $deficiency->id }}DeficiencyModal"
+  id="delete{{ $testDeficiency->id }}DeficiencyModal"
   role="dialog"
   tabindex="-1">
   <div class="modal-dialog">
@@ -19,7 +19,7 @@
           </span>
         </p>
 
-          <form action="/tests/{{ $test->id }}/deficiencies/{{ $deficiency->id }}/delete" method="post" accept-charset="UTF-8">
+          <form action="/tests/{{ $test->id }}/deficiencies/{{ $testDeficiency->id }}/delete" method="post" accept-charset="UTF-8">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="delete">
 

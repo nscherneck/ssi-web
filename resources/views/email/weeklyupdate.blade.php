@@ -119,7 +119,7 @@
         <td>{{ $test->system->site->name }}</td>
         <td>{{ $test->system->name }}</td>
         <td>{{ $test->testType->name }}</td>
-        <td>{{ $test->test_result->name }}</td>
+        <td>{{ $test->testResult->name }}</td>
       </tr>
       @endforeach
     </table>

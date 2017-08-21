@@ -3,7 +3,6 @@
 use App\Customer;
 use App\System;
 use App\Test;
-use App\Mail\WeeklyUpdate;
 
 // BASE NAV ROUTES
 Route::get('/', 'PagesController@home')->name('home');
@@ -93,9 +92,9 @@ Route::delete('tests/{test}/delete', 'TestsController@destroy');
 
 Route::post('tests/search', 'TestsController@search');
 
-Route::post('tests/{test}/deficiencies/store', 'DeficienciesController@store');
-Route::delete('tests/{test}/deficiencies/{deficiency}/delete', 'DeficienciesController@destroy');
-Route::put('tests/{test}/deficiencies/{deficiency}/update', 'DeficienciesController@update');
+Route::post('tests/{test}/deficiencies/store', 'TestDeficienciesController@store');
+Route::delete('tests/{test}/deficiencies/{testDeficiency}/delete', 'TestDeficienciesController@destroy');
+Route::put('tests/{test}/deficiencies/{testDeficiency}/update', 'TestDeficienciesController@update');
 
 Route::post('tests/{test}/testnotes/store', 'TestNotesController@store');
 Route::delete('tests/{test}/testnotes/{testNote}/delete', 'TestNotesController@destroy');

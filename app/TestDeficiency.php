@@ -3,7 +3,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Deficiency extends Model
+class TestDeficiency extends Model
 {
     public function test()
     {

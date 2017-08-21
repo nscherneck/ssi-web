@@ -2,11 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Test;
-use App\Deficiency;
+use App\TestDeficiency;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DeficienciesController extends Controller
+class TestDeficienciesController extends Controller
 {
     public function __construct()
     {
@@ -15,31 +15,30 @@ class DeficienciesController extends Controller
 
     public function store(Request $request, Test $test)
     {
-        $deficiency = new Deficiency;
-        $deficiency->test_id = $test->id;
-        $deficiency->description = $request->description;
-        $deficiency->added_by = Auth::id();
-        $deficiency->save();
+        $testDeficiency = new TestDeficiency;
+        $testDeficiency->test_id = $test->id;
+        $testDeficiency->description = $request->description;
+        $testDeficiency->added_by = Auth::id();
+        $testDeficiency->save();
 
         flash('Success!', 'Deficiency added.');
 
         return redirect()->route('test_show', ['id' => $test->id]);
     }
 
-    public function update(Request $request, Test $test, Deficiency $deficiency)
+    public function update(Request $request, Test $test, testDeficiency $testDeficiency)
     {
-        $deficiency = Deficiency::find($deficiency->id);
-        $deficiency->description = $request->description;
-        $deficiency->update();
+        $testDeficiency->description = $request->description;
+        $testDeficiency->update();
 
         flash('Success!', 'Deficiency updated.', 'success');
 
         return redirect()->route('test_show', ['id' => $test->id]);
     }
 
-    public function destroy(Test $test, Deficiency $deficiency)
+    public function destroy(Test $test, TestDeficiency $testDeficiency)
     {
-        $deficiency->delete();
+        $testDeficiency->delete();
 
         flash('Success!', 'Deficiency deleted.', 'danger');
 

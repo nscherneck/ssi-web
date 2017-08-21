@@ -1,4 +1,4 @@
-<!-- add Deficiency Modal -->
+<!-- add Note Modal -->
 <div class="modal fade" id="addTestNoteModal" role="dialog">
   <div class="modal-dialog">
 

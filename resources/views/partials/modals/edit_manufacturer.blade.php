@@ -1,4 +1,4 @@
-<!-- edit Deficiency Modal -->
+<!-- edit Manufacturer Modal -->
 <div class="modal fade" id="updateManufacturerModal" role="dialog">
   <div class="modal-dialog">
 

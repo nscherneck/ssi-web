@@ -12,24 +12,24 @@
         </thead>
 
         <tbody>
-          @foreach($test->deficiencies as $deficiency)
+          @foreach($test->testDeficiencies as $testDeficiency)
             <tr>
 
             <td width="70%"><small>
-            {!! nl2br(e($deficiency->description)) !!}
+            {!! nl2br(e($testDeficiency->description)) !!}
             </small></td>
 
             <td><small>
-            {{ $deficiency->addedBy->first_name }}
+            {{ $testDeficiency->addedBy->first_name }}
             </small></td>
 
             <td>
-              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $deficiency->id }}DeficiencyModal">
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testDeficiency->id }}DeficiencyModal">
               <i class="fa fa-cog"></i></button>
             </td>
 
             <td>
-              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $deficiency->id }}DeficiencyModal">
+              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testDeficiency->id }}DeficiencyModal">
                 <i class="fa fa-trash-o"></i></button>
             </td>
 

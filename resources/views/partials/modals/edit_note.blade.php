@@ -10,7 +10,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h5 class="modal-title">Edit Deficiency  </h5>
+        <h5 class="modal-title">Edit Note</h5>
       </div>
       <div class="modal-body">
 
