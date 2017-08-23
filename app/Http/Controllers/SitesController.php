@@ -1,11 +1,12 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\BranchOffice;
-use App\Customer;
 use App\Site;
 use App\State;
+use App\System;
+use App\Customer;
 use App\SystemType;
+use App\BranchOffice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -33,7 +34,7 @@ class SitesController extends Controller
         $branchOffices = BranchOffice::all();
         $systemTypes = SystemType::orderBy('type')->get();
 
-        return view('sites.show', compact('site', 'systemTypes', 'states', 'branchOffices'));
+        return view('sites.show', compact('site', 'states', 'branchOffices', 'systemTypes'));
     }
 
     public function store(Request $request, Customer $customer)

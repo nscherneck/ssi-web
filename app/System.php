@@ -2,12 +2,13 @@
 namespace App;
 
 use DB;
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class System extends Model
 {
-    use LogsActivity;
+    use LogsActivity, CreatedUpdatedInfo;
 
     protected $with = ['site', 'tests', 'systemType', 'components'];
 
@@ -68,16 +69,6 @@ class System extends Model
         return $this->morphMany('App\Photo', 'photoable');
     }
 
-    public function addedBy()
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
-    public function updatedBy()
-    {
-        return $this->belongsTo('App\User', 'updated_by');
-    }
-
     public function path()
     {
         return '/systems/' . $this->id;
@@ -114,36 +105,24 @@ class System extends Model
             ->format('F Y');
     }
 
-    public function getFormattedUpdatedAtAttribute()
-    {
-        return $this->updated_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
-    }
-
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
-    }
-
     public function getMostRecentTest()
     {
-        $test_count = $this->tests->count();
-
-        if ($test_count == 0) {
+        if (count($this->tests) == 0) {
             return '';
         }
 
-        $result = $this->tests()
+        return $this->tests()
                 ->orderBy('test_date', 'desc')
-                ->first();
-        return $result->test_date
+                ->first()
+                ->test_date
                 ->format('M j, Y');
     }
 
     public function getComponent($component_category_id)
     {
-        return $this->components()->where('component_category_id', '=', $component_category_id)->get();
+        return $this->components()
+            ->where('component_category_id', '=', $component_category_id)
+            ->get();
     }
 
     public function setNextTestDate($testDate)

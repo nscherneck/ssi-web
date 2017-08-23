@@ -1,10 +1,13 @@
 <?php
 namespace App;
 
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
+    use CreatedUpdatedInfo;
+
     protected $fillable = [
         'path',
         'description',
@@ -19,16 +22,6 @@ class Document extends Model
     public function documentable()
     {
         return $this->morphTo();
-    }
-
-    public function addedBy() // user who uploaded
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
-    public function updatedBy() // user who uploaded
-    {
-        return $this->belongsTo('App\User', 'updated_by');
     }
 
     public function getFullDocumentNameAttribute()

@@ -1,13 +1,14 @@
 <?php
 namespace App;
 
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Photo extends Model
 {
-    use LogsActivity;
+    use LogsActivity, CreatedUpdatedInfo;
 
     protected $dates = [
         'updated_at',
@@ -34,11 +35,6 @@ class Photo extends Model
         return $this->morphTo();
     }
 
-    public function addedBy()
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
     public function pathToSystemPhoto()
     {
         return '/systems/photos' . '/' . $this->id;
@@ -54,11 +50,5 @@ class Photo extends Model
     {
         $result = round(Storage::size($this->path . "/" . $this->file_name . "." . $this->ext) / 1000000, 2) . " Mb";
         return $result;
-    }
-
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Test extends Model
 {
-    use LogsActivity;
+    use LogsActivity, CreatedUpdatedInfo;
 
     protected $with = ['testType', 'testResult'];
 
@@ -52,16 +53,6 @@ class Test extends Model
     public function technician()
     {
         return $this->belongsTo('App\User', 'technician_id');
-    }
-
-    public function addedBy()
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
-    public function updatedBy()
-    {
-        return $this->belongsTo('App\User', 'updated_by');
     }
 
     public function reports()

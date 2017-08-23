@@ -30,9 +30,8 @@ class Component extends Model
 
     public function getFormattedDescriptionAttribute()
     {
-        if (strlen($this->description) > 110) {
-            $shortenedDescriptionString = substr($this->description, 0, 110) . '...';
-            return $shortenedDescriptionString;
+        if (strlen($this->description) > 100) {
+            return str_limit($this->description, 100);
         }
         return $this->description;
     }

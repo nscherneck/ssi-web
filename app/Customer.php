@@ -1,19 +1,20 @@
 <?php
 namespace App;
 
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Customer extends Model
 {
-    use LogsActivity;
+    use LogsActivity, CreatedUpdatedInfo;
 
     protected $with = ['state'];
 
     protected $dates = [
         'created_at',
         'updated_at'
-        ];
+    ];
 
     protected $fillable = [
         'name',
@@ -32,11 +33,11 @@ class Customer extends Model
         'added_by',
         'updated_by',
         'updated_at'
-        ];
+    ];
 
     protected static $logAttributes = [
         'notes'
-        ];
+    ];
 
     public static function boot()
     {
@@ -69,27 +70,5 @@ class Customer extends Model
     public function path()
     {
         return '/customers/' . $this->id;
-    }
-
-    public function addedBy() // technician who completed test
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
-    public function updatedBy() // technician who completed test
-    {
-        return $this->belongsTo('App\User', 'updated_by');
-    }
-
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
-    }
-
-    public function getFormattedUpdatedAtAttribute()
-    {
-        return $this->updated_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
     }
 }

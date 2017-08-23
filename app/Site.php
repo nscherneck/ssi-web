@@ -2,12 +2,13 @@
 namespace App;
 
 use DB;
+use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 class Site extends Model
 {
-    use LogsActivity;
+    use LogsActivity, CreatedUpdatedInfo;
 
     protected $with = ['state', 'customer'];
 
@@ -15,6 +16,7 @@ class Site extends Model
         'created_at',
         'updated_at'
         ];
+
     protected $fillable =  [
         'name',
         'slug',
@@ -33,6 +35,7 @@ class Site extends Model
         'updated_by',
         'updated_at'
         ];
+
     protected static $logAttributes = [
         'notes'
         ];
@@ -73,37 +76,6 @@ class Site extends Model
         return '/sites/' . $this->id;
     }
 
-    public function addedBy()
-    {
-        return $this->belongsTo('App\User', 'added_by');
-    }
-
-    public function updatedBy()
-    {
-        return $this->belongsTo('App\User', 'updated_by');
-    }
-
-    public function getFormattedUpdatedAtAttribute()
-    {
-        return $this->updated_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
-    }
-
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->setTimezone('America/Los_Angeles')
-            ->format('F j, Y, g:i a');
-    }
-
-    public function count_systems($id)
-    {
-        $systems_quantity = DB::table('systems')
-        ->where('site_id', $id)
-        ->count();
-
-        return $systems_quantity;
-    }
-
     public function distanceCalculator($originLatitude, $originLongitude)
     {
         $mode = 'car';
@@ -133,11 +105,5 @@ class Site extends Model
         $returnedJson = json_decode(curl_exec($ch), true);
         $duration = $returnedJson['rows'][0]['elements'][0]['duration']['text'];
         return $duration;
-    }
-
-    public function getFormattedForIndexCreatedAtAttribute()
-    {
-        return $this->created_at->setTimezone('America/Los_Angeles')
-            ->format('D, F j');
     }
 }
