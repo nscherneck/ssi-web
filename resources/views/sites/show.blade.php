@@ -70,8 +70,16 @@
               @foreach ($branchOffices as $branchOffice)
                 <tr>
                   <td><small>{{ $branchOffice->name }}</small></td>
-                  <td><small>{{ $site->distanceCalculator($branchOffice->latitude, $branchOffice->longitude) }} miles</small></td>
-                  <td><small>{{ $site->durationCalculator($branchOffice->latitude, $branchOffice->longitude) }}</small></td>
+                  <td>
+                    <small>
+                      {{ $site->travelCalculator($branchOffice->latitude, $branchOffice->longitude, 'distance') }} miles
+                    </small>
+                  </td>
+                  <td>
+                    <small>
+                      {{ $site->travelCalculator($branchOffice->latitude, $branchOffice->longitude, 'duration') }}
+                    </small>
+                  </td>
                 </tr>
               @endforeach
             </tbody>

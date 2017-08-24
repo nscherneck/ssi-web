@@ -76,7 +76,7 @@ class Site extends Model
         return '/sites/' . $this->id;
     }
 
-    public function distanceCalculator($originLatitude, $originLongitude)
+    public function travelCalculator($originLatitude, $originLongitude, $type)
     {
         $mode = 'car';
         $language = 'en-EN';
@@ -87,23 +87,14 @@ class Site extends Model
         curl_setopt($ch, CURLOPT_URL, $distanceApiCall);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $returnedJson = json_decode(curl_exec($ch), true);
-        $distanceInMeters = $returnedJson['rows'][0]['elements'][0]['distance']['value'];
-        $distanceInMiles = $distanceInMeters / 1609.344;
-        return number_format($distanceInMiles, 1);
-    }
-
-    public function durationCalculator($originLatitude, $originLongitude)
-    {
-        $mode = 'car';
-        $language = 'en-EN';
-        $units = 'imperial';
-        $distanceApiCall = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={$originLatitude},{$originLongitude}&destinations={$this->lat},{$this->lon}&mode={$mode}&language={$language}&units={$units}";
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $distanceApiCall);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $returnedJson = json_decode(curl_exec($ch), true);
-        $duration = $returnedJson['rows'][0]['elements'][0]['duration']['text'];
-        return $duration;
+        if ($type == 'distance') {
+            $distanceInMeters = $returnedJson['rows'][0]['elements'][0]['distance']['value'];
+            $distanceInMiles = $distanceInMeters / 1609.344;
+            return number_format($distanceInMiles, 1);
+        }
+        if ($type == 'duration') {
+            return $returnedJson['rows'][0]['elements'][0]['duration']['text'];
+        }
+        return 'error';
     }
 }
