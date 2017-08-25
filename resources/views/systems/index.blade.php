@@ -79,7 +79,7 @@
 
           <td class="text-center">
             <small>
-              {{ $system->sumComponents() }}
+              {{ $system->components()->sum('quantity') }}
             </small>
           </td>
 

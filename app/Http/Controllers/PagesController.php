@@ -42,14 +42,14 @@ class PagesController extends Controller
 
     public function jobs()
     {
-        if (Cache::has('customers')) {
-            $customers = Cache::get('customers');
-            return 'Shit worked';
-        }
-        Cache::forever('customers', Customer::whereBetween('id', [1, 10])->get());
-        $customers = Cache::get('customers');
-        return $customers;
-        // return view('jobs');
+        // if (Cache::has('customers')) {
+        //     $customers = Cache::get('customers');
+        //     return 'Shit worked';
+        // }
+        // Cache::forever('customers', Customer::whereBetween('id', [1, 10])->get());
+        // $customers = Cache::get('customers');
+        // return $customers;
+        return view('jobs');
     }
 
     public function serviceHome()

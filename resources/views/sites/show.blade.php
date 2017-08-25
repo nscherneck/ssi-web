@@ -173,7 +173,7 @@
             <tr>
               <td><small><a href="{{ $system->path() }}">{{ $system->name }}</a></small></td>
               <td><small>{{ $system->systemType->type }}</small></td>
-              <td><small>{{ $system->sumComponents() }}</small></td>
+              <td><small>{{ $system->components()->sum('quantity') }}</small></td>
               <td><small>{{ $system->getMostRecentTest() }}</small></td>
             </tr>
             @endforeach

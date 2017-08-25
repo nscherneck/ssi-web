@@ -46,14 +46,14 @@ class SystemTest extends TestCase
     public function it_can_have_a_component_attached()
     {
         $this->system->attachComponent($this->component->id, 5, 'Lorem ipsum');
-        $this->assertEquals(5, $this->system->sumComponents());
+        $this->assertEquals(5, $this->system->components()->sum('quantity'));
     }
 
     /** @test */
     public function it_can_have_a_component_detached()
     {
         $this->system->detachComponent($this->component->id);
-        $this->assertEquals(0, $this->system->sumComponents());
+        $this->assertEquals(0, $this->system->components()->sum('quantity'));
     }
 
     /** @test */

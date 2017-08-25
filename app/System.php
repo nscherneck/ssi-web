@@ -132,13 +132,6 @@ class System extends Model
         $this->save();
     }
 
-    public function sumComponents()
-    {
-        return DB::table('components_systems')->where('system_id', $this->id)
-            ->pluck('quantity')
-            ->sum();
-    }
-
     public function scopeIsTestedBySSI($query)
     {
         return $query->where('ssi_test_acct', 1);

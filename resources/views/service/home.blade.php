@@ -121,7 +121,7 @@
 
           <td>{{ $test->system->systemType->type }}</td>
 
-          <td>{{ $test->system->sumComponents() }}</td>
+          <td>{{ $test->system->components()->sum('quantity') }}</td>
 
           <td>{{ $test->testType->name }}</td>
 

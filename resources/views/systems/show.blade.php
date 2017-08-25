@@ -130,7 +130,7 @@
 <div class="col-md-9">
 
   <div class="titleBar" style="margin-top: 0">
-    <p>Components ({{ $system->sumComponents() }})</p>
+    <p>Components ({{ $system->components()->sum('quantity') }})</p>
   </div>
 
     <h5>Detection &amp; Controls</h5>
