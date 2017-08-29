@@ -1,5 +1,9 @@
-<!-- add Test Report Modal -->
-<div class="modal fade" id="addComponentDocumentModal" role="dialog">
+<!-- add Component Document Modal -->
+<div
+  class="modal fade"
+  id="addComponentDocumentModal"
+  role="dialog"
+  tabindex="-1">
 
   <div class="modal-dialog">
 

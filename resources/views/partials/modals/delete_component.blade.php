@@ -1,5 +1,9 @@
 <!-- delete Component Modal -->
-<div class="modal fade" id="deleteComponentModal" role="dialog">
+<div
+  class="modal fade"
+  id="deleteComponentModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
