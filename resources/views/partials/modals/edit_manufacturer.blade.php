@@ -1,5 +1,9 @@
 <!-- edit Manufacturer Modal -->
-<div class="modal fade" id="updateManufacturerModal" role="dialog">
+<div
+  class="modal fade"
+  id="updateManufacturerModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

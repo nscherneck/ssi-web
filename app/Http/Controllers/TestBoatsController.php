@@ -6,7 +6,7 @@ use App\TestNote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TestNotesController extends Controller
+class TestBoatsController extends Controller
 {
     public function __construct()
     {
