@@ -79,7 +79,7 @@
 
           <td class="text-center">
             <small>
-              {{ $system->components()->sum('quantity') }}
+              {{ $system->components->sum('pivot.quantity') }}
             </small>
           </td>
 

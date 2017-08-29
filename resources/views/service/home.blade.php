@@ -59,7 +59,7 @@
 
           <td>{{ $system->systemType->type }}</td>
 
-          <td>{{ $system->components_quantity }}</td>
+          <td>{{ $system->components->sum('pivot.quantity') }}</td>
 
           </tr>
         @endforeach
@@ -121,7 +121,7 @@
 
           <td>{{ $test->system->systemType->type }}</td>
 
-          <td>{{ $test->system->components()->sum('quantity') }}</td>
+          <td>{{ $test->system->components->sum('pivot.quantity') }}</td>
 
           <td>{{ $test->testType->name }}</td>
 
