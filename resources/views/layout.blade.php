@@ -18,7 +18,8 @@
     </script> --}}
 
     <script src="https://use.fontawesome.com/45ecff3689.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
     {{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
 
     <title> @yield('title') </title>
@@ -26,8 +27,8 @@
     <style>
 
         .level {
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
         }
         .flex {
             flex: 1;
@@ -47,8 +48,6 @@
         <flash message="{{ session('flash') }}"></flash>
     </div> --}}
 
-    <script src="{{ mix('js/app.js') }}"></script>
-      
   </body>
 
 </html>

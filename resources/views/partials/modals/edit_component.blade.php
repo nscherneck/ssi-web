@@ -1,5 +1,9 @@
 <!-- edit Component Modal -->
-<div class="modal fade" id="updateComponentModal" role="dialog">
+<div
+  class="modal fade"
+  id="updateComponentModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

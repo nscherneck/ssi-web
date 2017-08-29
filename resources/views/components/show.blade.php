@@ -174,27 +174,7 @@
             <br>
 
           </div>
-
       </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">Comments</div>
-        <div class="panel-body">
-
-        </div>
-
-        <div class="panel-footer">
-
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addComponentCommentDocumentModal">
-            <i class="fa fa-plus"></i></button>
-          <br>
-
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
 </div>
 
