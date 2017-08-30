@@ -1,5 +1,9 @@
 <!-- add Note Modal -->
-<div class="modal fade" id="addTestNoteModal" role="dialog">
+<div
+  class="modal fade"
+  id="addTestNoteModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->
