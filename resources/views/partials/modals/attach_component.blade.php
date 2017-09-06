@@ -46,7 +46,11 @@ function fetch_select(val)
 
 
 <!-- attach component modal -->
-<div class="modal fade" id="attachComponentModal" role="dialog">
+<div
+  class="modal fade"
+  id="attachComponentModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

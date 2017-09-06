@@ -1,5 +1,9 @@
 <!-- add Deficiency Modal -->
-<div class="modal fade" id="addDeficiencyModal" role="dialog">
+<div
+  class="modal fade"
+  id="addDeficiencyModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

@@ -1,5 +1,9 @@
 <!-- edit Site Modal -->
-<div class="modal fade" id="updateSiteModal" role="dialog" tabindex='-1'>
+<div
+  class="modal fade"
+  id="updateSiteModal"
+  role="dialog"
+  tabindex='-1'>
   <div class="modal-dialog">
 
     <!-- Modal content-->

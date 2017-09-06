@@ -1,5 +1,9 @@
 <!-- add Test Modal -->
-<div class="modal fade" id="addTestModal" role="dialog">
+<div
+  class="modal fade"
+  id="addTestModal"
+  role="dialog"
+  tabindex="-1">
   <div class="modal-dialog">
 
     <!-- Modal content-->

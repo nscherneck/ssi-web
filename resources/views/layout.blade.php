@@ -9,6 +9,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:light,normal" rel="stylesheet">
     <link rel="shortcut icon" href="{{{ asset('images/favicon-32x32.png') }}}">
     <link rel="apple-touch-icon" href="{{{ asset('images/favicon-57x57.png') }}}"/>
     <link rel="stylesheet" href="{{ mix('css/bundle.css') }}">
