@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use App\Traits\CreatedUpdatedInfo;
@@ -13,7 +14,7 @@ class Customer extends Model
 
     protected $dates = [
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     protected $fillable = [
@@ -32,11 +33,11 @@ class Customer extends Model
         'notes',
         'added_by',
         'updated_by',
-        'updated_at'
+        'updated_at',
     ];
 
     protected static $logAttributes = [
-        'notes'
+        'notes',
     ];
 
     public static function boot()

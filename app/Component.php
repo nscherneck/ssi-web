@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +34,7 @@ class Component extends Model
         if (strlen($this->description) > 100) {
             return str_limit($this->description, 100);
         }
+
         return $this->description;
     }
 }

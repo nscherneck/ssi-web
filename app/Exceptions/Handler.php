@@ -27,7 +27,8 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
+     *
      * @return void
      */
     public function report(Exception $e)
@@ -35,15 +36,15 @@ class Handler extends ExceptionHandler
         if (env('APP_ENV') == 'production' && $this->shouldReport($e)) {
             app('sentry')->captureException($e);
         }
-        
+
         return parent::report($e);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
@@ -73,19 +74,19 @@ class Handler extends ExceptionHandler
  * @param  \Exception  $e
  * @return mixed
  */
-protected function convertExceptionToResponse(Exception $e)
-{
-    if (config('app.debug')) {
-        $whoops = new \Whoops\Run;
-        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+    protected function convertExceptionToResponse(Exception $e)
+    {
+        if (config('app.debug')) {
+            $whoops = new \Whoops\Run;
+            $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
-        return response()->make(
+            return response()->make(
             $whoops->handleException($e),
             method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
             method_exists($e, 'getHeaders') ? $e->getHeaders() : []
         );
-    }
+        }
 
-    return parent::convertExceptionToResponse($e);
-}
+        return parent::convertExceptionToResponse($e);
+    }
 }

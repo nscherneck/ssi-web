@@ -1,4 +1,5 @@
 <?php
+
 namespace App;
 
 use App\Traits\CreatedUpdatedInfo;
@@ -16,7 +17,7 @@ class Document extends Model
         'added_by',
         'updated_by',
         'ext',
-        'file_name'
+        'file_name',
     ];
 
     public function documentable()
