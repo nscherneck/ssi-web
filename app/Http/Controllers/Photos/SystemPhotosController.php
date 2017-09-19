@@ -136,7 +136,7 @@ class SystemPhotosController extends \App\Http\Controllers\Controller
     public function rotateLeft(Photo $photo)
     {
         $system = System::find($photo->photoable_id);
-
+        $this->setFileName($system); // populates $this->imageName with current timestamp
         $this->rotate($photo, 90);
 
         $photo->file_name = $this->imageName;
@@ -148,7 +148,6 @@ class SystemPhotosController extends \App\Http\Controllers\Controller
     public function rotateRight(Photo $photo)
     {
         $system = System::find($photo->photoable_id);
-
         $this->setFileName($system); // populates $this->imageName with current timestamp
         $this->rotate($photo, -90);
 

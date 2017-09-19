@@ -12,19 +12,19 @@
 
   <div class="row">
     <div class="col-lg-10 col-lg-offset-1">
-      
+
 
 
   	<div class="titleBar" style="margin-top: 015px">
   	    <p>Work Orders ({{ $workOrders->count() }})</p>
   	</div>
-  	
+
   	<div class="table-responsive">
 
   	  <table class="table table-condensed">
   	  <thead>
   	    <tr>
-          <th><small>WO #</small></th>
+          <th><span class="sort-icon">&#9660; </span><small>WO #</small></th>
   	      <th><small>Customer</small></th>
   	      <th><small>Site</small></th>
   	      <th><small>Work Order Title</small></th>
@@ -43,18 +43,18 @@
 
             <td><small>
             <a href="{{ $workOrder->path() }}">
-            {{ $workOrder->work_order_number }} 
+            {{ $workOrder->work_order_number }}
             </a>
             </small></td>
 
   	        <td><small>
-  	        <a href="/customer/{{ $workOrder->site->customer->id }}">
-  	        {{ $workOrder->site->customer->name }} 
+  	        <a href="{{ $workOrder->site->customer->path() }}">
+  	        {{ $workOrder->site->customer->name }}
   	        </a>
   	        </small></td>
 
   	        <td><small>
-  	        <a href="/site/{{ $workOrder->site->id }}">
+  	        <a href="{{ $workOrder->site->path() }}">
   	        {{ $workOrder->site->name }}
   	        </a>
   	        </small></td>
@@ -95,7 +95,7 @@
   	</div> <!-- END OF RESPONSIVE TABLE -->
 
     </div>
-  </div>    
+  </div>
 
 </div> <!--          END OF CONTAINER         -->
 

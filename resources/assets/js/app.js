@@ -15,7 +15,6 @@ window.Vue = require('vue');
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('workorder', require('./components/WorkOrder.vue'));
 
 const app = new Vue({
     el: '#app'

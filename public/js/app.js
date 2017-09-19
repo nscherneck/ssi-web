@@ -1661,42 +1661,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/WorkOrder.vue":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    props: ['attributes'],
-
-    data: function data() {
-        return {
-            editing: false,
-            title: this.attributes.title,
-            scope_of_work: this.attributes.scope_of_work
-        };
-    },
-
-
-    methods: {
-        update: function update() {
-            axios.patch('/workorders/' + this.attributes.id, {
-                title: this.title,
-                scope_of_work: this.scope_of_work
-            });
-
-            this.editing = false;
-        }
-    },
-
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    }
-});
-
-/***/ }),
-
 /***/ "./node_modules/bootstrap-sass/assets/javascripts/bootstrap.js":
 /***/ (function(module, exports) {
 
@@ -42309,7 +42273,6 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
  */
 
 Vue.component('flash', __webpack_require__("./resources/assets/js/components/Flash.vue"));
-Vue.component('workorder', __webpack_require__("./resources/assets/js/components/WorkOrder.vue"));
 
 var app = new Vue({
   el: '#app'
@@ -42417,46 +42380,6 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-7a5c4d9b", Component.options)
   } else {
     hotAPI.reload("data-v-7a5c4d9b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ "./resources/assets/js/components/WorkOrder.vue":
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var Component = __webpack_require__("./node_modules/vue-loader/lib/component-normalizer.js")(
-  /* script */
-  __webpack_require__("./node_modules/babel-loader/lib/index.js?{\"cacheDirectory\":true,\"presets\":[[\"env\",{\"modules\":false,\"targets\":{\"browsers\":[\"> 2%\"],\"uglify\":true}}]]}!./node_modules/vue-loader/lib/selector.js?type=script&index=0!./resources/assets/js/components/WorkOrder.vue"),
-  /* template */
-  null,
-  /* styles */
-  null,
-  /* scopeId */
-  null,
-  /* moduleIdentifier (server only) */
-  null
-)
-Component.options.__file = "/Users/Nathan/Code/ssi-extranet/resources/assets/js/components/WorkOrder.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a9d7ff30", Component.options)
-  } else {
-    hotAPI.reload("data-v-a9d7ff30", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

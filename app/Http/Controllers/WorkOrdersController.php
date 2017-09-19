@@ -80,7 +80,6 @@ class WorkOrdersController extends Controller
         $sites = $customer->sites()
             ->orderBy('name')
             ->get();
-
         return $sites;
     }
 }

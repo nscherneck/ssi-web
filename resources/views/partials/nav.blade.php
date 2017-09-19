@@ -28,7 +28,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="/sites">
                             @include('partials.icons.site-icon') &nbsp; Site Lookup
@@ -36,7 +36,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="/systems">
                             @include('partials.icons.system-icon') &nbsp; System Lookup
@@ -46,7 +46,7 @@
                         </form>
                     </li>
                 </ul>
-            </li>        
+            </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     Jobs <span class="caret"></span>
@@ -59,7 +59,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             Jobs Metrics
@@ -67,7 +67,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             New Job
@@ -91,7 +91,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="/service/metrics">
                             Service Metrics
@@ -99,7 +99,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                      
+                    </li>
                     <li>
                         <a href="#">
                             Work Order Queue
@@ -107,7 +107,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             New Work Order
@@ -131,7 +131,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             Component Lookup
@@ -139,7 +139,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -155,7 +155,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             Codes & Standards
@@ -163,7 +163,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             Templates
@@ -171,7 +171,7 @@
                         <form id="profile-form" method="GET" style="display: none;">
                             {{ csrf_field() }}
                         </form>
-                    </li>                    
+                    </li>
                     <li>
                         <a href="#">
                             Other Documents

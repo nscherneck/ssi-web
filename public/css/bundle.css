@@ -7193,3 +7193,21 @@ body {
    color: #D9534F;
    margin: 10px;
  }
+
+/* disable text area resizing */
+.no-resize {
+  resize: none;
+  text-indent: 0;
+}
+
+/* work order stuff */
+
+.work-order-label {
+  font-size: 12px;
+  color: #337AB7;
+}
+
+.sort-icon {
+  color: #ccc;
+  font-size: 75%;
+}

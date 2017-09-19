@@ -6,166 +6,115 @@
 
 @include('partials.nav')
 
-<div class="container" id="app">
+<div class="container">
 
   @include('partials.flash')
 
   <br>
+
   <ol class="breadcrumb small">
     <li><a href="/workorders">Work Order Queue</a></li>
     <li>{{ $workOrder->work_order_number }}</li>
   </ol>
 
-<div class="row">
+	<div class="col-lg-10 col-lg-offset-1">
 
-    <div class="col-lg-8 col-lg-offset-2">
+			<legend>Work Order | <strong>{{ $workOrder->work_order_number }}</strong></legend>
 
-    <workorder :attributes="{{ $workOrder }}" inline-template v-cloak>
+			<div class="row">
+				<div class="col-lg-8">
 
-		<div>
-			<div class="panel panel-primary">
-			  <div class="panel-heading text-center">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="customer_id" class="work-order-label">Customer</label>
+								<input type="text" id="customer_id" class="form-control"
+									value="{{ $workOrder->site->customer->name }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="site_id" class="work-order-label">Site</label>
+								<input type="text" id="site_id" class="form-control" value="{{ $workOrder->site->name }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+					</div> <!-- /ROW -->
 
-	      		Work Order | <strong>{{ $workOrder->work_order_number }}</strong>
-			
-			  </div>
-			
-			  <div class="panel-body" style="padding-top: 0px">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="assigned_to" class="work-order-label">Assigned Technician</label>
+								<input type="text" id="assigned_to" class="form-control" value="{{ $workOrder->assignedTechnician->full_name }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="work_order_type_id" class="work-order-label">Work Order Type</label>
+								<input type="text" class="form-control" value="{{ $workOrder->type->name }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+					</div> <!-- /ROW -->
 
-				<div class="row" style="background-color: #F8F8F8">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="status_id" class="work-order-label">Status</label>
+								<input type="text" id="status_id" class="form-control"
+									value="{{ $workOrder->status->status }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="work_order_billing_status_id" class="work-order-label">Billing Status</label>
+								<input type="text" id="work_order_billing_status_id" class="form-control"
+									value="{{ $workOrder->billingStatus->status }}" disabled>
+							</div>
+						</div> <!-- /6-COLUMN -->
+					</div> <!-- /ROW -->
 
-					  <div class="row">
-					  	<div class="col-lg-4 text-center pt-05 pb-05">
-					  		<strong class="text-primary">Customer</strong>
-					  	</div>
-					  	<div class="col-lg-4 text-center pt-05 pb-05">
-					  		<strong class="text-primary">Site</strong>
-					  	</div>
-					  	<div class="col-lg-4 text-center pt-05 pb-05">
-					  		<strong class="text-primary">Created</strong>
-					  	</div>
-					  </div>
-
-				</div>
-			
-		      <div class="row pb-1">
-
-
-			      <div class="col-lg-4 text-center mt-1">
-
-					<a href="/customer/{{ $workOrder->site->customer->id }}" target="blank">
-					{{ $workOrder->site->customer->name }} 
-					</a>
-
-			      </div>
-
-			      <div class="col-lg-4 text-center mt-1">
-
-			      	<a href="/site/{{ $workOrder->site->id }}" target="blank">
-			      	{{ $workOrder->site->name }}
-			      	</a>
-			      	<br>
-			      	{{ $workOrder->site->address1 }}
-			      	<br>
-			      	{{ $workOrder->site->city }}, {{ $workOrder->site->state->abbreviated }} {{ $workOrder->site->zip }}
-			      	<br><br>
-			      	{!! $workOrder->site->getGoogleMapsHyperlink('Google Map') !!}
-
-			      </div>
-
-			      <div class="col-lg-4 text-center mt-1">
-
-			      	{{ $workOrder->created_at->timezone('America/Los_Angeles')->format('l, F j, Y - g:ha') }}
-
-			      </div>
-
-			
-		      </div>
-
-		      <div class="row" style="background-color: #F8F8F8">
-
-		      	  <div class="row">
-		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
-		      	  		<strong class="text-primary">Assigned To</strong>
-		      	  	</div>
-		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
-		      	  		<strong class="text-primary">Status</strong>
-		      	  	</div>
-		      	  	<div class="col-lg-4 text-center pt-05 pb-05">
-		      	  		<strong class="text-primary">Billing</strong>
-		      	  	</div>
-		      	  </div>
-
-		      </div>
-			
-			      <div class="row pt-1">
-			      	<div class="col-lg-4 text-center mb-1">
-			      		{{ $workOrder->assignedTechnician->full_name }}
-			      	</div>
-			      	<div class="col-lg-4 text-center mb-1">
-				      	{{ $workOrder->status->status }}
-			      	</div>
-			      	<div class="col-lg-4 text-center mb-1">
-			      		{{ $workOrder->billingStatus->status }}
-			      	</div>
-			      </div>
-
-			      <div class="row" style="background-color: #F8F8F8">
-	      	  		<div class="text-center pt-05 pb-05">
-	      	  			<strong class="text-primary">Task</strong>
-	      	  		</div>
-			      </div>
-
-			      <div class="pt-1 pb-1" v-if="editing">
-			      	<div class="form-group">
-			      		<input type="text" class="form-control" v-model="title">
-			      	</div>
-			      </div>
-
-			      <div class="doc-content pt-1 pb-1" v-else v-text="title">
-			          {{ $workOrder->title }}
-			      </div>
-
-			      <div class="row" style="background-color: #F8F8F8">
-	      	  		<div class="text-center pt-05 pb-05">
-	      	  			<strong class="text-primary">Scope of Work</strong>
-	      	  		</div>
-			      </div>
-
-					<div class="pt-1 pb-1" v-if="editing">
-						<div class="form-group">
-							<textarea class="form-control" v-model="scope_of_work" style="resize: none;"></textarea>
-						</div>
+					<!-- TITLE AREA -->
+					<div class="form-group">
+						<label for="title" class="work-order-label">Title</label>
+						<input type="text" id="title" class="form-control"
+							value="{{ $workOrder->title }}" disabled>
 					</div>
 
+					<!-- SCOPE OF WORK AREA -->
+					<div class="form-group">
+						<label for="scope_of_work" class="work-order-label">Scope of Work</label>
+						<textarea id="scope_of_work" class="form-control no-resize" rows="6" disabled>{{ $workOrder->scope_of_work }}</textarea>
+					</div>
 
-			      <div class="doc-content pt-1 pb-1" v-else v-text="scope_of_work">
-			          {!! nl2br(e($workOrder->scope_of_work)) !!}
-			      </div>
-						
-			  </div>
-			</div>
-			
-			<div class="text-center" v-if="editing">
+					@if ($workOrder->resolution)
+					<!-- RESOLUTION AREA -->
+					<div class="form-group">
+						<label for="resolution" class="work-order-label">Resolution</label>
+						<textarea id="resolution" class="form-control no-resize" rows="6" disabled>{{ $workOrder->resolution }}</textarea>
+					</div>
+					@endif
 
-				<div class="flex">
-					<button class="btn btn-sm btn-primary pr-05" @click="update">Save</button>
-					<button class="btn btn-sm btn-default" @click="editing = false">Cancel</button>
-				</div>
+					<!-- BUTTONS AREA -->
+					<div class="text-center">
+						<button type="" class="btn btn-xs btn-primary">Edit</button>
+						&nbsp;
+						<button type="" class="btn btn-xs btn-primary">Close</button>
+						&nbsp;
+						<button type="" class="btn btn-xs btn-danger">Delete</button>
+					</div>
 
-			</div>
-			<div class="text-center" v-else>
-				<button class="btn btn-sm btn-primary" @click="editing = true">Edit Work Order</button>
-			</div>
+				</div> <!-- /8-COLUMN -->
+				<div class="col-lg-4">
+					<label for="work_order_meta" class="work-order-label">Work Order Info</label>
+					<div class="well">
+						<small>
+							<strong>Added: </strong>January 1, 2001<br>
+							<strong>Added By: </strong>Person McPerson<br>
+						</small>
+					</div>
 
-		</div>
-
-    </workorder>
-
-    </div>
-</div>
-
-</div> <!--          END OF CONTAINER         -->
-
+				</div> <!-- /4-COLUMN -->
+			</div> <!-- ROW -->
+	</div> <!-- /COLUMN WITH OFFSET -->
+</div> <!-- /CONTAINER -->
 
 @stop

@@ -3,8 +3,10 @@
 /public/storage
 /public/public
 /vendor
+/documentation
 /.idea
 Homestead.json
 Homestead.yaml
+sami.phar
 .env
 .ssi-extranet.sublime-workspace
