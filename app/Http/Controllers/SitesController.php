@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Site;
 use App\State;
-use App\System;
 use App\Customer;
 use App\SystemType;
 use App\BranchOffice;
@@ -40,7 +39,7 @@ class SitesController extends Controller
     public function store(Request $request, Customer $customer)
     {
         $this->validate($request, [
-            'name' => 'required|unique:sites|string|max:255',
+            'name' => 'required|string|max:255',
             'address1' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'state_id' => 'required',
