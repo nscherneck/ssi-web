@@ -40,6 +40,11 @@ class Customer extends Model
         'notes',
     ];
 
+    /**
+    * The "booting" method of Customer
+    *
+    * @return void
+    */
     public static function boot()
     {
         parent::boot();
@@ -53,21 +58,33 @@ class Customer extends Model
         });
     }
 
+    /**
+    * Get the Sites associated with this Customer
+    */
     public function sites()
     {
         return $this->hasMany('App\Site')->orderBy('name', 'asc');
     }
 
+    /**
+    * Get the State where this Customer is located (address)
+    */
     public function state()
     {
         return $this->belongsTo('App\State');
     }
 
+    /**
+    * Get the Systems associated with this Customer
+    */
     public function systems()
     {
         return $this->hasManyThrough('App\System', 'App\Site');
     }
 
+    /**
+    * Get the url path associated with this Customer
+    */
     public function path()
     {
         return '/customers/' . $this->id;

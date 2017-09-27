@@ -8,6 +8,11 @@ class Manufacturer extends Model
 {
     use CreatedUpdatedInfo;
 
+    /**
+    * Get the Components associated with this Manufacturer
+    *
+    * @link Component@manufacturer.php
+    */
     public function components()
     {
         return $this->hasMany('App\Component')->orderBy('model', 'asc');

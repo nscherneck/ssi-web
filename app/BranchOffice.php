@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class BranchOffice extends Model
 {
+    /**
+    * @var boolean False turns off timestamps for the model, delete to keep them on.
+    */
     public $timestamps = false;
 }
