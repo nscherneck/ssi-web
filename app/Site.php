@@ -1,7 +1,6 @@
 <?php
 namespace App;
 
-use DB;
 use App\Traits\CreatedUpdatedInfo;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
@@ -81,18 +80,19 @@ class Site extends Model
         $mode = 'car';
         $language = 'en-EN';
         $units = 'imperial';
-        $distanceApiCall = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={$originLatitude},{$originLongitude}&destinations={$this->lat},{$this->lon}&mode={$mode}&language={$language}&units={$units}";
+        $key = config('services.google_maps.key');
+        $distanceApiCall = "https://maps.googleapis.com/maps/api/distancematrix/json?origins={$originLatitude},{$originLongitude}&destinations={$this->lat},{$this->lon}&mode={$mode}&language={$language}&units={$units}&key={$key}";
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $distanceApiCall);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $returnedJson = json_decode(curl_exec($ch), true);
-        if ($type == 'distance') {
+        if (!empty($returnedJson) && $type == 'distance') {
             $distanceInMeters = $returnedJson['rows'][0]['elements'][0]['distance']['value'];
             $distanceInMiles = $distanceInMeters / 1609.344;
             return number_format($distanceInMiles, 1);
         }
-        if ($type == 'duration') {
+        if (!empty($returnedJson) && $type == 'duration') {
             return $returnedJson['rows'][0]['elements'][0]['duration']['text'];
         }
         return 'error';
