@@ -138,7 +138,7 @@ class PagesController extends Controller
 
     public function admin()
     {
-        $states = DB::table('states')->get();
+        $states = DB::table('states')->orderBy('state')->get();
         return view('admin', compact('states'));
     }
 }

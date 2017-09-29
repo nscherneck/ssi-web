@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\BranchOffice;
 use App\Customer;
 use App\State;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
