@@ -52,16 +52,17 @@ class Customer extends Model
     ];
 
     /**
-     * The attributes to be logged using Spatie laravel-activitylog
+     * The attributes to be logged using Spatie laravel-activitylog.
      */
     protected static $logAttributes = [
         'notes',
     ];
 
     /**
-     * The "booting" method of Customer
+     * The "booting" method of Customer.
      *
      * @link https://laravel.com/docs/5.4/eloquent#global-scopes Laravel documentation link
+     *
      * @return void
      */
     public static function boot()
@@ -78,7 +79,7 @@ class Customer extends Model
     }
 
     /**
-     * Get the Sites associated with this Customer
+     * Get the Sites associated with this Customer.
      *
      * @return  \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -88,7 +89,7 @@ class Customer extends Model
     }
 
     /**
-     * Get the State where this Customer is located (address)
+     * Get the State where this Customer is located (address).
      *
      * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -98,7 +99,7 @@ class Customer extends Model
     }
 
     /**
-     * Get the Systems associated with this Customer
+     * Get the Systems associated with this Customer.
      *
      * @return  \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
@@ -108,7 +109,7 @@ class Customer extends Model
     }
 
     /**
-     * Get the url path associated with this Customer
+     * Get the url path associated with this Customer.
      */
     public function path()
     {
