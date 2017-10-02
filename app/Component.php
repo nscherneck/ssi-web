@@ -16,7 +16,7 @@ class Component extends Model
     /**
      * Get the Systems that this Component is associated with.
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function systems()
     {
@@ -27,7 +27,7 @@ class Component extends Model
     /**
      * Get the Categories that this Component belongs to.
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function componentCategory()
     {
@@ -37,7 +37,7 @@ class Component extends Model
     /**
      * Get the Manufacturer that this Component belongs to.
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function manufacturer()
     {
