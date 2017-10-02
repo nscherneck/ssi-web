@@ -10,13 +10,28 @@ class Customer extends Model
 {
     use LogsActivity, CreatedUpdatedInfo;
 
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
     protected $with = ['state'];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = [
         'created_at',
         'updated_at',
     ];
 
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
     protected $fillable = [
         'name',
         'slug',
@@ -36,6 +51,9 @@ class Customer extends Model
         'updated_at',
     ];
 
+    /**
+     * The attributes to be logged using Spatie laravel-activitylog
+     */
     protected static $logAttributes = [
         'notes',
     ];
@@ -43,6 +61,7 @@ class Customer extends Model
     /**
     * The "booting" method of Customer
     *
+    * @link https://laravel.com/docs/5.4/eloquent#global-scopes Laravel documentation link
     * @return void
     */
     public static function boot()
@@ -60,6 +79,8 @@ class Customer extends Model
 
     /**
     * Get the Sites associated with this Customer
+    *
+    * @return  \Illuminate\Database\Eloquent\Relations\HasMany
     */
     public function sites()
     {
@@ -68,6 +89,8 @@ class Customer extends Model
 
     /**
     * Get the State where this Customer is located (address)
+    *
+    * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
     */
     public function state()
     {
@@ -76,6 +99,8 @@ class Customer extends Model
 
     /**
     * Get the Systems associated with this Customer
+    *
+    * @return  \Illuminate\Database\Eloquent\Relations\HasManyThrough
     */
     public function systems()
     {

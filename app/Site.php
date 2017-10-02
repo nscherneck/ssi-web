@@ -9,13 +9,31 @@ class Site extends Model
 {
     use LogsActivity, CreatedUpdatedInfo;
 
-    protected $with = ['state', 'customer'];
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'state',
+        'customer'
+    ];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
     protected $dates = [
         'created_at',
         'updated_at'
-        ];
+    ];
 
+    /**
+    * The attributes that are mass assignable.
+    *
+    * @var array
+    */
     protected $fillable =  [
         'name',
         'slug',
@@ -33,48 +51,71 @@ class Site extends Model
         'added_by',
         'updated_by',
         'updated_at'
-        ];
+    ];
 
+    /**
+     * The attributes to be logged using Spatie laravel-activitylog
+     */
     protected static $logAttributes = [
         'notes'
         ];
 
+    /**
+    * Get the Customer that this Site belongs to
+    */
     public function customer()
     {
         return $this->belongsTo('App\Customer');
     }
 
+    /**
+    * Get the Systems associated with this Site
+    */
     public function systems()
     {
         return $this->hasMany('App\System')
         ->orderBy('name', 'asc');
     }
 
+    /**
+     * Get all the system types associated with this Site
+     */
     public function systemTypes()
     {
         return $this->hasManyThrough('App\SystemType', 'App\System');
     }
 
+    /**
+     * Get the State where this Site is located (address)
+     */
     public function state()
     {
         return $this->belongsTo('App\State');
     }
 
+    /**
+    * Get the Branch Office that this Site belongs to
+    */
     public function branchOffice()
     {
         return $this->belongsTo('App\BranchOffice');
     }
 
-    public function photos()
-    {
-        return $this->morphMany('App\Photo', 'photoable');
-    }
-
+    /**
+    * Get the url path associated with this Site
+    */
     public function path()
     {
         return '/sites/' . $this->id;
     }
 
+    /**
+     * Calculates distance or duration from the Site based on the provided origin coordinates (branch office location)
+     * @param  String $originLatitude  Latitude for the origination point
+     * @param  String $originLongitude Longitude for the origination point
+     * @param  String $type            Type of data desired (Distance or Duration)
+     * @return String                  Distance or duration, based on the data desired
+     */
     public function travelCalculator($originLatitude, $originLongitude, $type)
     {
         $mode = 'car';

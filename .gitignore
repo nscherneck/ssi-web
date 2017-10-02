@@ -10,3 +10,4 @@ Homestead.yaml
 sami.phar
 .env
 .ssi-extranet.sublime-workspace
+.styleci.yml

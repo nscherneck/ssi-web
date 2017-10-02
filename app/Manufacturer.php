@@ -18,11 +18,17 @@ class Manufacturer extends Model
         return $this->hasMany('App\Component')->orderBy('model', 'asc');
     }
 
+    /**
+    * Get the state where this Manufacturer is located (address)
+    */
     public function state()
     {
         return $this->belongsTo('App\State');
     }
 
+    /**
+    * Get the url path associated with this Manufacturer
+    */
     public function path()
     {
         return '/manufacturer/' . $this->id;
