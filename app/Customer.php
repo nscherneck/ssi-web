@@ -28,10 +28,10 @@ class Customer extends Model
     ];
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'name',
         'slug',
@@ -59,11 +59,11 @@ class Customer extends Model
     ];
 
     /**
-    * The "booting" method of Customer
-    *
-    * @link https://laravel.com/docs/5.4/eloquent#global-scopes Laravel documentation link
-    * @return void
-    */
+     * The "booting" method of Customer
+     *
+     * @link https://laravel.com/docs/5.4/eloquent#global-scopes Laravel documentation link
+     * @return void
+     */
     public static function boot()
     {
         parent::boot();
@@ -78,38 +78,38 @@ class Customer extends Model
     }
 
     /**
-    * Get the Sites associated with this Customer
-    *
-    * @return  \Illuminate\Database\Eloquent\Relations\HasMany
-    */
+     * Get the Sites associated with this Customer
+     *
+     * @return  \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function sites()
     {
         return $this->hasMany('App\Site')->orderBy('name', 'asc');
     }
 
     /**
-    * Get the State where this Customer is located (address)
-    *
-    * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
-    */
+     * Get the State where this Customer is located (address)
+     *
+     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function state()
     {
         return $this->belongsTo('App\State');
     }
 
     /**
-    * Get the Systems associated with this Customer
-    *
-    * @return  \Illuminate\Database\Eloquent\Relations\HasManyThrough
-    */
+     * Get the Systems associated with this Customer
+     *
+     * @return  \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
     public function systems()
     {
         return $this->hasManyThrough('App\System', 'App\Site');
     }
 
     /**
-    * Get the url path associated with this Customer
-    */
+     * Get the url path associated with this Customer
+     */
     public function path()
     {
         return '/customers/' . $this->id;
