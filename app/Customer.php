@@ -81,7 +81,7 @@ class Customer extends Model
     /**
      * Get the Sites associated with this Customer.
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function sites()
     {
@@ -91,7 +91,7 @@ class Customer extends Model
     /**
      * Get the State where this Customer is located (address).
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function state()
     {
@@ -101,7 +101,7 @@ class Customer extends Model
     /**
      * Get the Systems associated with this Customer.
      *
-     * @return  \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function systems()
     {
