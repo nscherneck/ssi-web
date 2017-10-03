@@ -30,10 +30,10 @@ class Site extends Model
     ];
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable =  [
         'name',
         'slug',
@@ -61,24 +61,35 @@ class Site extends Model
         ];
 
     /**
-    * Get the Customer that this Site belongs to
-    */
+     * Get the Customer that this Site belongs to
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many-inverse Laravel documentation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function customer()
     {
         return $this->belongsTo('App\Customer');
     }
 
     /**
-    * Get the Systems associated with this Site
-    */
+     * Get the Systems associated with this Site
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many Laravel documentation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function systems()
     {
-        return $this->hasMany('App\System')
-        ->orderBy('name', 'asc');
+        return $this->hasMany('App\System')->orderBy('name', 'asc');
     }
 
     /**
      * Get all the system types associated with this Site
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#has-many-through Laravel documentation
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function systemTypes()
     {
@@ -87,6 +98,10 @@ class Site extends Model
 
     /**
      * Get the State where this Site is located (address)
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many-inverse Laravel documentation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function state()
     {
@@ -94,16 +109,22 @@ class Site extends Model
     }
 
     /**
-    * Get the Branch Office that this Site belongs to
-    */
+     * Get the Branch Office that this Site belongs to
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many-inverse Laravel documentation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function branchOffice()
     {
         return $this->belongsTo('App\BranchOffice');
     }
 
     /**
-    * Get the url path associated with this Site
-    */
+     * Get the url path associated with this Site
+     *
+     * @return string
+     */
     public function path()
     {
         return '/sites/' . $this->id;
@@ -111,10 +132,10 @@ class Site extends Model
 
     /**
      * Calculates distance or duration from the Site based on the provided origin coordinates (branch office location)
-     * @param  String $originLatitude  Latitude for the origination point
-     * @param  String $originLongitude Longitude for the origination point
-     * @param  String $type            Type of data desired (Distance or Duration)
-     * @return String                  Distance or duration, based on the data desired
+     * @param  string $originLatitude  Latitude for the origination point
+     * @param  string $originLongitude Longitude for the origination point
+     * @param  string $type            Type of data desired (Distance or Duration)
+     * @return string                  Distance or duration, based on the data desired
      */
     public function travelCalculator($originLatitude, $originLongitude, $type)
     {

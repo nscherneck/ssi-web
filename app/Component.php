@@ -37,6 +37,8 @@ class Component extends Model
     /**
      * Get the Manufacturer that this Component belongs to.
      *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many-inverse Laravel documentation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function manufacturer()
@@ -47,6 +49,8 @@ class Component extends Model
     /**
      * Get the Documents associated with this Component.
      *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#polymorphic-relations Laravel documentation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function documents()
@@ -56,6 +60,10 @@ class Component extends Model
 
     /**
      * Get the formatted description excerpt (100 characters in length) for this Component.
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-mutators#defining-an-accessor Laravel documentation.
+     *
+     * @return string
      */
     public function getFormattedDescriptionAttribute()
     {

@@ -10,10 +10,10 @@ class Document extends Model
     use CreatedUpdatedInfo;
 
     /**
-    * The attributes that are mass assignable.
-    *
-    * @var array
-    */
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'path',
         'description',
@@ -26,20 +26,24 @@ class Document extends Model
     ];
 
     /**
-    * Get all of the owning documentable models.
-    *
-    * @link https://laravel.com/docs/5.4/eloquent-relationships#polymorphic-relations Laravel documentation link
-    */
+     * Get all of the owning documentable models.
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#polymorphic-relations Laravel documentation link
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function documentable()
     {
         return $this->morphTo();
     }
 
     /**
-    * Get the document's full file name with extension
-    *
-    * @link https://laravel.com/docs/5.4/eloquent-mutators#defining-an-accessor Laravel documentation link
-    */
+     * Get the document's full file name with extension.
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-mutators#defining-an-accessor Laravel documentation link
+     *
+     * @return  string Full filename with extension
+     */
     public function getFullDocumentNameAttribute()
     {
         return $this->file_name . '.' . $this->ext;

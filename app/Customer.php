@@ -53,6 +53,8 @@ class Customer extends Model
 
     /**
      * The attributes to be logged using Spatie laravel-activitylog.
+     *
+     * @link https://github.com/spatie/laravel-activitylog GitHub repo for the Spatie package
      */
     protected static $logAttributes = [
         'notes',
@@ -81,6 +83,8 @@ class Customer extends Model
     /**
      * Get the Sites associated with this Customer.
      *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many Laravel documentation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function sites()
@@ -90,6 +94,8 @@ class Customer extends Model
 
     /**
      * Get the State where this Customer is located (address).
+     *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#one-to-many-inverse Laravel documentation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -101,6 +107,8 @@ class Customer extends Model
     /**
      * Get the Systems associated with this Customer.
      *
+     * @link https://laravel.com/docs/5.4/eloquent-relationships#has-many-through Laravel documentation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function systems()
@@ -110,6 +118,8 @@ class Customer extends Model
 
     /**
      * Get the url path associated with this Customer.
+     *
+     * @return string
      */
     public function path()
     {
