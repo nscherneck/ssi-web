@@ -45,7 +45,7 @@
           <textarea name="notes" class="form-control" placeholder="System Notes" rows="4"></textarea><br>
 
           <br>
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class="btn btn-primary">Create System</button>
         </div>
       </form>
 
