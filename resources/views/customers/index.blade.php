@@ -4,16 +4,37 @@
 
 @section('content')
 
-
-  @include('partials.nav')
-
+@include('partials.nav')
 
 <div class="container">
 
   @include('partials.flash')
   <br>
+  <div class="text-center">
+    <h1>Customers <small>{{ $customers->count() }}</small></h1>
+  </div>
+  <hr>
+  @foreach($customers->chunk(3) as $chunk)
+  <div class="row">
+    @foreach($chunk as $customer)
+      <div class="col-lg-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">
+              <a href="{{ $customer->path() }}">{{ $customer->name }}</a>
+            </h3>
+          </div>
+          <div class="panel-body text-center">
+            <strong>Sites: </strong><small>{{ $customer->sites_count }}</small> |
+            <strong>Systems: </strong><small>{{ $customer->systems_count }}</small>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+  @endforeach
 
-  <div class="titleBar" style="margin-top: 0">
+{{--   <div class="titleBar" style="margin-top: 0">
       <p>Customers ({{ $customers->count() }})</p>
   </div>
 
@@ -34,7 +55,7 @@
       </tr>
       @endforeach
     </tbody>
-  </table>
+  </table> --}}
 
 </div>
 
