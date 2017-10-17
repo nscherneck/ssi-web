@@ -18,10 +18,30 @@
 
   @include('partials.flash')
 
+  <div class="col-lg-4 col-lg-offset-4" style="margin-top: 15px">
+    @foreach($manufacturers as $manufacturer)
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="manufacturer-card-left">
+            <h4>
+              <a href="/manufacturer/{{ $manufacturer->id }}">
+                {{ $manufacturer->name }}
+              </a>
+            </h4>
+          </div>
+          <div class="manufacturer-card-right text-center">
+            <h1>{{ $manufacturer->components->count() }}</h1>
+            <h6>Components</h6>
+          </div>
+        </div>
+      </div>
+    @endforeach
+  </div>
+
   <div class="row">
 
     <div class="col-lg-4 col-lg-offset-4">
-      
+
         <div class="panel panel-default" style="margin-top: 15px">
 
     <div class="panel-heading text-center">
@@ -52,7 +72,7 @@
             {{ $manufacturer->components->count() }}
             </small>
             </td>
-      
+
           </tr>
         @endforeach
       </tbody>
@@ -60,7 +80,7 @@
 
   </div> <!-- END OF PANEL -->
     </div>
-    
+
   </div>
 
 

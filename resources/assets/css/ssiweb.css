@@ -232,3 +232,22 @@ body {
   color: #ccc;
   font-size: 75%;
 }
+
+/* manufacturer index styles */
+
+.manufacturer-card-left {
+  float: left;
+}
+
+@media (max-width: 800px) {
+  .manufacturer-card-right {
+    display: none;
+  }
+}
+
+@media (min-width: 800px) {
+  .manufacturer-card-right {
+    float: right;
+    padding: 10px;
+  }
+}
