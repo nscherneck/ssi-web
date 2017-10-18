@@ -7278,7 +7278,7 @@ h4.customer-card-title {
   hr.customer-card {
     margin: 15px;
   }
-  a.customer-card:hover {
+  a.customer-card:hover, a.customer-card:active {
     text-decoration: none;
   }
 }
