@@ -21,9 +21,9 @@
         <a class="customer-card" href="{{ $customer->path() }}">
           <div class="panel panel-primary">
             <div class="panel-body text-center">
-              <h3 class="panel-title text-center">
+              <h4 class="customer-card-title text-center">
                 {{ $customer->name }}
-              </h3>
+              </h4>
               <hr class="customer-card">
               <div class="customer-card-bottom-container">
                 <div class="customer-card-left">

@@ -7233,6 +7233,10 @@ body {
 
 /* customer index styles */
 
+h4.customer-card-title {
+  margin: 0;
+}
+
 @media (max-width: 800px) {
   .customer-card-bottom-container {
     display: none;
