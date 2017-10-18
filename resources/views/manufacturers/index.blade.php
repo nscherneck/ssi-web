@@ -26,13 +26,12 @@
   <div class="row">
     @foreach($chunk as $manufacturer)
       <div class="col-lg-6">
+        <a style="display: block" href="/manufacturer/{{ $manufacturer->id }}">
         <div class="panel panel-default">
           <div class="panel-body">
             <div class="manufacturer-card-left">
               <h4>
-                <a href="/manufacturer/{{ $manufacturer->id }}">
-                  {{ $manufacturer->name }}
-                </a>
+                {{ $manufacturer->name }}
               </h4>
             </div>
             <div class="manufacturer-card-right text-center">
@@ -41,6 +40,7 @@
             </div>
           </div> <!-- ./panel-body -->
         </div> <!-- ./panel -->
+      </a>
       </div> <!-- ./column -->
     @endforeach
   </div> <!-- ./row -->

@@ -18,17 +18,26 @@
   <div class="row">
     @foreach($chunk as $customer)
       <div class="col-lg-3">
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title text-center">
-              <a href="{{ $customer->path() }}">{{ $customer->name }}</a>
-            </h3>
-          </div> <!-- ./panel-heading -->
-          <div class="panel-body text-center">
-            <strong>Sites: </strong><small>{{ $customer->sites_count }}</small> |
-            <strong>Systems: </strong><small>{{ $customer->systems_count }}</small>
-          </div> <!-- ./panel-body -->
-        </div> <!-- ./panel -->
+        <a class="customer-card" href="{{ $customer->path() }}">
+          <div class="panel panel-primary">
+            <div class="panel-body text-center">
+              <h3 class="panel-title text-center">
+                {{ $customer->name }}
+              </h3>
+              <hr class="customer-card">
+              <div class="customer-card-bottom-container">
+                <div class="customer-card-left">
+                  <h4>{{ $customer->sites_count }}</h4>
+                  Sites
+                </div>
+                <div class="customer-card-right">
+                  <h4>{{ $customer->systems_count }}</h4>
+                  Systems
+                </div>
+              </div>
+            </div> <!-- ./panel-body -->
+          </div> <!-- ./panel -->
+        </a>
       </div> <!-- ./column -->
     @endforeach
   </div> <!-- ./row -->
