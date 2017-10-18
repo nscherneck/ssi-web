@@ -126,18 +126,34 @@
       @endif
 
       <div class="text-center">
-        <button type="button"
-          class="btn btn-default btn-xs"
-          data-toggle="modal"
-          data-target="#updateSiteModal">
-          @include('partials.icons.edit-icon')
-        </button>
-        <button type="button"
-          class="btn btn-default btn-xs"
-          data-toggle="modal"
-          data-target="#deleteSiteModal">
-          @include('partials.icons.delete-icon')
-        </button>
+        @can('update', $site)
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
+            data-target="#updateSiteModal">
+            @include('partials.icons.edit-icon')
+          </button>
+        @elsecan('view', $site)
+          <button type="button"
+            class="btn btn-default btn-xs"
+            disabled>
+            @include('partials.icons.edit-icon')
+          </button>
+        @endcan
+        @can('delete', $site)
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
+            data-target="#deleteSiteModal">
+            @include('partials.icons.delete-icon')
+          </button>
+        @elsecan('view', $site)
+          <button type="button"
+            class="btn btn-default btn-xs"
+            disabled>
+            @include('partials.icons.delete-icon')
+          </button>
+        @endcan
         <br><br>
       </div>
 

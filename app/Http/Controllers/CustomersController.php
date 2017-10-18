@@ -63,53 +63,66 @@ class CustomersController extends Controller
 
     public function show(Customer $customer)
     {
-        $states = State::all();
-        $branchOffices = BranchOffice::all();
-        return view('customers.show', compact('customer', 'states', 'branchOffices'));
+        $user = Auth::user();
+        if ($user->can('view', $customer)) {
+            $states = State::all();
+            $branchOffices = BranchOffice::all();
+            return view('customers.show', compact('customer', 'states', 'branchOffices'));
+        }
+        flash('Access Denied.', "You're not authorized to view customers", 'danger');
+        return back();
     }
 
     public function update(Request $request, Customer $customer)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'address1' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state_id' => 'required',
-            'zip' => 'required|string|max:20',
-            'email' => 'email'
-            ]);
+        $user = Auth::user();
+        if ($user->can('update', $customer)) {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'address1' => 'required|string|max:255',
+                'city' => 'required|string|max:255',
+                'state_id' => 'required',
+                'zip' => 'required|string|max:20',
+                'email' => 'email'
+                ]);
 
-        $customer->name = $request->name;
-        $customer->slug = str_slug($customer->name, '-');
-        $customer->address1 = $request->address1;
-        $customer->address2 = $request->address2;
-        $customer->address3 = $request->address3;
-        $customer->city = $request->city;
-        $customer->state_id = $request->state_id;
-        $customer->zip = $request->zip;
-        $customer->phone = $request->phone;
-        $customer->fax = $request->fax;
-        $customer->web = $request->web;
-        $customer->email = $request->email;
-        $customer->notes = $request->notes;
-        $customer->updated_by = Auth::id();
+            $customer->name = $request->name;
+            $customer->slug = str_slug($customer->name, '-');
+            $customer->address1 = $request->address1;
+            $customer->address2 = $request->address2;
+            $customer->address3 = $request->address3;
+            $customer->city = $request->city;
+            $customer->state_id = $request->state_id;
+            $customer->zip = $request->zip;
+            $customer->phone = $request->phone;
+            $customer->fax = $request->fax;
+            $customer->web = $request->web;
+            $customer->email = $request->email;
+            $customer->notes = $request->notes;
+            $customer->updated_by = Auth::id();
 
-        $customer->update();
-
-        flash('Success!', 'Customer updated.', 'success');
-
-        return redirect($customer->path());
+            $customer->update();
+            flash('Success!', 'Customer updated.', 'success');
+            return redirect($customer->path());
+        }
+        flash('Access Denied.', "You're not authorized to edit customers", 'danger');
+        return back();
     }
 
     public function destroy(Customer $customer)
     {
-        if (count($customer->sites) > 0) {
-            flash('Nope!', 'Cannot delete customer, it has one or more sites.', 'warning');
-            return redirect($customer->path());
-        }
+        $user = Auth::user();
+        if ($user->can('delete', $customer)) {
+            if (count($customer->sites) > 0) {
+                flash('Nope!', 'Cannot delete customer, it has one or more sites.', 'warning');
+                return redirect($customer->path());
+            }
 
-        $customer->delete();
-        flash('Success!', 'Customer deleted.', 'danger');
-        return redirect()->route('customers.index');
+            $customer->delete();
+            flash('Success!', 'Customer deleted.', 'danger');
+            return redirect()->route('customers.index');
+        }
+        flash('Access Denied.', "You're not authorized to delete customers", 'danger');
+        return back();
     }
 }

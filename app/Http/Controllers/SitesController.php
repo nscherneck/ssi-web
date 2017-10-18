@@ -73,9 +73,13 @@ class SitesController extends Controller
 
     public function edit(Site $site)
     {
-        $customer = Customer::find($site->customer_id);
-
-        return view('sites.edit', compact('site', 'customer'));
+        $user = Auth::user();
+        if ($user->can('update', $site)) {
+            $customer = Customer::find($site->customer_id);
+            return view('sites.edit', compact('site', 'customer'));
+        }
+        flash('Access Denied.', "You're not authorized to edit sites", 'danger');
+        return back();
     }
 
     public function update(Request $request, Site $site)
@@ -113,14 +117,19 @@ class SitesController extends Controller
 
     public function destroy(Site $site)
     {
-        if (count($site->systems) > 0) {
-            flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
-            return redirect($site->path());
-        }
+        $user = Auth::user();
+        if ($user->can('delete', $site)) {
+            if (count($site->systems) > 0) {
+                flash('Nope!', 'Cannot delete site, it has one or more systems.', 'warning');
+                return redirect($site->path());
+            }
 
-        $customer = Customer::find($site->customer_id);
-        $site->delete();
-        flash('Success!', 'Site deleted.', 'danger');
-        return redirect($customer->path());
+            $customer = Customer::find($site->customer_id);
+            $site->delete();
+            flash('Success!', 'Site deleted.', 'danger');
+            return redirect($customer->path());
+        }
+        flash('Access Denied.', "You're not authorized to delete sites", 'danger');
+        return back();
     }
 }

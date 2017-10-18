@@ -87,27 +87,30 @@ class SystemsController extends Controller
 
     public function update(Request $request, System $system)
     {
-        $this->validate($request, [
-            'name' => 'required|string|max:255',
-            'system_type_id' => 'required',
-            'ssi_install' => 'required',
-            'ssi_test_acct' => 'required',
-            ]);
+        $user = Auth::user();
+        if ($user->can('update', $system)) {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'system_type_id' => 'required',
+                'ssi_install' => 'required',
+                'ssi_test_acct' => 'required',
+                ]);
 
-        $system->name = $request->name;
-        $system->slug = str_slug($system->name, '-');
-        $system->system_type_id = $request->system_type_id;
-        $system->install_date = $request->install_date;
-        $system->ssi_install = $request->ssi_install;
-        $system->ssi_test_acct = $request->ssi_test_acct;
-        $system->notes = $request->notes;
-        $system->updated_by = Auth::id();
+            $system->name = $request->name;
+            $system->slug = str_slug($system->name, '-');
+            $system->system_type_id = $request->system_type_id;
+            $system->install_date = $request->install_date;
+            $system->ssi_install = $request->ssi_install;
+            $system->ssi_test_acct = $request->ssi_test_acct;
+            $system->notes = $request->notes;
+            $system->updated_by = Auth::id();
 
-        $system->update();
-
-        flash('Success!', 'System updated.', 'Success');
-
-        return redirect($system->path());
+            $system->update();
+            flash('Success!', 'System updated.', 'Success');
+            return redirect($system->path());
+        }
+        flash('Access Denied.', "You're not authorized to edit systems", 'danger');
+        return back();
     }
 
     public function updateNextTestDate(Request $request, System $system)
@@ -133,15 +136,20 @@ class SystemsController extends Controller
 
     public function destroy(System $system)
     {
-        if (count($system->tests) > 0) {
-            flash('Nope!', 'Cannot delete system, it has one or more tests', 'warning');
-            return redirect($system->path());
-        }
+        $user = Auth::user();
+        if ($user->can('delete', $system)) {
+            if (count($system->tests) > 0) {
+                flash('Nope!', 'Cannot delete system, it has one or more tests', 'warning');
+                return redirect($system->path());
+            }
 
-        $site = Site::find($system->site_id);
-        $system->components()->detach();
-        $system->delete();
-        flash('Success!', 'System deleted.', 'danger');
-        return redirect($site->path());
+            $site = Site::find($system->site_id);
+            $system->components()->detach();
+            $system->delete();
+            flash('Success!', 'System deleted.', 'danger');
+            return redirect($site->path());
+        }
+        flash('Access Denied.', "You're not authorized to delete systems", 'danger');
+        return back();
     }
 }

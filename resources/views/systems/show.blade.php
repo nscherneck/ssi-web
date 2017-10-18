@@ -57,18 +57,26 @@
           <hr>
 
       <div class="text-center">
+        @can('update', $system)
           <button type="button"
             class="btn btn-default btn-xs"
             data-toggle="modal"
             data-target="#updateNextTestDateModal">
             @include('partials.icons.edit-icon')
           </button>
+        @elsecan('view', $system)
           <button type="button"
             class="btn btn-default btn-xs"
-            data-toggle="modal"
-            data-target="#nullifyNextTestDateModal">
-            @include('partials.icons.delete-icon')
+            disabled>
+            @include('partials.icons.edit-icon')
           </button>
+        @endcan
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
+          data-target="#nullifyNextTestDateModal">
+          @include('partials.icons.delete-icon')
+        </button>
         </p>
       </div>
 
@@ -106,19 +114,34 @@
     @endif
 
     <div class="text-center">
-
-      <button type="button"
-        class="btn btn-default btn-xs"
-        data-toggle="modal"
-        data-target="#updateSystemModal">
-        @include('partials.icons.edit-icon')
-      </button>
-      <button type="button"
-        class="btn btn-default btn-xs"
-        data-toggle="modal"
-        data-target="#deleteSystemModal">
-        @include('partials.icons.delete-icon')
-      </button>
+      @can('update', $system)
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
+          data-target="#updateSystemModal">
+          @include('partials.icons.edit-icon')
+        </button>
+      @elsecan('view', $system)
+        <button type="button"
+          class="btn btn-default btn-xs"
+          disabled>
+          @include('partials.icons.edit-icon')
+        </button>
+      @endcan
+      @can('delete', $system)
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
+          data-target="#deleteSystemModal">
+          @include('partials.icons.delete-icon')
+        </button>
+      @elsecan('view', $system)
+        <button type="button"
+          class="btn btn-default btn-xs"
+          disabled>
+          @include('partials.icons.delete-icon')
+        </button>
+      @endcan
       <br><br>
 
     </div>
