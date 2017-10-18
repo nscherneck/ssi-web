@@ -14,29 +14,37 @@
 
 @include('partials.nav')
 
-<div class="container-fluid">
+<div class="container">
 
   @include('partials.flash')
 
-  <div class="col-lg-4 col-lg-offset-4" style="margin-top: 15px">
-    @foreach($manufacturers as $manufacturer)
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="manufacturer-card-left">
-            <h4>
-              <a href="/manufacturer/{{ $manufacturer->id }}">
-                {{ $manufacturer->name }}
-              </a>
-            </h4>
-          </div>
-          <div class="manufacturer-card-right text-center">
-            <h1>{{ $manufacturer->components->count() }}</h1>
-            <h6>Components</h6>
-          </div>
-        </div>
-      </div>
-    @endforeach
+  <div class="text-center">
+    <h1>Manufacturers <small>{{ $manufacturers->count() }}</small></h1>
   </div>
+  <hr>
+  @foreach($manufacturers->chunk(2) as $chunk)
+  <div class="row">
+    @foreach($chunk as $manufacturer)
+      <div class="col-lg-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="manufacturer-card-left">
+              <h4>
+                <a href="/manufacturer/{{ $manufacturer->id }}">
+                  {{ $manufacturer->name }}
+                </a>
+              </h4>
+            </div>
+            <div class="manufacturer-card-right text-center">
+              <h1>{{ $manufacturer->components->count() }}</h1>
+              <h6>Components</h6>
+            </div>
+          </div> <!-- ./panel-body -->
+        </div> <!-- ./panel -->
+      </div> <!-- ./column -->
+    @endforeach
+  </div> <!-- ./row -->
+  @endforeach
 
 </div> <!-- END OF CONTAINER -->
 
