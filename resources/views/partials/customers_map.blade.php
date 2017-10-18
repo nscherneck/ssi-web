@@ -33,12 +33,6 @@
       var infoWindowContent = [
           @foreach($customer->sites as $site)
             ['<div class="info_content">' + '<h5>{{ $customer->name }} | <a href="{{ $site->path() }}">{{ $site->name }}</a></h5>' +
-            '<p><strong>Systems:</strong> {{ $site->systems->count() }}</p>' +
-            '<ul>' +
-            @foreach($site->systems as $system)
-                '<li><a href="{{ $system->path() }}">{{ $system->name }}</a></li>' +
-            @endforeach
-            '</ul>' +
             '</div>'],
           @endforeach
       ];
