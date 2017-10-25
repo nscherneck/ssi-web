@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\BranchOffice;
-use App\Customer;
 use App\State;
+use App\Customer;
+use App\BranchOffice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -18,7 +19,8 @@ class CustomersController extends Controller
     public function index()
     {
         $customers = Customer::orderBy('name')->get();
-        return view('customers.index', compact('customers'));
+        $states = DB::table('states')->orderBy('state')->get();
+        return view('customers.index', compact('customers', 'states'));
     }
 
     public function store(Request $request)

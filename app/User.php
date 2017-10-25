@@ -1,14 +1,14 @@
 <?php
 namespace App;
 
+use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use CausesActivity;
+    use Notifiable, CausesActivity, HasRoles;
 
     protected $fillable = [
         'first_name',
@@ -16,6 +16,8 @@ class User extends Authenticatable
         'email',
         'password',
         'last_login',
+        'is_service_technician',
+        'is_installation_technician',
         ];
 
     protected $hidden = [
@@ -71,5 +73,10 @@ class User extends Authenticatable
     {
         return $this->last_login
             ->format('F j, Y - g:ia');
+    }
+
+    public function scopeIsServiceTechnician($query)
+    {
+        return $query->where('is_service_technician', 1);
     }
 }

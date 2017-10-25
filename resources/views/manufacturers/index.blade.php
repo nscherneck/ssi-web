@@ -46,6 +46,23 @@
   </div> <!-- ./row -->
   @endforeach
 
+  <hr>
+
+  <a href="#"
+    class="panel-button"
+    data-toggle="modal"
+    data-target="#addManufacturerModal">
+    <div class="col-lg-2 col-lg-offset-5">
+      <div class="panel panel-primary">
+        <div class="panel-body text-center">
+          <h5>New Manufacturer</h5>
+        </div> <!-- ./panel-body -->
+      </div> <!-- ./panel -->
+    </div>
+  </a>
+
 </div> <!-- END OF CONTAINER -->
+
+@include('partials.modals.add_manufacturer')
 
 @stop

@@ -182,7 +182,6 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="{{ url('admin') }}">Admin</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                     @include('partials.icons.user-icon')
@@ -190,15 +189,19 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
+                    @can('admin-dashboard')
+                        <li>
+                            <a href="/admin">
+                                @include('partials.icons.admin-icon')
+                                Admin Dashboard
+                            </a>
+                        </li>
+                    @endcan
                     <li>
                         <a href="/profile">
                             @include('partials.icons.user-icon')
                             Profile
                         </a>
-
-                        <form id="profile-form" action="" method="GET" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
                     </li>
                     <li>
                         <a href="{{ url('/logout') }}"
@@ -207,7 +210,6 @@
                             @include('partials.icons.logout-icon')
                             Logout
                         </a>
-
                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
                             {{ csrf_field() }}
                         </form>

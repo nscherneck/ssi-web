@@ -54,7 +54,7 @@ class SitePolicy
      */
     public function delete(User $user, Site $site)
     {
-        if ($user->id === 1 || $user->id === 7) {
+        if ($user->id === 1 || $user->id === 7 || $user->id === 3) {
             return true;
         }
         return false;

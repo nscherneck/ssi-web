@@ -7263,7 +7263,7 @@ h4.customer-card-title {
     margin: 0;
   }
   .customer-card-left h4 {
-    font-size: 200%;
+    font-size: 250%;
     margin-top: 0;
   }
   .customer-card-right {
@@ -7272,7 +7272,7 @@ h4.customer-card-title {
     margin: 0;
   }
   .customer-card-right h4 {
-    font-size: 200%;
+    font-size: 250%;
     margin-top: 0;
   }
   hr.customer-card {
@@ -7281,5 +7281,11 @@ h4.customer-card-title {
   a.customer-card:link, a.customer-card:hover, a.customer-card:active, a.customer-card:visited {
     text-decoration: none;
   }
+}
+
+/* admin dashboard styles */
+
+a.panel-button:link, a.panel-button:hover, a.panel-button:active, a.panel-button:visited {
+  text-decoration: none;
 }
 

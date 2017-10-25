@@ -16,7 +16,8 @@
         "laravel/tinker": "^1.0",
         "spatie/laravel-backup": "^4.12",
         "sentry/sentry-laravel": "^0.7.0",
-        "barryvdh/laravel-snappy": "^0.3.3"
+        "barryvdh/laravel-snappy": "^0.3.3",
+        "spatie/laravel-permission": "^2.7"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

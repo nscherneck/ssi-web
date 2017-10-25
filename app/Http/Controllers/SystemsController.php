@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use App\Site;
 use App\Test;
+use App\User;
 use App\Photo;
 use App\System;
 use App\Document;
@@ -33,7 +34,7 @@ class SystemsController extends Controller
         $now = Carbon::now()->setTimezone('America/Los_Angeles')->format('Y-m-d');
         $testTypes = DB::table('test_types')->orderBy('name')->get();
         $testResults = DB::table('test_results')->orderBy('name')->get();
-        $technicians = DB::table('users')->orderBy('first_name')->get();
+        $technicians = User::isServiceTechnician()->orderBy('last_name')->get();
         $manufacturers = DB::table('manufacturers')->orderBy('name', 'asc')->get();
         $systemTypes = DB::table('system_types')->orderBy('type')->get();
         $photos = Photo::orderBy('created_at', 'desc')->where('photoable_id', '=', $system->id)->get();

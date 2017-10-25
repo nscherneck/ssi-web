@@ -1,10 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Manufacturer;
-use App\Component;
 use App\State;
+use App\Component;
+use App\Manufacturer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ManufacturersController extends Controller
@@ -17,7 +18,8 @@ class ManufacturersController extends Controller
     public function index()
     {
         $manufacturers = Manufacturer::orderBy('name')->get();
-        return view('manufacturers.index', compact('manufacturers'));
+        $states = DB::table('states')->orderBy('state')->get();
+        return view('manufacturers.index', compact('manufacturers', 'states'));
     }
 
     public function store(Request $request)
@@ -47,10 +49,8 @@ class ManufacturersController extends Controller
         $manufacturer->added_by = Auth::id();
 
         $manufacturer->save();
-
         flash('Success!', 'Manufacturer added.');
-
-        return redirect()->route('admin');
+        return back();
     }
 
     public function show(Request $request, Manufacturer $manufacturer)

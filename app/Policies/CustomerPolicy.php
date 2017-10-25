@@ -57,7 +57,7 @@ class CustomerPolicy
      */
     public function delete(User $user, Customer $customer)
     {
-        if ($user->id === 1 || $user->id === 7) {
+        if ($user->id === 1 || $user->id === 7 || $user->id === 3) {
             return true;
         }
         return false;

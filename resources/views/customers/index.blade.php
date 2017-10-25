@@ -2,6 +2,15 @@
 
 @section('title', 'SSI-Extranet | Customers Lookup')
 
+@section('head')
+  <style>
+  body {
+    background: linear-gradient(#FFF, #E8E8E8);
+    background-attachment: fixed;
+  }
+  </style>
+@endsection
+
 @section('content')
 
 @include('partials.nav')
@@ -22,6 +31,7 @@
           <div class="panel panel-primary">
             <div class="panel-body text-center">
               <h4 class="customer-card-title text-center">
+                @include('partials.icons.customer-icon')
                 {{ $customer->name }}
               </h4>
               <hr class="customer-card">
@@ -43,6 +53,25 @@
   </div> <!-- ./row -->
   @endforeach
 
+  <hr>
+
+  {{-- @can('Create Customer') --}}
+    <a href="#"
+      class="panel-button"
+      data-toggle="modal"
+      data-target="#addCustomerModal">
+      <div class="col-lg-2 col-lg-offset-5">
+        <div class="panel panel-primary">
+          <div class="panel-body text-center">
+            <h5>New Customer</h5>
+          </div> <!-- ./panel-body -->
+        </div> <!-- ./panel -->
+      </div>
+    </a>
+  {{-- @endcan --}}
+
 </div> <!-- ./container -->
 
-@stop
+@include('partials.modals.add_customer')
+
+@endsection

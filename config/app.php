@@ -174,6 +174,7 @@ return [
         Spatie\Backup\BackupServiceProvider::class,
         Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
 
         /*
          * Application Service Providers...

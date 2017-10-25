@@ -1,8 +1,9 @@
 <?php
 
-use App\Customer;
-use App\System;
 use App\Test;
+use App\System;
+use App\Customer;
+use Illuminate\Http\Request;
 
 // BASE NAV ROUTES
 Route::get('/', 'PagesController@home')->name('home');
@@ -23,6 +24,23 @@ Route::get('/tests/report/{test}', function (Test $test) {
     $pdf = PDF::loadView('tests.pdf.show', ['test' => $test, 'basePath' => $basePath]);
     return $pdf->download('test-report.pdf');
 });
+
+Route::post('admin/users', function (Request $request) {
+    dd($request->all());
+});
+
+// ADMIN DASHBOARD ROUTES
+Route::resource('admin/branchoffices', 'Admin\BranchOfficeController');
+Route::resource('admin/users', 'Admin\UserController');
+Route::resource('admin/roles', 'Admin\RoleController');
+Route::post('admin/roleuser/{role}', 'Admin\RoleUserController@store');
+Route::post('admin/permissionrole/{role}', 'Admin\PermissionRoleController@store');
+Route::resource('admin/permissions', 'Admin\PermissionController');
+Route::resource('admin/employeetypes', 'Admin\EmployeeTypeController');
+Route::resource('admin/sitecategories', 'Admin\SiteCategoryController');
+Route::resource('admin/systemtypes', 'Admin\SystemTypeController');
+Route::resource('admin/testtypes', 'Admin\TestTypeController');
+Route::resource('admin/testresults', 'Admin\TestResultController');
 
 // USER ROUTES
 Route::get('profile', 'UsersController@profile')->name('profile');
