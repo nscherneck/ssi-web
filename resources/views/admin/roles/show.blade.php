@@ -9,7 +9,7 @@
     <div class="col-lg-6 col-lg-offset-3">
 
       <div>
-          <h4>Users Assigned This Role</h4>
+          <h4>Users Assigned This Role ({{ $role->users->count() }})</h4>
       </div>
 
       <form class="form-group" method="POST" action="/admin/roleuser/{{ $role->id }}">
@@ -45,7 +45,7 @@
       <hr>
 
       <div>
-          <h4>Attached Permissions</h4>
+          <h4>Attached Permissions ({{ $role->permissions->count() }})</h4>
       </div>
       <form class="form-group" method="POST" action="/admin/permissionrole/{{ $role->id }}">
         {{ csrf_field() }}
