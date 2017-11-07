@@ -61,7 +61,7 @@ function fetch_select(val)
       </div>
       <div class="modal-body">
 
-        <form action="/system/{{ $system->id }}/component/attach" method="POST">
+        <form action="/systems/{{ $system->id }}/component/attach" method="POST">
 
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 

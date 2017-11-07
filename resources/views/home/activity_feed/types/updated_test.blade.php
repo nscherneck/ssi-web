@@ -2,27 +2,31 @@
 <small>
 {{ $event->causer->first_name }}
 updated
-<a href="{{ $event->subject->system->site->customer->path() }}">
-	{{ $event->subject->system->site->customer->name }}
-</a>
+@if($event->subject == null)
+    a test that has since been deleted
+@else
+    <a href="{{ $event->subject->system->site->customer->path() }}">
+    	{{ $event->subject->system->site->customer->name }}
+    </a>
 
-{{ config('constants.SEPARATOR') }}
+    {{ config('constants.SEPARATOR') }}
 
-<a href="{{ $event->subject->system->site->path() }}">
-	{{ $event->subject->system->site->name }}
-</a>
+    <a href="{{ $event->subject->system->site->path() }}">
+    	{{ $event->subject->system->site->name }}
+    </a>
 
-{{ config('constants.SEPARATOR') }}
+    {{ config('constants.SEPARATOR') }}
 
-<a href="{{ $event->subject->system->path() }}">
-	{{ $event->subject->system->name }}
-</a>
+    <a href="{{ $event->subject->system->path() }}">
+    	{{ $event->subject->system->name }}
+    </a>
 
-{{ config('constants.SEPARATOR') }}
+    {{ config('constants.SEPARATOR') }}
 
-<a href="{{ $event->subject->path() }}">
-	{{ $event->subject->testType->name }} -
-	{{ $event->subject->formatted_test_date }}
-</a>
+    <a href="{{ $event->subject->path() }}">
+    	{{ $event->subject->testType->name }} -
+    	{{ $event->subject->formatted_test_date }}
+    </a>
+@endif
 </small>
 

@@ -33,19 +33,38 @@
                     </small>
                   @endslot
                   @slot('editButton')
-                    <button
-                      class="btn btn-default btn-xs"
-                      data-toggle="modal"
-                      data-target="#update{{ $report->id }}ReportModal">
-                        @include('partials.icons.edit-icon')
-                    </button>
+                    @can('Edit Test Document')
+                      <button
+                        class="btn btn-default btn-xs"
+                        data-toggle="modal"
+                        data-target="#update{{ $report->id }}ReportModal">
+                          @include('partials.icons.edit-icon')
+                      </button>
+                    @endcan
+                    @cannot('Edit Test Document')
+                      <button
+                        class="btn btn-default btn-xs"
+                        disabled>
+                          @include('partials.icons.edit-icon')
+                      </button>
+                    @endcannot
                   @endslot
                   @slot('deleteButton')
-                    <button
-                      class="btn btn-default btn-xs"
-                      data-toggle="modal"
-                      data-target="#delete{{ $report->id }}ReportModal">
-                        @include('partials.icons.delete-icon')
+                    @can('Delete Test Document')
+                      <button
+                        class="btn btn-default btn-xs"
+                        data-toggle="modal"
+                        data-target="#delete{{ $report->id }}ReportModal">
+                          @include('partials.icons.delete-icon')
+                      </button>
+                    @endcan
+                    @cannot('Delete Test Document')
+                      <button
+                        class="btn btn-default btn-xs"
+                        disabled>
+                          @include('partials.icons.delete-icon')
+                      </button>
+                    @endcannot
                   @endslot
                 @endcomponent
                 </tr>
@@ -60,8 +79,16 @@
 
         <div class="panel-body">
 
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addReportModal">
-            <i class="fa fa-plus"></i></button>
+          @can('Create Test Document')
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addReportModal">
+              @include('partials.icons.add-icon')
+            </button>
+          @endcan
+          @cannot('Create Test Document')
+            <button type="button" class="btn btn-default btn-xs" disabled>
+              @include('partials.icons.add-icon')
+            </button>
+          @endcannot
 
         </div>
 

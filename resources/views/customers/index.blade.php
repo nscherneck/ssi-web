@@ -55,7 +55,7 @@
 
   <hr>
 
-  {{-- @can('Create Customer') --}}
+  @can('Create Customer')
     <a href="#"
       class="panel-button"
       data-toggle="modal"
@@ -68,7 +68,7 @@
         </div> <!-- ./panel -->
       </div>
     </a>
-  {{-- @endcan --}}
+  @endcan
 
 </div> <!-- ./container -->
 

@@ -57,26 +57,33 @@
           <hr>
 
       <div class="text-center">
-        @can('update', $system)
+        @can('Edit System')
           <button type="button"
             class="btn btn-default btn-xs"
             data-toggle="modal"
             data-target="#updateNextTestDateModal">
             @include('partials.icons.edit-icon')
           </button>
-        @elsecan('view', $system)
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
+            data-target="#nullifyNextTestDateModal">
+            @include('partials.icons.delete-icon')
+          </button>
+        @endcan
+        @cannot('Edit System')
           <button type="button"
             class="btn btn-default btn-xs"
             disabled>
             @include('partials.icons.edit-icon')
           </button>
-        @endcan
-        <button type="button"
-          class="btn btn-default btn-xs"
-          data-toggle="modal"
-          data-target="#nullifyNextTestDateModal">
-          @include('partials.icons.delete-icon')
-        </button>
+          <button type="button"
+            class="btn btn-default btn-xs"
+            disabled>
+            @include('partials.icons.delete-icon')
+          </button>
+        @endcannot
+
         </p>
       </div>
 
@@ -114,34 +121,36 @@
     @endif
 
     <div class="text-center">
-      @can('update', $system)
+      @can('Edit System')
         <button type="button"
           class="btn btn-default btn-xs"
           data-toggle="modal"
           data-target="#updateSystemModal">
           @include('partials.icons.edit-icon')
         </button>
-      @elsecan('view', $system)
+      @endcan
+      @cannot('Edit System')
         <button type="button"
           class="btn btn-default btn-xs"
           disabled>
           @include('partials.icons.edit-icon')
         </button>
-      @endcan
-      @can('delete', $system)
+      @endcannot
+      @can('Delete System')
         <button type="button"
           class="btn btn-default btn-xs"
           data-toggle="modal"
           data-target="#deleteSystemModal">
           @include('partials.icons.delete-icon')
         </button>
-      @elsecan('view', $system)
+      @endcan
+      @cannot('Delete System')
         <button type="button"
           class="btn btn-default btn-xs"
           disabled>
           @include('partials.icons.delete-icon')
         </button>
-      @endcan
+      @endcannot
       <br><br>
 
     </div>
@@ -169,12 +178,21 @@
         @include('systems.partials.components_tables.agent_tanks_table')
       @endif
 
-  <button type="button"
-    class="btn btn-default btn-xs"
-    data-toggle="modal"
-    data-target="#attachComponentModal">
-    @include('partials.icons.add-icon')
-  </button>
+  @can('Attach Component')
+    <button type="button"
+      class="btn btn-default btn-xs"
+      data-toggle="modal"
+      data-target="#attachComponentModal">
+      @include('partials.icons.add-icon')
+    </button>
+  @endcan
+  @cannot('Attach Component')
+    <button type="button"
+      class="btn btn-default btn-xs"
+      disabled>
+      @include('partials.icons.add-icon')
+    </button>
+  @endcannot
 
   <hr>
 
@@ -208,12 +226,21 @@
 
     <div class="panel-footer text-left">
 
-      <button type="button"
-        class="btn btn-default btn-xs"
-        data-toggle="modal"
-        data-target="#addTestModal">
-        @include('partials.icons.add-icon')
-      </button>
+      @can('Create Test')
+        <button type="button"
+          class="btn btn-default btn-xs"
+          data-toggle="modal"
+          data-target="#addTestModal">
+          @include('partials.icons.add-icon')
+        </button>
+      @endcan
+      @cannot('Create Test')
+        <button type="button"
+          class="btn btn-default btn-xs"
+          disabled>
+          @include('partials.icons.add-icon')
+        </button>
+      @endcannot
 
     </div>
 
@@ -254,13 +281,23 @@
 
         <div class="panel-footer text-left">
 
-          <button
-            type="button"
-            class="btn btn-default btn-xs"
-            data-toggle="modal"
-            data-target="#addSystemPhotoModal">
-            @include('partials.icons.add-icon')
-          </button>
+          @can('Create System Photo')
+            <button
+              type="button"
+              class="btn btn-default btn-xs"
+              data-toggle="modal"
+              data-target="#addSystemPhotoModal">
+              @include('partials.icons.add-icon')
+            </button>
+          @endcan
+          @cannot('Create System Photo')
+            <button
+              type="button"
+              class="btn btn-default btn-xs"
+              disabled>
+              @include('partials.icons.add-icon')
+            </button>
+          @endcannot
 
         </div>
 
@@ -274,15 +311,29 @@
 </div> <!-- END OF CONTAINER -->
 
 @if ($system->next_test_date)
-  @include('partials.modals.edit_next_test_date')
-  @include('partials.modals.nullify_next_test_date')
+  @can('Edit System')
+    @include('partials.modals.edit_next_test_date')
+    @include('partials.modals.nullify_next_test_date')
+  @endcan
 @endif
 
-@include('partials.modals.edit_system')
-@include('partials.modals.delete_system')
-@include('partials.modals.attach_component')
-@include('partials.modals.add_test')
-@include('partials.modals.add_system_photo')
-@include('partials.modals.add_system_document')
+@can('Edit System')
+  @include('partials.modals.edit_system')
+@endcan
+@can('Delete System')
+  @include('partials.modals.delete_system')
+@endcan
+@can('Attach Component')
+  @include('partials.modals.attach_component')
+@endcan
+@can('Create Test')
+  @include('partials.modals.add_test')
+@endcan
+@can('Create System Photo')
+  @include('partials.modals.add_system_photo')
+@endcan
+@can('Create System Document')
+  @include('partials.modals.add_system_document')
+@endcan
 
-@stop
+@endsection

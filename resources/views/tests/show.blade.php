@@ -40,10 +40,27 @@
             <strong>Technician:</strong> {{ $test->technician->first_name }} {{ $test->technician->last_name }}<br>
             </small>
           </p>
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
-            <i class="fa fa-cog"></i></button>
-          <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteTestModal">
-            <i class="fa fa-trash-o"></i></button>
+          @can('Edit Test')
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateTestModal">
+              @include('partials.icons.edit-icon')
+            </button>
+          @endcan
+          @cannot('Edit Test')
+            <button type="button" class="btn btn-default btn-xs" disabled>
+              @include('partials.icons.edit-icon')
+            </button>
+          @endcannot
+
+          @can('Delete Test')
+            <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#deleteTestModal">
+              @include('partials.icons.delete-icon')
+            </button>
+          @endcan
+          @cannot('Delete Test')
+            <button type="button" class="btn btn-default btn-xs" disabled>
+              @include('partials.icons.delete-icon')
+            </button>
+          @endcannot
         </div>
       </div>
 
@@ -96,17 +113,25 @@
       @endif
 
     </div> <!--          END OF 6 COLUMN         -->
-
   </div> <!--          END OF ROW         -->
-
 </div> <!--          END OF CONTAINER         -->
 
 <!--          MODAL CONTENT         -->
 
-@include('partials.modals.add_deficiency')
-@include('partials.modals.add_note')
-@include('partials.modals.add_test_document')
-@include('partials.modals.edit_test')
-@include('partials.modals.delete_test')
+@can('Create Test Deficiency')
+  @include('partials.modals.add_deficiency')
+@endcan
+@can('Create Test Note')
+  @include('partials.modals.add_note')
+@endcan
+@can('Create Test Document')
+  @include('partials.modals.add_test_document')
+@endcan
+@can('Edit Test')
+  @include('partials.modals.edit_test')
+@endcan
+@can('Delete Test')
+  @include('partials.modals.delete_test')
+@endcan
 
-@stop
+@endsection

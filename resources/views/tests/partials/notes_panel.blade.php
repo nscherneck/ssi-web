@@ -1,5 +1,7 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Notes</div>
+  <div class="panel-heading">
+    Notes
+  </div>
 
       <table class="table">
         <thead>
@@ -26,19 +28,39 @@
                 </small></td>
 
                 <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testNote->id }}testNoteModal">
-                  <i class="fa fa-cog"></i></button>
+                  @can('Edit Test Note')
+                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testNote->id }}testNoteModal">
+                      @include('partials.icons.edit-icon')
+                    </button>
+                  @endcan
+                  @cannot('Edit Test Note')
+                    <button class="btn btn-default btn-xs" disabled>
+                      @include('partials.icons.edit-icon')
+                    </button>
+                  @endcannot
                 </td>
 
                 <td>
-                  <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testNote->id }}testNoteModal">
-                  <i class="fa fa-trash-o"></i></button>
+                  @can('Delete Test Note')
+                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testNote->id }}testNoteModal">
+                      @include('partials.icons.delete-icon')
+                    </button>
+                  @endcan
+                  @cannot('Delete Test Note')
+                    <button class="btn btn-default btn-xs" disabled>
+                      @include('partials.icons.delete-icon')
+                    </button>
+                  @endcannot
                 </td>
 
               </tr>
 
-              @include('partials.modals.edit_note')
-              @include('partials.modals.delete_note')
+              @can('Edit Test Note')
+                @include('partials.modals.edit_note')
+              @endcan
+              @can('Delete Test Note')
+                @include('partials.modals.delete_note')
+              @endcan
 
             @endforeach
 
@@ -48,9 +70,16 @@
 
     <div class="panel-body">
 
-      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestNoteModal">
-        <i class="fa fa-plus"></i></button>
+      @can('Create Test Note')
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addTestNoteModal">
+          @include('partials.icons.add-icon')
+        </button>
+      @endcan
+      @cannot('Create Test Note')
+        <button type="button" class="btn btn-default btn-xs" disabled>
+          @include('partials.icons.add-icon')
+        </button>
+      @endcannot
 
-    </div>
-
-</div>
+    </div> <!-- ./panel-body -->
+</div> <!-- ./panel -->

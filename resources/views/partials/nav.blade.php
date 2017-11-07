@@ -189,7 +189,7 @@
                 </a>
 
                 <ul class="dropdown-menu" role="menu">
-                    @can('admin-dashboard')
+                    @can('Admin Dashboard')
                         <li>
                             <a href="/admin">
                                 @include('partials.icons.admin-icon')

@@ -61,13 +61,23 @@
 
         <div class="panel-body">
 
-          <button
-            type="button"
-            class="btn btn-default btn-xs"
-            data-toggle="modal"
-            data-target="#addSystemDocumentModal">
-              @include('partials.icons.add-icon')
-          </button>
+          @can('Create System Document')
+            <button
+              type="button"
+              class="btn btn-default btn-xs"
+              data-toggle="modal"
+              data-target="#addSystemDocumentModal">
+                @include('partials.icons.add-icon')
+            </button>
+          @endcan
+          @cannot('Create System Document')
+            <button
+              type="button"
+              class="btn btn-default btn-xs"
+              disabled>
+                @include('partials.icons.add-icon')
+            </button>
+          @endcannot
 
         </div>
 

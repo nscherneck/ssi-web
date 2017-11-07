@@ -39,15 +39,22 @@
                 {{ $renewable->componentCategory->name }}
               @endslot
               @slot('detach')
-                <form
-                  action="/system/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach"
-                  method="post"
-                  accept-charset="UTF-8">
-                  {{ csrf_field() }}
-                  <button type="submit" class="btn btn-default btn-xs">
+                @can('Detach Component')
+                  <form
+                    action="/systems/{{ $system->id }}/component/{{ $renewable->pivot->id }}/detach"
+                    method="post"
+                    accept-charset="UTF-8">
+                    {{ csrf_field() }}
+                    <button type="submit" class="btn btn-default btn-xs">
+                      @include('partials.icons.delete-icon')
+                    </button>
+                  </form>
+                @endcan
+                @cannot('Detach Component')
+                  <button class="btn btn-default btn-xs" disabled>
                     @include('partials.icons.delete-icon')
                   </button>
-                </form>
+                @endcannot
               @endslot
             @endcomponent
           @endforeach

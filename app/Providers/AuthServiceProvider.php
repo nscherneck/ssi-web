@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -12,11 +11,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $policies = [
-        'App\Customer' => 'App\Policies\CustomerPolicy',
-        'App\Site' => 'App\Policies\SitePolicy',
-        'App\System' => 'App\Policies\SystemPolicy',
-    ];
+    protected $policies = [];
 
     /**
      * Register any authentication / authorization services.
@@ -26,9 +21,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        Gate::define('admin-dashboard', function ($user) {
-            return $user->id == 1 || $user->id == 7;
-        });
     }
 }

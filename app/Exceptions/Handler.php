@@ -49,6 +49,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+            flash('Access Denied.', "You're not authorized.", 'warning');
+            return back();
+        }
+
         return parent::render($request, $exception);
     }
 
@@ -81,12 +86,11 @@ class Handler extends ExceptionHandler
             $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 
             return response()->make(
-            $whoops->handleException($e),
-            method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
-            method_exists($e, 'getHeaders') ? $e->getHeaders() : []
-        );
+                $whoops->handleException($e),
+                method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500,
+                method_exists($e, 'getHeaders') ? $e->getHeaders() : []
+            );
         }
-
         return parent::convertExceptionToResponse($e);
     }
 }

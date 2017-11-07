@@ -126,34 +126,36 @@
       @endif
 
       <div class="text-center">
-        @can('update', $site)
+        @can('Edit Site')
           <button type="button"
             class="btn btn-default btn-xs"
             data-toggle="modal"
             data-target="#updateSiteModal">
             @include('partials.icons.edit-icon')
           </button>
-        @elsecan('view', $site)
+        @endcan
+        @cannot('Edit Site')
           <button type="button"
             class="btn btn-default btn-xs"
             disabled>
             @include('partials.icons.edit-icon')
           </button>
-        @endcan
-        @can('delete', $site)
+        @endcannot
+        @can('Delete Site')
           <button type="button"
             class="btn btn-default btn-xs"
             data-toggle="modal"
             data-target="#deleteSiteModal">
             @include('partials.icons.delete-icon')
           </button>
-        @elsecan('view', $site)
+        @endcan
+        @cannot('Delete Site')
           <button type="button"
             class="btn btn-default btn-xs"
             disabled>
             @include('partials.icons.delete-icon')
           </button>
-        @endcan
+        @endcannot
         <br><br>
       </div>
 
@@ -198,12 +200,21 @@
 
       <div class="panel-footer">
 
-        <button type="button"
-          class="btn btn-default btn-xs"
-          data-toggle="modal"
-          data-target="#addSystemModal">
-          @include('partials.icons.add-icon')
-        </button>
+        @can('Create System')
+          <button type="button"
+            class="btn btn-default btn-xs"
+            data-toggle="modal"
+            data-target="#addSystemModal">
+            @include('partials.icons.add-icon')
+          </button>
+        @endcan
+        @cannot('Create System')
+          <button type="button"
+            class="btn btn-default btn-xs"
+            disabled>
+            @include('partials.icons.add-icon')
+          </button>
+        @endcannot
 
       </div>
 
@@ -235,8 +246,14 @@
 
 </div> <!-- END OF CONTAINER -->
 
-@include('partials.modals.edit_site')
-@include('partials.modals.delete_site')
-@include('partials.modals.add_system')
+@can('Edit Site')
+  @include('partials.modals.edit_site')`
+@endcan
+@can('Delete Site')
+  @include('partials.modals.delete_site')
+@endcan
+@can('Create System')
+  @include('partials.modals.add_system')
+@endcan
 
-@stop
+@endsection

@@ -84,35 +84,37 @@
     @endif
 
   <div class="text-center">
-    @can('update', $customer)
+    @can('Edit Customer')
       <button type="button"
         class="btn btn-default btn-xs"
         data-toggle="modal"
         data-target="#updateCustomerModal">
         @include('partials.icons.edit-icon')
       </button>
-    @elsecan('view', $customer)
+    @endcan
+    @cannot('Edit Customer')
       <button type="button"
         class="btn btn-default btn-xs"
         disabled>
         @include('partials.icons.edit-icon')
       </button>
-    @endcan
+    @endcannot
 
-    @can('delete', $customer)
+    @can('Delete Customer')
       <button type="button"
         class="btn btn-default btn-xs"
         data-toggle="modal"
         data-target="#deleteCustomerModal">
         @include('partials.icons.delete-icon')
       </button>
-    @elsecan('view', $customer)
+    @endcan
+    @cannot('Delete Customer')
       <button type="button"
         class="btn btn-default btn-xs"
         disabled>
         @include('partials.icons.delete-icon')
       </button>
-    @endcan
+    @endcannot
     <br><br>
   </div>
 
@@ -179,13 +181,21 @@
         </table>
 
         <div class="panel-footer">
-
-          <button type="button"
-            class="btn btn-default btn-xs"
-            data-toggle="modal"
-            data-target="#addSiteModal">
-            @include('partials.icons.add-icon')
-          </button>
+          @can('Create Site')
+            <button type="button"
+              class="btn btn-default btn-xs"
+              data-toggle="modal"
+              data-target="#addSiteModal">
+              @include('partials.icons.add-icon')
+            </button>
+          @endcan
+          @cannot('Create Site')
+            <button type="button"
+              class="btn btn-default btn-xs"
+              disabled>
+              @include('partials.icons.add-icon')
+            </button>
+          @endcannot
           <br>
 
         </div>
@@ -198,8 +208,14 @@
 
   </div> <!-- END CONTAINER -->
 
-@include('partials.modals.edit_customer')
-@include('partials.modals.delete_customer')
-@include('partials.modals.add_site')
+  @can('Edit Customer', $customer)
+    @include('partials.modals.edit_customer')
+  @endcan
+  @can('Delete Customer', $customer)
+    @include('partials.modals.delete_customer')
+  @endcan
+  @can('Create Site')
+    @include('partials.modals.add_site')
+  @endcan
 
-@stop
+@endsection

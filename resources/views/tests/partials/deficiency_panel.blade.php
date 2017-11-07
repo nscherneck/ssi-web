@@ -1,5 +1,7 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">Deficiencies</div>
+  <div class="panel-heading">
+    Deficiencies
+  </div>
 
       <table class="table">
         <thead>
@@ -24,19 +26,39 @@
             </small></td>
 
             <td>
-              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testDeficiency->id }}DeficiencyModal">
-              <i class="fa fa-cog"></i></button>
+              @can('Edit Test Deficiency')
+                <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#update{{ $testDeficiency->id }}DeficiencyModal">
+                  @include('partials.icons.edit-icon')
+                </button>
+              @endcan
+              @cannot('Edit Test Deficiency')
+                <button class="btn btn-default btn-xs" disabled>
+                  @include('partials.icons.edit-icon')
+                </button>
+              @endcannot
             </td>
 
             <td>
-              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testDeficiency->id }}DeficiencyModal">
-                <i class="fa fa-trash-o"></i></button>
+              @can('Delete Test Deficiency')
+                <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#delete{{ $testDeficiency->id }}DeficiencyModal">
+                  @include('partials.icons.delete-icon')
+                </button>
+              @endcan
+              @cannot('Delete Test Deficiency')
+                <button class="btn btn-default btn-xs" disabled>
+                  @include('partials.icons.delete-icon')
+                </button>
+              @endcannot
             </td>
 
           </tr>
 
-          @include('partials.modals.edit_deficiency')
-          @include('partials.modals.delete_deficiency')
+          @can('Edit Test Deficiency')
+            @include('partials.modals.edit_deficiency')
+          @endcan
+          @can('Delete Test Deficiency')
+            @include('partials.modals.delete_deficiency')
+          @endcan
 
           @endforeach
         </tbody>
@@ -45,9 +67,16 @@
 
     <div class="panel-body">
 
-      <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
-        <i class="fa fa-plus"></i></button>
+      @can('Create Test Deficiency')
+        <button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#addDeficiencyModal">
+          @include('partials.icons.add-icon')
+        </button>
+      @endcan
+      @cannot('Create Test Deficiency')
+        <button type="button" class="btn btn-default btn-xs" disabled>
+          @include('partials.icons.add-icon')
+        </button>
+      @endcannot
 
-    </div>
-
-</div>
+    </div> <!-- ./panel-body -->
+</div> <!-- ./panel -->

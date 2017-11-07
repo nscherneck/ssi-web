@@ -2016,16 +2016,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.7.2",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "0dc7a3d8f47596a64e2d93a9f9f132422b12b97e"
+                "reference": "02d22e415ee5b2c73de19f2cd8331bb9980b3094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/0dc7a3d8f47596a64e2d93a9f9f132422b12b97e",
-                "reference": "0dc7a3d8f47596a64e2d93a9f9f132422b12b97e",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/02d22e415ee5b2c73de19f2cd8331bb9980b3094",
+                "reference": "02d22e415ee5b2c73de19f2cd8331bb9980b3094",
                 "shasum": ""
             },
             "require": {
@@ -2077,7 +2077,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2017-10-18T14:39:11+00:00"
+            "time": "2017-10-26T13:38:53+00:00"
         },
         {
             "name": "spatie/string",

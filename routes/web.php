@@ -48,25 +48,34 @@ Route::get('changepassword', 'UsersController@changePasswordView')->name('change
 Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
-Route::resource('customers', 'CustomersController', [
-    'except' => ['create', 'edit']
-]);
+Route::get('customers/{customer}', 'CustomerController@show')->middleware(['auth', 'permission:View Customer']);
+Route::get('customers', 'CustomerController@index')->middleware(['auth', 'permission:View Customer'])
+    ->name('customers.index');
+Route::post('customers', 'CustomerController@store')->middleware(['auth', 'permission:Create Customer']);
+Route::put('customers/{customer}', 'CustomerController@update')->middleware(['auth', 'permission:Edit Customer']);
+Route::delete('customers/{customer}', 'CustomerController@destroy')->middleware(['auth', 'permission:Delete Customer']);
 
 // SITE ROUTES
-Route::post('customers/{customer}/sites', 'SitesController@store');
-Route::resource('sites', 'SitesController', [
-    'except' => ['create', 'store', 'edit']
-]);
+Route::get('sites/{site}', 'SiteController@show')->middleware(['auth', 'permission:View Site']);
+Route::get('sites', 'SiteController@index')->middleware(['auth', 'permission:View Site'])
+    ->name('sites.index');
+Route::post('customers/{customer}/sites', 'SiteController@store');
+Route::put('sites/{site}', 'SiteController@update')->middleware(['auth', 'permission:Edit Site']);
+Route::delete('sites/{site}', 'SiteController@destroy')->middleware(['auth', 'permission:Delete Site']);
 
 // SYSTEM ROUTES
-Route::post('site/{site}/systems', 'SystemsController@store');
-Route::resource('systems', 'SystemsController', [
-    'except' => ['create', 'store', 'edit']
-]);
+Route::get('systems/{system}', 'SystemController@show')->middleware(['auth', 'permission:View System']);
+Route::get('systems', 'SystemController@index')->middleware(['auth', 'permission:View System'])
+    ->name('systems.index');
+Route::post('sites/{site}/systems', 'SystemController@store')->middleware(['auth', 'permission:Create System']);
+Route::put('systems/{system}', 'SystemController@update')->middleware(['auth', 'permission:Edit System']);
+Route::delete('systems/{system}', 'SystemController@destroy')->middleware(['auth', 'permission:Delete System']);
 
+// SYSTEM NEXT TEST DATE ROUTES
 Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
 Route::put('system/{system}/nullify_next_test_date', 'SystemsController@nullifyNextTestDate');
 
+// SYSTEM DOCUMENT ROUTES
 Route::post('systems/{system}/document', 'Documents\SystemDocumentsController@store');
 Route::get('systems/document/{document}', 'Documents\SystemDocumentsController@show');
 Route::put('systems/document/{document}', 'Documents\SystemDocumentsController@update');
@@ -76,20 +85,25 @@ Route::delete('systems/document/{document}', 'Documents\SystemDocumentsControlle
 Route::get('createsystemtype', 'SystemTypesController@create');
 Route::post('createsystemtype', 'SystemTypesController@store');
 
-// MANUFACTURER AND COMPONENT ROUTES
+// MANUFACTURER ROUTES
 Route::post('manufacturers', 'ManufacturersController@store');
 Route::get('manufacturers', 'ManufacturersController@index');
 Route::get('manufacturer/{manufacturer}', 'ManufacturersController@show')->name('manufacturer_show');
 Route::put('manufacturers/{manufacturer}', 'ManufacturersController@update');
 
+// COMPONENT ROUTES
 Route::get('component/create', 'ComponentsController@create');
 Route::post('component/store', 'ComponentsController@store');
 Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
 Route::post('update_component_form', 'ComponentsController@getModelForAttachComponentModal');
 Route::put('component/{component}', 'ComponentsController@update');
-Route::post('system/{system}/component/attach', 'ComponentsController@attach');
-Route::post('system/{system}/component/{attachedComponentPivotId}/detach', 'ComponentsController@detach');
 Route::delete('components/{component}', 'ComponentsController@destroy');
+
+// ATTACH / DETACH COMPONENTS
+Route::post('systems/{system}/component/attach', 'ComponentsController@attach');
+Route::post('systems/{system}/component/{attachedComponentPivotId}/detach', 'ComponentsController@detach');
+
+// COMPONENT DOCUMENTS
 Route::post('component/{component}/document', 'Documents\ComponentDocumentsController@store');
 Route::get('components/document/{document}', 'Documents\ComponentDocumentsController@show');
 Route::delete('components/document/{document}', 'Documents\ComponentDocumentsController@destroy');
