@@ -72,8 +72,8 @@ Route::put('systems/{system}', 'SystemController@update')->middleware('auth', 'p
 Route::delete('systems/{system}', 'SystemController@destroy')->middleware('auth', 'permission:Delete System');
 
 // SYSTEM NEXT TEST DATE ROUTES
-Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
-Route::put('system/{system}/nullify_next_test_date', 'SystemsController@nullifyNextTestDate');
+Route::put('system/{system}/update_next_test_date', 'SystemController@updateNextTestDate');
+Route::put('system/{system}/nullify_next_test_date', 'SystemController@nullifyNextTestDate');
 
 // SYSTEM DOCUMENT ROUTES
 Route::post('systems/{system}/document', 'Documents\SystemDocumentsController@store');
