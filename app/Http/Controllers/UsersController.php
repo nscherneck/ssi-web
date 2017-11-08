@@ -6,6 +6,7 @@ use Hash;
 use App\User;
 use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Spatie\Activitylog\Models\Activity;
 
 class UsersController extends Controller
@@ -19,6 +20,7 @@ class UsersController extends Controller
             ->take(20)
             ->get();
 
+        Log::info('Showing user profile for ' . $user->full_name);
         return view('user.profile', compact('activityItems'));
     }
 
@@ -42,9 +44,8 @@ class UsersController extends Controller
         $user->password = Hash::make($request->input('new_password'));
 
         $user->save();
-
         flash('Success!', 'Password changed.');
-
+        Log::info('User ' . $user->full_name . ' changed their password.');
         return redirect()->route('profile');
     }
 }
