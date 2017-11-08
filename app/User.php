@@ -72,6 +72,7 @@ class User extends Authenticatable
     public function getFormattedLastLoginAttribute()
     {
         return $this->last_login
+            ->timezone('America/Los_Angeles')
             ->format('F j, Y - g:ia');
     }
 

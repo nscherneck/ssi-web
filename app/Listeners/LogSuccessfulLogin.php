@@ -4,8 +4,6 @@ namespace App\Listeners;
 
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Login;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class LogSuccessfulLogin
 {
@@ -29,7 +27,7 @@ class LogSuccessfulLogin
     {
         // update the user's last_login field in the database
         $user = $event->user;
-        $user->last_login = Carbon::now()->timezone('America/Los_Angeles')->toDateTimeString();
+        $user->last_login = Carbon::now()->toDateTimeString();
         $user->save();
 
         // add the login to the activity log
