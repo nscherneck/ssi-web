@@ -16,7 +16,7 @@ Route::get('service/metrics', 'PagesController@serviceMetrics')->name('serviceme
 Route::get('docs', 'PagesController@docs')->name('docs');
 Route::get('fleet', 'PagesController@fleet')->name('fleet');
 Route::get('team', 'PagesController@team')->name('team');
-Route::get('admin', 'PagesController@admin')->name('admin');
+Route::get('admin', 'PagesController@admin')->middleware('auth', 'permission:Admin Dashboard')->name('admin');
 
 Route::get('/tests/report/{test}', function (Test $test) {
     $basePath = base_path();
@@ -48,28 +48,28 @@ Route::get('changepassword', 'UsersController@changePasswordView')->name('change
 Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
-Route::get('customers/{customer}', 'CustomerController@show')->middleware(['auth', 'permission:View Customer']);
-Route::get('customers', 'CustomerController@index')->middleware(['auth', 'permission:View Customer'])
+Route::get('customers/{customer}', 'CustomerController@show')->middleware('auth', 'permission:View Customer');
+Route::get('customers', 'CustomerController@index')->middleware('auth', 'permission:View Customer')
     ->name('customers.index');
-Route::post('customers', 'CustomerController@store')->middleware(['auth', 'permission:Create Customer']);
-Route::put('customers/{customer}', 'CustomerController@update')->middleware(['auth', 'permission:Edit Customer']);
-Route::delete('customers/{customer}', 'CustomerController@destroy')->middleware(['auth', 'permission:Delete Customer']);
+Route::post('customers', 'CustomerController@store')->middleware('auth', 'permission:Create Customer');
+Route::put('customers/{customer}', 'CustomerController@update')->middleware('auth', 'permission:Edit Customer');
+Route::delete('customers/{customer}', 'CustomerController@destroy')->middleware('auth', 'permission:Delete Customer');
 
 // SITE ROUTES
-Route::get('sites/{site}', 'SiteController@show')->middleware(['auth', 'permission:View Site']);
-Route::get('sites', 'SiteController@index')->middleware(['auth', 'permission:View Site'])
+Route::get('sites/{site}', 'SiteController@show')->middleware('auth', 'permission:View Site');
+Route::get('sites', 'SiteController@index')->middleware('auth', 'permission:View Site')
     ->name('sites.index');
-Route::post('customers/{customer}/sites', 'SiteController@store');
-Route::put('sites/{site}', 'SiteController@update')->middleware(['auth', 'permission:Edit Site']);
-Route::delete('sites/{site}', 'SiteController@destroy')->middleware(['auth', 'permission:Delete Site']);
+Route::post('customers/{customer}/sites', 'SiteController@store')->middleware('auth', 'permission:Create Site');
+Route::put('sites/{site}', 'SiteController@update')->middleware('auth', 'permission:Edit Site');
+Route::delete('sites/{site}', 'SiteController@destroy')->middleware('auth', 'permission:Delete Site');
 
 // SYSTEM ROUTES
-Route::get('systems/{system}', 'SystemController@show')->middleware(['auth', 'permission:View System']);
-Route::get('systems', 'SystemController@index')->middleware(['auth', 'permission:View System'])
+Route::get('systems/{system}', 'SystemController@show')->middleware('auth', 'permission:View System');
+Route::get('systems', 'SystemController@index')->middleware('auth', 'permission:View System')
     ->name('systems.index');
-Route::post('sites/{site}/systems', 'SystemController@store')->middleware(['auth', 'permission:Create System']);
-Route::put('systems/{system}', 'SystemController@update')->middleware(['auth', 'permission:Edit System']);
-Route::delete('systems/{system}', 'SystemController@destroy')->middleware(['auth', 'permission:Delete System']);
+Route::post('sites/{site}/systems', 'SystemController@store')->middleware('auth', 'permission:Create System');
+Route::put('systems/{system}', 'SystemController@update')->middleware('auth', 'permission:Edit System');
+Route::delete('systems/{system}', 'SystemController@destroy')->middleware('auth', 'permission:Delete System');
 
 // SYSTEM NEXT TEST DATE ROUTES
 Route::put('system/{system}/update_next_test_date', 'SystemsController@updateNextTestDate');
