@@ -37,7 +37,7 @@
             </div>
             <div class="manufacturer-card-right text-center">
               <h1>{{ $manufacturer->components->count() }}</h1>
-              <h6>Components</h6>
+              <h6>{{ $manufacturer->pluralized_component }}</h6>
             </div>
           </div> <!-- ./panel-body -->
         </div> <!-- ./panel -->

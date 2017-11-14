@@ -50,4 +50,9 @@ class Manufacturer extends Model
 
         return $this->web;
     }
+    
+    public function getPluralizedComponentAttribute()
+    {
+        return str_plural('Component', $this->components()->count());
+    }
 }
