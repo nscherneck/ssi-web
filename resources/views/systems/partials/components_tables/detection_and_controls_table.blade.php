@@ -28,7 +28,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $panel->id }}">
+                <a href="{{ $panel->path() }}">
                   {{ $panel->model }}
                 </a>
               @endslot
@@ -73,7 +73,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $modularPanel->id }}">
+                <a href="{{ $modularPanel->path() }}">
                   {{ $modularPanel->model }}
                 </a>
               @endslot
@@ -118,7 +118,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $controlEquipment->id }}">
+                <a href="{{ $controlEquipment->path() }}">
                   {{ $controlEquipment->model }}
                 </a>
               @endslot
@@ -163,7 +163,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $airSamplingDetection->id }}">
+                <a href="{{ $airSamplingDetection->path() }}">
                   {{ $airSamplingDetection->model }}
                 </a>
               @endslot
@@ -208,7 +208,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $detection->id }}">
+                <a href="{{ $detection->path() }}">
                   {{ $detection->model }}
                 </a>
               @endslot
@@ -253,7 +253,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $notification->id }}">
+                <a href="{{ $notification->path() }}">
                   {{ $notification->model }}
                 </a>
               @endslot
@@ -298,7 +298,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $module->id }}">
+                <a href="{{ $module->path() }}">
                   {{ $module->model }}
                 </a>
               @endslot
@@ -343,7 +343,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $miscellaneousElectrical->id }}">
+                <a href="{{ $miscellaneousElectrical->path() }}">
                   {{ $miscellaneousElectrical->model }}
                 </a>
               @endslot
@@ -388,7 +388,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $miscellaneous->id }}">
+                <a href="{{ $miscellaneous->path() }}">
                   {{ $miscellaneous->model }}
                 </a>
               @endslot
@@ -433,7 +433,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $accessory->id }}">
+                <a href="{{ $accessory->path() }}">
                   {{ $accessory->model }}
                 </a>
               @endslot
@@ -478,7 +478,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $uncategorized->id }}">
+                <a href="{{ $uncategorized->path() }}">
                   {{ $uncategorized->model }}
                 </a>
               @endslot

@@ -28,7 +28,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $agentTank->id }}">
+                <a href="{{ $agentTank->path() }}">
                   {{ $agentTank->model }}
                 </a>
               @endslot

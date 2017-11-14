@@ -94,7 +94,7 @@ Route::put('manufacturers/{manufacturer}', 'ManufacturersController@update');
 // COMPONENT ROUTES
 Route::post('manufacturers/{manufacturer}/component', 'ComponentController@store')
     ->middleware('auth', 'permission:Create Component');
-Route::get('component/{component}', 'ComponentController@show')
+Route::get('components/{component}', 'ComponentController@show')
     ->middleware('auth', 'permission:View Component')->name('component_show');
 Route::put('component/{component}', 'ComponentController@update')
     ->middleware('auth', 'permission:Edit Component');

@@ -70,6 +70,16 @@ class Component extends Model
     {
         return $this->morphMany('App\Document', 'documentable');
     }
+    
+    /**
+     * Get the url path associated with this Component
+     *
+     * @return string
+     */
+    public function path()
+    {
+        return '/components/' . $this->id;
+    }
 
     /**
      * Get the formatted description excerpt (100 characters in length) for this Component.

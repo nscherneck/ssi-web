@@ -17,7 +17,7 @@
 
         <td width="15%">
         <small>
-        <a href="/component/{{ $component->id }}">
+        <a href="{{ $component->path() }}">
           {{ $component->model }}
         </a>
         </small>

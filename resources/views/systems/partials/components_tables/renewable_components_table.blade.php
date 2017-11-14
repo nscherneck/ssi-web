@@ -28,7 +28,7 @@
                 </a>
               @endslot
               @slot('model')
-                <a href="/component/{{ $renewable->id }}">
+                <a href="{{ $renewable->path() }}">
                   {{ $renewable->model }}
                 </a>
               @endslot

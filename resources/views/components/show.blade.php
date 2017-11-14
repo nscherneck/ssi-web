@@ -21,7 +21,9 @@
     @include('components.partials.documents_panel')
   @endcan
   
-  @include('components.partials.installed_panel')
+  @if($component->systems->count() > 0)
+    @include('components.partials.installed_panel')
+  @endif
 
   @can('Edit Component')
     @include('partials.modals.edit_component')

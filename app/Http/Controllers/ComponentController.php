@@ -29,7 +29,7 @@ class ComponentController extends Controller
 
         $component->save();
         flash('Success!', 'Component created.', 'success');
-        return back();
+        return redirect($component->path());
     }
 
     public function getModelForAttachComponentModal(Request $request)
