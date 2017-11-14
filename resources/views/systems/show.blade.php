@@ -91,34 +91,9 @@
     </div>
     @endif
 
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <p>
-          <small>
-            <strong>Added:</strong> {{ $system->formatted_created_at }}<br>
-            <strong>Added By:</strong> {{ $system->addedBy->full_name }}<br>
-            @if ($system->updated_by)
-            <hr>
-            <strong>Edited:</strong> {{ $system->formatted_updated_at }}<br>
-            <strong>Edited By:</strong> {{ $system->updatedBy->full_name }}<br>
-            @endif
-          </small>
-        </p>
-      </div>
-    </div>
+    @include('partials.meta_panel', ['color' => 'primary', 'model' => 'system'])
 
-    @if ($system->notes)
-    <div class="panel panel-primary">
-    <div class="panel-heading">
-      @include('partials.icons.notes-icon') Notes
-    </div>
-    <div class="panel-body">
-      <small>
-      {!! nl2br(e($system->notes)) !!}
-      </small>
-    </div>
-    </div>
-    @endif
+    @include('partials.notes_panel', ['color' => 'primary', 'model' => 'system'])
 
     <div class="text-center">
       @can('Edit System')

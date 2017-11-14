@@ -38,50 +38,24 @@
         @include('partials.icons.info-icon') Customer Info
       </div>
       <div class="panel-body">
-        <p>
-          <small>
-            {{ $customer->address1 }}<br>
-            @if ($customer->address2)
-              {{ $customer->address2 }}<br>
-            @endif
-            @if ($customer->address3)
-              {{ $customer->address3 }}<br>
-            @endif
-            {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip }}<br>
-            <a href="{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
-          </small>
-        </p>
+        <small>
+          {{ $customer->address1 }}<br>
+          @if ($customer->address2)
+            {{ $customer->address2 }}<br>
+          @endif
+          @if ($customer->address3)
+            {{ $customer->address3 }}<br>
+          @endif
+          {{ $customer->city }}, {{ $customer->state->state }}  {{ $customer->zip }}<br>
+          <a href="{{ $customer->web }}" target="blank">{{ $customer->web }}</a>
+        </small>
       </div>
     </div>
 
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        <p>
-          <small>
-            <strong>Added:</strong> {{ $customer->formatted_created_at }}<br>
-            <strong>Added By:</strong> {{ $customer->addedBy->full_name }}<br>
-            @if ($customer->updated_by)
-            <hr>
-            <strong>Edited:</strong> {{ $customer->formatted_updated_at }}<br>
-            <strong>Edited By:</strong> {{ $customer->updatedBy->full_name }}<br>
-            @endif
-          </small>
-        </p>
-      </div>
-    </div>
+    @include('partials.meta_panel', ['color' => 'primary', 'model' => 'customer'])
 
-    @if ($customer->notes)
-    <div class="panel panel-primary">
-    <div class="panel-heading">
-      @include('partials.icons.notes-icon') Notes
-    </div>
-    <div class="panel-body">
-      <small>
-      {!! nl2br(e($customer->notes)) !!}
-      </small>
-    </div>
-    </div>
-    @endif
+    @include('partials.notes_panel', ['color' => 'primary', 'model' => 'customer'])
+
 
   <div class="text-center">
     @can('Edit Customer')
@@ -118,7 +92,7 @@
     <br><br>
   </div>
 
-  </div>
+  </div> <!-- ./column -->
 
 <!--          RIGHT SIDE CONTENT         -->
 
@@ -126,7 +100,7 @@
 
     @include('partials.customers_map')
 
-    <div class="panel panel-info"> <!-- START SITES PANEL -->
+    <div class="panel panel-primary"> <!-- START SITES PANEL -->
       <div class="panel-heading">
         @include('partials.icons.site-icon') Sites ({{ $customer->sites_count }})
       </div>

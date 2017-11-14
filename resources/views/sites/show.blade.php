@@ -98,32 +98,10 @@
         </div>
       </div> <!-- END OF PANEL -->
 
-      <div class="panel panel-primary">
-        <div class="panel-body">
-          <p><small>
-            <strong>Added:</strong> {{ $site->formatted_created_at }}<br>
-            <strong>Added By:</strong> {{ $site->addedBy->full_name }}<br>
-            @if($site->updated_by)
-            <hr>
-            <strong>Edited:</strong> {{ $site->formatted_updated_at }}<br>
-            <strong>Edited By:</strong> {{ $site->updatedBy->full_name }}<br>
-            @endif
-          </small></p>
-        </div>
-      </div>
+      @include('partials.meta_panel', ['color' => 'primary', 'model' => 'site'])
+      
+      @include('partials.notes_panel', ['color' => 'primary', 'model' => 'site'])
 
-      @if ($site->notes)
-      <div class="panel panel-primary">
-      <div class="panel-heading">
-        @include('partials.icons.notes-icon') Notes
-      </div>
-      <div class="panel-body">
-        <small>
-        {!! nl2br(e($site->notes)) !!}
-        </small>
-      </div>
-      </div>
-      @endif
 
       <div class="text-center">
         @can('Edit Site')

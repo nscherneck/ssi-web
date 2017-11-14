@@ -31,12 +31,12 @@
   
   <textarea 
     name="description" class="form-control no-resize" 
-    placeholder="Description" rows="8" autocomplete="off" required>{{ old('description') }}</textarea>
+    placeholder="Description" rows="5" autocomplete="off" required>{{ old('description') }}</textarea>
   <br>
   
   <textarea 
     name="notes" class="form-control no-resize" 
-    placeholder="Notes" rows="6" autocomplete="off">{{ old('notes') }}</textarea>
+    placeholder="Notes" rows="4" autocomplete="off">{{ old('notes') }}</textarea>
   
   <div class="checkbox">
     <label>

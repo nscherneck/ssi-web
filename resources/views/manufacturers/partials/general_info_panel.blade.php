@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-primary">
   <div class="panel-heading">General Information</div>
   <div class="panel-body">
     <p>
@@ -19,9 +19,8 @@
         <strong>Fax:</strong> {{ $manufacturer->fax }}<br>
       @endif
       @if ($manufacturer->web)
-        <strong>Website: </strong>
         <a href="{{ $manufacturer->web }}" target="blank">
-        {{ $manufacturer->web }}
+          {{ $manufacturer->abbreviated_web }}
         </a>
         <br>
       @endif
@@ -33,7 +32,6 @@
         <br>
       @endif
       @if ($manufacturer->email)
-        <strong>Email: </strong>
         <a href="mailto:{{ $manufacturer->email }}">
         {{ $manufacturer->email }}
         </a>

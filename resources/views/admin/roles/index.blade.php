@@ -14,7 +14,7 @@
             <input type="text" class="form-control" name="name"
             placeholder="i.e. Administrator" autocomplete="off" value="{{ old('name') }}">
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" class="btn btn-primary">Create</button>
           @if ($errors->has('name'))
               <span class="help-block">
                   <strong>{{ $errors->first('name') }}</strong>

@@ -41,4 +41,13 @@ class Manufacturer extends Model
     {
         return '/manufacturer/' . $this->id;
     }
+    
+    public function getAbbreviatedWebAttribute()
+    {
+        if (strlen($this->web) > 50) {
+            return str_limit($this->web, 50);
+        }
+
+        return $this->web;
+    }
 }

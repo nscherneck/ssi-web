@@ -29,7 +29,7 @@
       <li><a href="">Site Categories</a></li>
     </ul>
     <ul class="nav nav-sidebar">
-      <li><a href="">System Types</a></li>
+      <li><a href="/admin/systemtypes">System Types</a></li>
       <li><a href="">Test Types</a></li>
       <li><a href="">Test Results</a></li>
     </ul>

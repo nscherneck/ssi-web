@@ -21,8 +21,8 @@
 
     <div class="col-lg-3">
       @include('manufacturers.partials.general_info_panel')
-      @include('manufacturers.partials.meta_panel')
-      @include('manufacturers.partials.notes_panel')
+      @include('partials.meta_panel', ['color' => 'primary', 'model' => 'manufacturer'])
+      @include('partials.notes_panel', ['color' => 'primary', 'model' => 'manufacturer'])
       @include('manufacturers.partials.buttons')
     </div> <!-- ./3-column -->
     

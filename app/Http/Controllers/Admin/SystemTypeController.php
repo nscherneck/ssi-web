@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\SystemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,8 @@ class SystemTypeController extends Controller
      */
     public function index()
     {
-        //
+        $systemTypes = SystemType::orderBy('type')->get();
+        return view('admin.system_types.index', compact('systemTypes'));
     }
 
     /**

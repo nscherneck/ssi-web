@@ -3,12 +3,13 @@
 @section('title', 'SSI-Extranet | Manufacturer')
 
 @section('head')
-
-<style type="text/css">
-   body { background: #5F98B9 !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
-</style>
-
-@stop
+  <style>
+  body {
+    background: linear-gradient(#FFF, #E8E8E8);
+    background-attachment: fixed;
+  }
+  </style>
+@endsection
 
 @section('content')
 
@@ -27,7 +28,7 @@
     @foreach($chunk as $manufacturer)
       <div class="col-lg-6">
         <a style="display: block" href="/manufacturer/{{ $manufacturer->id }}">
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
           <div class="panel-body">
             <div class="manufacturer-card-left">
               <h4>
