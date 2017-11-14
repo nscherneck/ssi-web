@@ -92,16 +92,22 @@ Route::get('manufacturer/{manufacturer}', 'ManufacturersController@show')->name(
 Route::put('manufacturers/{manufacturer}', 'ManufacturersController@update');
 
 // COMPONENT ROUTES
-Route::get('component/create', 'ComponentsController@create');
-Route::post('component/store', 'ComponentsController@store');
-Route::get('component/{component}', 'ComponentsController@show')->name('component_show');
-Route::post('update_component_form', 'ComponentsController@getModelForAttachComponentModal');
-Route::put('component/{component}', 'ComponentsController@update');
-Route::delete('components/{component}', 'ComponentsController@destroy');
+Route::post('manufacturers/{manufacturer}/component', 'ComponentController@store')
+    ->middleware('auth', 'permission:Create Component');
+Route::get('component/{component}', 'ComponentController@show')
+    ->middleware('auth', 'permission:View Component')->name('component_show');
+Route::put('component/{component}', 'ComponentController@update')
+    ->middleware('auth', 'permission:Edit Component');
+Route::delete('components/{component}', 'ComponentController@destroy')
+    ->middleware('auth', 'permission:Delete Component');
 
-// ATTACH / DETACH COMPONENTS
-Route::post('systems/{system}/component/attach', 'ComponentsController@attach');
-Route::post('systems/{system}/component/{attachedComponentPivotId}/detach', 'ComponentsController@detach');
+// ATTACH & DETACH COMPONENTS
+Route::post('update_component_form', 'ComponentController@getModelForAttachComponentModal')
+    ->middleware('auth', 'permission:Attach Component');
+Route::post('systems/{system}/component/attach', 'ComponentController@attach')
+    ->middleware('auth', 'permission:Attach Component');
+Route::post('systems/{system}/component/{attachedComponentPivotId}/detach', 'ComponentController@detach')
+    ->middleware('auth', 'permission:Detach Component');
 
 // COMPONENT DOCUMENTS
 Route::post('component/{component}/document', 'Documents\ComponentDocumentsController@store');

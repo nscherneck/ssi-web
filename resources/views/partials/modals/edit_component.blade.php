@@ -31,7 +31,7 @@
           <div class="form-group row">
             <label for="description" class="col-sm-2 col-form-label">Description:</label>
             <div class="col-sm-10">
-              <textarea name="description" class="form-control" rows=6>{{ $component->description }}</textarea>
+              <textarea name="description" class="form-control no-resize" rows=6>{{ $component->description }}</textarea>
             </div>
           </div>
 
@@ -54,6 +54,13 @@
                   <option value="{{ $component->discontinued }}">@if ($component->discontinued === 1) Yes @else No @endif</option>
                   <option value="@if($component->discontinued === 1) 0 @else 1 @endif">@if($component->discontinued === 1) No @else Yes @endif</option>
               </select>
+            </div>
+          </div>
+          
+          <div class="form-group row">
+            <label for="notes" class="col-sm-2 col-form-label">Notes:</label>
+            <div class="col-sm-10">
+              <textarea name="notes" class="form-control no-resize" rows=6 style=>{{ $component->notes }}</textarea>
             </div>
           </div>
 

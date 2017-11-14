@@ -64,10 +64,11 @@ class ManufacturersController extends Controller
                 ->where('manufacturer_id', $manufacturer->id)
                 ->get();
         }
-
+        
+        $componentCategories = DB::table('component_category')->orderBy('name', 'asc')->get();
         $states = State::all();
 
-        return view('manufacturers.show', compact('manufacturer', 'components', 'states'));
+        return view('manufacturers.show', compact('manufacturer', 'components', 'componentCategories', 'states'));
     }
 
     public function update(Request $request, Manufacturer $manufacturer)

@@ -12,6 +12,19 @@ class Component extends Model
      * @var array
      */
     protected $hidden = ['created_at', 'updated_at'];
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'model',
+        'component_category_id',
+        'discontinued',
+        'description',
+        'notes'
+    ];
 
     /**
      * Get the Systems that this Component is associated with.
