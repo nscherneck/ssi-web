@@ -48,12 +48,16 @@ Route::get('changepassword', 'UsersController@changePasswordView')->name('change
 Route::post('changepassword', 'UsersController@changePassword');
 
 // CUSTOMER ROUTES
-Route::get('customers/{customer}', 'CustomerController@show')->middleware('auth', 'permission:View Customer');
-Route::get('customers', 'CustomerController@index')->middleware('auth', 'permission:View Customer')
-    ->name('customers.index');
-Route::post('customers', 'CustomerController@store')->middleware('auth', 'permission:Create Customer');
-Route::put('customers/{customer}', 'CustomerController@update')->middleware('auth', 'permission:Edit Customer');
-Route::delete('customers/{customer}', 'CustomerController@destroy')->middleware('auth', 'permission:Delete Customer');
+Route::get('customers/{customer}', 'CustomerController@show')
+    ->middleware('auth', 'permission:View Customer');
+Route::get('customers', 'CustomerController@index')
+    ->middleware('auth', 'permission:View Customer')->name('customers.index');
+Route::post('customers', 'CustomerController@store')
+    ->middleware('auth', 'permission:Create Customer');
+Route::put('customers/{customer}', 'CustomerController@update')
+    ->middleware('auth', 'permission:Edit Customer');
+Route::delete('customers/{customer}', 'CustomerController@destroy')
+    ->middleware('auth', 'permission:Delete Customer');
 
 // SITE ROUTES
 Route::get('sites/{site}', 'SiteController@show')->middleware('auth', 'permission:View Site');
