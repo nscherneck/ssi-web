@@ -10,19 +10,22 @@
 
 </div>
 
-<div class="container">
+<div class="container-fluid" id="app">
+  
+  <systemsfilter 
+    :customers="{{ json_encode($customers) }}"
+    :systemtypes="{{ json_encode($systemTypes) }}"
+    :panels="{{ json_encode($panels) }}"
+    :branchoffices="{{ json_encode($branchOffices) }}"
+    :systems="{{ json_encode($systems) }}"
+    >
+  </systemsfilter>
 
-  <div class="titleBar" style="margin-top: 0">
-      <p>Systems ({{ $systems->total() }})</p>
-  </div>
-
-  <div class="table-responsive">
+{{--   <div class="table-responsive">
 
     <table class="table table-condensed">
     <thead>
       <tr>
-        <th><small>Customer</small></th>
-        <th><small>Site</small></th>
         <th><small>System</small></th>
         <th><small>Type</small></th>
         <th><small>Last Test</small></th>
@@ -40,19 +43,11 @@
               <a href="{{ $system->customer->path() }}">
                 {{ $system->customer->name }}
               </a>
-            </small>
-          </td>
-
-          <td>
-            <small>
+              {{ config('constants.SEPARATOR') }}
               <a href="{{ $system->site->path() }}">
                 {{ $system->site->name }}
               </a>
-            </small>
-          </td>
-
-          <td>
-            <small>
+              {{ config('constants.SEPARATOR') }}
               <a href="{{ $system->path() }}">
                 {{ $system->name }}
               </a>
@@ -88,13 +83,13 @@
     </tbody>
 
     </table>
-  </div> <!-- END OF RESPONSIVE TABLE -->
+  </div> <!-- END OF RESPONSIVE TABLE --> --}}
 
-  <div class="text-center">
+{{--   <div class="text-center">
     {{ $systems->links() }}
-  </div>
+  </div> --}}
 
 
 </div> <!-- END OF CONTAINER -->
 
-@stop
+@endsection

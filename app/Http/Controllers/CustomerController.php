@@ -5,15 +5,18 @@ use App\State;
 use App\Customer;
 use App\BranchOffice;
 use Illuminate\Http\Request;
+use App\Filters\CustomerFilter;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index(CustomerFilter $filters)
     {
-        $customers = Customer::orderBy('name')->get();
+        $customers = $this->getCustomers($filters)
+            ->orderBy('name')
+            ->get();
         $states = DB::table('states')->orderBy('state')->get();
         return view('customers.index', compact('customers', 'states'));
     }
@@ -104,5 +107,10 @@ class CustomerController extends Controller
         $customer->delete();
         flash('Success!', 'Customer deleted.', 'danger');
         return redirect()->route('customers.index');
+    }
+    
+    public function getCustomers($filters)
+    {
+        return Customer::filter($filters);
     }
 }

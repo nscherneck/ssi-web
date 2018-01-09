@@ -16,40 +16,50 @@
 
         <form action="/systems/{{ $system->id }}" method="POST">
 
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <input type="hidden" name="_method" value="put">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="_method" value="put">
 
-          <div class="form-group">
+        <div class="form-group">
 
-            Name: <input type="text" name="name" value="{{ $system->name }}" class="form-control"><br>
-            Type: <select name="system_type_id" class="form-control">
-                <option value="{{ $system->system_type_id }}">{{ $system->systemType->type }}</option>
-              @foreach ($systemTypes as $systemType)
-                <option value="{{ $systemType->id }}">{{ $systemType->type }}</option>
-              @endforeach
-            </select><br>
-            Installation Date: <input type="date" name="install_date" value="{{ $system->install_date->format('Y-m-d') }}" class="form-control"><br>
-            Installed by SSI: <select name="ssi_install" class="form-control">
-              <option value="{{ $system->ssi_install }}">@if($system->ssi_install == 0) No @elseif($system->ssi_install == 1) Yes @endif</option>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-            <br>
-            Tests & Inspections by SSI: <select name="ssi_test_acct" class="form-control">
-              <option value="{{ $system->ssi_test_acct }}">@if($system->ssi_test_acct == 0) No @elseif($system->ssi_test_acct == 1) Yes @endif</option>
-              <option value="1">Yes</option>
-              <option value="0">No</option>
-            </select>
-            <br>
-            <textarea name="notes" class="form-control" rows="5" placeholder="System Notes">{{ $system->notes }}</textarea>
-
+          Name: <input type="text" name="name" value="{{ $system->name }}" class="form-control"><br>
+          Type: <select name="system_type_id" class="form-control">
+              <option value="{{ $system->system_type_id }}">{{ $system->systemType->type }}</option>
+            @foreach ($systemTypes as $systemType)
+              <option value="{{ $systemType->id }}">{{ $systemType->type }}</option>
+            @endforeach
+          </select><br>
+          Installation Date: <input type="date" name="install_date" value="{{ $system->install_date->format('Y-m-d') }}" class="form-control"><br>
+          
+          <textarea name="notes" class="form-control no-resize" rows="5" placeholder="System Notes">{{ $system->notes }}</textarea>
+          <br>
+          
+          <div class="row">
+            <div class="col-lg-4 text-left">
+              <label>
+                <input type="checkbox" name="is_active" value="1" @if($system->is_active) checked @endif>
+                <small>Active?</small>
+              </label>
+            </div>
+            <div class="col-lg-4 text-center">
+              <label>
+                <input type="checkbox" name="ssi_test_acct" value="1" @if($system->ssi_test_acct) checked @endif>
+                <small>Tests by SSI?</small>
+              </label>
+            </div>
+            <div class="col-lg-4 text-right">
+              <label>
+                <input type="checkbox" name="ssi_install" value="1" @if($system->ssi_install) checked @endif>
+                <small>Installed by SSI?</small>
+              </label>
+            </div>
           </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Update</button>
+
+        </div>
 
     </div>
 
-    <div class="panel-footer">
-      <button type="submit" class="btn btn-default">Update</button>
-    </div>
 
   </form>
 

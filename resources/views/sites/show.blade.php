@@ -160,7 +160,8 @@
             <tr>
               <th><small>Name</small></th>
               <th><small>Type</small></th>
-              <th><small>Components</small></th>
+              <th class="text-center"><small>Active</small></th>
+              <th class="text-center"><small>Components</small></th>
               <th><small>Last Test</small></th>
             </tr>
           </thead>
@@ -169,7 +170,14 @@
             <tr>
               <td><small><a href="{{ $system->path() }}">{{ $system->name }}</a></small></td>
               <td><small>{{ $system->systemType->type }}</small></td>
-              <td><small>{{ $system->components->sum('pivot.quantity') }}</small></td>
+              <td class="text-center">
+                @if($system->is_active) 
+                  @include('partials.icons.check-icon') 
+                @elseif (!$system->is_active)
+                  @include('partials.icons.x-icon')
+                @endif
+              </small></td>
+              <td class="text-center"><small>{{ $system->components->sum('pivot.quantity') }}</small></td>
               <td><small>{{ $system->getMostRecentTest() }}</small></td>
             </tr>
             @endforeach

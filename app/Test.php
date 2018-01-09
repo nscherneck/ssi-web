@@ -10,7 +10,7 @@ class Test extends Model
 {
     use LogsActivity, CreatedUpdatedInfo;
 
-    protected $with = ['testType', 'testResult'];
+    // protected $with = ['testType', 'testResult'];
 
     protected $dates = [
         'test_date',

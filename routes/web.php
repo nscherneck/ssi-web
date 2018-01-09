@@ -74,6 +74,9 @@ Route::get('systems', 'SystemController@index')->middleware('auth', 'permission:
 Route::post('sites/{site}/systems', 'SystemController@store')->middleware('auth', 'permission:Create System');
 Route::put('systems/{system}', 'SystemController@update')->middleware('auth', 'permission:Edit System');
 Route::delete('systems/{system}', 'SystemController@destroy')->middleware('auth', 'permission:Delete System');
+Route::prefix('api')->group(function () {
+    Route::get('systems', 'SystemAPIController@index');
+});
 
 // SYSTEM NEXT TEST DATE ROUTES
 Route::put('system/{system}/update_next_test_date', 'SystemController@updateNextTestDate');

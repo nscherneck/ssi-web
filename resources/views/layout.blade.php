@@ -15,7 +15,10 @@
 <link rel="stylesheet" href="{{ mix('css/bundle.css') }}">
 
 <script src="https://use.fontawesome.com/45ecff3689.js"></script>
-<script src="{{ mix('js/app.js') }}"></script>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
 
 <title> @yield('title') </title>
 
@@ -28,5 +31,9 @@
 @yield('content')
 
 </body>
+
+<script src="/js/manifest.js"></script>
+<script src="/js/vendor.js"></script>
+<script src="/js/app.js"></script>
 
 </html>

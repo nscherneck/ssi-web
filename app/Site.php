@@ -18,6 +18,8 @@ class Site extends Model
         'state',
         'customer'
     ];
+    
+    protected $appends = ['path'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -48,6 +50,7 @@ class Site extends Model
         'phone',
         'fax',
         'notes',
+        'customer_id',
         'added_by',
         'updated_by',
         'updated_at'
@@ -129,6 +132,11 @@ class Site extends Model
     {
         return '/sites/' . $this->id;
     }
+    
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
 
     /**
      * Calculates distance or duration from the Site based on the provided origin coordinates (branch office location)
@@ -158,5 +166,10 @@ class Site extends Model
             return $returnedJson['rows'][0]['elements'][0]['duration']['text'];
         }
         return 'error';
+    }
+    
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
     }
 }

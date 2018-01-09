@@ -16,6 +16,8 @@ class Customer extends Model
      * @var array
      */
     protected $with = ['state'];
+    
+    protected $appends = ['path'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -124,5 +126,15 @@ class Customer extends Model
     public function path()
     {
         return '/customers/' . $this->id;
+    }
+    
+    public function getPathAttribute()
+    {
+        return $this->path();
+    }
+    
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
     }
 }

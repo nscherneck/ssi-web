@@ -7,21 +7,29 @@ use App\Test;
 use App\User;
 use App\Photo;
 use App\System;
+use App\Customer;
 use App\Document;
+use App\Component;
 use Carbon\Carbon;
+use App\SystemType;
+use App\BranchOffice;
 use Illuminate\Http\Request;
+use App\Filters\SystemFilter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class SystemController extends Controller
 {
-    public function index(Request $request)
+    public function index(SystemFilter $filters)
     {
-        $systems = System::isTestedBySSI()
-            ->orderBy('next_test_date')
-            ->paginate(25);
-
-        return view('systems.index', compact('systems'));
+        $customers = Customer::orderBy('name')->get();
+        $systemTypes = SystemType::orderBy('type')->get();
+        $panels = Component::orderBy('manufacturer_id')->where('component_category_id', 1)->with('manufacturer')->get();
+        $branchOffices = BranchOffice::orderBy('name')->get();
+        $systems = $this->getSystems($filters)
+            // ->with('latestTest')
+            ->get();
+        return view('systems.index', compact('systems', 'customers', 'systemTypes', 'panels', 'branchOffices'));
     }
 
     public function show(System $system)
@@ -59,9 +67,7 @@ class SystemController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'system_type_id' => 'required',
-            'ssi_install' => 'required',
-            'ssi_test_acct' => 'required',
-            ]);
+        ]);
 
         $system = new System;
         $system->site_id = $site->id;
@@ -69,8 +75,9 @@ class SystemController extends Controller
         $system->slug = str_slug($system->name, '-');
         $system->system_type_id = $request->system_type_id;
         $system->install_date = $request->install_date;
-        $system->ssi_install = $request->ssi_install;
-        $system->ssi_test_acct = $request->ssi_test_acct;
+        $system->is_active = $request->is_active ?: 0;
+        $system->ssi_test_acct = $request->ssi_test_acct ?: 0;
+        $system->ssi_install = $request->ssi_install ?: 0;
         $system->notes = $request->notes;
         $system->added_by = Auth::id();
 
@@ -86,16 +93,15 @@ class SystemController extends Controller
         $this->validate($request, [
             'name' => 'required|string|max:255',
             'system_type_id' => 'required',
-            'ssi_install' => 'required',
-            'ssi_test_acct' => 'required',
         ]);
 
         $system->name = $request->name;
         $system->slug = str_slug($system->name, '-');
         $system->system_type_id = $request->system_type_id;
         $system->install_date = $request->install_date;
-        $system->ssi_install = $request->ssi_install;
-        $system->ssi_test_acct = $request->ssi_test_acct;
+        $system->is_active = $request->is_active ?: 0;
+        $system->ssi_test_acct = $request->ssi_test_acct ?: 0;
+        $system->ssi_install = $request->ssi_install ?: 0;
         $system->notes = $request->notes;
         $system->updated_by = Auth::id();
 
@@ -132,5 +138,10 @@ class SystemController extends Controller
         $system->delete();
         flash('Success!', 'System deleted.', 'danger');
         return redirect($site->path());
+    }
+    
+    public function getSystems($filters)
+    {
+        return System::filter($filters);
     }
 }

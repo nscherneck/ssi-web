@@ -6,15 +6,17 @@ use App\State;
 use App\Customer;
 use App\SystemType;
 use App\BranchOffice;
+use App\Filters\SiteFilter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class SiteController extends Controller
 {
-    public function index(Request $request)
+    public function index(SiteFilter $filters)
     {
-        $sites = Site::withCount('systems')->with(['customer', 'systems.tests', 'state'])
+        $sites = $this->getSites($filters)->withCount('systems')
+            ->with(['customer', 'systems.tests', 'state'])
             ->orderBy('id', 'desc')
             ->get();
 
@@ -110,5 +112,10 @@ class SiteController extends Controller
         $site->delete();
         flash('Success!', 'Site deleted.', 'danger');
         return redirect($customer->path());
+    }
+    
+    public function getSites($filters)
+    {
+        return Site::filter($filters);
     }
 }

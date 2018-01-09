@@ -16,6 +16,8 @@ class System extends Model
      * @var array
      */
     protected $with = ['site', 'tests', 'systemType', 'components'];
+    
+    protected $appends = ['componentsQuantity', 'path'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -104,6 +106,11 @@ class System extends Model
     {
         return $this->hasMany('App\Test')->orderBy('test_date', 'desc');
     }
+    
+    public function latestTest()
+    {
+        return $this->hasOne('App\Test')->orderBy('test_date', 'desc');
+    }
 
     /**
      * Get the type for this System.
@@ -137,6 +144,16 @@ class System extends Model
     public function path()
     {
         return '/systems/' . $this->id;
+    }
+
+    /**
+     * Get the url path associated with this Site.
+     *
+     * @return string
+     */
+    public function getPathAttribute()
+    {
+        return $this->path();
     }
 
     /**
@@ -258,16 +275,15 @@ class System extends Model
     /**
      * Get the quantity of Components for this System.
      *
-     * @link https://laravel.com/api/5.4/Illuminate/Database/Query/Builder.html#method_selectRaw Laravel documentation.
-     *
      * @return string Quantity of components.
      */
-    public function getComponentsQuantity()
+    public function getComponentsQuantityAttribute()
     {
-        $components = $this->components();
-        $quantityOfComponents = $components->selectRaw($components->getForeignKey() . ', sum(quantity)')
-                ->groupBy($components->getForeignKey());
-
-        return $quantityOfComponents;
+        return $this->components->sum('pivot.quantity');
+    }
+    
+    public function scopeFilter($query, $filters)
+    {
+        return $filters->apply($query);
     }
 }

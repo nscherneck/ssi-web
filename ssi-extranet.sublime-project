@@ -4,5 +4,10 @@
 		{
 			"path": "."
 		}
-	]
+	],
+    "settings": {
+        "xdebug": {
+            "url": "http://ssi-extranet.test"
+        }
+    }
 }

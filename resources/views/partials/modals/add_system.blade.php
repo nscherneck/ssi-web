@@ -27,24 +27,34 @@
               <option value="{{ $systemType->id }}">{{ $systemType->type }}</option>
             @endforeach
           </select><br>
-          Installation Date: <input type="date" name="install_date" value="2000-01-01" class="form-control"><br>
-          <select name="ssi_install" class="form-control" required>
-            <option value="0" disabled selected>Installed by SSI?</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-          </select>
+          Installation Date: <input type="date" name="install_date" value="2000-01-01" class="form-control">
+          <br>
+          
+          <textarea name="notes" class="form-control no-resize" placeholder="System Notes" rows="4"></textarea>
+          <br>
+          
+          <div class="row">
+            <div class="col-lg-4 text-left">
+              <label>
+                <input type="checkbox" name="is_active" value="1" checked>
+                <small>Active?</small>
+              </label>
+            </div>
+            <div class="col-lg-4 text-center">
+              <label>
+                <input type="checkbox" name="ssi_test_acct" value="1" checked>
+                <small>Tests by SSI?</small>
+              </label>
+            </div>
+            <div class="col-lg-4 text-right">
+              <label>
+                <input type="checkbox" name="ssi_install" value="1">
+                <small>Installed by SSI?</small>
+              </label>
+            </div>
+          </div>
           <br>
 
-          <select name="ssi_test_acct" class="form-control" required>
-            <option value="0" disabled selected>Tests by SSI?</option>
-            <option value="1">Yes</option>
-            <option value="0">No</option>
-          </select>
-          <br>
-
-          <textarea name="notes" class="form-control" placeholder="System Notes" rows="4"></textarea><br>
-
-          <br>
           <button type="submit" class="btn btn-primary">Create System</button>
         </div>
       </form>
